@@ -1,0 +1,132 @@
+h1,h2,h3,h4{
+	margin: 10px 0px;
+	padding: 0px 10px;
+}
+
+label{
+	font-weight: bold;
+}
+
+img{
+	margin: 5px;
+}
+
+.clear{
+	clear: both;
+}
+
+.half{
+	width: 49%;
+}
+
+.header{
+	background-color: #C9D3DD;
+}
+
+h1.header, h2.header, h3.header{
+	text-decoration: underline;
+}
+
+
+.pdf_header img, .pdf_header span{
+	float: left;
+}
+.pdf_header time{
+	float: right;
+}
+
+.pdf_header a{
+	position: absolute;
+	top: 30px;
+	right: 0;
+}
+
+.info_element_box span{
+	font-weight: bold;
+}
+
+.info_element_box .user_information_in_box p{
+	margin: 0 5px;
+}
+
+.info_element_box .time_info div p{
+	display: inline-block;
+	position: relative;
+	bottom: 14px;
+	margin: 0 5px;
+}
+
+.info_element_box{
+	width: 49%;	
+	float: right;
+	height: 10%;
+}
+
+#form_header.lesson_plan{
+	width: 49%;
+	float: left
+}
+
+.title_container p{
+	font-size: 30px;
+	font-weight: bold;
+	background-color: #F8F8F8;
+}
+
+.description div{
+	background-color: #F8F8F8;
+}
+
+.box_container{
+	padding: 0 7px;
+}
+
+.BSV.value, .BFTI.value, .BTA.value{
+	font-weight: normal;
+	margin: 0 20px;
+}
+
+.activity_list{
+	margin-left: 4%;
+}
+
+.keyword_box{
+	display: inline-block;
+	background-color: rgba(110,210,255,0.5);
+	padding: 5px 10px;
+	position: relative;
+	margin: 0 10px;
+}
+
+.keyword_box:after{
+	content: "";
+	border: 14px solid transparent;
+	position: absolute;
+	border-left-color: rgba(110,210,255,0.5);
+	left: 100%;
+	top: 0px;
+}
+
+.resource_box a{
+	display: block;
+}
+
+.resource_box{
+	border: 1px solid black;
+	padding: 5px;
+	margin: 5px 0;
+	width: 50%;
+	border: 1px solid black;
+	text-align: center;
+	text-decoration: underline;
+	list-style-type: none;
+}
+
+.description_container.half{
+	float: left;
+}
+
+.description_container.half.student{
+	float: right;
+}
+

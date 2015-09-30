@@ -1,0 +1,42 @@
+a
+{
+
+font-weight: bold;	
+}
+a:hover
+{
+cursor:pointer;	
+}
+p
+{
+text-align:justify;	
+}
+body
+{
+background: none;	
+}
+.panel
+{
+border-radius:5px;	
+}
+.panelfloralwhite
+{
+background-color: floralwhite;	
+}
+.panellightcyan
+{
+background-color: lightcyan;	
+color:black;
+}
+.panelmistyrose
+{
+background-color: mistyrose;	
+}
+.panelwhite
+{
+background-color: #fff;	
+}
+.row
+{
+  max-width: 100.5rem;	
+}

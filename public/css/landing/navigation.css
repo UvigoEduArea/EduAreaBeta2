@@ -1,0 +1,183 @@
+#nav_bar{
+	position:fixed;
+	z-index: 1;
+	text-align: center;
+	left: 0;
+	background: -webkit-gradient(linear,left bottom,left top,color-stop(0.37, rgb(31,58,77)),color-stop(0.76, rgb(53,81,102)),color-stop(1, rgb(76,104,126)));
+	background: -moz-linear-gradient(bottom, rgb(31,58,77) 37%,rgb(53,81,102) 76%,rgb(76,104,126) 100%);
+	height: 75px;
+	top: 0;
+	width: 100%;
+
+}
+
+.nav_bar_section_box{
+	height: 73px;
+	background: -webkit-gradient(linear,left bottom,left top,color-stop(0.37, rgb(31,58,77)),color-stop(0.76, rgb(53,81,102)),color-stop(1, rgb(76,104,126)));
+	background: -moz-linear-gradient(bottom, rgb(31,58,77) 37%,rgb(53,81,102) 76%,rgb(76,104,126) 100%);
+	border: solid 1px black;
+	position: fixed;
+	top: 0;
+	width: 12%;
+	color: white;
+}
+
+#logo_dropdown{
+	left: 0;
+	border: none;
+	width: 15%;
+}
+
+#personal_area_dropdown{
+	left: 15%;
+}
+
+#resources_dropdown{
+	left: 38%
+}
+
+#plans_dropdown{
+	left:50%;
+}
+
+#boards_dropdown{
+	left: 73%;
+	
+}
+
+#user_menu_dropdown{
+	right: 0;
+	width: 15%;
+}
+
+#plans_description, #resources_description{
+	position: relative;
+	bottom: 29%;
+	font-style: italic;
+}
+
+#resources_dropdown span, #plans_dropdown span, #personal_area_dropdown span, #boards_dropdown span{
+	position: relative;
+	font-size: 18px;
+	font-weight: bold;
+}
+
+.name_image_dropdown{
+	position: relative;
+	padding: 11% 15px 11.5% 0;
+	cursor: pointer;
+}
+
+.arrow_down_dropdown{
+	position: absolute;
+	right: 2%;
+	top: 38%;
+}
+
+#resources_dropdown .name_image_dropdown, #plans_dropdown .name_image_dropdown{
+	padding: 8% 15px 8% 0;
+}
+
+#boards_dropdown .name_image_dropdown{
+	padding: 12% 0;
+}
+
+.dropdown_list{
+	background-color: #1F3A4D;
+	list-style-type: none;
+	padding-bottom: 10px;
+}
+
+.dropdown_list li{
+	border-bottom: solid 1px white;
+	width: 90%;
+	margin: 0 auto;
+	
+	cursor: pointer;
+}
+
+.dropdown_list li:first-child{
+	border-top: solid 1px white;
+	padding: 5% 0;
+}
+
+.dropdown_list li:last-child{
+	border-bottom: none;
+}
+.dropdown_list li:hover{
+	background-color: rgba(255,255,255,0.7);
+}
+
+.dropdown_list li a{
+	padding: 6% 33%;
+}
+.dropdown_list li:nth-child(2) a
+{
+	padding: 6% 16%;
+	display:block;	
+}
+.web_title_text, .web_title_image, .beta{
+	position: absolute;
+}
+.web_title_text{
+	color: white;
+	font-size: 35px;
+	text-decoration:none;
+	top: 20%;
+	z-index: 1;
+	left: 30%;
+}
+
+.web_title_image{
+	top: 15%;
+	left: 5%;	
+}
+
+/* ESTA SECCIÓN DE USUARIO HAY QUE REALIZARLE UN AJUSTE FINO DE CLASES Y ESTILOS */
+#user_menu .avatar img{
+	width: 30px;
+}
+
+#user_menu .nav_user, #user_menu .avatar, #user_menu .user_name, #user_menu .language_selector, #user_menu .home_language_selector{
+	float:right;
+	padding-left: 4px;
+	margin-top: 10px;
+	margin-right: 2px;
+	color: white;
+}
+
+.user_name a{
+	text-decoration:none;
+	color: white;
+}
+
+.home_language_selector a, .home_language_selector li{
+	text-decoration:none;
+	color: white;
+	display: inline-block;
+}
+
+.nav_user li, .user_information li{
+	display: inline;
+}
+
+.nav_user{
+	float: right;
+}
+
+.language_selector li{
+	display: none;
+	padding: 0px 6px;
+}
+
+.language_selector li.active{
+	display: block;
+}
+
+.language_selector:hover li{
+	display: block;
+}
+.language_selector img{
+	margin-left: 0px;
+}
+/*********************************************************************************/

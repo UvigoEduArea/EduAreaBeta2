@@ -1,0 +1,144 @@
+body
+{
+	background-image:url('../../images/landing/blackboard.jpg');
+	background-color: transparent;
+	background-position: 0 75px;
+	background-size:100% 650px;
+	background-repeat:no-repeat;
+	background-attachment: fixed;
+	color:white;
+	font-family: 'Roboto', sans-serif;
+	z-index: -1;
+}
+h1,h2,h3,h4,h5
+{
+font-family: 'Lato', sans-serif;
+}
+header
+{
+	/*background: -moz-linear-gradient(center bottom , #1F3A4D 37%, #355166 76%, #4C687E 100%) repeat scroll 0% 0% transparent;*/
+	background: #1f3a4d; /* Old browsers */
+	background: -moz-linear-gradient(center bottom, #1f3a4d 37%, #355166 76%, #4c687e 100%); /* FF3.6+ */
+	background: -webkit-gradient(linear, left bottom, left top, color-stop(37%,#1f3a4d), color-stop(76%,#355166), color-stop(100%,#4c687e)); /* Chrome,Safari4+ */
+	background: -webkit-linear-gradient(bottom, #1f3a4d 37%,#355166 76%,#4c687e 100%); /* Chrome10+,Safari5.1+ */
+	background: -o-linear-gradient(bottom, #1f3a4d 37%,#355166 76%,#4c687e 100%); /* Opera 11.10+ */
+	background: -ms-linear-gradient(bottom, #1f3a4d 37%,#355166 76%,#4c687e 100%); /* IE10+ */
+	background: linear-gradient(to top, #1f3a4d 37%,#355166 76%,#4c687e 100%); /* W3C */
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#1f3a4d', endColorstr='#4c687e',GradientType=0 ); /* IE6-9 */
+	height: 75px;
+	width:100%;
+	position:fixed;
+	top:0;
+	left:0;
+	z-index:3000;
+}
+header span
+{
+	font-family: "Trebuchet MS",Helvetica Neue,Helvetica,Arial,sans-serif;	
+	position:absolute;
+	top:20px;
+	left:30px;
+	font-size: 28px;
+	font-weight: bold;	
+}
+header a
+{
+	font-weight: normal;	
+}
+
+header #user_menu span
+{
+	font-size:14px;	
+}
+header .language_selector
+{
+	position:absolute;
+	top:35px;
+	right:0px;
+}
+#subtitulo
+{
+	margin-top:75px;
+		opacity:0.7;	
+}
+#subtitulo h2,
+#subtitulo h4
+{
+	margin:20px 0px 50px 0;	
+}
+footer
+{
+	background-color: #1F3A4D;
+	padding:25px 5px 5px 5px;
+	overflow: auto;
+	margin-top: 50px;
+}
+.link2top
+{
+	position:fixed;
+	bottom:50px;
+	right:25px;
+	z-index:3000;	
+}
+
+#elecciones
+{
+	height:95px;
+	font-variant:small-caps;
+	margin-top:50px;
+}
+#puedesencontrar ul,
+#puedeshacer ul
+{
+	text-align: justify;
+	list-style-type:circle;	
+}
+#puedesencontrar ul li,
+#puedeshacer ul li
+{
+margin:20px 0px;	
+	
+}
+#dispositivos
+{
+	color: black;	
+}
+#dispositivos img
+{
+	width:250px;	
+}
+#EAbierto p,
+#Capturas p
+{
+	color:black;
+}
+#Capturas img
+{
+	width:80%;
+}
+#CAbierto
+{
+	border:1px solid black;	
+}
+#CAbierto ul li
+{
+margin:20px 0px;	
+	
+}
+#CAbierto div:nth-child(2)
+{
+	border-left:1px solid black;
+	border-right:1px solid black;
+	min-height: 80px;
+}
+#CAbierto div
+{
+	color:black;
+	min-height:160px;	
+	margin: 15px 0px;
+	opacity:0.7;	
+}
+#infocontacto
+{
+	min-height: 450px;	
+}
