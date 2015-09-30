@@ -1,0 +1,69 @@
+<%
+	#Recibimos el objeto sobre el que vamos a crear el breadcrumb como "element"
+%>
+
+<% case element.type
+when "LessonPlan"%>
+	<div class="breadcrumb">
+		<div id="activities_breadcrumb" data-info="<%=element.type%>;<%= element.id.to_s%>" class="small-12" data-experience="<%= element.parent_id.blank? ? "" : element.parent_id.to_s%>" >
+			<ul>
+				<li class="udstyle active">
+					<span><%= !element.title.blank? ? ( (element.title.length > 23) ? ("1."+(sanitize element.title[0,22])+"...") : "1."+element.title) : "1. "+t("lesson_plan") %></span>
+				</li>
+				<li class="actstyle">
+					<span title="Actividades"><%= t("activities")%></span>
+					<ul>
+						<% positions = Array.new
+							collection = element.activities.where(:removed => false).sort_by{|e| e[:position]}
+							unless collection.blank?
+								collection.each do |activity|
+									positions.push(activity) %>
+									<li><a class="show_element_in_lp" data-info="<%=activity.type%>;<%= activity.id.to_s%>"><%= !activity.title.blank? ? ( (activity.title.length > 23) ? ("1."+positions.length.to_s+". "+(sanitize activity.title[0,22])+"...") : "1."+positions.length.to_s+". "+activity.title) : "1."+positions.length.to_s+". "+t("activity") %></a></li>
+								<% end
+							end
+						%>		
+					</ul>
+				</li>
+			</ul>			
+		</div>
+	</div>
+<% when "Activity" %>
+	<div class="breadcrumb">
+		<div id="activities_breadcrumb" data-info="<%=element_parent.type%>;<%= element_parent.id.to_s%>" class="small-12" data-experience="<%= element_parent.parent_id.blank? ? "" : element_parent.parent_id.to_s%>">
+			<ul>
+				<li class="udstyle">
+					<a class="show_element_in_lp" data-info="<%=element_parent.type%>;<%= element_parent.id.to_s%>">
+						<%= !element_parent.title.blank? ? ( (element_parent.title.length > 23) ? ("1."+(sanitize element_parent.title[0,22])+"...") : "1."+element_parent.title) : "1."+t("lesson_plan") %>
+					</a>
+				</li>
+			
+				<% collection = element_parent.activities.where(:removed => false).sort_by{|e| e[:position]} %>
+				
+				<li  class="actstyle active">
+					<% positions = Array.new
+						id_activity = String.new
+						unless collection.blank?
+							collection.each do |activity|
+								positions.push(activity) 
+								if activity.id == element.id
+									id_activity = positions.length.to_s
+								end 
+							end
+						end
+					%>
+					<span title="Actividades"><%= !element.title.blank? ? ( (element.title.length > 18) ? ("1."+id_activity+". "+(sanitize element.title[0,17])+"...") : "1."+id_activity+". "+element.title) : "1."+id_activity+". "+t("activity") %></span>
+					<ul>
+						<% positions = Array.new
+							unless collection.blank?
+								collection.each do |activity|
+									positions.push(activity) %>
+									<li><a class="show_element_in_lp" data-info="<%=activity.type%>;<%= activity.id.to_s%>"><%= !activity.title.blank? ? ( (activity.title.length > 23) ? ("1."+positions.length.to_s+". "+(sanitize activity.title[0,22])+"...") : "1."+positions.length.to_s+". "+activity.title) : "1."+positions.length.to_s+". "+t("activity") %></a></li>
+								<% end
+							end
+						%>		
+					</ul>
+				</li>
+			</ul>			
+		</div>
+	</div>
+<% end %>

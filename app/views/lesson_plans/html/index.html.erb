@@ -1,0 +1,28 @@
+<%
+=begin
+		############################################
+		# RENDERIZAMOS LAS PESTAÑAS Y LAS ACCIONES #
+		############################################
+=end
+%>
+<%= render :partial => "application/html/navigation", :locals => {:page => "lesson_plans"} %>
+
+
+<%
+=begin
+		##############################################################################################################
+		#       SI EL USUARIO ES UN USUARIO REGISTRADO TENDRÁ LA POSIBILIDAD DE CREAR UNA NUEVA LESSON PLAN          #
+		#                EN CASO DE NO ESTAR REGISTRADO EL BOTÓN MÁS YA NO APARECERÁ                                 #
+		##############################################################################################################
+=end
+%>
+<div id="content_container" class="content <%= "more_width" if ((params[:action] == "filter")) %>" data-type="lesson_plans">
+	<% unless @elements.blank? %>
+		<%= paginate @elements %>
+		<%= render :partial => "layouts/html/record_cards", :collection => @elements, :locals => {:resource => false, :path => "show_lesson_plan_path"} %>
+	<% else %>
+		<div id="no_available_elements" class="alert-box alert round small-offset-3 small-6 columns text-center clearfix">
+			<h1><%= t("No_available_elements") %></h1>
+		</div>
+	<% end %>
+</div>

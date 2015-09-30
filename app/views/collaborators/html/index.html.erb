@@ -1,0 +1,18 @@
+<%
+=begin
+		############################################
+		# RENDERIZAMOS LAS PESTAÑAS Y LAS ACCIONES #
+		############################################
+=end
+%>
+<%= render :partial => "application/html/navigation", :locals => {:page => "resources"} %>
+
+
+<%
+=begin
+		######################################################################################
+		# RENDERIZAMOS LOS RECURSOS DE TODOS LOS TIPOS EN UN PARCIAL YA QUE COMPARTEN CÓDIGO #
+		######################################################################################
+=end
+%>
+<%= render :partial => "resources/html/list" %>

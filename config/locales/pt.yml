@@ -1,0 +1,674 @@
+pt:
+  a: "um/a"
+  Abstract: "Genérico"
+  activities: "Atividades"
+  activity: "Atividade"
+  activity_templates: "Modelos de atividade"
+  activity_template: "Modelo de atividade"
+  Add: "Adicionar"
+  Add_activity: "Adicionar atividade"
+  Add_activity_header: "Adicionar atividade"
+  Add_educational_setting: "Adicionar Perfil de Currículo"
+  Add_New_Activity: "Adicionar atividade"
+  Add_technical_setting: "Adicionar Perfil Tecnológico"
+  Address: "Endereço"
+  Age_range: "Faixa etária"
+  all_courses: "Todos os cursos"
+  all_types: "Tudo"
+  Allow_commercial_uses: "Permitir usos comerciais?"
+  Allow_modifications: "Permitir modificações?"
+  Aporta_o_teu_GRAN: "Trazer o seu grão"
+  application: "Aplicaçõe"
+  applications: "Aplicações"
+  Are_you_sure: "Voçê tem certeza?"
+  Are_you_sure_clone_lesson_plan: "O plano de aula vai ser copiado con todas as atividades, você tem certeza?"
+  Are_you_sure_delete_element: "O elemento vai ser removido, você tem certeza?"
+  Are_you_sure_delete_element_LP: "O plano de aula vai ser removido con todas as atividades, você tem certeza?"
+  Are you the original author: És o autor/a original?
+  as: "como"
+  assessment: "Avaliação"
+  Audience: "Público"
+  Back: "Voltar"
+  Back_to_list: "Voltar à lista"
+  Bad_email: "Non se puido compartir o elemento. Debe introducir un correo electrónico válido."
+  being_prepared: "Próximos"
+  board: "Quadro"
+  boards: "Quadros"
+  By text: "By text"
+  By user: "By user"
+  By educational level: "By educational level"
+  By subject: "By subject"
+  By type: "By type"
+  By keyword: "By keyword"
+  By language: "By language"
+  Cancel_my_account: "Cancelar a minha conta"
+  change_document: "Alterar documento"
+  change_image: "Alterar imagem"
+  change_video: "Alterar video"
+  Change_Avatar: "Alterar avatar"
+  Change_my_password: "Alterar minha senha"
+  Change_picture: "Alterar imagem"
+  Change_your_password: "Alterar sua senha"
+  classrooms: "Salas de aula"
+  Clone: "Clonar"
+  Close: "Fechar"
+  Code: "Código"
+  collaborator: "Convidado"
+  collaborators: "Convidados"
+  Collapse: "Collapse"
+  Comment_it: "Comente"
+  Concrete: "Específico"
+  Confirm_new_password: "Confirmar nova senha"
+  Contact_area: "Contato"
+  content: "Documento"
+  Copied: "Copiado"
+  Copy: "Copiar"
+  Country: "País"
+  Course: "Curso"
+  Created_at: "Creado"
+  Curriculum_Profile: "Perfil de Currículo"
+  Curriculum_Profiles: "Perfis de Currículo"
+  Date_range: "Período"
+  Default_template: "Modelo escolhido no teu perfil"
+  Delete: "Eliminar"
+  Description: "Descrição"
+  Description_student: "Descrição para o alumno"
+  Details: "Detalhes"
+  development: "Desenvolvimento"
+  device: "Equipamento"
+  devices: "Equipamentos"
+  Did_not_receive_confirmation_instructions: "Não recebeu instruções de confirmação?"
+  Did_not_receive_unlock_instructions: "Não recebeu instruções de desbloqueio?"
+  Does_the_author_authorize_the_use_of_the_resource: "O autor autorizou o seu uso?"
+  Does_the_resource_have_a_known_CC_license: "O recurso tem uma licença Creative Commons conhecida?"
+  Does_the_activity_have_a_known_CC_license: "A atividade tem uma licença Creative Commons conhecida?"
+  Does_the_lessonplan_have_a_known_CC_license: "O plano de aula tem uma licença Creative Commons conhecida?"
+  different_user: " un usuário"
+  different_users: " usuários diferentes"
+  document: "Documento"
+  documents: "Documentos"
+  download_pc: "Download to your computer"
+  download_file: "Download file"
+  edit: "Editar"
+  Edit: "Editar"
+  Editing_activity: "Edição de atividade"
+  Editing_application: "Edição de aplicações"
+  Editing_board: "Edição de quadro"
+  editing_content: "Edição de documento"
+  Editing_device: "Edição de equipamento"
+  Editing_educational_setting: "Edição de Perfil de Currículo"
+  Editing_event: "Edição de Viagem"
+  Editing_experience: "Edição de experiência"
+  Editing_person: "Edição de convidado"
+  Editing_profile: "Edição de perfil"
+  Editing_technical_setting: "Edição de Perfil Tecnológico"
+  Education_level: "O nível de educação"
+  element_repeat: "Não é possível adicionar o elemento porque ele já está disponível."
+  elements: "Elementos"
+  Email: "Email"
+  End: "Fim"
+  End_date: "Fim"
+  Enriched_Mode: "Modo enriquecido"
+  Enter_search_term: "Digite o termo de pesquisa ..."
+  enumerate_component_name: "Enumerar"
+  event: "Viagem"
+  evidences: "Observations"
+  experience: "Experiência"
+  experiences: "Experiências"
+  export: "Export"
+  File: "Arquivo"
+  finished: "Terminados"
+  first_name: "Nome"
+  First_time: "Você primeira vez?"
+  Forgot_your_password: "Esqueceu sua senha?"
+  Free_text: "Texto livre"
+  functionality: "funcionalidade"
+  Go_to_home: "Vá para casa"
+  groups: "Grupos"
+  guest: "Convidado"
+  guests: "Convidados"
+  guidelines: "Orientações"
+  header_component_description: "Descrição do cabeçalho"
+  header_component_name: "Cabeçalho"
+  Hello: "Olá"
+  home: "Benvido a Edu-AREA"
+  Home: "Iniciação"
+  Hide_text: "Esconder"
+  horizontal_rule_component_name: "Regra Horizontal"
+  If_you_didn_request_this_please_ignore_this_email: "Se você não pediu isso, por favor, ignore este e-mail."
+  If_so_include_authorization_conditions: "Em caso afirmativo, é recomendável incluir un párrafo na descrição explicando as condições de autorização e o documento de autorização na seção de Visualizações ou Fontes."
+  in: "em"
+  In: "Em "
+  in_progress: "No processo"
+  Included: "Incluído"
+  info_box: "Registre informaçoes"
+  Init: "Init"
+  Insert_author_URL: "Introduz a URL do autor/a:"
+  Insert_complete_name: "Introduz nome completo:"
+  Intended_audience: "Destinatários"
+  interaction: "Interação"
+  intro_AREA: "Edu-AREA: Atividades, Recursos e Experiências Abertas para a inovação pedagógica." 
+  introduction: "Introduction"
+  Is_needed_to: "É necessária para..."
+  It_is: "É"
+  itemize_component_name: "Itemize"
+  Its_recommended: "Recomenda-se..."
+  keywords: "Palavras-chave"
+  Last_activities: "Últimas atividades..."
+  Last_boards: "Últimos quadros..."
+  Last_change: "Última modificaçõe"
+  Last_experiences: "Últimas experiências..."
+  Last_lesson_plans: "Últimos planos de aula..."
+  last_name: "Sobrenome"
+  Last_resources: "Últimos recursos..."
+  Last_trails_in_AREA: "Últimos trilhas na Edu-AREA..."
+  lesson_plan_templates: "Modelos de Planos de Aula"
+  lesson_plan_template: "Modelo de Planos de Aula"
+  lesson_plan: "Plano de Aula"
+  lesson_plans: "Planos de Aula"
+  Localisation: "Localização"
+  Locality: "Localização"
+  Log_in: "Entrar"
+  Mail: "Edu-AREA: Ativities, Resources e Experiências Abertas."
+  Mail_I: "Olá!"
+  Mail_II: "Um usuário de Edu-AREA, "
+  Mail_III: ", quer compartilhar algo com você."
+  Mail_IV: "Eu recomendo dar uma olhada no seguinte link: "
+  Mail_V: "Vejo você em breve!"
+  Mail_VI: ", ten algo que comentar."
+  Mail_share_button: "Compartilhar"
+  Mail_suggestions: "Edu-AREA: dúbidas, suxerencias ou erros."
+  Mail_to_share: "Indica o endereço de e-mail con quen você deseja compartilhar este elemento"
+  media: "Media"
+  My_activities: "Minhas atividades"
+  My_activity_templates: "Meu modelo de atividades"
+  My_applications: "Minhas Aplicações"
+  My_boards: "Meus quadros"
+  My_collaborators: "Meus convidados"
+  My_contents: "Meus documentos"
+  My_devices: "Meus equipamentos"
+  My_events: "Minhas Viagems"
+  My_experiences: "Minhas experiências"
+  My_lesson_plans: "Meus planos de aula"
+  My_lesson_plan_templates: "Meus modelos de planos de aula"
+  My_resources: "Meus recursos"
+  My_tools: "Minhas ferramentas"
+  Name: "Nome"
+  Negative_comment: "Comentário negativo"
+  new_activity: "Nova Atividade"
+  new_application: "Nova Aplicaçõe"
+  new_board: "Novo quadro"
+  new_content: "Novo documento"
+  new_device: "Novo equipamento"
+  new_event: "Nova Viagem"
+  New_experience: "Novo experiência"
+  New_password: "Nova senha"
+  new_person: "Novo convidado"
+  nice_to_have: "Bom ter"
+  'no': "Não"
+  No_access: "Você não pode acessar?"
+  No_available_elements: "Non hai elementos dispoñibles."
+  No_comments: "Sem comentários"
+  no_description: "No description"
+  no_details: "No details"
+  No_info_about_this_element: "There is no information about this element"
+  No_original_element: "Not original element"
+  no_recommends: "No recommendations for this requirement"
+  no_resources: "No resources"
+  no_selected: "Não selecionado"
+  Not_specified: "Não especificada"
+  Nothing_found: "Oops, nada encontrei!"
+  Open: "Abrir"
+  Original_element: "Elemento original"
+  Original_element_removed: "O elemento original foi removido"
+  Paradata_no_boards: "O elemento non está incluido en ningún taboleiro"
+  Paradata_no_copies: "O elemento non foi copiado e/ou incluido por ningún usuario"
+  Paradata_no_views: "O elemento non foi visualizado por ningún usuario distinto ao propietario"
+  Password: "Senha"
+  Password_confirmation: "Confirmação de Senha"
+  PDF_Student: "PDF for students"
+  PDF_Teacher: "PDF for teachers"
+  Personal_area: "Area persoal"
+  Pick_it: "Escolha-o"
+  Picture: "Imagem"
+  Pin_it: "Pin it"
+  plans: "Plans"
+  Positive_comment: "comentário positivo"
+  Postal_code: "Código Postal"
+  preparation: "Preparação"
+  Private: "Privado"
+  private_boards: "Quadros privados."
+  Private_elements: "Elementos privados"
+  Private_Content: "Documento privado"
+  Product: "Visualizações"
+  profile: "Perfil"
+  Profile_educational: "Perfil de currículo"
+  Profile_Applications: "Aplicações"
+  Profile_Block: "Bloco"
+  Profile_Competences: "Competencess"
+  Profile_Contents: "Tópicos/Conteúdo"
+  Profile_Devices: "Equipamentos"
+  Profile_EducationalLevel: "Nível de Educação"
+  Profile_EvaluationCriteria: "Critérios de Avaliação"
+  Profile_Grade: "Grades"
+  Profile_Internet: "Tipos de ligação à Internet"
+  Profile_KnowledgeArea: "Káreas de conhecimento/Temas "
+  Profile_LearningStandards: "Parâmetros Curriculares"
+  Profile_LMS: "Sistemas de Gestão da Aprendizagem"
+  Profile_Objectives: "Objectivos"
+  Profile_OS: "Sistemas Operacionais"
+  Profile_select: "Seleccionar"
+  Profile_technical: "Perfil Tecnológico"
+  Public: "Público"
+  recommended: "recomendado"
+  Reference_document: "Documento de referência"
+  Reference_document_info: "Engade as referência ou arquivos de visualizaçãos, todos opcionais, no qual o documento é apresentado para utilização."
+  Remember_me: "Lembre-me"
+  Remove: "Remover"
+  Remove_Image: "Remover imagem"
+  Removed_Content: "Documento removido"
+  required: "necessário"
+  Resend_confirmation_instructions: "Envie de novo instruções"
+  resource: "Recurso"
+  resources: "Recursos"
+  Resources: "Recursos"
+  Return: "Voltar"
+  save: "Salvar"
+  Save: "Salvar"
+  Saved_Changes: "Alterações salvas"
+  Search: "Pesquisar"
+  Seen: "Visto "
+  seeourblog: "Veja o nosso blog!"
+  Seleccione_el_tablero_en_el_que_quiere_añadir_el_elemento: "Selecione o quadro em que você deseja adicionar o elemento"
+  select: "Selecionar"
+  select_all: "Select all"
+  select_by_interaction: "Filtrar por interação..."
+  select_by_tag: "Filtrar por tag..."
+  Select_Default_License: "Selecione licença por padrão"
+  Select_element_to_start: "Selecione elemento para iniciar uma nova experiência"
+  Select_File: "Selecione arquivo"
+  Select_new_resource: "Selecione o novo recurso"
+  Select_one: "Selecione um..."
+  Select_picture: "Selecione imagem"
+  Select_your_interface_language: "Seleccione idioma da interface"
+  Select_your_activity_default: "Selecciona o modelo por defecto para as túas atividades"
+  Select_your_lesson_plan_default: "Selecciona o modelo por defecto para os teus planos de aula"
+  Send_me_reset_password_instructions: "Envie-me instruções redefinir senha"
+  Share: "Compartilhar"
+  shareboards: "Quadros"
+  shared_with_me: "Compartidos comigo"
+  Show: "Mostrar"
+  Show_text: "Mostrar"
+  Sign_in: "Entrar"
+  Sign_up: "Inscrever-se"
+  SnippetCode: "Insira o seu iframe aqui"
+  Snippet_code: "Código para incrustar"
+  Someone_has_requested_a_link_to_change_your_password: "Alguém pediu um link para alterar sua senha Você pode fazer isso através do link abaixo."
+  Sources: "Fontes"
+  Source_document_info: "Adicione todos os arquivos de origem usando formatos abertos."
+  Source_document_info_1: "Para promover o movimento aberto é importante incluir esses arquivos para que outros possam criar adaptações e reutilizar o que você fez."
+  Source_document_info_2: "Multimídia: JPEG, PNG, VRML, SVG"
+  Source_document_info_3: "Texto: ASCII, PDF, Office Open XML"
+  Source_document_info_4: "Arquivo e compressão: TAR, ZIP"
+  Source_document_info_5: "Geospatial: KML, WMS, WFS"
+  Source_document_info_6: "Outros: HTML, CSS, XML"
+  specific_content: "un documento específico"
+  specific_person: "un convidado específico"
+  specific_tool: "ferramenta específica"
+  SRG: "con alguns direitos autorizados"
+  Start_date: "Data de início"
+  state: "Estado: "
+  Students_in_the_experience: "Alunos inscritos no curso"
+  Street: "Rua"
+  Subject: "Disciplina"
+  Subjects: "Disciplinas"
+  submissions: "Submissions"
+  Summary: "Resumo"
+  Technological_Profile: "Perfil Tecnológico"
+  Tecnological_Profiles: "Perfís Tecnológicos"
+  template: "modelo"
+  text: "Textuais"
+  text_no_selected_educational_setting: "Você não selecionou nenhum Perfil de Currículo"
+  text_no_selected_technical_setting: "Você não selecionou nenhum Perfil Tecnológico"
+  textarea_component_description: "descrição área de texto"
+  textarea_component_name: "Área de texto"
+  The_content_selected_is: "O documento selecionado é "
+  This_element_was_copied: "O elemento foi copiado de"
+  This_work: "Para citar:"
+  This_work_1: "Este trabalho "
+  This_work_2: "e uma modificação de "
+  This_work_3: "realizado por "
+  This_work_4: "sob uma licença "
+  This_work_5: "ten uma licença "
+  time_to_complete: "Tempo para completar"
+  Time: "vez"
+  Times: "veces"
+  time_by: " vez por"
+  times_by: " veces por "
+  title: "Título"
+  tool: "ferramenta"
+  Tools: "Ferramentas"
+  trip: "Viagem"
+  trips: "Viagems"
+  Unassigned: "Não atribuídos"
+  unknown: "desconhecida"
+  Unknown_user: "Usuário desconhecido"
+  Unsaved_Changes: "Alterações não salvas!"
+  Update: "Atualizar"
+  updated_at: "Updated at:"
+  url: "URL"
+  User: "Usuário"
+  users: "Usuários"
+  Use_it: "Usar"
+  View_details: "Ver detalhes"
+  what_can_you_do: Que podes facer
+  what_can_you_use: Que podes usar
+  Waive_all_rights_and_place_work_in_the_public_domain: "O autor renuncia a todos os direitos e coloca o trabalho no dominio público "
+  We_appreciate_your_feedback: "Agradecemos o seu feedback!"
+  Welcome: "Bem-vindo!"
+  With_license: "e licença"
+  Write_here: "Escreva aquí..."
+  'yes': "Si"
+  yes_but share alike: "Si,mas compartilhar igual"
+  You_can_use: "Você pode usar..."
+  You_may_find_interesting: "Você pode achar interessante..."
+  You_need: "Você precisa..."
+  Your_comment: "O seu comentário..."
+  Your_password_wont_change: "Sua senha não vai mudar até que você acesse o link acima e criar um novo."
+  Your_selection: "A sua selecção..."
+  
+ #para la landing page
+  
+  divsubtitulo_1: "Edu-AREA é un espazo"
+  divsubtitulo_2: "aberto"
+  divsubtitulo_3: "con"
+  divsubtitulo_4: "recursos"
+  divsubtitulo_5: "e"
+  divsubtitulo_6: "plans"
+  divsubtitulo_7: "para innovar na túa docencia"
+  
+  elecciones_1: "Ver"
+  elecciones_2: "Entrar"
+  elecciones_3: "Rexístrate"
+  
+  puedesencontrar_1: "Que podes atopar?"
+  puedesencontrar_2: "Área Persoal" 
+  puedesencontrar_3: ". Aquí están as planificacións que fagas para a túa propia docencia. Só visible para ti e para os teus alumnos."
+  puedesencontrar_4: "Recursos"
+  puedesencontrar_5: ". Sobre o que podes usar na túa docencia. Os recursos defínense de forma ampla, non son só documentos (como textos, imaxes, vídeos ou presentacións), senón tamén ferramentas (como aplicacións ou dispositivos), e ata persoas ás que invitas á aula ou lugares que visitan os teus alumnos."
+  puedesencontrar_6: "Plans"
+  puedesencontrar_7: ". Sobre o que podes facer na túa docencia. Atópanse propostas a distintos niveis de agregación, desde actividades sinxelas de poucos minutos de duración, pasando por unidades didácticas ata programaciones de aula para un curso completo."
+  puedesencontrar_8: "Taboleiros"
+  puedesencontrar_9: ". Podes usalos para clasificar e organizar os elementos de Edu-AREA (recursos e plans) que che interesen segundo os criterios que prefiras."
+
+  puedeshacer_1: "Que podes facer?"
+  puedeshacer_2: "Planificar"
+  puedeshacer_3: "e"
+  puedeshacer_4: "documentar"
+  puedeshacer_5: "a túa docencia 'en vivo'. Podes crear o teu plan de clases de forma anticipada ou construílo a medida que o vas desenvolvendo. Tamén podes documentar o que fas e acontece na túa aula incluíndo evidencias (fotos, vídeos, documentos, etc.), observacións e reflexións."
+  puedeshacer_6: "Rexistrar"
+  puedeshacer_7: "compartir"
+  puedeshacer_8: "descubrir"
+  puedeshacer_9: "recursos. Os recursos están dispoñibles fora de Edu-AREA (por exemplo, as persoas ás que invitas). Desde Edu-AREA podes ligalos e incluír unha descrición dos mesmos para que facilitar o seu descubrimento." 
+  puedeshacer_10: "Crear"
+  puedeshacer_11: "compartir"
+  puedeshacer_12: "descubrir"
+  puedeshacer_13: "plans. Os plans si que están dentro de Edu-AREA. Desde Edu-AREA podes editalos,relacionando os recursos utilizados. Tamén descubrir os plans que outros usuarios compartiron."
+  puedeshacer_14: "Clasificar"
+  puedeshacer_15: "curar"
+  puedeshacer_16: "Nos taboleiros podes organizar os recursos e plans incluíndo anotacións sobre os mesmos. Tamén podes compartilos de forma pública."
+
+  eabierto_1: "Non reinventamos a roda: en Edu-AREA non é posible crear recursos, pero si rexistralos."
+  eabierto_2: "Existen multitude de ferramentas que nos permiten crear recursos e indicámosche cales son as que podes utilizar (por exemplo,"
+  eabierto_3: "Editores de Imaxes"
+  eabierto_4: "Unha vez creados pódelos rexistrar en Edu-AREA para utilizalos nos teus plans."
+  
+  cabierto_1: "Concepto Aberto"
+  cabierto_2: "A"
+  cabierto_3: "Declaración de Paris sobre OER do 2002"
+  cabierto_4: " promovida pola UNESCO e o Commonwealth of Learning (COL) define Recursos Educativos Abertos (REA) como" 
+  cabierto_5: "'[...] materiais de ensino, aprendizaxe e investigación en calquera soporte, dixital ou doutro tipo, que sexan de dominio público ou que sexan publicados cunha licenza aberta que permita o acceso gratuito a eses materiais, así como o seu uso, adaptación e redistribución por outros sen ningunha restricción ou con restriccións limitadas. As licenzas abertas fundamentanse no marco existente dos dereitos de propiedade intelectual, tal como veñen definidos nos correspondentes acordos internacionais, e respectan a autoría da obra'"            
+
+  las5rs_1: "As 5 Rs"
+  las5rs_2: "Seguindo os principios do movemento aberto en Edu-AREA podes exercer os dereitos recoñecidos nas 5 Rs:" 
+  las5rs_3: "Reter"
+  las5rs_4: ". O dereito a facer, posuír e controlar copias."
+  las5rs_5: "Reusar"
+  las5rs_6: ". O dereito a usar de calquera forma."
+  las5rs_7: "Revisar"
+  las5rs_8: ". O dereito a adaptar, axustar, modificar ou alterar."
+  las5rs_9: "Remixturar"
+  las5rs_10: ". O dereito a combinar o elemento orixinal ou modificado para crear algo novo (por exemplo, crear unha Unidade Didáctica con Actividades)."
+  las5rs_11: "Redistribuir"
+  las5rs_12: ". O dereito a compartir copias do orixinal, as revisións ou as recombinacións."
+
+  granularidadrea_1: "Granularidad REA"
+  granularidadrea_2: "Sampson & Zervas (2014)"
+  granularidadrea_3: "propoñen unha clasificación xerárquica dos elementos nos seguintes niveis:"
+  granularidadrea_4: "Contidos Educativos"
+  granularidadrea_5: ". Este é o nivel máis baixo. En Edu-AREA preferimos ir máis aló no concepto, non so tendo en conta o contido, senón tamén outros tipos de" 
+  granularidadrea_6: "recursos"
+  granularidadrea_7: "As actividades de aprendizaxe"
+  granularidadrea_8: ". Implican o uso de recursos educativos."
+  granularidadrea_9: "Curso"
+  granularidadrea_10: ". Este nivel implica unha agregación das actividades de aprendizaxe ou a consecución de certos obxectivos de aprendizaxe."
+  granularidadrea_11: "Programas educativos"
+  granularidadrea_12: ". Como un agregado dos cursos de formación."
+
+  capturas_1: "Rexistrar Recursos"
+  capturas_2: "Describe o recurso para que outros docentes poidan coñecelo e valoralo de cara á súa posible utilización. Podes incluír información sobre a licenza Creative Commons (CC) coa que se ofrece. O sistema rexistra todos os usos que se fagan do recurso"
+  capturas_3: "Buscar e Explorar"
+  capturas_4: "Utiliza as funcionalidades de procura e exploración para localizar o que che interesa"
+  capturas_5: "Editar Plans"
+  capturas_6: "Elixe a plantilla que queres utilizar e prepara os plans das túas actividades ou unidades didácticas. Podes utilizar os recursos e plans dispoñibles, combinándoos e editándoos segundo creas oportuno. Edu-AREA comproba que se respectan as licenzas CC dos distintos elementos"
+  capturas_7: "Clasificar en Taboleiros"
+  capturas_8: "Crea, clasifica e organiza segundo as túas preferencias"
+  capturas_9: "Documentar a túa Experiencia"
+  capturas_10: "Engade evidencias, observacións e reflexións sobre os teus cursos. Tamén podes modificar os teus cursos a medida que os vas desenvolvendo, cambiando recursos e plans"
+
+  recursos_1: "Recursos"
+  recursos_2: "Un recurso é calquera tipo de elemento que pode utilizarse durante o desenvolvemento dun proceso de ensino/aprendizaxe. En Edu-AREA distinguimos entre os seguintes tipos de recursos:"
+  recursos_3: "Documentos"
+  recursos_4: ". Poden ser de distintos tipos (texto, multimedia e hipermedia) tales como: PDFs, debuxos, vídeos, fotografías, mapas, páxinas Web, ficheiros, etc."
+  recursos_5: "Aplicacións"
+  recursos_6: ". Software que ofrece funcionalidades ou servizos, tales como: editores de texto, blogs, reproductores de vídeo, xogos, simuladores, cuestionarios, etc."
+  recursos_7: "Dispositivos"
+  recursos_8: ". Elementos físicos baseados ou non en novas tecnoloxías, tales como: ordenadores, pizarras, cámara de vídeo, tablets, etc."
+  recursos_9: "Invitados"
+  recursos_10: ". Persoas externas ao centro educativo (non se consideran profesores ou alumnos) que poden participar en actividades no centro, tales como: pais e nais, expertos, artistas, etc."
+  recursos_11: "Saídas"
+  recursos_12: ". Lugares e eventos físicos ou virtuales que teñen lugar fóra da escola e nos que os alumnos poden participar, tales como: museos, zoolóxicos, concertos, fábricas, sitios Web, webinars, etc."
+  recursos_13: "Os "
+  recursos_14: "Recursos"
+  recursos_15: " de Edu-AREA poden incluírse nas "
+  recursos_16: "Actividades"
+  recursos_17: " e"
+  recursos_18: "Unidades Didácticas"
+  recursos_19: " que consideres oportuno. Tamén se poden incorporar nos Taboleiros"  
+ 
+  planes_1: "Plans"
+  planes_2: "Unha "
+  planes_3: "Actividade"
+  planes_4: " define unha dinámica que é realizada como parte dun proceso de aprendizaxe/ensino. En Edu-AREA unha Actividade pode estar formada por varios compoñentes organizados de acordo a unha plantilla. Existen varias plantillas predefinidas nas que se seguen distintas estruturas combinando obxectivos, guías, "
+  planes_5: "Recursos"
+  planes_6: ", etc."
+  planes_7: "En Edu-AREA unha "
+  planes_8: "Unidade Didáctica"
+  planes_9: " pódese compoñer de varias "
+  planes_10: "Actividades"
+  planes_11: " e"
+  planes_12: "Recursos"
+  planes_13: ", xunto con outros compoñentes organizados de acordo a unha plantilla. Existen varias plantillas predefinidas nas que se seguen distintas estruturas combinando obxectivos, guías, etc. "
+  planes_14: "Para facilitar a caracterización en base a criterios homoxéneos os plans sempre poden incluír os seguintes compoñentes:"
+  planes_15: "Perfil Tecnolóxico"
+  planes_16: ". Tecnoloxías dispoñibles no espazo no que se propón o plan: aplicacións, dispositivos, LMSs, Sistemas Operativos e tipo de conexión a Internet."
+  planes_17: "Perfil Curricular"
+  planes_18: ". Clasificacións curriculares para as que se propón o plan: nivel educativo, curso, áreas de coñecemento, obxectivos oficiais e idioma."
+
+  contacto_1: "Estamos esforzándonos moito por facer unha aplicación que poida ser útil aos profesores. Gustaríanos moito coñecer a túa opinión, punto de vista e por suposto calquera idea que poidas ter. Por iso, non dubides en poñerte en contacto connosco a través dos seguintes medios:"
+  
+  PC_matematicas: "Matemáticas"
+  PC_naturaleza: "Ciencias da natureza"
+  PC_sociales: "Ciencias sociais"
+  PC_castellano: "Lingua Castelá e literatura"
+  PC_gallego: "Lingua Galega e literatura"
+  PC_extranjera: "1ª Lingua estranxeira"
+  PC_artistica: "Educación artística"
+  PC_fisica: "Educación física"
+  PC_civicos: "Valores sociais e cívicos"
+  
+  
+  about: "sobre"
+  postal_address: "Dirección Postal" 
+
+
+  encuesta_1: "Enquisa ao profesorado."
+  encuesta_2: "Se es profesor, axudaríanos coñecer a túa opinión sobre a forma na que planificas a túa docencia e segues o seu desenvolvemento. Grazas."
+  
+  technical_setting: "Perfil Tecnolóxico"
+  educational_setting: "Perfil Educativo"
+  Select_first_level: "Selección de primeiro nivel"
+  Select_second_level: "Selección de segundo nivel"
+  
+  Teacher: "Profesor"
+  Student: "Alumno"
+  Students: "Alumnos"
+  Acept_conditions: "Edu-AREA non se fai responsable dos contidos que se poidan subir á plataforma, tanto os relacionados cos dereitos de propiedade como coa natureza, veracidade e uso apropiado dos mesmos."
+
+  English: "Inglês"
+  Galician: "Galego"
+  Portuguese: "Português"
+  Spanish: "Espanhol"
+  Elements: "Elementos"
+  By_text_in_element: "Por texto no elemento"
+  By_element_type: "Por tipo de elemento"
+  By_user_name: "Por nome de usuario"
+  By_course: "Por curso"
+  By_subject: "Por materia"
+  By_OS: "Por sistema operativo"
+  By_LMS: "Por LMS"
+  By_connection: "Por conexión a Internet"
+  
+  My_profile: "O meu perfil"
+  Language: "Idioma"
+  Go_out: "Saír"
+  
+  more_info: "Máis Información"
+  
+  errors: &errors
+    format: ! '%{attribute} %{message}'
+    messages:
+      accepted: deve ser aceito
+      blank: não poda ficar em branco
+      confirmation:  não coincide coa confirmação
+      empty: não poda ser valeiro
+      equal_to: deve ser igual a %{count}
+      even: deve ser ímpar
+      exclusion: ela existe xa
+      greater_than: deve ser maior que %{count}
+      greater_than_or_equal_to: deve ser maior ou o mesmo que %{count}
+      inclusion: na lista não é inclusiva
+      invalid: non é válido
+      less_than: deve ser inferior a %{count}
+      less_than_or_equal_to: debe ser menor ou o mesmo que que %{count}
+      not_a_number: non é un número
+      odd: deve ser par
+      taken: ele não está disponível
+      too_long: é também longo (não máis de %{count} caracteres)
+      too_short: é demasiado curto (não menos de %{count} carácteres)
+      wrong_length: non ten a lonxitude correcta (debe ser de %{count} caracteres)
+      not_saved:
+        one: "Tivo lugar 1 erro:"
+        other: "Tiveron lugar %{count} erros:"
+    template:
+      body: ! 'Atopáronse os seguintes problemas:'
+      header:
+        one: 1 erro evitou que se poidese salvar o %{model}
+        other: ! '%{count} erros evitaron que se poidese salvar o %{model}'
+        
+  number:
+    currency:
+      format:
+        delimiter: .
+        format: ! '%n %u'
+        precision: 2
+        separator: ! ','
+        significant: false
+        strip_insignificant_zeros: false
+        unit: €
+    format:
+      delimiter: .
+      precision: 2
+      separator: ! ','
+      significant: false
+      strip_insignificant_zeros: false
+    human:
+      decimal_units:
+        format: ! '%n %u'
+        units:
+          unit: ''
+      format:
+        delimiter: ''
+        precision: 1
+        significant: true
+        strip_insignificant_zeros: true
+      storage_units:
+        format: ! '%n %u'
+        units:
+          byte:
+            one: Byte
+            other: Bytes
+          gb: GB
+          kb: KB
+          mb: MB
+          tb: TB
+    percentage:
+      format:
+        delimiter: ''
+    precision:
+      format:
+        delimiter: ''
+  support:
+    array:
+      last_word_connector: ! ' e '
+      two_words_connector: ! ' e '
+      words_connector: ! ', '
+  time:
+    am: ''
+    formats:
+      default: ! '%A, %e de %B de %Y ás %H:%M'
+      long: ! '%A %e de %B de %Y ás %H:%M'
+      short: ! '%e/%m, %H:%M'
+    pm: ''
+  # remove these aliases after 'activemodel' and 'activerecord' namespaces are removed from Rails repository
+  activemodel:
+    errors:
+      <<: *errors
+  activerecord:
+    errors:
+      <<: *errors
+      
+  date:
+    formats:
+      default: "%Y-%m-%d"
+      short: "%b %d"
+      long: "%B %d, %Y"
+
+    day_names: [Domingo, Segunda, Terça, Quarta, Quinta, Sexta, Sábado]
+    abbr_day_names: [Dom, Seg, Ter, Qua, Qui, Sex, Sáb]
+
+    month_names: [~, Janeiro, Fevereiro, Março, Abril, Maio, Junho, Julho, Agosto, Setembro, Outubro, Novembro, Dezembro]
+    abbr_month_names: [~, Jan, Fev, Mar, Abr, Mai, Jun, Jul, Ago, Set, Out, Nov, Dez]
+    order:
+      - year
+      - month
+      - day
+
+  time:
+    formats:
+      default: "%a, %d %b %Y %H:%M:%S %z"
+      short: "%d %b %H:%M"
+      long: "%d %B %Y %H:%M"
+    am: "am"
+    pm: "pm"
+    

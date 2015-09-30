@@ -1,0 +1,71 @@
+/*
+  Place all the styles related to the matching controller here.
+  They will automatically be included in application.css.
+*/
+
+.comments .comment{
+	width: 100%;
+	float: left;
+	margin-bottom: 10px;
+}
+
+.actual_comments{
+	max-height: 195px;
+	overflow-y: auto;
+	background-color: #36414B;
+}
+
+.your_comment textarea{
+	width: 98%;
+	resize: none;
+}
+
+.your_comment{
+	margin-top: 10px;
+	margin-bottom: 0 !important;
+}
+
+.comment .comment_text{
+	float: left;
+	width: 88%;
+	padding: 0 1% 0 7%;
+	font-size: 13px;
+	line-height: 15px;
+	color:#FFFFFF;
+}
+
+.comment_timestamp{
+	color:#FFFFFF;
+	font-size:13px;
+}
+
+.comments{
+	position:initial;
+	padding-top: 42px;
+}
+
+.your_comment .comment_text{
+	padding-bottom: 1%;
+}
+
+.social_counter.comments_counter, .social_counter.boards_counter, .social_counter.view_counter, .social_counter.copy_counter, .social_counter.quality_counter{
+	color: #7D9BB2;
+	position: relative;
+	font-weight: bold;
+	/*top: 50%;
+	left: 46%;*/
+	float: right;
+}
+
+li .your_comment{
+	margin-top: 0px;	
+}
+
+li .your_comment .comment_text{
+	padding-bottom: 4%;
+}
+
+.social_counter.quality_counter{
+	/*left: 100%;*/
+}	
+

@@ -1,0 +1,39 @@
+<div class="show_navigation_menu">
+	<p class="show_navigation_menu_title">
+		<%case element.type 
+		when "LessonPlan" %>
+			<%= t("lesson_plan").camelize %>
+		<% when "Activity" %>
+			<%= t("activity").camelize %>
+		<% when "Experience" %>
+			<%= t("Course").camelize %>	
+		<% end %>
+	</p>
+	<ul id="show_navigation_menu_list">
+		<% if user_signed_in? and current_user.type == "Student" %>
+			<li class="li_summary selected"><%= t("Summary")%></li>
+			<li class="li_resources"><%= t("resources")%></li>
+			<% if element.type == "LessonPlan" or element.type == "Experience"%>
+				<li class="li_activities"><%= t("activities")%></li>
+				<% if element.type == "Experience" %>
+					<li class="li_submissions"><%= t("submissions")%></li>
+				<% end %>
+			<% end %>
+
+		<% else %>
+			<li class="li_summary selected"><%= t("Summary")%></li>
+			<li class="li_details"><%= t("Details")%></li>
+			<li class="li_resources"><%= t("resources")%></li>
+			<% if element.type == "LessonPlan" or element.type == "Experience"%>
+				<li class="li_activities"><%= t("activities")%></li>
+				<li class="li_submissions"><%= t("submissions")%></li>
+			<% end %>
+			<li class="li_technical_setting"><%= t("Technological_Profile")%></li>
+			<li class="li_educational_setting"><%= t("Profile_educational")%></li>
+			</br>
+			<% if element.type == "Experience" %>
+				<li class="li_observations"><%= t("evidences")%></li>
+			<% end %>
+		<% end %>
+	</ul>
+</div>

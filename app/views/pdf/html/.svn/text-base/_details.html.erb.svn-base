@@ -1,0 +1,29 @@
+<div class="box_container">
+	<% template.boxes.each do |box| %>
+		<% case box.box_type
+			when "BT" %>
+				<h2 class="BT"><%= box.title %></h1>
+			<% when "BSV", "BTA" %>
+				<h3 class="<%= box.box_type %> title"><%= box.title %></h2>
+			<% when "BFTI"%>
+				<h3 class="BFTI title"><%= box.title %></h2>
+				<ul>
+			<% when "BR"%>
+				<hr />
+		<% end %>
+		<% box.data_boxes.where(:element_id => object.id).each do |data_box|%>
+			<% case box.box_type %>
+				<% when "BSV" %>
+					<p class="BSV value"><%= data_box.content_value %></p>
+				<% when "BFTI" %>
+					<li class="BFTI value"><%= data_box.content_value%></li>
+				<% when "BTA" %>
+					<div class="BTA value"><%= unless data_box.content_value.blank? then data_box.content_value.html_safe end%></div>
+			<% end %>
+			
+		<% end %>
+		<% if box.box_type == "BFTI"%>
+			</ul>
+		<% end %>
+	<% end %>
+</div>

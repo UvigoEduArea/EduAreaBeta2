@@ -1,0 +1,37 @@
+<%= render :partial => "application/html/navigation", :locals => {:page => "info_page"} %>
+
+<div id="content_container" class="content_index">
+	<div class= "information">
+		<span><%= t("Edu_Videos")%></span>
+		</br></br>
+		
+		<span><%= t("Types_Licenses")%></span>
+		</br></br>
+		<div class = "video_tutorial">
+			<iframe width="560" height="315" src="https://www.youtube.com/embed/l7phEJ5pf9g" frameborder="0" style = "margin: 0px 30%" allowfullscreen></iframe>
+		</div>
+		</br></br>
+		
+		<span><%= t("Assign_License")%></span>
+		</br></br>
+		<div class = "video_tutorial">
+			<iframe width="560" height="315" src="https://www.youtube.com/embed/071aOrs28VA" frameborder="0" style = "margin: 0px 30%" allowfullscreen></iframe>
+		</div>
+		</br></br>
+		
+		<span><%= t("Compatibility_P4")%></span>	
+		</br></br>
+		<div class = "video_tutorial">
+			<iframe width="560" height="315" src="https://www.youtube.com/embed/uz3owO6JTK8" frameborder="0"  style = "margin: 0px 30%" allowfullscreen></iframe>
+		</div>
+		</br></br>
+		
+		<span><%= t("Compatibility_P1")%></span>
+		</br></br>
+		<div class = "video_tutorial">
+			<iframe width="560" height="315" src="https://www.youtube.com/embed/0XwQhM9KFHM" frameborder="0" style = "margin: 0px 30%" allowfullscreen></iframe>
+		</div>
+		</br></br>
+	
+	</div>	
+</div> <!-- CONTENT -->

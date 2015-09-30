@@ -1,0 +1,189 @@
+#informacionficha
+{
+	background-color:#f1f4fd;
+	box-shadow:5px 5px 5px #bac4ce;
+
+}
+
+.paradata_icon{
+	display: inline;
+}
+.element_info_box{
+	text-align: center;
+}
+.element_info_box img
+{
+	width:75px;
+}
+.user_information_in_box{
+	margin: 0 auto;
+	padding:10px 10px 10px 0px;
+}
+.time_info img
+{
+	width:30px;
+	vertical-align:middle;	
+}
+.user_information_in_box a{
+	color: black;
+	display: block;
+}
+div.paradata_information
+{
+	background-color:#d2dce6;
+	width:100%;
+	padding:10px;
+}
+div.paradata_information div#paradata_actions
+{
+	height:37px;
+}
+div#informacionficha.informacionfichapeque div.paradata_information div#paradata_actions
+{
+	height:58px;
+}
+div#paradata_content ul li
+{
+	padding:7px;	
+}
+div#paradata_content ul li p
+{
+	font-size:0.8em;
+	font-style:italic;
+	text-transform:capitalize;
+}
+div#paradata_content ul li a
+{
+	text-align:center;	
+}
+div.paradata_information div#paradata_actions div.paradata_icon
+{
+	margin-right:4%;
+	margin-bottom:0px;
+}
+div.paradata_information ul.dropdown
+{
+	position:relative;
+	left:0px;
+	top:0px;
+	margin-top:15px;
+}
+
+div#share_actions
+{
+	margin:10px 0px;
+}
+#email_button img{
+	width: 20px;
+}
+
+.share_content_by_email:hover{
+	cursor: pointer;	
+}
+
+#twitter_button, #google_plus_button, #email_button{
+	display: inline;
+}
+
+#error_email{
+	
+}
+
+/******************************************************/
+div.paradata_icon img
+{
+		width:48px;
+}
+div.user_info.paradata_icon
+{
+	display:inline !important;	
+}
+	
+@media only screen and (min-width: 60.000em) /* >= 960px */
+{
+	div.paradata_icon img{
+		width:48px;
+	}
+	div.user_info.paradata_icon
+	{
+		display:inline !important;	
+	}
+	div.paradata_information div#paradata_actions div.paradata_icon
+	{
+	margin-right:5%;
+	margin-bottom:0px;
+	}
+}
+@media only screen and (min-width: 64.000em) /* >= 1024px */
+{
+	div.paradata_icon img{
+		width:48px;
+	}
+	div.user_info.paradata_icon
+	{
+		display:inline !important;	
+	}
+	div.paradata_information div#paradata_actions div.paradata_icon
+	{
+	margin-right:8%;
+	}
+}
+@media only screen and (min-width: 80.000em) /* >= 1280px */
+{
+	div.paradata_icon img{
+		width:32px;
+	}
+	div.user_info.paradata_icon
+	{
+		display:none !important;	
+	}
+	div.paradata_information div#paradata_actions div.paradata_icon
+	{
+	margin-right:1%;
+	}
+}
+@media only screen and (min-width: 90.000em) /* >= 1440px */
+{
+	div.paradata_icon img{
+		width:32px;
+	}
+	div.user_info.paradata_icon
+	{
+		display:none !important;	
+	}
+	div.paradata_information div#paradata_actions div.paradata_icon
+	{
+	margin-right:4%;
+	}
+}
+@media only screen and (min-width: 105.000em) /* >= 1680px */
+{
+	div.paradata_icon img{
+		width:32px;
+	}
+	div.user_info.paradata_icon
+	{
+		display:none !important;	
+	}
+	div.paradata_information div#paradata_actions div.paradata_icon
+	{
+	margin-right:5%;
+	}
+}
+@media only screen and (min-width: 120.000em) /* >= 1920px */
+{
+	div.paradata_icon img{
+		width:32px;
+	}
+	div.user_info.paradata_icon
+	{
+		display:none !important;	
+	}
+}
+
+#informacionexperiencia{
+	background-color: #F1F4FD;
+	margin-top: 20px;
+	margin-left: 20px;
+	padding: 0px;
+}

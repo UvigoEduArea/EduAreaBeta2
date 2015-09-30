@@ -1,0 +1,69 @@
+<div id="content_container" class="content_show">
+<input type="hidden" id="show_mode" data-mode="2">
+<%= form_for(@element, :url => {:controller => @element.type.underscore.pluralize, :action => "update", :id=> @element.id}, :method => "patch", :html => {:id => "Edit_Element"}) do |f| %> 
+	<%
+=begin
+	Pa Diego. Que investigue por que el puto form no crea bien la URL si no le especifico yo el parametro url
+=end	
+	%>
+	
+	<div class="title">
+		<%= f.text_field :title, :class => "updateable focusable", :placeholder => t("title") %>
+	</div>
+	
+	<div class="descriptiond_and_image">
+			
+		<% if @element.image.url() != "none" %>
+			<div class="inline image">
+				<%= image_tag @element.image.url(),:crop => :scale, :width => 300, :class => "image_preview" %>
+		<% else %>
+			<div class="inline image">
+				<img class="image_preview" width="300px"/>
+		<% end %>
+				<%= button_tag t('Remove_Image'), {:id => "remove_image", :type => "button", :class => ""}  %>
+				<%= f.file_field :image, :class => "image_updateable" %>
+			</div> 
+		<div class="clear"></div>
+		
+		<div class="inline description">
+			<%= f.label :description, t("Description") %>
+			<%= f.text_area :description, size: "100x6", :class => "updateable focusable", :placeholder => t("Description") %> 
+		</div>
+		<div class="clear"></div>
+	</div>
+	<div class="clear"></div>
+	
+	<div class="privacy">
+		<span class="private_icon"></span>
+		<%= f.label :private, t("Private") %>
+		<%= f.radio_button :private, 'true', :class => "updateable" %> 
+		<%= f.label :private, t("Public") %>
+		<%= f.radio_button :private, 'false', :class => "updateable"%>
+	</div>		
+		
+	<hr />
+	<div class="box_structure">
+		
+		<div class="content_template" >
+			<% @editbox = Box.where(" (template_id = '"+@element.id.to_s+"') ").sort_by{|e| e[:position]} %>
+			
+			<%= render :partial => "boxes/html/editbox", :collection => @editbox, :locals => {:f => f} %>	
+			<div id="lastclear" class="clear"></div>
+		</div>
+	</div>
+
+	
+<% end %>
+<% box = Box.new %>
+<div class="clear"></div>
+<%= form_for(box, method: "post",remote: true, :html => {:id => "New_Box",:class => ""}) do |f2| %>
+	<%= f2.label :box_type,t("Add New Box:") %>
+	<%= f2.hidden_field :template_id, :value => @element.id.to_s %>
+	<%= f2.select :box_type, options_for_select([[t("Division (BR)"),"BR"],[t("Box-Single-Value (BSV)"), "BSV"],[t("Box-Items (BI)"),"BI"],[t("Box-Element-Items (BEI)"),"BEI"],[t("Box-Free-Text-Items (BFTI)"),"BFTI"],[t("Box-Only-Title (BT)"),"BT"],[t("Box-Text-Area (BTA)"),"BTA"]]),{:include_blank => 'None Specified'},{:class => "add_box_select"} %>
+	
+	<%= f2.select :page_position, options_for_select([[t("Left"),"left"],[t("Right"), "right"],[t("Full"),"full"]]), {}, {:class => "add_box_page_position_select"} %>
+	
+	<%= f2.submit :class => "add_box_submit" %>
+<% end %>
+
+</div>

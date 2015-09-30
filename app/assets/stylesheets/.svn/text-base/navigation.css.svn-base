@@ -1,0 +1,308 @@
+/********************************/
+/*             ABOUT            */
+/********************************/
+#left_bar_dropdown:hover ul#ddabout{
+	display:block;
+}
+#left_bar_dropdown:hover ul#ddabout li{
+	padding:5px 10px;
+}
+
+ul#ddabout{
+	display:none;
+	margin-top:-3px;
+	font-size:1.063em;
+	color:white;
+	font-family:ralewaysemibold;
+	font-variant: small-caps;
+	background: -webkit-gradient(linear,left bottom,left top,color-stop(0.37, rgb(31,58,77)),color-stop(0.76, rgb(53,81,102)),color-stop(1, rgb(76,104,126)));
+	background: -moz-linear-gradient(bottom, rgb(31,58,77) 37%,rgb(53,81,102) 76%,rgb(76,104,126) 100%);
+}
+#left_bar_dropdown ul#ddabout{
+	width:230px;
+	text-align:left;	
+}
+#left_bar_dropdown ul#ddabout li.singlefirstlevel:hover{
+	background-color:#32C3D6;
+}
+#left_bar_dropdown ul#ddabout li ul li:hover{
+	background-color:#32C3D6;
+}
+
+#left_bar_dropdown ul#ddabout li ul{
+}
+#left_bar_dropdown ul#ddabout li:hover ul{
+	display:block;	
+}
+#left_bar_dropdown ul#ddabout li,
+#left_bar_dropdown ul#ddabout li a,
+#left_bar_dropdown ul#ddabout li ul li a{
+	color:white;
+}
+/********************************/
+/* NAVEGACIÓN RECURSOS Y PLANES */
+/********************************/
+/********************************/
+/* NAVEGACIÓN Area Personal     */
+/********************************/
+
+#nav_bar #header_elements ul
+{
+	list-style-type:none;
+	position:relative;
+	
+}
+#nav_bar *
+{
+	z-index:5000;
+}
+#nav_bar #header_elements ul li,
+#nav_bar #header_mycourses ul li
+{
+	float:left;
+	width:50%;
+	padding:22px 0px;
+	max-width:150px;
+	min-width:110px;
+}
+#nav_bar #header_mycourses ul li
+{
+	width:100%;
+	
+}
+#nav_bar #header_elements ul li:before,
+#nav_bar #header_mycourses ul li span:before
+{
+	content: url("/images/desplegable_header_azul_down.png");
+}
+#nav_bar #header_elements ul li:hover:before,
+#nav_bar #header_mycourses ul li span:hover:before
+{
+	content: url("/images/desplegable_header_negro_up.png");
+}
+#nav_bar #header_elements ul li ul li:before,
+#nav_bar #header_mycourses ul li a:before
+{
+	content: "";
+}
+#nav_bar #header_elements ul li ul li:hover:before,
+#nav_bar #header_mycourses ul li a:before
+{
+	content: "";
+}
+#nav_bar #header_boards,
+#nav_bar #header_profile
+{
+	max-width:150px;
+	min-width:110px;
+	
+}
+#nav_bar #header_elements ul li ul,
+#nav_bar #header_mycourses ul li ul
+{
+	display:none;
+	position:absolute;
+	top:64px;
+	margin:0px;
+	padding:0px;
+}
+#nav_bar #header_elements ul li ul li,
+#nav_bar #header_mycourses ul li ul li
+{
+	clear:both;
+	display:block;
+	height:50px;
+	width:100%;
+	min-width:185px;
+	padding:0px 5px;
+	background-color:#ced8e2;
+	border-bottom:1px solid #8c96a0;
+	border-top:1px solid #8c96a0;
+}
+#nav_bar #header_elements ul li ul li a,
+#nav_bar #header_mycourses ul li ul li a
+{
+	display:block;
+	padding:11px 5px;
+	color:black;
+	font-variant:normal;
+}
+#nav_bar #header_elements > ul li:hover,
+#nav_bar #header_mycourses > ul li:hover
+{
+	background-color:#32C3D6;
+	border-bottom:1px solid #8c96a0;
+
+}
+#nav_bar #header_elements ul li:hover ul,
+#nav_bar #header_mycourses ul li:hover ul
+{
+	display:block;
+}
+#nav_bar #header_elements ul li{
+	font-size:1.063em;
+	color:white;
+	font-family:ralewaysemibold;
+	font-variant: small-caps;
+	
+}
+#nav_bar #header_boards a,
+#nav_bar #header_mycourses,
+#nav_bar #header_elements ul li ul li
+{
+	font-size:1em;
+	color:white;
+	font-family:ralewaymedium;
+	font-variant: small-caps;
+}
+@media only screen and (min-width: 48.036em) 
+{
+
+	#nav_bar #header_boards a,
+	#nav_bar #header_mycourses,
+	#nav_bar #header_elements
+	{
+		/*font-size:0.8em;*/
+	}
+	#nav_bar #header_elements ul li,
+	#nav_bar #header_mycourses ul li
+	{
+		padding:18px 0px;
+	}
+	#nav_bar #header_mycourses ul li{
+		padding:19px 0px;		
+	}
+}
+#nav_bar #header_boards .icon-plus,
+#nav_bar #header_mycourses .icon-plus,
+#nav_bar #header_elements .icon-plus
+{
+	color:#32C3D6;
+}
+#nav_bar #header_elements ul li:hover .icon-plus,
+#nav_bar #header_mycourses ul li:hover .icon-plus
+{
+	color:gray;
+}
+#nav_bar #header_boards a
+{
+	display:block;
+	padding:24px 0px;
+}
+
+/*************************/
+/* NAVEGACIÓN PERFIL     */
+/*************************/
+
+#nav_bar #header_profile #user_menu ul li
+{
+	float:left;
+	width:50%;
+	padding:22px 0px;
+	max-width:150px;
+	min-width:110px;
+}
+#nav_bar #header_profile #user_menu ul li
+{
+	width:100%;
+	
+}
+
+#nav_bar #header_profile #user_menu ul li ul
+{
+	display:none;
+	position:absolute;
+	top:64px;
+	right:0px;
+	margin:0px;
+	padding:0px;
+}
+#nav_bar #header_profile #user_menu ul li ul li
+{
+	clear:both;
+	display:block;
+	height:50px;
+	width:100%;
+	min-width:185px;
+	padding:0px 5px;
+	background-color:#ced8e2;
+	border-bottom:1px solid #8c96a0;
+	border-top:1px solid #8c96a0;
+}
+#nav_bar #header_profile #user_menu ul li ul li a
+{
+	display:block;
+	padding:11px 5px;
+	color:black;
+	font-variant:normal;
+	text-align:left;
+	
+}
+
+#nav_bar #header_profile #user_menu > ul li:hover
+{
+	background-color:#32C3D6;
+	border-bottom:1px solid #8c96a0;
+
+}
+#nav_bar #header_profile #user_menu ul li:hover ul
+{
+	display:block;
+}
+
+#nav_bar #header_profile #user_menu
+{
+	font-size:1em;
+	color:white;
+	font-family:ralewaymedium;
+	font-variant: small-caps;
+}
+@media only screen and (min-width: 48.036em) 
+{
+
+	#nav_bar #header_profile #user_menu
+	{
+		/*font-size:0.8em;*/
+	}
+	#nav_bar #header_profile #user_menu ul li{
+		padding:12px 0px;		
+	}
+	#nav_bar #header_profile #user_menu ul li.guestuser
+	{
+		padding:8px 0px;
+	}
+	
+}
+#nav_bar #header_profile #user_menu .icon-plus
+{
+	color:#32C3D6;
+}
+#nav_bar #header_profile #user_menu ul li:hover .icon-plus
+{
+	color:gray;
+}
+
+/**********************/
+/* SELECTOR DE IDIOMA */
+/**********************/
+
+.home_language_selector a, .home_language_selector li{
+	text-decoration:none;
+	color: white;
+	display: inline-block;
+}
+
+.language_selector li{
+	display: none;
+	padding: 0px 6px;
+}
+
+.language_selector li.active{
+	display: block;
+}
+
+.language_selector:hover li{
+	display: block;
+}
+
+

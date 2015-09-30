@@ -1,0 +1,359 @@
+<%
+=begin
+		######################################################################################
+		#  PRIMERA PARTE DEL FORM, DONDE APARECE LA MISMA ESTRUCTURA Y LOS MISMO CAMPOS QUE  #
+		#  SON COMUNES A TODOS LOS ELEMENTOS DE LA WEB                                       #
+		######################################################################################
+=end
+%>
+
+<% if defined?(popup) && popup %>
+	<div id="content_container" class="content_show in_popup">
+<% end %>
+
+<div class="settings">
+	<%=# render :partial => "/settings/html/settings", :object => form, :as => :element, :locals => {:created => created} 
+	%>
+</div>
+
+<%= form_for(form, method: "patch") do |f| %>
+	<div id="form_header">
+		<% if experience %>
+			<input type="hidden" id="experience" data-parent="experiences" data-id="<%= form.experience.id %>">
+		<% end %>
+		<div class= "title">
+			<%= f.text_field :title, :class => "updateable focusable", :disabled => created ? false:true, :placeholder => t("title"), :style => created ? "background-color: #eee" : "" %>
+		</div>
+		
+		<div class="description_and_image">
+			<div class="inline image">				
+			<% if form.image.url() != "none" %>	
+				<%= image_tag form.image.url(),:crop => :scale, :width => 300, :class => "image_preview" %>
+			<% else %>
+				<%= image_tag '/images/picture.jpg',:crop => :scale, :width => 300, :class => 'image_preview' %>
+			<% end %>
+				<%= button_tag t('Remove_Image'), {:id => "remove_image", :type => "button", :disabled => created ? false:true, :class => created ?  "":"invisible"}  %>
+				<%= f.file_field :image, :class => created ? "image_updateable":"image_updateable invisible"%> 
+			</div>
+			
+			<div class="inline description">
+				<%= f.label :description, t("Description") %>
+				<%= f.text_area :description, size: "100x6", :class => "updateable focusable", :disabled => created ? false:true, :placeholder => t("Description") %> 
+			</div>
+			<div class="clear"></div>
+		</div>
+		<% if experience %> <!-- En el caso de las experiencias, no se va a licenciar -->
+			<div class="invisible">
+		<% end %>	
+		<div class= "privacy editable active">
+			<span class="private_icon change_icon <%= "public" unless form.private %>"></span>
+			<%= f.label :private, t("Private") %>
+			<%= f.radio_button :private, 'true', :class => "updateable", :disabled => created ? false:true %> 
+			<%= f.label :private, t("Public") %>
+			<%= f.radio_button :private, 'false', :class => "updateable", :disabled => created ? false:true %>
+		</div>
+		
+		<div class="abstract">
+			<span class="abstract_icon change_icon <%= "public" unless form.abstract %>"></span>
+			<%= f.label :abstract, t("Abstract") %>
+			<%= f.radio_button :abstract, 'true', :class => "updateable", :disabled => created ? false:true %>
+			<%= f.label :abstract, t("Concrete") %>
+			<%= f.radio_button :abstract, 'false', :class => "updateable", :disabled => created ? false:true %>
+		</div>
+		<% if experience %> <!-- En el caso de las experiencias, no se va a licenciar -->
+			</div>
+		<% end %>
+		<% if experience %>
+			<div class="course_state">
+				<div class="course_state_color <%= form.experience.state %>"></div>
+				<div class="course_state_select">
+					<%= f.label :state, t("state")%>
+					<%= f.select(:state, options_for_select({t("being_prepared") => "beingPrepared", t("in_progress") => "inProgress", t("finished") => "finished"}, form.experience.state), {}, :class => "updateable course_state_select")%>
+				</div>
+			</div>
+		<% end %>
+		
+	</div>
+	
+	<% if experience %> <!-- En el caso de las experiencias, no se va a licenciar -->
+		<div class="invisible">
+	<% end %>
+	<hr />
+			<%= f.fields_for :licenses, form.license do |builder| %>	
+			<% if form.original_license_id.nil? %>
+				<div class="copyright">
+					<span><%= t("Does_the_lessonplan_have_a_known_CC_license")%></span>
+					<%= f.label :known_CC_license, t("yes") %>
+					<%= f.radio_button :known_CC_license,'true', :checked => (form.right_id != 8) ? true : false, :class => "known_CC_license", :disabled => created ? false:true %>
+					<%= f.label :known_CC_license,t("no") %>
+					<%= f.radio_button :known_CC_license,'false', :checked => (form.right_id == 8) ? true : false, :class => "known_CC_license", :disabled => created ? false:true %>
+				</div>
+			<% end %>
+			<% if form.original_license_id != 8 %>
+				<div class="show_license <%"invisible" if form.right_id == 8%>">
+						<div class="condition">
+							<span><%=t("Waive_all_rights_and_place_work_in_the_public_domain")%>(CC0)?</span>
+							<%= builder.label :license_condition, t("yes") %>
+							<%= builder.radio_button :license_condition, 'true', :checked => (form.right_id == 7) ? true : false,:class => "active_condition", :disabled => created ? false:true %>
+							<%= builder.label :license_condition, t("no") %>
+							<%= builder.radio_button :license_condition, 'false',:checked => (form.right_id != 7) ? true : false, :class => "active_condition", :disabled => created ? false:true %>
+						</div>	
+						<div class="license">
+							<div class="commercial">
+									<span><%= t("Allow_commercial_uses") %></span>
+									<%=builder.select :commercial, options_for_select([[t("no"), 0],[t("yes"),1]],[form.license.commercial ? 1:0]) , {}, {:disabled => created ? false:true, :class => "active_select"}%>
+							</div>	
+							
+							<div class="derivative">
+									<span><%= t("Allow_modifications") %></span>
+									<%=builder.select :derivative, options_for_select([[t("no"), 0],[t("yes"),1],[t("yes_but share alike"),2]],[get_license(form.license.derivative, form.license.license_condition)]) , {}, {:disabled => created ? false:true, :class => "active_select"}%>
+							</div>	
+							<%= link_to info_types_path do %>
+									<%= image_tag(form.license.license_icon, :class => "licenses_image",:data_value => form.right_id) %>
+							<% end %>
+						</div>
+				</div>
+			<% end %>
+			<div class= "author <%="invisible" if !created%>">
+					<span><%= t("Are you the original author")%></span>
+					<%= f.label :author, t("yes") %>
+					<%= f.radio_button :author, 'true', :checked => (form.author == nil) ? true : false,:class => "choose_author", :disabled => created ? false:true %>
+					<%= f.label :author, t("no") %>
+					<%= f.radio_button :author, 'false', :checked => (form.author != nil) ? true : false,:class => "choose_author", :disabled => created ? false:true %>
+			</div>
+			<div class="show_name_edition <%="invisible" if form.author.nil?%>">
+				<div class="name_edition <%="invisible" if !created%>">
+							<%= f.text_field :author_name, :class => "author_name",:placeholder => t("Insert_complete_name"), :value => form.author, :style => created ? "background-color: #eee" : "",:disabled => !created ? true: false%>
+				</div>
+				<div class="name_edition <%="invisible" if !created%>">
+							<%= f.text_field :author_URL, :class => "URL_edition",:placeholder => t("Insert_author_URL"), :value => form.author_URL, :style => created ? "background-color: #eee" : "", :disabled => !created ? true: false %>
+				</div>
+			</div>
+			
+			<div class= "author_attribution <%= if created then "invisible" else if form.right_id == 8 then "invisible" end end %>">
+				<div>
+					<span> <b><%=t("This_work")%></b></span>
+				</div>
+				
+				
+				<% if form.source_id.nil?%> <!-- El recurso es no clonado-->
+					<%if form.author.nil?%> <!-- El autor original es el usuario que subió ese recurso-->
+						<p><%=t("This_work_1")%> "<%=link_to form.title, show_lesson_plan_path(form.id), :target => "_blank",:class => "original_title attribution_title"%>" 
+							<%=t("This_work_5")%> <%=link_to(attributions["modified_license_name"].first.full_license_name == "unknown" ? t("unknown") : attributions["modified_license_name"].first.full_license_name, attributions["url_license_modified"], :target => "_blank", :class => "original_license attribution_license")%> <%=t("This_work_3")%><%=link_to form.user.profile.first_name+' '+form.user.profile.last_name,user_path(form.user.id),:target => "_blank",:class => "user_author"%></p>
+					<%else%> <!-- El autor original es el especificado en el author input-->
+						<p><%=t("This_work_1")%> "<%=link_to form.title,show_lesson_plan_path(form.id), :target => "_blank",:class => "original_title attribution_title" %>" <%=t("This_work_5")%> 
+							<%=link_to attributions["modified_license_name"].first.full_license_name == "unknown" ? t("unknown") : attributions["modified_license_name"].first.full_license_name, attributions["url_license_modified"], :target => "_blank", :class => "original_license attribution_license"%> <%=t("This_work_3")%><%=link_to form.author, ext_link(form.author_URL), :target => "_blank",:class => "user_author"%></p>
+					<%end%>
+				<% else %> <!-- El recurso es clonado-->
+					<%if !attributions["original_element"].author.nil?%> <!-- El autor original es el que aparece en el input del autor en el recurso original-->
+						<p><%=t("This_work_1")%> "<%=link_to form.title, show_lesson_plan_path(form.id), :target => "_blank",:class => "modified_title attribution_title"%>" <%=t("This_work_2")%> "<%=unless attributions["original_element"].nil? then link_to(attributions["original_element"].title,show_lesson_plan_path(form.source_id),:class => "original_title") end%>" <%=t("This_work_3")%> <%=unless attributions["original_element"].nil? then unless attributions["original_element"].author_URL.nil? then link_to(attributions["original_element"].author, ext_link(attributions["original_element"].author_URL), :target => "_blank", :class => "original_author") else attributions["original_element"].author end end%>
+							<%=t("This_work_4")%> <%=link_to attributions["original_license_name"].first.full_license_name == "unknown" ? t("unknown") : attributions["original_license_name"].first.full_license_name, attributions["url_license"], :target => "_blank", :class => "original_license"%>.""<%=link_to form.title, show_lesson_plan_path(form.id), :target => "_blank",:class => "modified_title attribution_title"%>"" <%=t("This_work_5")%> <%= link_to attributions["modified_license_name"].first.full_license_name == "unknown" ? t("unknown") : attributions["modified_license_name"].first.full_license_name, attributions["url_license_modified"],:target => "_blank", :class => "modified_license attribution_license"%> <%=t("This_work_3")%> <%=link_to form.user.profile.first_name+' '+form.user.profile.last_name,user_path(form.user.id),:target => "_blank",:class => "user_author"%></p>
+					<%else%>
+						<!-- El autor ha clonado su propio recurso -->
+						<p><%=t("This_work_1")%> "<%=link_to form.title.blank? ? "" : form.title, show_lesson_plan_path(form.id), :target => "_blank",:class => "modified_title attribution_title"%>" <%=t("This_work_2")%> "<%= unless attributions["original_element"].nil? then link_to(attributions["original_element"].title.blank? ? "" : attributions["original_element"].title, show_lesson_plan_path(form.source_id), :class => "original_title") end%>" <%=t("This_work_3")%> <%=unless attributions["original_element"].nil? then link_to(attributions["original_element"].user.profile.first_name+' '+attributions["original_element"].user.profile.last_name, user_path(attributions["original_element"].user.id), :target => "_blank", :class => "original_author") end%>
+							<%=t("This_work_4")%> "<%=link_to attributions["original_license_name"].first.full_license_name == "unknown" ? t("unknown") : attributions["original_license_name"].first.full_license_name, attributions["url_license"], :target => "_blank", :class => "original_license"%>"."<%=link_to form.title.blank? ? "" : form.title, show_lesson_plan_path(form.id), :target => "_blank",:class => "modified_title attribution_title"%>"<%=t("This_work_5")%> <%=link_to attributions["modified_license_name"].first.full_license_name == "unknown" ? t("unknown") : attributions["modified_license_name"].first.full_license_name, attributions["url_license_modified"],:target => "_blank", :class => "modified_license attribution_license" %> <%=t("This_work_3")%> <%=link_to form.user.profile.first_name+' '+form.user.profile.last_name,user_path(form.user.id),:target => "_blank",:class => "user_author"%>
+						</p>
+					<%end%>
+				<% end %>
+			</div>
+			
+			<% end %>
+			<%= render :partial => "/layouts/html/input_licenses", :locals => {:vector_licenses => vector_licenses[form.id.to_s], :element => form} %>
+	
+	<% if experience %>	
+		</div>
+	<% end %>
+	
+	<hr />
+	<div class="keywords">
+		<%= f.label :keywords, t("keywords")%>
+		<% if !current_user.nil? && (current_user.id == form.creator_id) %>
+			<div class="keyword_input_container">
+				<%= text_field_tag :keyword,nil, {:class => created ? "keyword_input focusable" : "keyword_input focusable invisible", :disabled => created ? false:true, :placeholder => t("keywords"), :style => created ? "background-color: #eee" : ""} %>
+			</div>
+		<% end %>
+		<div class="keywords_container">
+			<% form.keywords.each do |keyword| %>
+				<div id="keyword_<%= keyword.id%>"class="keyword_box"><%= image_tag("/images/icons/Black/cancel-circle.svg", :class => created ? "delete_keyword" : "delete_keyword invisible")%><span><%= keyword.keyword %></span></div>
+			<% end %>
+		</div>
+	</div>
+	<%= render :partial => "layouts/html/info_element_box", :object => @element, :as => :element %>
+	<%= render :partial => "layouts/html/info_paradata", :object => @element, :as => :element %>
+
+	<div class= "content_template contents <%= "move_right" if experience %>" data-id="<%= form.id.to_s%>" data-type="<%= form.type.underscore%>" >
+		<%= render :partial => "boxes/html/box", :collection => form.template.boxes.sort_by{|e| e[:position]}, :locals => {:f => f, :created => created, :element => form, :table_view => false} %>
+	</div>
+	
+	
+	<% if experience %>
+		<div class="records records_container">
+			<div class="select_record_type">
+				<%= image_tag("/images/icons/White/image2.svg", :class => "records record_icon images add_record invisible", :data_type => "image")%>
+				<%= image_tag("/images/icons/White/video.svg", :class => "records record_icon videos add_record invisible", :data_type => "video")%>
+				<%= image_tag("/images/icons/White/file.svg", :class => "records record_icon documents add_record invisible", :data_type => "document")%>
+				<%= image_tag("/images/icons/White/code.svg", :class => "records record_icon snippets add_record invisible", :data_type => "snippet")%>				
+				<%= image_tag("/images/icons/White/thumbs-up.svg", :class => "records record_icon positive_comments add_record invisible", :data_type => "positive_comment")%>
+				<%= image_tag("/images/icons/White/thumbs-up2.svg", :class => "records record_icon negative_comments add_record invisible", :data_type => "negative_comment")%>
+				<%= image_tag("/images/icons/White/paragraph-justify.svg", :class => "records record_icon free_texts add_record invisible", :data_type => "free_text")%>
+				<%= image_tag("/images/icons/White/bulb.svg", :class => "records record_icon ideas add_record invisible", :data_type => "idea")%>
+				<p class="evidences"><%= t("Evidences") %></p>
+				<p class="annotations"><%= t("Observations") %> </p>
+			</div>
+			<div class="record_box_container">
+			<% unless form.experience_element_records.first.blank? %>
+				<% 
+					#AQUI RENDERIZARÉ TODOS LOS RECORDS QUE TENGA ESTE ELEMENTO
+				%>
+				
+				<% p form.experience_element_records %>
+				<%= render :partial => "/experiences/html/records", :collection => form.experience_element_records.first.element_records.where(:removed => false).order("created_at DESC") %>
+			<% end %>
+			</div>
+		</div>
+	<% end %>
+	
+	<div class="clear"></div>
+	<hr />
+<% end %>
+
+<%= render :partial => "layouts/html/share_buttons", :object => @element, :as => :element %>
+
+<div id = "email_button">
+	<%= image_tag("/images/icons/Black/mail2.svg", :width => 18, :class => "share_content_by_email") %>
+	<div class="form_share_email invisible">
+		<% if defined?(popup) && popup %>
+			<%= form_tag(:controller => params[:controller], :action => "shareByEmail", :method => "POST", :popup => "true") do%>
+				<ul>
+					<%= text_field_tag :share_email, params[:share_email], placeholder: t('Mail_to_share') %>
+				</ul>
+				<%= submit_tag(t("Mail_share_button"))%>
+			<%end %>
+		<% else %>
+			<%= form_tag(:controller => params[:controller], :action => "shareByEmail", :method => "POST") do%>
+				<ul>
+					<%= text_field_tag :share_email, params[:share_email], placeholder: t('Mail_to_share') %>
+				</ul>
+				<%= submit_tag(t("Mail_share_button"))%>
+			<%end %>
+		<% end %>					
+	</div>
+</div>
+
+		<%
+=begin
+		En este caso, para ES y TS, se trata de campos que se colapsan/minimizan.
+		Si se está en el modo de editar, edition_mode=on, debe existir la posibilidad de añadir una de las posibles que existen y completarla.
+		En el caso de ser admin se pueden crear plantillas nuevas para ES y TS	
+=end
+	%>
+	
+<div class="resources subcategorie_top contents" value="false" data-type="lesson_plan">
+	<div class="resources_section_header">
+		<div id="resources_action_bar_<%= form.id.to_s %>" class="resources_action_bar a-left">
+			<input type="hidden" data-view="mini">
+			<%= image_tag("/images/icons/White/plus.svg", :class => created ? "add_resources new subcategorie_icon":"add_resources new invisible subcategorie_icon", :value => "resources") %>
+			<%= image_tag("/images/icons/White/search.svg", :class => created ? "search_resources abre_popup subcategorie_icon":"search_resources abre_popup invisible subcategorie_icon", :value => "resources", :"data-info" => form.type+";"+form.id.to_s)%>
+			<%= image_tag("/images/icons/White/images.svg", :class => "list_view_icon subcategorie_icon", :value => "resources", :"data-info" => form.type+";"+form.id.to_s)%>
+			<ul class="dropdown new_resources" style="display:none;">
+				<li class="add_new_element" data-info="<%= form.type%>;<%= form.id.to_s%>" data-type="Content_new"><%= t("document")%></li>
+				<li class="add_new_element" data-info="<%= form.type%>;<%= form.id.to_s%>" data-type="Application_new"><%= t("application")%></li>
+				<li class="add_new_element" data-info="<%= form.type%>;<%= form.id.to_s%>" data-type="Device_new"><%= t("device")%></li>
+				<li class="add_new_element" data-info="<%= form.type%>;<%= form.id.to_s%>" data-type="Event_new"><%= t("trip")%></li>
+				<li class="add_new_element" data-info="<%= form.type%>;<%= form.id.to_s%>" data-type="Collaborator_new"><%= t("guest")%></li>
+			</ul>
+		</div>
+		<div class="a-right resources_title">
+			<span><%= t("resources") %></span>
+		</div>
+	</div>
+	<div class="resources_section_body">
+		<% collection =  form.applications.where(:removed => false).order("created_at DESC")+form.devices.where(:removed => false).order("created_at DESC")+form.contents.where(:removed => false).order("created_at DESC")+form.events.where(:removed => false).order("created_at DESC")+form.collaborators.where(:removed => false).order("created_at DESC") %>
+		<div id="resources_mini_view_<%= form.id.to_s%>" class="resources_mini_view">
+			<%= render :partial => "/layouts/html/mini_view",:collection => collection, :locals => {:type => "resources", :created => created} %>
+		</div>
+		<div class="clear"></div>
+		<div id='resources_list_view_<%= form.id.to_s%>' class="invisible">
+			<!--%= render :partial => "resources/html/form", :collection => collection, :locals => {:contents => true, :created => created} %-->
+		</div>
+	</div>
+</div>
+	
+<% benchmark "Actividades Lesson Plan" do %>
+<div id="activities" class="activities subcategorie_top contents" value="false" data-type="lesson_plan"> 
+	<div classs="activities_section_header">
+		<div id="activities_action_bar_<%= form.id.to_s %>" class="a-left">
+			<input type="hidden" data-view="list">
+			<%= image_tag("/images/icons/White/plus.svg", :class => created ? "add_activities abre_popup subcategorie_icon":"add_activities abre_popup invisible subcategorie_icon", :value => "activity_templates", :"data-info" => form.type+";"+form.id.to_s) %>
+			<%= image_tag("/images/icons/White/search.svg", :class => created ? "search_activities abre_popup subcategorie_icon":"search_activities abre_popup invisible subcategorie_icon", :value => "activities", :"data-info" => form.type+";"+form.id.to_s)%>
+			<%= image_tag("/images/icons/White/images.svg", :class => "list_view_icon subcategorie_icon", :value => "activities", :"data-info" => form.type+";"+form.id.to_s)%>
+			
+			<% positions = Array.new
+			collection = form.activities.where(:removed => false).sort_by{|e| e[:position]}
+			unless collection.blank?
+				template_id = collection[0].template_id
+				collection.each do |activity|
+				positions.push(activity)
+					if(activity.template_id != template_id && template_id != 0)
+						template_id = 0 #Cuando el template_id es 0, quiere decir que las actividades tienen diferentes templates, y no se puede usar la table_view
+					end
+				end
+			else
+				template_id = 0
+			end
+			%>
+			<% if template_id != 0 %>
+				<%= image_tag("/images/icons/White/table2.svg", :class => "table_view_icon subcategorie_icon", :value => "activities", :"data-info" => form.type+";"+form.id.to_s)%>
+			<% end %>	
+		</div>
+		
+		<div id="activities_title" class="a-right">
+			<span><%= t("activities") %></span>
+		</div>
+		
+	</div>
+	
+	<div class="activities_section_body">
+		<div id='activities_list_view_<%= form.id.to_s%>' class="activities_list_view">
+			<%= render :partial => "activities/html/form", :collection => positions, :locals => {:attributions => attributions, :vector_licenses => CompatibilityChart.create_vectors(positions), :contents => true, :created => created, :positions => positions, :experience => experience}
+			%>
+		</div>
+		<% if template_id != 0%>
+			<div id="activities_table_view_<%= form.id.to_s%>" class="activities_table_view invisible">
+				<div class="prueba">
+					<table class="table_header">
+						<tr class="row_header">
+							<td class="table_header_title"><%= t("title")%></td>
+							<td class="table_header_description"><%= t("Description")%></td>
+							<% cont = 0; 
+							boxes = form.activities.where(:removed => false).first.template.boxes
+							boxes.each do |box| %>
+								<% cont = cont + 1 %>
+								<td class="table_header_box_title col<%= cont %> <%= "last" if cont == boxes.length %> <%= "invisible" if cont >= 4 %>">
+									<%= box.title%>
+									<% if box.description != nil %>
+										<%= image_tag("/images/icons/Black/info.svg", :width => 16,:class=>"show_info")%>
+										<div class="info_bubble">
+											<p class="speech invisible <%= params[:controller].underscore.singularize %>"><%= box.description %></p>
+										</div>
+									<% end %>					
+								</td>
+							<% end %>
+						</tr>
+					</table>
+				</div>
+				<div id="activities_table_view_body"></div>
+				<div class="clear"></div>
+			</div>
+		<% end %>
+		<div id="activities_mini_view_<%= form.id.to_s%>" class="activities_mini_view invisible">
+		</div>
+		<div class="clear"></div>
+	</div>
+</div>
+<% end %>
+<a name="end_page"></a>
+
+<% if defined?(popup) && popup %>
+	</div>
+<% end %>

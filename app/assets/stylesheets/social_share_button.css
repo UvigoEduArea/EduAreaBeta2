@@ -1,0 +1,50 @@
+/*
+.social-share-button-twitter {
+	display: inline-block;
+	width: 16px;
+	height: 16px;
+	color: rgba(0,0,0,0);
+}
+
+.social-share-button-facebook {
+	display: inline-block;
+	width: 16px;
+	height: 16px;
+	color: rgba(0,0,0,0);
+}
+
+.social-share-button-google_plus {
+	display: inline-block;
+	width: 16px;
+	height: 16px;
+	color: rgba(0,0,0,0);
+}
+
+.social-share-button-email {
+	display: inline-block;
+	width: 16px;
+	height: 16px;
+	color: rgba(0,0,0,0);
+}
+
+a.social-share-button-twitter, a.social-share-button-facebook, a.social-share-button-google_plus, a.social-share-button-email{
+	color: rgba(0,0,0,0);
+}
+
+a.social-share-button-twitter:hover, a.social-share-button-facebook:hover, a.social-share-button-google_plus:hover, a.social-share-button-email:hover{
+	color: rgba(0,0,0,0);
+}
+*/
+
+/* Se ha inlcuido esto provisionalmente pq el botón de fb devolvía un error de resize. En teoría con esto está solucionado (stackoverflow)*/
+/*#fb-button { 
+    width: 80px; 
+}
+#fb_button span, 
+#fb_button iframe {.
+    width: 80px !important;
+    height: 25px !important;
+}*/
+
+
+

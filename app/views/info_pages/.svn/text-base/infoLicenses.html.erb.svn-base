@@ -1,0 +1,28 @@
+<%= render :partial => "application/html/navigation", :locals => {:page => "info_page"} %>
+
+<div id="content_container" class="content_index">
+	<div class= "information">
+		<!--Title -->
+		<span><%= t("Info_CC")%></span>
+		</br></br>
+		<p><%= t("Info_CC_P1") %></p>
+		</br>
+		<p><%= t("Info_CC_P2") %></p>
+		</br>
+		<p><%= t("Info_CC_P3") %><%= link_to t("Types_Licenses"), info_types_path %></p>
+		</br></br>
+		<div class = "license_bar">
+			<%= image_tag("/images/icons/licenses/CCCPD.png", class: "icon_license_bar") %>
+		</div>	
+		
+					
+		</br>
+		
+	</div>	
+</div> <!-- CONTENT -->
+		
+		
+		
+		<div class="clear"></div>
+	</div>	
+</div> <!-- CONTENT -->

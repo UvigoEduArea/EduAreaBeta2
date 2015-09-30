@@ -1,0 +1,31 @@
+<ul class="nav_user">
+	<li><span class="user_name left">
+	
+	<% if (current_user.profile.first_name != nil && current_user.profile.first_name != "") %>
+			<%= current_user.profile.first_name %>
+	<% else %>
+		<%= link_to current_user.email, user_path(current_user), :class => "user_profile_link" %>
+	<% end %>
+	</span>
+	<%= image_tag(current_user.profile.avatar.url(:thumb), :class => "avatar right")	%>
+	
+	<ul>
+		<li>
+			<p class="left"><%= link_to t("My_profile"), user_path(current_user), :class => "user_profile_link" %></p>
+		</li>
+		<li>
+			<p class="left"><%= link_to t("Language"), user_path(current_user), :class => "user_profile_link" %></p>
+			
+			<p class="right"><%= link_to params[:locale], "", :class => "user_profile_link" %></p>
+		</li>		
+		<li>
+		<p class="left"><%= link_to t("Log_out"), destroy_user_session_path, :method => :delete, :class => "user_profile_link" %></p>
+		<p class="right"><%= link_to(image_tag("/images/icons/White/exit.svg", :width => 24), destroy_user_session_path, :method => :delete) %></p>
+		</li>
+			
+	</ul>
+	</li>
+	
+</ul>
+
+

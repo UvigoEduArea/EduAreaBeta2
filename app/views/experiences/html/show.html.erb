@@ -1,0 +1,166 @@
+<% if !(defined?(contents) && contents) %>
+	<%= render :partial => "application/html/navigation", :locals => {:page => "lesson_plans"} %>
+	<%= render :partial => "/application/html/show_navigation_menu", :object => @element, :as => "element"%>
+	<%= render :partial => "/application/html/breadcrumb", :object => @element.lesson_plan, :as => "element"%>
+<% else %>
+	<%= render :partial => "/application/html/breadcrumb", :object => @element.lesson_plan, :as => "element", :locals => {:element_parent => element_parent}%>
+<% end %>
+	
+<!-- CONTENT -->
+<div id="content_container" class="content_show clearfix">
+	<input type="hidden" id="show_mode" data-mode="<%= created ? "2":"1" %>">
+	<%= render :partial => "lesson_plans/html/summary", :object => @element.lesson_plan, :as => "form", 
+	:locals => {:vector_licenses => vector_licenses, :created => created, :experience => true, :attributions => attributions, :x => defined?(x) && x ? true : false}%>
+</div>
+
+
+<script>
+	$.ajax({
+		type: "GET",
+		url: window.location.href.split("?")[0]+"/getSections",
+		dataType: "html"
+	}).done(function(data){
+		$("#content_container").append(data);
+		$("#content_container .hide").each(function(){
+			var $this = $(this);
+			$this.find("textarea").jqte();
+			if ($("#show_mode").attr("data-mode")=="2" || $("#show_mode").attr("data-mode")=="4"){
+				$(".jqte_editor").attr("contenteditable", "true");
+				$(".jqte_toolbar").removeClass("hide");
+			}else{
+				$(".jqte_editor").attr("contenteditable", "false");
+				$(".jqte_toolbar").addClass("hide");
+			}
+		});
+		$(".resources_section_body .jqte_editor").attr("contenteditable", "false");
+		$(".resources_section_body .jqte_toolbar").addClass("hide");
+		$(".activities_section_body .jqte_editor").attr("contenteditable", "false");
+		$(".activities_section_body .jqte_toolbar").addClass("hide");
+		$(".resources_section_body .jqte, .activities_section_body .jqte").css("max-height", "50px");
+		
+		//ORDENACIÓN DE ACTIVIDADES
+		var element_id = $(".element_summary").children("form").first().attr("action").split("/")[$(".element_summary").children("form").first().attr("action").split("/").length-1];
+		$("#activities_list_view_"+element_id).sortable({
+			axis: "y",
+			cursor: "move",
+			revert: true,
+			placeholder: "sortable_placeholder",
+			handle: ".select_element_to_move",
+			connectWith: ".element_list_box",
+			cursorAt: {top: 80},
+			update: function(event, ui){
+				var data_ajax = {};
+				
+				if($(ui.item[0]).next().attr("data-position") == undefined){
+					data_ajax["position"] = $(ui.item[0]).prev().attr("data-position");
+				}else{
+					if($(ui.item[0]).attr("data-position") < $(ui.item[0]).next().attr("data-position")){
+						data_ajax["position"] = $(ui.item[0]).prev().attr("data-position");
+					}else{
+						data_ajax["position"] = $(ui.item[0]).next().attr("data-position");
+					}
+				}
+				
+				data_ajax["activity_id"] = $(ui.item[0]).attr("data-info").split(";")[1];
+				$.ajax({
+					url: window.location.href.split("?")[0]+"/sort/activities",
+					type: "POST",
+					dataType: "json",
+					data: data_ajax
+				}).done(function(data){
+					var element;
+					for(i=0; i < data.length; i++){
+						element = $("[class='element_list_box small-12 columns'][data-info='Activity;"+data[i].id.toString()+"']");
+						element.attr("data-position",data[i].position.toString());
+					}
+				});
+	
+				if($("#show_mode").attr("data-mode") != "2"){
+					$(".activities_section_body .activities_list_view").sortable("disable");
+				}
+			}
+		});
+		
+		//ORDENACIÓN DE RECURSOS
+		$("#resources_list_view_"+element_id).sortable({
+			axis: "y",
+			cursor: "move",
+			revert: true,
+			placeholder: "sortable_placeholder",
+			handle: ".select_element_to_move",
+			connectWith: ".element_list_box",
+			cursorAt: {top: 80},
+			update: function(event, ui){
+				var data_ajax = {};
+				
+				if($(ui.item[0]).next().attr("data-position") == undefined){
+					data_ajax["position"] = $(ui.item[0]).prev().attr("data-position");
+				}else{
+					if($(ui.item[0]).attr("data-position") < $(ui.item[0]).next().attr("data-position")){
+						data_ajax["position"] = $(ui.item[0]).prev().attr("data-position");
+					}else{
+						data_ajax["position"] = $(ui.item[0]).next().attr("data-position");
+					}
+				}
+				
+				data_ajax["resource_id"] = $(ui.item[0]).attr("data-info").split(";")[1];
+				$.ajax({
+					url: window.location.href.split("?")[0]+"/sort/resources",
+					type: "POST",
+					dataType: "json",
+					data: data_ajax
+				}).done(function(data){
+					var element;
+					for(i=0; i < data.length; i++){
+						element = $("[class='element_list_box small-12 columns'][data-info='"+data[i].type+";"+data[i].id.toString()+"']");
+						element.attr("data-position",data[i].position.toString());
+					}
+				});
+	
+				if($("#show_mode").attr("data-mode") != "2"){
+					$("#resources_section_body").sortable("disable");
+				}
+			}
+		});
+		
+		//ORDENACIÓN DE ENTREGAS
+		$("#submissions_list_view_"+element_id).sortable({
+			axis: "y",
+			cursor: "move",
+			revert: true,
+			placeholder: "sortable_placeholder",
+			handle: ".select_element_to_move",
+			connectWith: ".element_list_box",
+			cursorAt: {top: 80},
+			update: function(event, ui){
+				var data_ajax = {};
+				
+				if($(ui.item[0]).next().attr("data-position") == undefined){
+					data_ajax["position"] = $(ui.item[0]).prev().attr("data-position");
+				}else{
+					if($(ui.item[0]).attr("data-position") < $(ui.item[0]).next().attr("data-position")){
+						data_ajax["position"] = $(ui.item[0]).prev().attr("data-position");
+					}else{
+						data_ajax["position"] = $(ui.item[0]).next().attr("data-position");
+					}
+				}
+				
+				data_ajax["submission_id"] = $(ui.item[0]).attr("data-info").split(";")[1];
+				$.ajax({
+					url: window.location.href.split("?")[0]+"/sort/submissions",
+					type: "POST",
+					dataType: "json",
+					data: data_ajax
+				}).done(function(data){
+					var element;
+					for(i=0; i < data.length; i++){
+						element = $("[class='show_submission_in_lp element_list_box small-12 columns'][data-info='Submission;"+data[i].id.toString()+"']");
+						element.attr("data-position",data[i].position.toString());
+					}
+				});
+			}
+		});
+	});
+	
+</script>
+

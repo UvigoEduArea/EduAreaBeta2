@@ -1,0 +1,180 @@
+/*****************************************************************************
+****************CSS PARA LOS ELEMENTOS EN MODO LISTA+++++++++*****************
+*****************************************************************************/
+
+#activities, #resources, #submissions, #observations{
+	padding: 1%;
+}
+
+.resources_section_header, .activities_section_header, .submissions_section_header, .observations_section_header{
+	background-color: #FBFBFB;
+	height: 45px;
+	margin-bottom: 14px;
+}
+
+#activities .subcategorie_icon, #resources .subcategorie_icon, #submissions .subcategorie_icon, #observations .subcategorie_icon{
+	top: 7.5px;
+	height: 30px;
+	left: 7.5px;
+	margin-right: 7.5px;
+}
+
+.resources_section_body, .activities_section_body, .submissions_section_body, .observations_section_body, #show_content_resource, #show_content_submission, #show_content_observation{
+	/*background: rgba(245, 241, 222, 0.5);
+	background-color:#F1F4FD;*/
+	padding: 1% 0;
+}
+
+.element_list_box{
+	margin-bottom: 12px;
+	background-color: #FBFBFB;
+	height: 90px;
+}
+
+.element_list_box .icons_area{
+	position: absolute;
+	width: 45px;
+	height: 100%;
+	left: 0px;
+	background-color: #E8F0F8;
+}
+
+.element_list_box .icons_area img{
+	height: 30px;
+	margin-top: 7.5px;
+	margin-left: 7.5px;
+	cursor: pointer;
+}
+
+#delete_checkbox, #delete_resource_checkbox, #delete_activity_checkbox, #delete_submission_checkbox, #delete_observation_checkbox, #delete_records_submission_checkbox, #select_all_checkbox{
+	width: 30px;
+	height: 30px;
+	margin-left: 7.5px;
+	margin-top: 7.5px;
+}
+
+.checkbox_area{
+	width: 45px;
+	position: absolute;
+}
+
+.icons_space{
+	position:absolute;
+	margin-left: 45px;
+}
+
+.element_list_content{
+	margin-left: 0px;
+}
+
+.element_list_box .image{
+	height: 90px;
+	width: 137px;
+	margin-left: 30px;
+	position: absolute;
+}
+
+.element_list_box .image.show_element_in_lp, .element_list_box .image.show_content_element{
+	cursor: pointer;
+}
+
+.element_list_box .image img{
+	height: 90px;
+	width: 137px;
+}
+
+.element_list_box .element_list_content{
+	margin-left: 160px;
+}
+
+.element_list_box .element_list_content.show_element_in_lp, .element_list_box .element_list_content.show_content_element{
+	cursor: pointer;
+}
+
+.element_list_box .element_list_information{
+	height: 90px;
+	overflow: hidden;
+}
+
+.element_list_box .element_list_information .title{
+	color: #BCC0C3;
+	font-family: ralewaymedium;
+	font-size: 16px;
+}
+
+.element_list_box .element_list_information .description{
+	font-family: Roboto;
+	font-size: 14px;
+	max-height: 50px;
+	overflow: hidden;
+	line-height: 21px;
+}
+
+.element_list_box .other_info{
+	float: right;
+	margin-right: 0px;
+	height: 90px;
+	width: 135px;
+}
+
+.element_list_box .other_info p{
+	font-family: Roboto;
+	font-size: 10px;
+	float: right;
+	margin-top: 65px;
+}	
+
+.element_list_box .other_info .private_element{
+	float: right;
+	margin-top: 20px;
+}
+
+#show_content_resources, #show_content_observations{
+	background-color: #FBFBFB;
+	margin-top: 15px;
+}
+
+#show_content_submissions{
+	background-color: transparent;
+}
+
+#show_content_resources .show_content_body, #show_content_observations .show_content_body{
+	margin-left: 32px;
+}
+
+#show_content_submissions .show_content_body{
+	margin-left: 0px;
+}
+
+.records_container{
+	/*background-color: #C9D3DD;*/
+	margin-top: 30px;
+}
+
+#show_content_submissions .show_content_body .image_list_view{
+	margin-left: -15px;
+}
+
+#show_content_submissions .show_content_body .element_list_box{
+	/*margin-top: 15px;*/
+}
+
+.element_list_box .other_info .p_records{
+	font-family: Roboto;
+	font-size: 12px;
+	float: right;
+	margin-top: 38px;
+}
+
+.element_list_box .other_info img{
+	float: right;
+}
+
+.element_list_box .other_info span{
+	font-family: Roboto;
+	font-size: 12px;
+	float: right;
+	margin-right: 8px;
+	margin-top: 7px;
+}
+	

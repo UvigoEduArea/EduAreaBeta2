@@ -1,0 +1,185 @@
+#background_overlay{
+	position: fixed;
+	display: none;
+	top:0;
+	left:0;
+	width: 100%;
+	height: 100%;
+	opacity: 0.7;
+	background-color: gray;
+	z-index: 5000;	
+}
+
+#marco_popup{
+	display: none;
+	opacity: 1;
+	z-index: 5001;
+	margin: auto;
+	position: fixed;
+	left: 25%;
+	top: 50px;
+	margin-left: -225px;
+	border: 1px solid #737d87;
+	background-color: #737d87;
+	width: 75%;
+	height: 800px;
+}
+
+#header_popup{
+	/*height: 50px;*/
+	background-color: #737d87;
+	width: 100%;
+	margin: auto;
+	margin-top: 5px;
+	padding: 5px 20px;
+}
+
+#content_popup{
+	background-color: #c4ced8;
+	width: 100%;
+	margin: auto;
+	overflow: auto;
+	padding-top: 10px;
+	height: 700px  !important;
+}
+
+#popup_title{
+	font-size: 35px;
+	float: right;
+	color:#fff;
+}
+
+.back_popup{
+	position: fixed;
+}
+
+#element_repeat{
+	padding-top: 15%;
+	padding-right: 5%;
+	padding-left: 8%;
+}
+
+#element_repeat span{
+	font-size: 28px;
+	position: relative;
+	text-align: center;
+}
+
+
+#header_popup span.action_icon{
+	width: auto;
+	cursor: auto;
+}
+
+#search{
+	cursor: auto;
+	margin-left: 5px;
+}
+
+.content #background_overlay{
+	display: inline;
+}
+
+.search_in_popup{
+	top: 20.5%;
+}
+
+.loading_icon {
+	position: fixed;
+	top: 29%;
+	left: 33%;
+	z-index: 5001;
+	width: 25%;
+}
+
+.image_present {
+	text-align: center;
+}
+
+.image_edit {
+	max-height: 100%;
+	/*display: block;
+	 margin-left: auto;
+	 margin-right: auto;*/
+	max-width: 445px;
+}
+
+.right {
+
+}
+
+.left {
+	margin-left: 10px;
+	margin-right: 10px;
+}
+
+.image_bottons_top {
+	text-align: center;
+	margin-bottom: 10px;
+}
+
+.image_bottons_bottom {
+	margin-top: 10px;
+	text-align: center;
+}
+
+.buttons_editor {
+	float: left;
+	height: auto;
+	width: 130px;
+	margin-right: 5px;
+}
+
+.boton {
+	background-color: transparent;
+	display: inline-block;
+	cursor: pointer;
+	margin-bottom: 5px;
+	width: 130px;
+	vertical-align: text-top;
+}
+
+.entrada {
+	text-align: center;
+	margin-top: 10px;
+}
+
+.account_description {
+	height: 62px;
+	float: left;
+	text-align: right;
+	width: 475px;
+	margin-right: 10px;
+}
+
+.account_bottons {
+	text-align: left;
+}
+
+.image_element {
+	width: 226px;
+	height: 226px;
+	float: left;
+	margin: 8px;
+}
+
+.evidence_element {
+	height: 190px;
+	display: block;
+	margin: auto;
+}
+
+input.search_in_popup{
+	width: auto;
+	background-color: #F1F4FD;
+}
+
+img.search_in_popup{
+	margin-left: 10px;
+	margin-right: 10px;
+}
+
+#selector_resources_popup{
+	background-color: #F1F4FD;
+	margin-right: 10px;
+}

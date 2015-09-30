@@ -1,0 +1,130 @@
+10
+
+dir
+1125
+svn+ssh://heimdall@193.146.210.92/var/svn/EduAreaBeta2/trunk/app/views
+svn+ssh://heimdall@193.146.210.92/var/svn/EduAreaBeta2
+
+
+
+2015-09-25T13:59:45.798826Z
+1125
+melisa
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+04fa826b-634e-4b22-867e-67554cd2a253
+
+devices
+dir
+
+subjects
+dir
+
+usages
+dir
+
+contents
+dir
+
+lesson_plans
+dir
+
+layouts
+dir
+
+users
+dir
+
+application
+dir
+
+activities
+dir
+
+collaborators
+dir
+
+educational_settings
+dir
+
+data_boxes
+dir
+
+admins
+dir
+
+elements
+dir
+
+accounts
+dir
+
+boxes
+dir
+
+operations
+dir
+
+comments
+dir
+
+action_correo
+dir
+
+applications
+dir
+
+home
+dir
+
+templates
+dir
+
+settings
+dir
+
+events
+dir
+
+images
+dir
+
+licenses
+dir
+
+pdf
+dir
+
+experiences
+dir
+
+resources
+dir
+
+boards
+dir
+
+info_pages
+dir
+
+technical_settings
+dir
+
+submissions
+dir
+
+devise
+dir
+

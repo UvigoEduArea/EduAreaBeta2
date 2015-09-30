@@ -1,0 +1,193 @@
+<!--Meta-tags para las actividades que sean públicas-->
+<!--Hay que generar la correspondiente licencia CC según el valor de right_id -->
+
+<% if @element.private == false %>
+	<% case @element.right_id%>
+		<% when 1 %>
+			<% 
+			meta rel:  {
+				licencia: "Creative Commons CC-BY"	
+			},
+			copyright: "http://creativecommons.org/licenses/by/4.0/"
+			%>
+		<% when 2 %>
+			<% 
+			meta rel:  {
+				licencia: "Creative Commons CC-BY-SA"	
+			},
+			copyright: "http://creativecommons.org/licenses/by-sa/4.0/"
+			%>
+		<% when 3 %>
+			<% 
+			meta rel:  {
+				licencia: "Creative Commons CC-BY-NC"	
+			},
+			copyright: "http://creativecommons.org/licenses/by-nc/4.0/"
+			%>
+		<% when 4 %>
+			<% 
+			meta rel:  {
+				licencia: "Creative Commons CC-BY-NC-SA"	
+			},
+			copyright: "http://creativecommons.org/licenses/by-nc-sa/4.0/"
+			%>
+		<% when 5 %>
+			<% 
+			meta rel:  {
+				licencia: "Creative Commons CC-BY-ND"	
+			},
+			copyright: "http://creativecommons.org/licenses/by-nd/4.0/"
+			%>
+		<% when 6 %>
+			<% 
+			meta rel:  {
+				licencia: "Creative Commons CC-BY-NC-ND"	
+			},
+			copyright: "http://creativecommons.org/licenses/by-nc-nd/4.0/"
+			%>
+	<%end%>
+	
+	
+	<%
+	meta	title: @element.title,
+			date: @element.created_at,
+			author: @element.user.profile.first_name+' '+@element.user.profile.last_name
+	%>
+	
+	<% if @element.keywords != nil%> 
+		<% keywords = ""
+		 @element.keywords.each do |keyword|
+			keywords = keyword.keyword + ',' + keywords 
+		end
+		%>
+		<%	meta	keywords: keywords[-keywords.length..-2] %>
+	<% end %>
+<% end %>
+
+
+<% if !(defined?(contents) && contents) %>
+	<%= render :partial => "application/html/navigation", :locals => {:page => "activities"} %>
+	<%= render :partial => "/application/html/show_navigation_menu", :object => @element, :as => "element"%>
+<% else %>
+	<%= render :partial => "/application/html/breadcrumb", :object => @element, :as => "element", :locals => {:element_parent => element_parent}%>
+<% end %>
+	
+	
+	<!-- CONTENT -->
+	<div id="content_container" class="content_show clearfix">
+		<input type="hidden" id="show_mode" data-mode="<%= created ? "2":"1" %>">
+	
+		<%= render :partial => "activities/html/summary", :object => @element, :as => "form", 
+		:locals => {:attributions => attributions, :vector_licenses => vector_licenses, :created => created, :experience => (defined?(experience) && experience) ? true : false,
+		:contents => (defined?(contents) && contents) ? true : false}%>	
+	</div>
+	
+	<script>
+		$.ajax({
+			type: "GET",
+			url: $(".element_summary").children("form").first().attr("action") +"/getSections",
+			dataType: "html",
+			data: {contents: <%= contents %>}
+		}).done(function(data){
+			$("#content_container").append(data);
+			$("#content_container .hide").each(function(){
+				var $this = $(this);
+				$this.find("textarea").jqte();
+				if ($("#show_mode").attr("data-mode")=="2" || $("#show_mode").attr("data-mode")=="4"){
+					$(".jqte_editor").attr("contenteditable", "true");
+					$(".jqte_toolbar").removeClass("hide");
+				}else{
+					$(".jqte_editor").attr("contenteditable", "false");
+					$(".jqte_toolbar").addClass("hide");
+				}
+			});
+			$(".resources_section_body .jqte_editor").attr("contenteditable", "false");
+			$(".resources_section_body .jqte_toolbar").addClass("hide");
+			$(".activities_section_body .jqte_editor").attr("contenteditable", "false");
+			$(".activities_section_body .jqte_toolbar").addClass("hide");
+			$(".resources_section_body .jqte, .activities_section_body .jqte").css("max-height", "50px");
+			
+			
+			//ORDENACIÓN DE RECURSOS
+			var element_id = $(".element_summary").children("form").first().attr("action").split("/")[$(".element_summary").children("form").first().attr("action").split("/").length-1];
+			$("#resources_list_view_"+element_id).sortable({
+				axis: "y",
+				cursor: "move",
+				revert: true,
+				placeholder: "sortable_placeholder",
+				handle: ".select_element_to_move",
+				connectWith: ".element_list_box",
+				cursorAt: {top: 80},
+				update: function(event, ui){
+					var data_ajax = {};
+					
+					if($(ui.item[0]).next().attr("data-position") == undefined){
+						data_ajax["position"] = $(ui.item[0]).prev().attr("data-position");
+					}else{
+						if($(ui.item[0]).attr("data-position") < $(ui.item[0]).next().attr("data-position")){
+							data_ajax["position"] = $(ui.item[0]).prev().attr("data-position");
+						}else{
+							data_ajax["position"] = $(ui.item[0]).next().attr("data-position");
+						}
+					}
+					
+					data_ajax["resource_id"] = $(ui.item[0]).attr("data-info").split(";")[1];
+					$.ajax({
+						url: window.location.href.split("?")[0]+"/sort/resources",
+						type: "POST",
+						dataType: "json",
+						data: data_ajax
+					}).done(function(data){
+						var element;
+						for(i=0; i < data.length; i++){
+							element = $("[class='element_list_box small-12 columns'][data-info='"+data[i].type+";"+data[i].id.toString()+"']");
+							element.attr("data-position",data[i].position.toString());
+						}
+					});
+		
+					if($("#show_mode").attr("data-mode") != "2"){
+						$("#resources_section_body").sortable("disable");
+					}
+				}
+			});
+			
+			//ORDENACIÓN DE ENTREGAS
+			$("#submissions_list_view_"+element_id).sortable({
+				axis: "y",
+				cursor: "move",
+				revert: true,
+				placeholder: "sortable_placeholder",
+				handle: ".select_element_to_move",
+				connectWith: ".element_list_box",
+				cursorAt: {top: 80},
+				update: function(event, ui){
+					var data_ajax = {};
+					
+					if($(ui.item[0]).next().attr("data-position") == undefined){
+						data_ajax["position"] = $(ui.item[0]).prev().attr("data-position");
+					}else{
+						if($(ui.item[0]).attr("data-position") < $(ui.item[0]).next().attr("data-position")){
+							data_ajax["position"] = $(ui.item[0]).prev().attr("data-position");
+						}else{
+							data_ajax["position"] = $(ui.item[0]).next().attr("data-position");
+						}
+					}
+					
+					data_ajax["submission_id"] = $(ui.item[0]).attr("data-info").split(";")[1];
+					$.ajax({
+						url: window.location.href.split("?")[0]+"/sort/submissions",
+						type: "POST",
+						dataType: "json",
+						data: data_ajax
+					}).done(function(data){
+						var element;
+						for(i=0; i < data.length; i++){
+							element = $("[class='show_submission_in_lp element_list_box small-12 columns'][data-info='Submission;"+data[i].id.toString()+"']");
+							element.attr("data-position",data[i].position.toString());
+						}
+					});
+				}
+			});
+		});
+		
+	</script>

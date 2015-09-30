@@ -1,0 +1,248 @@
+<% unless record_cards.blank? %>
+<div class="record_card cards watermark_<%= case record_cards.type.downcase
+when "application", "device", "content", "event", "collaborator"
+	"resource" 
+else 
+	record_cards.type.downcase 
+end %> 
+">
+
+<% if !(defined?(popup)).nil?  %>
+	<%= render :partial => "layouts/html/navigation_record_card", :locals => {:record_cards => record_cards, :popup => popup, :use_element => (defined?(use_element) and use_element) ? true : false} %>
+<% end %>
+
+<% if !(defined?(content_board)).nil?  %>
+	<%= render :partial => "layouts/html/navigation_record_card", :locals => {:record_cards => record_cards,:board_creator => board_creator, :use_element => (defined?(use_element) and use_element) ? true : false} %>
+<% end %>
+
+<%
+=begin
+Cuando se trata de una record_card que está en un tablero pero que ya no está disponible para el usuario
+se necesitan unas clases a mayores
+=end
+%>
+	<% if record_cards.removed == true %>
+		<div class = "element_removed">
+	<% else %>
+		<% if (record_cards.private == true) && (((user_signed_in?) && (record_cards.creator_id != current_user.id)) || (!user_signed_in?)) %>
+			<div class = "element_private">
+		<% end %>
+	<% end %>
+	
+
+<%
+=begin
+El contenido propiamente dicho de la record_card
+=end
+%>
+	<% if (resource || ((record_cards.type.downcase != "lessonplan") && (record_cards.type != "ActivityTemplate") && (record_cards.type != "LessonPlanTemplate") && (record_cards.type.downcase != "template")&& (record_cards.type != "TechnicalSetting")&& (record_cards.type != "EducationalSetting"))) %>
+		
+		<%= link_to_with_condition((!defined?(popup) || popup == false), record_cards, eval(record_cards.type.downcase.to_s + "_path("+record_cards.id.to_s+")"), ) do%>
+						
+			<% if ((defined?(popup)) && (popup == true))%>
+				<div class="show_whole_view_popup with_back" value="<%=record_cards.type.downcase.pluralize%>" data-info="<%=record_cards.type%>;<%= record_cards.id.to_s%>">
+			<% end %>
+		
+			<div class="image_container">
+				<% if record_cards.image.url != "none" %>
+					<%= image_tag record_cards.image.url(:crop) %>
+				<% end %>
+			</div>
+			<div class="license_image_container">
+					<% if (record_cards.type.downcase == "content" || record_cards.type == "Activity" || record_cards.type == "LessonPlan") && record_cards.type != "TechnicalSetting" && record_cards.type != "EducationalSetting" && record_cards.type != "template" && record_cards.type != "ActivityTemplate" && record_cards.type != "LessonPlanTemplate"%>
+						<%= 
+							licenseimgurl = record_cards.license.license_mini_icon
+							image_tag(licenseimgurl,:data_value => record_cards.right_id)%>
+					<%end%>
+				</div>
+			<div class="title_container">
+				<span class="title"><%= record_cards.title %></span>
+			</div>
+			
+			<div class="description_container">
+				<%= unless record_cards.description.nil? then sanitize record_cards.description[0,500]+" ...", tags: %w(), attributes: %w() end %>
+			</div>
+			
+			<div class="keywords_container">
+				<div class="keywords_label">
+					<span>Keywords</span>
+				</div>
+				<% cont = 0
+				if record_cards.type == "Experience"
+					element = record_cards.lesson_plan
+				else
+					element = record_cards
+				end %>
+				<% unless element.keywords.blank? %>
+					<% element.keywords.each do |keyword|
+						cont = cont + 1 %>
+						<div id="keyword_<%= keyword.id%>"class="keyword_box"><p><%= keyword.keyword %></p></div>
+						<% if cont == 4 %>
+							<span>...</span>
+						<% break
+						end %>
+					<% end %>
+				<% end %>
+			</div>
+			
+			<% unless record_cards.updated_at.blank? %>
+				
+			<% end %>
+		
+			<% if ((defined?(popup)) && (popup == true))%>
+				</div>
+			<% end %>
+		<% end %>
+	
+	<% else %>
+		<% if (record_cards.type.downcase == "lessonplan") %>
+		 	<% path = "show_lesson_plan_path"%>
+		<% end %>
+		<%= link_to_with_condition((!defined?(popup) || popup == false), record_cards, eval(path + "(" +record_cards.id.to_s+")"), ) do %>
+				 					 
+		 	<% if ((defined?(popup)) && (popup == true))%>
+		 	
+		 		<% 	if (record_cards.type == "TechnicalSetting") 
+		 				value= "technical_settings" 
+		 			else
+		 				if (record_cards.type == "EducationalSetting") 
+		 					value= "educational_setting"
+		 				else
+		 					value = record_cards.type.downcase.pluralize
+		 				end
+		 			end
+		 		%>
+		 		<div class="show_whole_view_popup with_back" value="<%=record_cards.type.downcase.pluralize%>" data-info="<%=record_cards.type%>;<%= record_cards.id.to_s%>">
+			<% end %>
+						 
+			<div class="image_container">
+				<% if record_cards.image.url != "none" %>
+					<%= image_tag record_cards.image.url(:crop) %>
+				
+				<% end %>
+			</div>
+			
+			<div class="license_image_container">
+				<% if record_cards.type.downcase == "lessonplan" %>
+					<%= 
+						licenseimgurl = record_cards.license.license_mini_icon
+						image_tag(licenseimgurl,:data_value => record_cards.right_id)%>
+				<%end%>
+			</div>
+					
+			<div class="title_container">
+				<% if (record_cards.type == "ActivityTemplate" and record_cards.id == current_user.profile.activity_default) or  (record_cards.type == "LessonPlanTemplate" and record_cards.id == current_user.profile.lesson_plan_default) %>
+					<span class="title"><b><%= t("Default_template")+": "%></b></br><%= record_cards.title %></span>
+				<% else %>
+					<span class="title"><%= record_cards.title %></span>
+				<% end %>
+			</div>
+			
+			<div class="description_container">
+				<%= unless record_cards.description.nil? then sanitize record_cards.description[0,500]+" ...", tags: %w(), attributes: %w() end %>
+			</div>
+			
+			<div class="keywords_container">
+				<div class="keywords_label">
+					<span>Keywords</span>
+				</div>
+				<% unless record_cards.keywords.blank? %>
+					<% cont = 0 
+					 record_cards.keywords.each do |keyword|
+						cont = cont + 1 %>
+						<div id="keyword_<%= keyword.id%>"class="keyword_box"><p><%= keyword.keyword %></p></div>
+						<% if cont == 4 %>
+							<span>...</span>
+						<% break
+						end %>
+					<% end %>
+				<% end %>
+			</div>
+			
+			<% unless record_cards.updated_at.blank? %>
+				
+			<% end %>
+			
+			<% if ((defined?(popup)) && (popup == true))%>
+				</div>
+			<% end %>	
+		<% end %>
+	<% end %>
+		
+	
+	
+	<% if record_cards.removed == true %>
+		</div>
+		<p1><%= t("Removed_Content")%></p1>
+	<% else %>
+		<% if (record_cards.private == true) && (((user_signed_in?) && (record_cards.creator_id != current_user.id)) || (!user_signed_in?)) %>
+			</div>
+			<p1><%= t("Private")%></p1>
+		<% else %>
+			<div class="bottom_bar">
+				
+				<%= link_to user_path(record_cards.creator_id), :class => "a-left" do%>
+					<%= image_tag(record_cards.user.profile.avatar.url(:thumb)) %>
+					<span class="user_name"><%= record_cards.user.profile.first_name + " " + record_cards.user.profile.last_name %></span>
+				<% end %>
+				
+				
+				
+				<div class="abstract_container">
+						<% if record_cards.abstract %>
+							<span class="abstract_icon <%= "board" if (record_cards.type == "Board")%>"></span>
+						<% else %>
+							<span class="abstract_icon public <%= "board" if (record_cards.type == "Board")%>"></span>
+						<% end %>
+				</div>
+				
+				<div class="private_container">
+					<% if record_cards.private %>
+						<span class="private_icon"></span>
+					<% else %>
+						<span class="private_icon public"></span>
+					<% end %>
+				</div>
+								
+								
+				<div class="clear"></div>
+				
+				<div class= "record_card_icons">
+					
+					<span class="right icon comment_icon" data-info="<%= record_cards.type.downcase.pluralize %>;<%= record_cards.id %>">
+						<% if record_cards.comments.count != 0 %>
+							<span class="social_counter comments_counter" value="<%= record_cards.comments.count %>">
+								<%= record_cards.comments.count %>
+							</span>
+						<% end %>
+					</span>
+					
+					<span class="right icon quality_icon" data-info="<%= record_cards.type.downcase.pluralize %>;<%= record_cards.id %>">
+						<span class="social_counter quality_counter" value="<%= record_cards.relevance %>">
+							<%= (100*record_cards.relevance).round(0) %>%
+						</span>
+					</span>
+				</div>
+				
+			</div>
+		<% end %>
+	<% end %>
+
+<%
+=begin
+Cuando se trata de una record_card que está en un tablero pero que ya no está disponible para el usuario
+se necesitan unas clases a mayores
+=end
+%>
+	<% if record_cards.removed == true %>
+		<div class = "element_removed">
+	<% else %>
+		<% if (record_cards.private == true) && (((user_signed_in?) && (record_cards.creator_id != current_user.id)) || (!user_signed_in?)) %>
+			<div class = "element_private">
+		<% end %>
+	<% end %>
+	
+
+</div>
+<div class="clear"></div>
+<% end %>

@@ -1,0 +1,14 @@
+<% case setting
+when "technical_setting"%>
+	<div class="technical_setting">
+		<%= form_for(element.technical_setting.blank? ? element : element.technical_setting, :html => {:method => "patch", :data_box => false}) do |f|%>
+			<%= render :partial => "settings/html/settings_layout", :object => element.technical_setting, :locals => {:setting => "technical", :parent => element, :f => f, :created => created} %>
+		<% end %>
+	</div>
+<% when "educational_setting"%>
+	<div class="educational_setting">
+		<%= form_for(element.educational_setting.blank? ? element : element.educational_setting, :html => {:data_box => false, :method => "patch"}) do |f|%>
+			<%= render :partial => "settings/html/settings_layout", :object => element.educational_setting, :locals => {:setting => "educational",:parent => element, :f => f, :created => created} %>
+		<% end %>
+	</div>
+<% end %>

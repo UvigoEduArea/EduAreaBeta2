@@ -1,0 +1,23 @@
+<div class= "title">
+	<%= f.text_field :title, :class => "updateable focusable", :disabled => created ? false:true, :placeholder => t("title") %>
+</div>
+	
+<div class="description_and_image">
+	<% if settings_header.image.url() != "none" %>	
+		
+		<div class="">
+		<%= image_tag settings_header.image.url(),:crop => :scale, :width => 300, :class => "image_preview" %>
+	<% else %>
+		<div style="<%= "display:none" if !created %>" class="">
+		<img class="image_preview" width="300px"/>
+	<% end %>
+		<%= button_tag t('Remove_Image'), {:id => "remove_image_setting", :type => "button", :disabled => created ? false:true, :class => created ? "":"invisible"}  %>
+		<%= f.file_field :image, :class => created ? "image_updateable":"image_updateable invisible"%> 
+		</div>
+	
+	<div class="inline description">
+		<%= f.label :description, t("Description") %>
+		<%= f.text_area :description, size: "100x6", :class => "updateable focusable", :disabled => created ? false:true, :placeholder => t("Description") %> 
+	</div>
+	<div class="clear"></div>
+</div>

@@ -1,0 +1,32 @@
+<%= render :partial => "application/html/navigation", :locals => {:page => "info_page"} %>
+
+<div id="content_container" class="content_index">
+	<div class= "information">
+		<span><%= t("Assign_License")%></span>	
+		</br></br>
+		<p><%= t("Assign_License_1")%></p>
+		</br>
+		<p><%= t("Assign_License_1a")%></p>
+		</br>
+		<div class = "video_tutorial">
+			<iframe class = "video" width="360" height="315" src="https://www.youtube.com/embed/071aOrs28VA" frameborder="0" allowfullscreen></iframe>
+		</div>
+		</br></br>
+		<p><%= t("Assign_License_2")%></p>
+		</br></br>
+		<div class = "table_assign">
+			<% case I18n.locale %>
+	      		<% when :es %>
+	      			<img class: "icon_table_assign" src="/images/assign_license_es.png" style="float: left;"></img>
+	      		<% when :en %>
+	      			<img class: "icon_table_assign" src="/images/assign_license_en.png" style="float: left;"></img>
+	      		<% when :gl %>
+	      			<img class: "icon_table_assign" src="/images/assign_license_gl.png" style="float: left;"></img>
+	      		<% when :pt %>
+	      			<img class: "icon_table_assign" src="/images/assign_license_gl.png" style="float: left;"></img>
+	      	<% end %>
+	    </div>
+		</br>
+		<p style="clear: both;"><%= t("Assign_License_3")%><%= t("Assign_License_4")%><%= t("Assign_License_5")%></p>
+	</div>
+</div> <!-- CONTENT -->

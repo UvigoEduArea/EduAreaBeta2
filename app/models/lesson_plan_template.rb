@@ -1,0 +1,3 @@
+class LessonPlanTemplate < Template
+  
+end

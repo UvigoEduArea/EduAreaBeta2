@@ -1,0 +1,360 @@
+/***************************/
+/* CSS de la ficha general */
+/***************************/
+/*.watermark_activity{
+	background: url("/images/watermarks/activity_watermark_c.png") top right no-repeat;
+}
+
+.watermark_resource{
+	background: url("/images/watermarks/resource_watermark_c.png") top right no-repeat;
+}
+
+.watermark_lesson_plan{
+	background: url("/images/watermarks/activity_watermark_c.png") top right no-repeat;
+}*/
+.record_card{
+	background-color: #F1F4FD;
+	min-width: 238px;
+	max-width:330px;
+	margin-left:20px;
+	margin-top:20px;
+	float:left;
+	/*padding:5px;*/
+	text-align:justify;
+	
+}
+.record_card .title_container,
+.record_card .title_container a{
+    font-family: 'ralewayregular';
+    font-size: 1.5em !important;
+    padding:5px;
+    color:black;
+}
+.record_card .description_container,
+.record_card .description_container a{
+    font-family: 'ralewaylight';
+    font-size: 0.875em !important;
+    padding:5px;
+    color:black;
+    line-height:125%;
+}
+.record_card .keywords_container,
+.record_card .keywords_container a{
+    font-family: 'ralewaymedium';
+    font-size: 0.813em !important;
+    padding:5px;
+    color:black;
+}
+.record_card .keywords_container .keyword_box{
+	background-color:#e2ecf5;
+	font-family: 'ralewayregular';
+    font-size: 0.875em !important;
+}
+.record_card .license_image_container{
+	
+	height:15px;
+}
+.record_card div.license_image_container img
+{
+	float:right;	
+}
+.record_card div.image_container img
+{
+	margin-bottom:-3px;
+	width:100%;
+}
+.record_card .bottom_bar{
+	height: 45px;
+}
+.record_card .bottom_bar a {
+	height: 30px;
+	width: 55%;
+	margin-left: 3px;
+	margin-top: 7.5px;
+	overflow:hidden;
+}
+
+.record_card .bottom_bar img{
+	vertical-align: top;
+	
+}
+@media only screen and (min-width: 60.000em) /* >= 960px */
+{
+	.record_card{
+		min-width:318px;
+		max-width:400px;
+	}
+}
+@media only screen and (min-width: 64.000em) /* >= 1024px */
+{
+	.record_card{
+		min-width:350px;
+		max-width:430px;
+	}
+}
+@media only screen and (min-width: 80.000em) /* >= 1280px */
+{
+	.record_card{
+		min-width:478px;
+		max-width:550px;
+	}
+}
+@media only screen and (min-width: 90.000em) /* >= 1440px */
+{
+	.record_card{
+		min-width:365px;
+		max-width:420px;
+	}
+}
+@media only screen and (min-width: 105.000em) /* >= 1680px */
+{
+	.record_card{
+		min-width:419px;
+		max-width:485px;
+	}
+}
+@media only screen and (min-width: 120.000em) /* >= 1920px */
+{
+	.record_card{
+		min-width:320px;
+		max-width:400px;
+	}
+}
+/*************************************************************************/
+/* CSS para los iconos comentarios, compartir y social de la record_card */
+/*************************************************************************/
+.comment_icon{
+	background-image: url("/images/icons/slicedsprites/comment_0.png");
+	background-repeat:no-repeat;
+	
+}
+
+.share_icon{
+	background-image: url("/images/icons/slicedsprites/share_0.png");
+	background-repeat:no-repeat;
+}
+
+.social_icon{
+	background-image: url("/images/icons/slicedsprites/social_0.png");
+	background-repeat:no-repeat;
+	width: 40px !important;
+}
+
+.view_icon{
+	background-image: url("/images/icons/slicedsprites/view_0.png");
+	background-repeat:no-repeat;
+}
+
+.quality_icon{
+	background-image: url("/images/icons/slicedsprites/quality_0.png");
+	background-repeat:no-repeat;
+	width: 60px !important;
+}
+
+.copy_icon{
+	background-image: url("/images/icons/slicedsprites/copy_0.png");
+	background-repeat:no-repeat;
+}
+
+.record_card .record_card_icons{
+	float: right;
+	padding-top: 2px;
+	padding-bottom: 2px;
+}
+
+.record_card .bottom_bar span.icon{
+	height: 30px;
+	width: 30px;
+	margin-top: 7.5px;
+	margin-right: 20px;
+	cursor: pointer;
+}
+/*
+.record_card:hover{
+	background-color: #E9E2E2;
+}
+
+.record_card{
+	background-color: #F2F2F2;
+	padding: 3px;
+	width: 24%;
+	margin: 2px;
+	border-radius: 15px;
+}
+
+
+.record_card a{
+	color:black;
+}
+
+.record_card .description_container{
+	height: 50px;
+	overflow: hidden;
+	margin-bottom: 3px;
+	min-height: 50px;
+}
+
+.record_card .title_container{
+	font-size: 20px;
+	font-weight: bold;
+	text-align:center;
+	min-height: 30px;
+	max-height: 30px;
+	overflow: hidden;
+}
+
+.record_card .keywords_container span{
+	font-weight: bold;
+}
+
+.record_card .private_icon{
+	background-image: url("/images/icons/Black/lock2.svg");
+	background-position: center center;
+	display: inline-block;
+	width: 19px;
+	height: 19px;
+	background-repeat: no-repeat;
+	background-size: 19px 19px;
+}
+
+.record_card .private_icon.public{
+	background-image: url("/images/icons/Black/unlocked.svg");
+}
+
+.record_card .abstract_icon{
+	background-image: url("/images/icons/Black/checkbox-unchecked.svg");
+	background-position: center center;
+	display: inline-block;
+	width: 19px;
+	height: 19px;
+	background-repeat: no-repeat;
+	background-size: 19px 19px;
+}
+
+.record_card .abstract_icon.public{
+	background-image: url("/images/icons/Black/checkbox-partial.svg");
+}
+
+.record_card .abstract_icon.board, .record_card .abstract_icon.public.board {
+	background-image: none;
+} 
+
+.record_card .abstract_container{
+	float: right;
+	margin-right: 30px;
+	margin-top: 12px;
+}
+
+.record_card .private_container{
+	float:right;
+	right: 8px;
+	position: absolute;
+	margin-top: 12px;
+}
+
+
+.record_card .license_image_container{
+	float: right;
+	right: 56px;
+	position: absolute;
+	margin-top: 7px;
+	
+}
+
+.license_image_container img{
+	width: 80px;
+	height: 30px;
+}
+
+
+.record_card .image_container{
+	text-align: center;
+	padding-top: 8px; 
+	height:250px;
+	overflow: hidden;
+	position:relative;
+	margin: 0 auto;
+}
+
+.record_card .image_container img{
+	width: 92%;
+}
+/***************************************/
+/* CSS de la caja inferior de la ficha */
+/***************************************/
+/*
+
+.record_card .bottom_bar a {
+	height: 30px;
+	width: 55%;
+	margin-left: 3px;
+	margin-top: 7.5px;
+	overflow:hidden;
+}
+
+.record_card .bottom_bar img{
+	vertical-align: middle;
+	
+}
+
+.record_card .bottom_bar .user_name{
+	color: black;	
+}*/
+
+
+/*******************************************************************/
+/* CSS para los iconos de la parte superior de las record cards    */
+/*******************************************************************/
+/*.navigation_record_card{
+	height: 35px;
+}*/
+
+/*.record_card .selection_button{
+	position: absolute;
+	cursor: pointer;
+	right: 3px;
+	display: inherit;
+	width: 28px;
+}*/
+/*
+.element_private, .element_removed{
+	opacity: 0.3;
+}
+
+.record_card p1{
+	color:red;
+	font-size: 24px;
+	text-align: center;
+	cursor: default;
+}
+*/
+/*.delete_from_board .selection_button{
+	right: 40px;
+}*/
+/*
+.action_icon_record_card{
+	width: 35px;
+	position: relative;
+	float: right;
+	cursor: pointer;
+}
+
+
+ul.dropdown_record_card{
+	position: absolute;
+	list-style: none;
+	width: 240px;
+	text-align: center;
+	right: 0%;
+	border-radius: 20px 20px 20px 20px;
+	background: #808080;
+	z-index: 1;
+	color: white;
+}
+
+ul.dropdown_record_card li{
+	height: 25px;
+	margin-top: 10px;
+}
+
+*/

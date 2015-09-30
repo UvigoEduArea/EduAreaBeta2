@@ -1,0 +1,230 @@
+/*****************************************************************************
+****************CSS PARA LA SECCIÓN EN LA QUE VA EL TEMPLATE*****************
+*****************************************************************************/
+#activities_title{
+	color: white;
+	font-size: 20px;
+	top: 25px;
+	margin-right: 10px;
+	position: relative;
+}
+
+.subcategorie_icon{
+	position: relative;
+	top: 5px;
+	height: 24px;
+	left: 2px;
+	margin-right: 5px;
+	cursor: pointer;
+}
+
+
+.activity_container{
+	border: 1px solid black;
+	margin: 1% 5% 2% 5%;
+	background-color: white;
+	position: relative;
+}
+
+form.edit_activity{
+	padding: 0.1% 1% 1% 1%;
+	height: auto;
+}
+
+form.edit_activity .title{
+	margin-top: 1%;
+}
+
+.content_icon{
+	margin: 0.2%;
+	cursor: pointer;
+}
+
+form.half-open.edit_activity{
+	height: 210px;
+	overflow: hidden;
+}
+
+#activities div.settings{
+	height: auto;
+}
+
+#activities .settings.half-open{
+	height: 0;
+	overflow: hidden;
+}
+/*
+#content_container.content_show.with_bar{
+	width: 94%;
+	margin-left: 6.1%;
+}
+
+#bar{
+	position: fixed;
+	height: 100%;
+	width: 3%;
+	left: 3.1%;
+	top: 75px;
+	z-index: 1;
+	background-color: #1F3A4D;
+}
+
+#bar.experience{
+	background-color: #4682B4;
+}
+
+#bar.lesson_plans{
+	background-color: #1887E3;
+}
+
+#numbers_activities{
+	width: 100%;
+	height: 100%;
+	position: relative;
+}
+
+.number_container{
+	width: 100%;
+	position: relative;
+	text-align: center;
+	padding: 5px 0;
+	overflow: hidden;
+	height: 29px;
+}
+*/
+/*
+.activities_bar_header{
+	height:44px;
+	position: fixed;
+	top:210px;
+	width: 80%;
+	z-index: 1;
+	background-color: #284357;
+}
+
+#activities_bar{
+	height: 36px;
+	background-color: #1887E3;
+	width: 99%;
+	position: absolute;
+	right: 0.5%;
+	top: 4px;
+	border-radius: 5px 5px 5px 5px;
+}
+
+#title_activities_bar, .item_activity_bar, #numbers_activities{
+	color: white;
+	padding: 8px;
+	font-size: 18px;
+}
+
+#numbers_activities{
+	overflow: auto;
+	overflow-x: hidden;
+	height: 26px;
+	width: 90%
+	position: absolute;
+}
+*/
+.activity_number{
+	width: 6%;
+	text-align: center;
+	cursor: default;
+	position: absolute;
+	left: -85px;
+	top: -25px;
+}
+
+.activity_number a, #content_container.content_show.with_bar a[name*='init_page']{
+	padding-top: 270px;
+	position: relative;
+	z-index: -1;
+}
+
+span[name*='activity_name']{
+	color: #1887E3;
+	font-size: 14px;
+	font-weight: bold;
+}
+
+.activities_table_view{
+	background-color: white;
+}
+
+.activities_table_view, .activities_table_view table{
+	width: 100%;
+} 
+
+.activities_table_view form{
+	padding: 0;
+}
+
+.activities_table_view td{
+	border: 1px solid;
+	min-width: 20px;
+	padding: 3px;
+	width: 1%;
+}
+
+.activities_table_view td{
+	width: 20%;
+}
+
+.activities_table_view td.table_title, .activities_table_view td.table_header_title{
+	width: 10%;
+}
+
+.activities_table_view .table_description, .activities_table_view td.table_header_description{
+	width: 30%;
+}
+
+.activities_table_view .box_container{
+	width: 100%;
+}
+
+.activities_table_view .box_item_value_updateable, .activities_table_view .box_item_value_no_updateable{
+	max-width: 80%;
+}
+
+.previous_element, .next_element{
+	background-color: #E1EFFA;
+	width:18px;
+	position: absolute;
+}
+
+.previous_element{
+	left: 0;
+}
+
+.next_element{
+	right: 0;
+}
+
+.left-arrow, .right-arrow{
+	height: 0;
+	width: 0;
+	border-top: 30px solid transparent;
+	border-bottom: 30px solid transparent;
+}
+
+.left-arrow{
+	border-left: 20px solid #0f0f0f;
+}
+
+.right-arrow{
+	border-right: 20px solid #0f0f0f;
+}
+
+.activities_mini_view{
+	padding: 1% 2%;
+}
+
+/* Sortable jquery ui */
+.sortable_placeholder{
+	border: solid 1px red;
+	background-color: #DDDDDD;
+}
+
+.show_element_in_lp .jqte{
+	max-height: 120px;
+}

@@ -1,0 +1,36 @@
+<div style="text-align: center">
+	<div class='image_bottons_top'>
+		<h2><%= t("upload_google_drive")%></h2>
+		</br>
+		<a id="up_experience" value="experiences" class="abre_popup boton teacher" data-info="Experience;0" data-no-turbolink="true">
+			<%= image_tag("/images/icons/Botones/Negro/cloud_up.png", :class => "action_icon", :value => "up_experience_pdf") %>
+			<span style="display: block;"><%= t("PDF_Teacher")%></span>
+		</a>
+		<a id="up_experience" value="experiences" class="abre_popup boton student" data-info="Experience;0" data-no-turbolink="true">
+			<%= image_tag("/images/icons/Botones/Negro/cloud_up.png", :class => "action_icon", :value => "up_experience_pdf") %>
+			<span style="display: block;"><%= t("PDF_Student")%></span>
+		</a>
+		<a id="up_evidences" value="experiences" class="abre_popup boton" data-info="Experience;0" data-no-turbolink="true">
+			<%= image_tag("/images/icons/Botones/Negro/cloud_up.png", :class => "action_icon", :value => "up_evidences_pre") %>
+			<span style="display: block;"><%= t("evidences")%></span>
+		</a>
+	</div>	
+	</br>
+	</br>
+	<div class='image_bottons_top'>
+		<h2><%= t("download_pc")%></h2>
+		</br>
+		<a id="download_pdf" value="experiences" class="abre_popup boton teacher" data-info="Experience;0" data-no-turbolink="true">
+			<%= image_tag("/images/icons/Botones/Negro/cloud_down.png", :class => "action_icon", :value => "download_pdf") %>
+			<span style="display: block;"><%= t("PDF_Teacher")%></span>
+		</a>
+		<a id="download_pdf" value="experiences" class="abre_popup boton student" data-info="Experience;0" data-no-turbolink="true">
+			<%= image_tag("/images/icons/Botones/Negro/cloud_down.png", :class => "action_icon", :value => "download_pdf") %>
+			<span style="display: block;"><%= t("PDF_Student")%></span>
+		</a>
+		<a id="download_evidences_pre" value="experiences" class="abre_popup boton" data-info="Experience;0" data-no-turbolink="true">
+			<%= image_tag("/images/icons/Botones/Negro/cloud_down.png", :class => "action_icon", :value => "download_evidences_pre") %>
+			<span style="display: block;"><%= t("evidences")%></span>
+		</a>
+	</div>
+</div>

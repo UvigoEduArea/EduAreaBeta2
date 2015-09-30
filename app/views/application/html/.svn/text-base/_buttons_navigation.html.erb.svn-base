@@ -1,0 +1,187 @@
+<% case type_button %>
+	<% when "show_text" %>
+		<a class="action_icon_container show_hide_text ocultar invisible" >
+			<%= image_tag("/images/icons/Botones/Negro/collapse.png") %>
+			<span class="ocultar invisible"><%= t("Hide_text")%></span>
+		</a>
+		<a class="action_icon_container show_hide_text mostrar">
+			<%= image_tag("/images/icons/Botones/Negro/expand.png") %>
+		</a>
+	
+	<% when "back" %>
+		<% if (params[:controller] == "home" or params[:controller] == "profile" or params[:controller] == "info_pages") %>
+			<%=link_to url_for(:back), :class => "action_icon_container action_icon" do %>
+				<%= image_tag("/images/icons/Botones/Negro/back.png", size:"28x28") %>
+				<span class="ocultar invisible"><%= t("Back")%></span>
+			<% end %>
+		<% else %>
+			<% if params[:action] == "index" %>
+				<%=link_to home_path, :class => "action_icon_container action_icon" do %>
+					<%= image_tag("/images/icons/Botones/Negro/back.png", size:"28x28") %>
+					<span class="ocultar invisible"><%= t("Back")%></span>
+				<% end %>
+			<% else %>
+				<% if url_for(:back).split("/")[4] != params[:controller] %>
+					<%=link_to url_for(:back), :class => "action_icon_container action_icon" do %>
+						<%= image_tag("/images/icons/Botones/Negro/back.png", size:"28x28") %>
+						<span class="ocultar invisible"><%= t("Back")%></span>
+					<% end %>
+				<% else %>
+					<%=link_to eval(params[:controller]+"_path"), :class => "action_icon_container action_icon" do %>
+						<%= image_tag("/images/icons/Botones/Negro/back.png", size:"28x28") %>
+						<span class="ocultar invisible"><%= t("Back")%></span>
+					<% end %>
+				<% end %>
+			<% end %>
+		<% end %>
+	
+	<% when "edit_show" %>
+		<a id="active_edition" class="action_icon_container <%= if editing then "invisible" end %>">
+			<%= image_tag("/images/icons/Botones/Negro/edit.png", :class => "action_icon") %>
+			<span class="invisible"><%= t("Edit") %></span>
+		</a>	
+		<a id="disable_edition" class="action_icon_container <%= unless editing then "invisible" end %>">
+			<%= image_tag("/images/icons/Botones/Negro/view.png", :class => "action_icon") %>
+			<span class="invisible"><%= t("Show") %></span>
+		</a>
+		
+	<% when "remove" %>
+		<%=link_to url_for({:action =>'destroy', :id => @element.id, :controller => params[:controller]}), :method => 'delete' , :data => {:confirm => @element.type == "LessonPlan" ? t('Are_you_sure_delete_element_LP') : t('Are_you_sure_delete_element')}, :class => "action_icon_container"  do %>
+			<%= image_tag("/images/icons/Botones/Negro/bin.png", :class => "action_icon") %>
+			<span class="invisible"><%= t("Delete") %></span>
+		<% end %>
+		
+	<% when "copy" %>
+		<% if @element.type == "LessonPlan" %>
+			<%=link_to url_for({:action =>'duplicate', :id => @element.id, :controller => params[:controller]}),:method => 'post', :data => {:confirm => t('Are_you_sure_clone_lesson_plan')}, :class => "action_icon_container"  do %>
+				<%= image_tag("/images/icons/Botones/Negro/clone.png", :class => "action_icon") %>
+				<span class="invisible"><%= t("Clone") %></span>
+			<% end %>
+		<% else %>
+			<%=link_to url_for({:action =>'duplicate', :id => @element.id, :controller => params[:controller]}),:method => 'post', :class => "action_icon_container"  do %>
+				<%= image_tag("/images/icons/Botones/Negro/clone.png", :class => "action_icon") %>
+				<span class="invisible"><%= t("Clone") %></span>
+			<% end %>
+		<% end %>
+		
+	<% when "pin_it" %>
+		<a class="action_icon_container abre_popup" data-info="<%= @element.type+";"+@element.id.to_s %>" value="boards">
+			<%= image_tag("/images/icons/Botones/Negro/pinit.png", :class => "action_icon") %>
+			<span class="invisible"><%= t("Pin_it") %></span>
+		</a>
+			
+	<% when "add_to" %>
+		<% case params[:controller] %>
+			<% when "contents", "devices", "collaborators", "events", "applications" %>
+				<a class="action_icon_container">
+					<%= image_tag("/images/icons/Botones/Negro/use.png",  :class => "action_icon", :id => "where_resources_dropdown" )%>
+					<span class="ocultar invisible"><%= t("Use_it")%></span>
+					<ul class="dropdown resources_where" style="display:none;">
+						<li class= "abre_popup add_resource_button" value= "activities" data-info="<%= @element.type+";"+@element.id.to_s %>" >
+							<p><%= t("activities")%></p>
+						</li>
+						<li class= "abre_popup add_resource_button" value= "lesson_plans" data-info="<%= @element.type+";"+@element.id.to_s %>" >
+							<p><%= t("lesson_plans")%></p>
+						</li>
+						<li class= "abre_popup add_resource_button" value= "experiences" data-info="<%= @element.type+";"+@element.id.to_s %>" >
+							<p><%= t("experiences")%></p>
+						</li>
+					</ul>
+				</a>
+			
+			<% when "activities" %>
+				<!--a class="action_icon_container abre_popup add_activity_button" data-info="<%= @element.type+";"+@element.id.to_s %>" value="lesson_plans">
+					<%= image_tag("/images/icons/Botones/Negro/use.png",  :class => "action_icon") %>
+					<span class="ocultar invisible"><%= t("Use_it")%></span>
+				</a-->
+				
+				<a class="action_icon_container">
+					<%= image_tag("/images/icons/Botones/Negro/use.png",  :class => "action_icon", :id => "where_activities_dropdown" )%>
+					<span class="ocultar invisible"><%= t("Use_it")%></span>
+					<ul class="dropdown activities_where" style="display:none;">
+						<li class= "abre_popup add_activity_button" value= "lesson_plans" data-info="<%= @element.type+";"+@element.id.to_s %>" >
+							<p><%= t("lesson_plans")%></p>
+						</li>
+						<li class= "abre_popup add_activity_button" value= "experiences" data-info="<%= @element.type+";"+@element.id.to_s %>" >
+							<p><%= t("experiences")%></p>
+						</li>
+					</ul>
+				</a>
+				
+		<% end %>
+		
+	<% when "filter" %>
+		<a id="button_filter" class="action_icon_container show_filter_menu"><%= image_tag("/images/lupa_negra.png") %><span class="ocultar invisible"><%= t("Search")%></span></a>
+	
+	<% when "new" %>
+		<%if params[:controller] == "activities" || params[:controller] == "lesson_plans" || params[:controller] == "experiences"%>
+			<a class="action_icon_container">
+			<%= image_tag("/images/icons/Botones/Negro/new.png",:class=>"abre_popup action_icon", :value=>"activity_templates") if params[:controller] == "activities"%>
+			<%= image_tag("/images/icons/Botones/Negro/new.png",:class=>"abre_popup action_icon", :value=>"lesson_plan_templates") if params[:controller] == "lesson_plans"%>
+			<%= image_tag("/images/icons/Botones/Negro/add.png",:class=>"abre_popup action_icon", :value=>"lesson_plans", :"data-info" => "Experience;0") if params[:controller] == "experiences"%>
+			<span class="ocultar invisible"><%= t("Add")%></span>
+			</a>
+		<% else %>
+			<% if params[:controller] == "templates" %>
+				<a class= "action_icon_container">
+					<%= image_tag("/images/icons/Botones/Negro/add.png", :class => "action_icon")%>
+				</a>
+				<ul class="dropdown templates" style="display: none;">
+					<li><%= link_to t("ActivityTemplate"), create_activity_template_path, :method => "post" %></li>
+					<li><%= link_to t("LessonPlanTemplate"), create_lesson_plan_template_path, :method => "post" %></li>
+				</ul>
+				
+			<% else %>
+				<%= link_to eval("create_"+params[:controller].singularize+"_path"), :method => "post", :class => "action_icon_container" do%>
+					<%= image_tag("/images/icons/Botones/Negro/new.png", :class=>"action_icon")%>
+					<span class="ocultar invisible"><%= t("Add")%></span>		
+				<% end %>
+			<% end %>
+		<% end %>
+	
+	<% when "new_from_zero" %>
+		<%= link_to eval("create_"+params[:controller].singularize+"_path"), :method => "post", :class => "action_icon_container" do%>
+			<%= image_tag("/images/icons/Botones/Negro/new.png", :class=>"action_icon")%>
+			<span class="ocultar invisible"><%= t("Add")%></span>		
+		<% end %>
+			
+	<% when "documentation_mode" %>
+		<a id="active_documentation" class="action_icon_container document_mode">
+			<%= image_tag("/images/icons/Black/tab.svg", :class => "action_icon") %>
+			<span class="invisible"><%= t("Document_mode") %></span>
+		</a>
+		<a id="disable_documentation" class="action_icon_container invisible document_mode">
+			<%= image_tag("/images/icons/Black/tab.svg" , :class => "action_icon") %>
+			<span class="invisible"><%= t("Exit_document_mode") %></span>
+		</a>
+	
+	<% when "share" %>
+		<a id="share_experience" class="action_icon_container">
+			<%= image_tag("/images/icons/Botones/Negro/share.png") %>
+			<span class="ocultar invisible"><%= t("Share")%></span>
+		</a>
+		
+	<% when "get_code" %>
+		<a id="get_code_experience" class="action_icon_container">
+			<%= image_tag("/images/icons/users.svg") %>
+			<span class="ocultar invisible"><%= t("Students")%></span>
+		</a>
+		
+	<% when "use_code" %>
+		<a id="use_code_experience" class="action_icon_container">
+			<%= image_tag("/images/icons/user-plus.svg") %>
+			<span class="ocultar invisible"><%= t("Code")%></span>
+		</a>
+		<ul class="dropdown code_experience" style="display:none;">
+			<%= t("Code") %>
+			<%= image_tag("/images/icons/Botones/Blanco/close.png", :class =>"close_insert_code_experience") %>
+			<%= text_field_tag :enter_code, params[:enter_code], placeholder: ('Introduce el código') %>
+		</ul>
+	<% when "cloud" %>
+		<a id="export" class="action_icon_container abre_popup" value="experiences" data-info="Experience;0">
+			<%= image_tag("/images/icons/Botones/Negro/cloud_up_down.png", :class => "action_icon", :value => "export", :data_id => @element.id) %>
+			<span class="invisible" style="font-size: 14px;"><%= t("Export") %></span>
+		</a>
+	<% when "download_observations" %>
+		<a></a>
+<% end %>

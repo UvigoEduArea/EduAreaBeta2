@@ -1,0 +1,16 @@
+<%
+=begin
+		############################################
+		# RENDERIZAMOS LAS PESTAÑAS Y LAS ACCIONES #
+		############################################
+=end
+%>
+
+<%= render :partial => "application/html/navigation", :locals => {:page => "templates"} %>
+
+<div id="content_container" class="content">
+	<% unless @elements.blank? %>	
+		<%= paginate @elements%>
+		<%= render :partial => "layouts/html/record_cards", :collection => @elements, :locals => {:path => "show_template_path", :resource => false} %>
+	<% end %>
+</div>

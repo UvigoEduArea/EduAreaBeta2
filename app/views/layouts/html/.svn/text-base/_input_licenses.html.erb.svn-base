@@ -1,0 +1,2 @@
+<input type="hidden" class="vector_licenses" value="<%= vector_licenses %>" data-commercial="<%=element.license.commercial%>" data-derivative="<%=element.license.derivative%>" data-condition="<%=element.license.license_condition%>">
+<input type="hidden" class="prev_vector_licenses" value="<%= vector_licenses %>">

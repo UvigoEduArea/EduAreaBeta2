@@ -1,0 +1,36 @@
+<%
+=begin
+		############################################
+		# RENDERIZAMOS LAS PESTAÑAS Y LAS ACCIONES #
+		############################################
+=end
+%>
+<% unless defined?(contents) && contents %>
+	<%= render :partial => "application/html/navigation", :locals => {:page => "resources"} %>
+<% end %>
+
+<%
+=begin
+		#################################
+		# RENDERIZAMOS EL EVENTO PEDIDO #
+		#################################
+=end
+%>
+<%= render :partial => "resources/html/form",:object => @element , :locals => {:created => created, :contents => (defined?(contents) && contents) ? true : false} %>
+
+<!--Meta-tags para los recursos de tipo events que sean públicos-->
+<% if @element.private == false %>
+	<%
+	meta	title: @element.title,
+			date: @element.created_at,
+			author: @element.user.profile.first_name+' '+@element.user.profile.last_name
+	%>
+	<% if @element.keywords != nil%> 
+		<% keywords = ""
+		 @element.keywords.each do |keyword|
+			keywords = keyword.keyword + ',' + keywords 
+		end
+		%>
+		<%	meta	keywords: keywords[-keywords.length..-2] %>
+	<% end %>
+<%end%>

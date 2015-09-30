@@ -1,0 +1,44 @@
+<%= render :partial => "application/html/navigation", :locals => {:page => "info_page"} %>
+
+<div id="content_container" class="content_index">
+	<div class= "information">
+		<span><%= t("During")%></span><br><br>
+		<p><%= t("During_P1") %></p>
+		</br></br>
+		<p><%= t("During_P2")%></p>
+		</br>
+		
+		<div class="content_circle">
+			<div class= "circle">
+				<p1><%= t("During_P2_1")%></p1>
+			</div>
+				<ul1>
+					<li><%= t("During_I1_1") %></li>
+					<li><%= t("During_I1_2") %></li>
+				</ul1>
+		</div>
+			
+		<div class= "content_circle">
+			<div class= "circle">
+				<p1><%= t("During_P2_2")%></p1>
+			</div>
+				<ul1>
+					<li><%= t("During_I2_1") %></li>
+					<li><%= t("During_I2_2") %></li>
+					<li><%= t("During_I2_3") %></li></br>
+				</ul1>
+		</div>	
+		
+		<div class= "content_circle">
+			<div class= "circle">
+				<p1><%= t("During_P2_3")%></p1>
+			</div>
+				<ul1>
+					<li><%= t("During_I3_1") %></li>
+				</ul1>
+		</div>	
+		
+		<div class="clear"></div>
+		
+	</div>	
+</div> <!-- CONTENT -->

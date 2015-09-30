@@ -1,0 +1,45 @@
+<%= render :partial => "application/html/navigation", :locals => {:page => "home"} %>
+
+
+
+<div id="content_container" class="content_index more_width">
+	
+	<% unless @resources.blank? %>
+	<div class= "last_elements_box resource">
+		<h2 class="user_activity_header"><%= t("Last_resources") %></h2>
+		
+		<div class="clear"></div>
+		<div id="last_resources" class= "content">
+				<%= render :partial => "layouts/html/record_cards", :collection => @resources, :locals => {:path => "show_activity_path", :resource => true} %>
+		</div>
+	</div>
+	<div class="clear"></div>
+	<%end%>
+	
+	<% unless @activities.blank? %>
+	<div class= "last_elements_box activity">
+		<h2 class="user_activity_header"><%= t("Last_activities") %></h2>
+		
+		<div class="clear"></div>
+		<div id="last_activities" class= "content">
+				<%= render :partial => "layouts/html/record_cards", :collection => @activities, :locals => {:path => "show_activity_path", :resource => false} %>
+		</div>
+	</div>
+	<div class="clear"></div>
+	<%end%>
+	
+	
+	<% unless @lessonplans.blank? %>
+	<div class= "last_elements_box lessons_plans">
+		<h2 class="user_activity_header"><%= t("Last_lesson_plans") %></h2>
+		
+		<div class="clear"></div>
+		<div id="last_sequences" class= "content">
+				<%= render :partial => "layouts/html/record_cards", :collection => @lessonplans, :locals => {:path => "show_activity_path", :resource => false}%>
+		</div>
+	</div>
+	<div class="clear"></div>
+
+	<%end%>
+	
+</div> <!-- CONTENT -->

@@ -1,0 +1,83 @@
+/*
+  Place all the styles related to the matching controller here.
+  They will automatically be included in application.css.
+*/
+/*DESPLEGABLE DEL BOTON + EN EL INDEX DE TEMPLATES */
+ul.dropdown.templates{
+	background: rgba(120,120,120,1);
+}
+/*******************************/
+.add_box_page_position_select{
+	
+	display:none;
+}
+
+.add_box_submit{
+	
+	display:none;
+}
+
+.updateable_box{
+	
+border:1px solid black;
+border-radius:5px;
+
+padding:5px;	
+}
+.updateable_box_title,
+.updateable_box_description,
+.box_title_no_updateable,
+.box_description_no_updateable
+.box_item_value_no_updateable{
+
+border:1px solid lightblue;
+border-radius:3px;
+margin:5px;
+padding:3px;
+}
+
+.pp_left{
+	
+	float:left;
+	width:48%;
+	margin:10px 0px 10px 0px;
+	clear: left;
+	box-shadow: 5px 5px 5px;
+
+}
+.pp_right{
+	
+	float:right;
+	width:48%;
+	margin:10px 0px 10px 0px;
+	clear: right;
+	box-shadow: -5px 5px 5px;
+
+}
+.pp_full{
+	width:99%;
+	margin:10px 0px 10px 0px;
+	clear:both;
+	box-shadow: 0px 5px 5px;
+}
+.delete_box_from_template{
+	
+	background:#e96a6a url("/images/icons/delete.png") center center no-repeat;
+	width:32px;
+	height:32px;
+}
+.info_changes_box{
+	color:darkgreen;
+	float:left;
+	margin-left:32px;
+	padding:5px;
+	
+}
+.content_template hr{
+	clear:both;
+}
+
+.content_template{
+	padding: 0 1px;
+	position: relative;
+}

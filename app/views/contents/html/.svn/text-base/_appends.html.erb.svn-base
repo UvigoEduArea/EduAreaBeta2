@@ -1,0 +1,30 @@
+<% if @append.type_append == "Source" || (@append.type_append == "Presentation" && !@append.document_file_name.blank? )%>
+	<div class="documents_appends_box" data-id="<%= @append.id.to_s  %>">
+		<div class="header_append">
+			<%= image_tag("/images/icons/Botones/Negro/close.png", :class => created ? "delete_append" : "delete_append invisible", :"data-info" => @append.type_append+";"+@append.id.to_s)%>
+		</div>
+		
+		<div class="clear"></div>
+		
+		<div class="content_append">
+			<% if @append.document_file_name() != "none" %>
+				<%= link_to(@append.document.url, :target => "_blank", :class => "record_document") do %>
+					<%= image_tag("/images/icons/Botones/Negro/cloud_down.png", :class => "record_document") %>
+				<% end %>
+			<% end %>
+			<p><%= @append.document_file_name %></p>
+		</div>
+		
+		<div class="clear"></div>
+	</div>
+<% else %>
+	<div class="snippet_view_append" data-id="<%= @append.id.to_s%>">
+		<div class="header_append">
+			<%= image_tag("/images/icons/Botones/Negro/close.png", :class => created ? "delete_append" : "delete_append invisible", :"data-info" => "Snippet;"+@append.id.to_s)%>
+		</div>
+		<%= raw @append.snippet_url if @append.snippet_url != nil%>
+	</div>
+<% end %>
+
+
+

@@ -1,0 +1,22 @@
+ul.dropdown.resources.box{
+	position: relative;
+	list-style: none;
+	width: 240px;
+	text-align: center;
+	left: 0%;
+	top: 0%;
+	border-radius: 20px 20px 20px 20px;
+	background: #EEEEEE;
+}
+
+ul.dropdown.resources li{
+	height: 25px;
+}
+
+ul.dropdown.resources a{
+	color: black;
+}
+
+ul.dropdown.resources a:hover{
+	color: #0078A0;
+}

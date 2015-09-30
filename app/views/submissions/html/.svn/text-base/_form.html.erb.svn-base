@@ -1,0 +1,53 @@
+<%= form_for(submission, method: "patch", :html => {:class => "small-12 columns"}) do |f| %>			
+	<div class="image_list_view small-2 columns">
+		<% if submission.image.url() != "none" %>	
+			<%= image_tag submission.image.url(),:crop => :scale, :width => 300, :class => "image_preview" %>
+		<% else %>
+			<%= image_tag '/images/img_defecto.png',:crop => :scale, :width => 300, :class => 'image_preview' %>
+		<% end %>
+		<div id="SelectImageBox">
+			<%= button_tag t('Remove_Image'), {:id => "remove_image", :type => "button", :disabled => created ? false:true, :class => created ?  "":"invisible"}  %>
+			<%= f.file_field :image, :class => created ? "image_updateable":"image_updateable invisible"%>
+		</div>
+	</div>
+	<div class= "title_and_description small-10 columns clearfix">
+		<div class= "title">
+			<% if user_signed_in? && current_user.id == submission.creator_id %>
+				<%= f.text_field :title, :class => "updateable focusable", :disabled => created ? false:true, :placeholder => t("title"), :style => created ? "background-color: #eee" : "" %>
+			<% else %>
+				<p class="updateable focusable" value="<%= submission.title %>"><%= submission.title.blank? ? t("title") : submission.title %></p>
+			<% end %>
+		</div>
+		
+		<div class="title description">
+			<%= f.text_area :description, size: "100x6", :class => "updateable focusable", :disabled => created ? false:true, :placeholder => t("Description") %> 
+		</div>
+	</div>
+	
+	<div class="records records_container">
+		<div class="record_box_container">
+			<% if current_user.type == "Student"
+      			records = submission.experience_element_records.where(:user_id => current_user.id) 
+    		else
+      			records = submission.experience_element_records
+    		end
+    
+		    unless records.blank?
+		      records_array = Array.new
+		      records.each do |record|
+		        x = record.element_records.where(:removed => false).order("created_at DESC")
+		        x.each do |y|
+		          records_array.push(y)  
+		        end
+		      end
+		      records = records_array.sort_by{|x| x[:created_at]}.reverse!
+		    end
+		    %>
+   			
+	   			<% unless records.blank? %>
+	    			<%= render :partial => "experiences/html/records", :collection => records, :as => "list_view", :locals => {:info_type => "records_submissions"} %>
+	    		<% end %>
+		</div>
+	</div>
+
+<% end %>

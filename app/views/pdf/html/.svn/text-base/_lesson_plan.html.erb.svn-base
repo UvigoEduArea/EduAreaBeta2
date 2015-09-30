@@ -1,0 +1,103 @@
+<div id="form_header" class="description_and_image clearfix <%= "half" if user_signed_in? && current_user.type != "Student" %>">
+	<h1 class="header"><%= form.title.blank? ? t("Course") : t("Course") + ": " + form.title%></h1>
+	<div id="LeftModulo" class="inline_image left small-5 columns">				
+		<% if form.image.url() != "none" %>	
+			<%= wicked_pdf_image_tag form.image.url(), :class => "image_preview" %>
+		<% else %>
+			<%= wicked_pdf_image_tag '/images/img_defecto.png', :class => 'image_preview' %>
+		<% end %>
+	</div>
+	<div class="keywords">
+		<%= label_tag :keywords, t("keywords")%>
+		<div class="keywords_container">
+			<% form.keywords.each do |keyword| %>
+				<div id="keyword_<%= keyword.id%>"class="keyword_box"><span><%= keyword.keyword %></span></div>
+			<% end %>
+		</div>
+	</div>
+	<br />
+</div>
+<br />
+<h2 class="header clear"><%= t("Descriptions")%></h2>
+<div id="title_and_description">
+	<% if user_signed_in? and current_user.type == "Student" %>
+		<div class="inline description description_container student">
+			<%= label_tag :description_student, t("Description_student") %>
+			<div><%= unless form.description_student.blank? then form.description_student.html_safe else t("no_description") end %></div>
+		</div>
+	<% else %>
+		<div class="inline description description_container ">
+			<%= label_tag :description, t("Description") %>
+			<div><%= unless form.description.blank? then form.description.html_safe else t("no_description") end %></div>
+		</div>
+		<br />
+		<div class="inline description description_container student ">
+			<%= label_tag :description_student, t("Description_student") %>
+			<div><%= unless form.description_student.blank? then form.description_student.html_safe else t("no_description") end %></div>  
+		</div>
+	<% end %>
+</div>
+<br class="clear"/>
+<% if user_signed_in? && (current_user.type == "Admin" || current_user.type == "Teacher")%>
+	<div class="technical_setting_container technical_setting lesson_plan">
+		<% if form.technical_setting.blank? %>
+			<p>No hay perfil tecnológico</p>
+		<% else %>
+			<% render :partial => "/pdf/html/technical_setting", :object => form.technical_setting, :as => "setting"%>
+		<% end %>
+	</div>
+	<br />
+	<div class="educational_setting_container educational_setting lesson_plan">
+		<% if form.educational_setting.blank? %>
+			<p>No hay perfil curricular</p>
+		<% else %>
+			<% render :partial => "/pdf/html/educational_setting", :object => form.educational_setting, :as => "setting"%>
+		<% end %>
+	</div>
+	<br />
+	<div class="details_container details lesson_plan">
+		<h2 class="header"><%= t("Details")%></h2>
+		<% if form.template.boxes.blank? %>
+			<p><%= t("no_details")%></p>
+		<% else %>
+			<%= render :partial => "/pdf/html/details", :object => form.template, :as => "template", :locals => {:object => form} %>
+		<% end %>
+	</div>
+<% end %>
+<div class="resources_container resources lesson_plan">
+	<h2 class="header"><%= t("Resources")%></h2>
+	<% p Element.where("parent_id = " + form.id.to_s + " and (type = 'Application' or type = 'Device' or type = 'Content' or type = 'Event' or type = 'Collaborator') and removed = false").to_sql %>
+	<% if Element.where("parent_id = " + form.id.to_s + " and (type = 'Application' or type = 'Device' or type = 'Content' or type = 'Event' or type = 'Collaborator') and removed = false").blank? %>
+		<p><%= t("no_resources")%></p>
+	<% else %>
+		<ul>
+			<%= render :partial => "/pdf/html/resources", :collection => Element.where("parent_id = " + form.id.to_s + " and (type = 'Application' or type = 'Device' or type = 'Content' or type = 'Event' or type = 'Collaborator') and removed = false").sort_by{|e| e.position}, :as => "object" %>
+		</ul>
+	<% end %>
+</div>
+<hr />
+<hr />
+<br />
+<br />
+<div class="activities_container activities lesson_plan">
+	<h2 class="header"><%= t("activities")%></h2>
+	<% if form.activities.blank? %>
+		<p><%= t("no_activities")%></p>
+	<% else %>
+		<ol class="activity_list activity">
+			<% form.activities.where(:removed => false).sort_by{|e| e.position}.each do |activity| %>
+				<li class="ol_activity"><%= if activity.title.blank? then t("no_title") else activity.title end %></li>
+			<% end %>
+		</ol>
+		<%= render :partial => "pdf/html/activities_full", :collection => form.activities.where(:removed => false).sort_by{|e| e.position}, :as => "form" %>		
+	<% end %>
+</div>
+
+
+
+
+
+
+
+
+

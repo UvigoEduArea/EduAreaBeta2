@@ -1,0 +1,8 @@
+<%
+=begin
+		LAS CAJAS BTA, BOX TEXT AREA, SON CAJAS QUE PRESENTAN UN TÍTULO Y UN TEXTAREA
+=end
+%>
+<%= f.fields_for :data_boxes do |builder| %>
+	<%= builder.text_area(:content_value, :class => "updateable focusable",:disabled => created ? false:true, :data_type => "data_box", :id => "data_box_"+bta.id.to_s , :name => "data_box["+bta.type_value.downcase+"]", :value => bta.content_value) %>
+<% end %>

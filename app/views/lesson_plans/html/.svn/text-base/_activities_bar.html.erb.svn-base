@@ -1,0 +1,17 @@
+<!--<div id="title_activities_bar" class= "a-right"><%= t("activities")%></div>-->
+<div id="numbers_activities" class="a-left">
+	<div class="number_container"><a href="#init_page"><%= t("Init")%></a></div>	
+	<%p lp%>
+	<% unless lp.activities.blank? %>
+		<% position = 0 %>
+		<% lp.activities.where(:removed => false).sort_by{|e| e[:position]}.each do |activity|%>
+			<% unless activity.removed %>
+				<% position = position + 1 %>
+				<div class="number_container">
+				<a href="#activity_position_<%= position.to_s %>" class="item_activity_bar"><%= position %> &nbsp;<span class="invisible" style="margin-bottom: 4px;"><%= activity.title%></span></a>
+				</div>
+			<% end %>
+		<% end %>
+	<% end %>
+	<div class="number_container"><a href="#end_page"><%= t("End")%></a></div>
+</div>

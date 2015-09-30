@@ -1,0 +1,254 @@
+<a href="landing#home" class="link2top">Arriba</a>
+
+	<div id="subtitulo" class="row text-center panel">
+
+		<h4 class="small-offset-1 small-10">
+			<%= t("divsubtitulo_1") %> <a href="landing#CAbierto"><%= t("divsubtitulo_2") %></a> <%= t("divsubtitulo_3") %> <a href="landing#ERecursos"><%= t("divsubtitulo_4") %></a> 
+			<%= t("divsubtitulo_5") %> <a href="landing#EPlanes"><%= t("divsubtitulo_6") %></a> <%= t("divsubtitulo_7") %>.
+		</h4>	
+	</div>	
+	
+	<div id="elecciones" class="row text-center  small-12 large-12">
+		<div class=" small-4 column"><%= link_to t("elecciones_1"),  home_path , :class => "button round" %></div>
+		<div class=" small-4 column">
+			<% 
+				if user_signed_in? 
+			%>
+					<%= link_to t("elecciones_2"),  home_path , :class => "button round" %>
+			<%
+					else
+			%> 
+						<%=	link_to t("elecciones_2"),  new_user_session_path , :class => "button round" %>
+			<% end %>			
+			
+		</div>
+		<div class=" small-4 column">
+			<% 
+				if user_signed_in? 
+			%>
+					<%= link_to t("elecciones_3"),  home_path, :class => "button round" %>
+			<% 
+						else
+			%> 
+							<%= link_to t("elecciones_3"),  new_user_registration_path, :class => "button round" %>
+				
+			<% end %>
+		</div>
+	</div>
+	<div id="puedes" class="row panel">
+		<div id="puedesencontrar" class="small-5 columns">
+			<h3><%= t("puedesencontrar_1") %></h3>
+
+			<ul><li><b><%= t("puedesencontrar_2") %></b><%= t("puedesencontrar_3") %></li>
+			
+			<li><a href="landing#ERecursos"><%= t("puedesencontrar_4") %></a><%= t("puedesencontrar_5") %></li>
+			
+			<li><a href="landing#EPlanes"><%= t("puedesencontrar_6") %></a><%= t("puedesencontrar_7") %></li>
+			
+			<li><b><%= t("puedesencontrar_8") %></b><%= t("puedesencontrar_9") %></li>
+			</ul>	
+		</div>
+		
+		<div id="puedeshacer" class="small-offset-2 small-5 columns">
+			<h3><%= t("puedeshacer_1") %></h3>
+			
+			<ul><li><b><%= t("puedeshacer_2") %></b> <%= t("puedeshacer_3") %> <b><%= t("puedeshacer_4") %></b> <%= t("puedeshacer_5") %></li>
+			
+			<li><b><%= t("puedeshacer_6") %></b>, <b><%= t("puedeshacer_7") %></b> <%= t("puedeshacer_3") %> <b><%= t("puedeshacer_8") %></b> <%= t("puedeshacer_9") %></li>
+			
+			<li><b><%= t("puedeshacer_10") %></b>, <b><%= t("puedeshacer_11") %></b> <%= t("puedeshacer_3") %> <b><%= t("puedeshacer_12") %></b> <%= t("puedeshacer_13") %></li>
+			
+			<li><b><%= t("puedeshacer_14") %></b> <%= t("puedeshacer_3") %> <b><%= t("puedeshacer_15") %></b>. <%= t("puedeshacer_16") %></li>>
+			</ul>			
+		</div>
+		<div id="masinfo" class="small-2 small-centered columns text-center">
+			<%= link_to t("more_info"),more_landing_path %>	
+	</div>
+		
+	</div>
+	
+	<div id="EAbierto" class="row">
+		<div class="small-offset-2 small-8 columns text-center">
+			<img src="/images/landing/CapturaEduAREA.png">		
+			<h4><%= t("eabierto_1") %></h4>
+			<p style="text-align:center"><%= t("eabierto_2") %> <a href="http://www.edu-area.com/es/applications/82"><%= t("eabierto_3") %></a>). <%= t("eabierto_4") %></p>
+		</div>
+	</div>
+	<div id="CAbierto" class="row panel panelwhite">
+		<div class="small-4 columns">
+			<h3><%= t("cabierto_1") %></h3>
+			<p>
+				<%= t("cabierto_2") %> <a href="http://www.unesco.org/new/fileadmin/MULTIMEDIA/HQ/CI/CI/pdf/Events/Spanish_Paris_OER_Declaration.pdf"><%= t("cabierto_3") %></a><%= t("cabierto_4") %> 
+			</p>
+			<p>
+				<i>"<%= t("cabierto_5") %>"</i>.
+			</p>
+			
+		</div>
+		<div id="las5rs" class="small-4 columns">
+			<h3><%= t("las5rs_1") %></h3>
+			
+			<p><%= t("las5rs_2") %></p>
+
+			<ul>
+			   <li><b><%= t("las5rs_3") %></b><%= t("las5rs_4") %></li>
+			
+				<li><b><%= t("las5rs_5") %></b><%= t("las5rs_6") %> </li>
+				
+				<li><b><%= t("las5rs_7") %></b><%= t("las5rs_8") %></li>
+				
+				<li><b><%= t("las5rs_9") %></b><%= t("las5rs_10") %></li>
+				
+				<li><b><%= t("las5rs_11") %></b><%= t("las5rs_12") %></li>
+			</ul>
+		</div>
+		<div class="small-4 columns">
+			<h3><%= t("granularidadrea_1") %></h3>
+			<p><a href="http://www.google.es/url?sa=t&rct=j&q=&esrc=s&source=web&cd=1&cad=rja&uact=8&ved=0CCYQFjAA&url=http%3A%2F%2Fdl.acm.org%2Fcitation.cfm%3Fid%3D2576184&ei=v5rcVMOFD8j-UK7aguAJ&usg=AFQjCNHd_z6VVC8pKM_S3BOFKaQJn5aMpQ&sig2=kcF70AqkalH3HQGDRBdvPQ&bvm=bv.85761416,d.d24"><%= t("granularidadrea_2") %></a> <%= t("granularidadrea_3") %></p>
+			<ul>
+				<li><b><%= t("granularidadrea_4") %></b><%= t("granularidadrea_5") %> <a href="landing#ERecursos"><%= t("granularidadrea_6") %></a>.</li>
+				<li><b><%= t("granularidadrea_7") %></b><%= t("granularidadrea_8") %> </li>
+				<li><b><%= t("granularidadrea_9") %></b><%= t("granularidadrea_10") %></li>
+				<li><b><%= t("granularidadrea_11") %></b><%= t("granularidadrea_12") %></li>
+			</ul>
+		</div>
+	</div>
+	<div id="Capturas" class="row">
+		<div class="row">
+			<div class="small-6 columns text-center">
+				<img src="/images/landing/RegistrarRecurso.png">		
+				<h4><%= t("capturas_1") %></h4>
+				<p style="text-align:center"><%= t("capturas_2") %></p>
+			</div>
+			<div class="small-6 columns text-center">
+				<img src="/images/landing/BuscarUnidadDidactica.png">		
+				<h4><%= t("capturas_3") %></h4>
+				<p style="text-align:center"><%= t("capturas_4") %></p>
+			</div>
+		</div>
+		<div class="row">
+			<div class="small-6 columns text-center">
+				<img src="/images/landing/EditarUnidadDidactica.png">		
+				<h4><%= t("capturas_5") %></h4>
+				<p style="text-align:center"><%= t("capturas_6") %></p>
+			</div>
+			<div class="small-6 columns text-center">
+				<img src="/images/landing/Taboleiros.png">		
+				<h4><%= t("capturas_7") %></h4>
+				<p style="text-align:center"><%= t("capturas_8") %></p>
+			</div>
+		</div>
+		<div class="row">
+			<div class="small-offset-2 small-8 columns text-center">
+				<img src="/images/landing/Experiencias.png">		
+				<h4><%= t("capturas_9") %></h4>
+				<p style="text-align:center"><%= t("capturas_10") %></p>
+			</div>
+		</div>
+	</div>
+	<div class="row panel">
+		<div id="ERecursos" class="small-6 columns">
+			<h3><%= t("recursos_1") %></h3>
+			<p><%= t("recursos_2") %></p>
+	
+			<ul>
+				<li><b><%= t("recursos_3") %></b><%= t("recursos_4") %></li>
+				<li><b><%= t("recursos_5") %></b><%= t("recursos_6") %></li>
+				<li><b><%= t("recursos_7") %></b><%= t("recursos_8") %></li>
+				<li><b><%= t("recursos_9") %></b><%= t("recursos_10") %></li>
+				<li><b><%= t("recursos_11") %></b><%= t("recursos_12") %></li>
+			</ul>
+	
+			<p>	<%= t("recursos_13") %> <b><%= t("recursos_14") %></b> <%= t("recursos_15") %> <b><%= t("recursos_16") %></b> <%= t("recursos_17") %> <b><%= t("recursos_18") %></b> <%= t("recursos_19") %></p>
+	
+		</div>
+		<div id="EPlanes" class="small-6 columns">
+		<h3><%= t("planes_1") %></h3>
+	
+
+<p><%= t("planes_2") %> <b><%= t("planes_3") %></b> <%= t("planes_4") %>
+  <b><%= t("planes_5") %></b><%= t("planes_6") %>
+</p>
+
+<p>
+	<%= t("planes_7") %> <b><%= t("planes_8") %></b> <%= t("planes_9") %> <b><%= t("planes_10") %></b> <%= t("planes_11") %> <b><%= t("planes_12") %></b><%= t("planes_13") %>
+</p>
+
+<p><%= t("planes_14") %></p>
+
+<ul>
+<li>    <b><%= t("planes_15") %></b><%= t("planes_16") %></li>
+
+<li>    <b><%= t("planes_17") %></b><%= t("planes_18") %></li>
+    </ul>
+		</div>
+	</div>
+	
+	<div id="dispositivos" class="row text-center">
+		<div class="small-12"><h2>Edu-AREA Apps (Próximamente)</h2></div>
+		
+		<div id="vandroid" class="small-6 columns"><img src="/images/landing/vandroid.png"></div>
+		
+		<div id="vios" class="small-6 columns"><img src="/images/landing/vios.png"></div>		
+		<div class="small-6 columns">App para Android</div>
+		<div class="small-6 columns">App para iOS</div>
+	</div>
+	
+		<footer class="">
+		<div id="infocontacto" class="small-6 columns panel">
+			<div class="small-6 columns">
+				<p><%= t("contacto_1") %> 
+				</p>
+				<ul class="vcard">
+					<li class="email"><b>Email</b>: <a href="#">area.telgalicia (at) gmail.com</a></li>
+					<li><b>Twitter</b>: <a href="http://www.twitter.com/edu_area">@edu_area</a>
+					<li><a href="http://blog.edu-area.com">Blog <%= t("about") %> Edu-AREA</a></li>
+					<li><b><%= t("postal address")%></b>:<br><p style="text-align:right;"> Manuel Caeiro Rodríguez,<br> E.E.Telecomunicación, <br>C/Maxwell S/N,<br> Campus Universitario Lagoas-Marcosende,<br> 36312 Vigo</p></li>
+				</ul>
+			</div>
+			<div class="small-6 columns text-center">
+				<a href="http://goo.gl/forms/7mD2o1JGdW"><img style="width:35%;" src="/images/landing/Encuesta.png"></a>
+				<p><a href="http://goo.gl/forms/7mD2o1JGdW"><%= t("encuesta_1") %></a></p>
+				<p><%= t("encuesta_2") %> </p>
+			</div>
+		</div>
+		<div id="snippetsignup" class="small-6 columns">
+			<!-- Begin MailChimp Signup Form -->
+				<link href="//cdn-images.mailchimp.com/embedcode/classic-081711.css" rel="stylesheet" type="text/css">
+				<style type="text/css">
+				#mc_embed_signup{background:seashell; clear:left; font:14px Helvetica,Arial,sans-serif;color:black; border-radius:5px; }
+				/* Add your own MailChimp form style overrides in your site stylesheet or in this style block.
+				  We recommend moving this block and the preceding CSS link to the HEAD of your HTML file. */
+				</style>
+				<div id="mc_embed_signup">
+				<form action="//uviho.us10.list-manage.com/subscribe/post?u=b75133f5292cd3c7bc5c45aa4&amp;id=1a9c9c96bf" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate" target="_blank" novalidate>
+				    <div id="mc_embed_signup_scroll">
+				<h2>Apúntate para recibir información</h2>
+				<div class="indicates-required"><span class="asterisk">*</span> indica que es imprescindible</div>
+				<div class="mc-field-group">
+				<label for="mce-EMAIL">Correo Electrónico  <span class="asterisk">*</span>
+				</label>
+				<input type="email" value="" name="EMAIL" class="required email" id="mce-EMAIL">
+				</div>
+				<div class="mc-field-group">
+				<label for="mce-FNAME">Nombre</label>
+				<input type="text" value="" name="FNAME" class="" id="mce-FNAME">
+				</div>
+				<div class="mc-field-group">
+				<label for="mce-LNAME">Apellidos</label>
+				<input type="text" value="" name="LNAME" class="" id="mce-LNAME">
+				</div>
+				<div id="mce-responses" class="clear">
+				<div class="response" id="mce-error-response" style="display:none"></div>
+				<div class="response" id="mce-success-response" style="display:none"></div>
+				</div>    <!-- real people should not fill this in and expect good things - do not remove this or risk form bot signups-->
+				    <div style="position: absolute; left: -5000px;"><input type="text" name="b_b75133f5292cd3c7bc5c45aa4_1a9c9c96bf" tabindex="-1" value=""></div>
+				    <div class="clear"><input type="submit" value="Suscribirse" name="subscribe" id="mc-embedded-subscribe" class="button"></div>
+				    </div>
+				</form>
+				</div>
+				<script type='text/javascript' src='//s3.amazonaws.com/downloads.mailchimp.com/js/mc-validate.js'></script><script type='text/javascript'>(function($) {window.fnames = new Array(); window.ftypes = new Array();fnames[0]='EMAIL';ftypes[0]='email';fnames[1]='FNAME';ftypes[1]='text';fnames[2]='LNAME';ftypes[2]='text';}(jQuery));var $mcj = jQuery.noConflict(true);</script>
+			<!--End mc_embed_signup-->
+		</div>	
+	</footer>
+	<div class="clear"></div>

@@ -1,0 +1,25 @@
+<%= render :partial => "application/html/navigation", :locals => {:page => "info_page"} %>
+
+<div id="content_container" class="content_index">
+	<div class= "information">
+		<span><%= t("Paradata_uses")%></span>
+		</br></br>
+		<p><%= t("Paradata_uses_P1") %></p>
+		<p><%= t("Paradata_uses_P1_1") %></p>
+		</br>
+		
+		<ul class="ul_uses">
+			<li><span class="icon_uses"><%= image_tag("/images/icons/Black/eye.svg", size:"30x30") %></span><b><%= t("Paradata_uses_P2_1") %>: </b><%= t("Paradata_uses_P2_2") %></li></br>
+			<li><span class="icon_uses"><%= image_tag("/images/icons/Black/copy.svg", size:"30x30") %></span><b><%= t("Paradata_uses_P3_1") %>: </b><%= t("Paradata_uses_P3_2") %></li></br>
+			<li><span class="icon_uses"><%= image_tag("/images/icons/Black/copy.svg", size:"30x30") %></span><b><%= t("Paradata_uses_P4_1") %>: </b><%= t("Paradata_uses_P4_2") %></li></br>
+			<li><span class="icon_uses"><%= image_tag("/images/index_cortado.png", size:"30x30") %></span><b><%= t("Paradata_uses_P5_1") %>: </b><%= t("Paradata_uses_P5_2") %></li></br>
+		</ul>
+		
+	</div>	
+</div> <!-- CONTENT -->
+		
+		
+		
+		<div class="clear"></div>
+	</div>	
+</div> <!-- CONTENT -->

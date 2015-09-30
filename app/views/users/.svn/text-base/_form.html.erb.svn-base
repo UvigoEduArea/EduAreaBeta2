@@ -1,0 +1,71 @@
+<div class="profile_box small-offset-1 small-10 columns">
+	<div class="small-12 medium-7 columns">
+		<div class= "profile_image inline">
+			<%= image_tag @user.profile.avatar.url(:medium), :class => 'avatar_preview' %>
+			<div class="file_options">
+				<%= button_tag t('Remove_Image'), {:id => "remove_avatar", :type => "button", :disabled => created ? false:true, :class => created ?  "":"invisible"}  %> <!--No se puede eliminar la imagen, hay que cambiarla por el monicreque-->
+				<%= f.file_field :avatar, :id => 'avatar_updateable', :class => created ?  "":"invisible" %>
+			</div>
+		</div>
+	    
+	    <div class="name_user inline">
+			<div class="user_first_name">
+		  		<%= f.text_field :first_name, :placeholder => t("first_name"), :value => @user.profile.first_name, :disabled => created ? false:true, :class => "updateable user focusable", :style => created ? "background-color: #eee" : "" %>
+		  	</div>
+		  	<div class="user_last_name">
+		 		<%= f.text_field :last_name, :placeholder => t("last_name"), :value => @user.profile.last_name, :disabled => created ? false:true, :class => "updateable user focusable", :style => created ? "background-color: #eee" : "" %>
+		 	</div>
+		</div>
+		
+		<div class="info_paradata_configuration">
+	    	<span><%= t("Select_your_privacy")+':' %></span>
+	    	<%= select :profile,:private, options_for_select([[t("View_Everybody"), "Everybody"],[t("View_Somebody"),"Somebody"],[t("View_Nobody"),"Nobody"]], :selected => @user.profile.private), {:prompt => true}, {:class => "updateable user focusable", :disabled => created ? false:true} %>
+	    </div>
+	    
+	    <div class="language_configuration">
+	    	<span><%= t("Select_your_interface_language")+':' %></span>
+	    	<%= select :profile,:language, options_for_select([["Galego", "gl"],["Castellano","es"],["English","en"],["Português","pt"]], :selected => @user.profile.language), {:prompt => true}, {:class => "updateable user focusable", :disabled => created ? false:true} %>
+	    </div>
+	    
+	    <div class="activity_default_configuration">
+	    	<span class="clearfix"><%= t("Select_your_activity_default")+':' %></span>
+	    	<%= image_tag("/images/icons/Botones/Negro/add.png",:class=> created ? "abre_popup action_icon" : "abre_popup action_icon invisible", :value=>"activity_templates", :"data-info" => params[:controller]+";"+@user.id.to_s)%>
+	    	<span id="title_activity_default"><%= Element.find(@user.profile.activity_default).title %></span>
+	    </div>
+	    
+	    <div class="lesson_plan_default_configuration">
+	    	<span class="clearfix"><%= t("Select_your_lesson_plan_default")+':' %></span>
+	    	<%= image_tag("/images/icons/Botones/Negro/add.png",:class=> created ? "abre_popup action_icon" : "abre_popup action_icon invisible", :value=>"lesson_plan_templates", :"data-info" => params[:controller]+";"+@user.id.to_s)%>
+	    	<span id="title_lesson_plan_default"><%= Element.find(@user.profile.lesson_plan_default).title %></span>
+	    </div>
+	    
+	</div>
+	<div class="license_default small-12 medium-4 columns">
+		<span><%= t("Select_Default_License")+':' %></span>
+		<%= f.fields_for :licenses do |builder| %>
+		<div class= <%= created ?  "condition":"condition invisible" %> >
+			<span>Creative Commons Zero (CC0)?</span>
+			<br>
+			<%= builder.radio_button :license_condition, 'true', :class => "active_condition", :checked => (public_domain_user(@user.profile.license.license_condition)==true) ? true : false, :disabled => created ? false:true%>
+			<%= builder.label :license_condition, t("yes") %>
+			<br>
+			<%= builder.radio_button :license_condition, 'false', {:class => "active_condition",:checked => (public_domain_user(@user.profile.license.license_condition)==false) ? true: false, :disabled => created ? false:true} %>
+			<%= builder.label :license_condition, t("no") %>
+			
+		</div>	
+		
+		<div class= "<%= created ?  "commercial":"commercial invisible" %>">
+				<span><%= t("Allow_commercial_uses") %></span>
+				<%=builder.select :commercial, options_for_select([[t("no"), 0],[t("yes"),1]],[@user.profile.license.commercial ? 1 : 0]) , {}, {:disabled => created ? false:true, :class => "active_select"}%>
+		</div>
+		
+		<div class= "<%= created ?  "derivative":"derivative invisible" %>">
+				<span><%= t("Allow_modifications") %></span>
+				<%=builder.select :derivative, options_for_select([[t("no"), 0],[t("yes"),1],[t("yes_but share alike"),2]],[get_license(@user.profile.license.derivative, @user.profile.license.license_condition)]), {}, {:disabled => created ? false:true, :class => "active_select"} %>
+		</div>
+		<%= image_tag(@user.profile.license.license_icon, :class => "licenses_image", :data_value =>@user.profile.right_id) %>
+		<% end %>
+		
+	</div>	
+</div>
+<hr />

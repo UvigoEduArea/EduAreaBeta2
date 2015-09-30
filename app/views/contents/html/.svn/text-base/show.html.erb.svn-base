@@ -1,0 +1,81 @@
+<%
+=begin
+		############################################
+		# RENDERIZAMOS LAS PESTAÑAS Y LAS ACCIONES #
+		############################################
+=end
+%>
+<% unless defined?(contents) && contents %>	
+	<%= render :partial => "application/html/navigation", :locals => {:page => "resources"} %>
+<% end %>
+
+<%
+=begin
+		####################################
+		# RENDERIZAMOS EL CONTENIDO PEDIDO #
+		####################################
+=end
+%>
+<%= render :partial => "resources/html/form",:object => @element, :as => "form" ,:locals => {:created => created, :attributions => attributions, :contents => (defined?(contents) && contents) ? true : false, :experience => (defined?(experience) && experience) ? true : false} %>
+
+<!--Meta-tags para los recursos de tipo documento que sean públicos-->
+<!--Hay que generar la correspondiente licencia CC según el valor de right_id -->
+<% if @element.private == false %>
+	<% case @element.right_id%>
+		<% when 1 %>
+			<% 
+			meta rel:  {
+				licencia: "Creative Commons CC-BY"	
+			},
+			copyright: "http://creativecommons.org/licenses/by/4.0/"
+			%>
+		<% when 2 %>
+			<% 
+			meta rel:  {
+				licencia: "Creative Commons CC-BY-SA"	
+			},
+			copyright: "http://creativecommons.org/licenses/by-sa/4.0/"
+			%>
+		<% when 3 %>
+			<% 
+			meta rel:  {
+				licencia: "Creative Commons CC-BY-NC"	
+			},
+			copyright: "http://creativecommons.org/licenses/by-nc/4.0/"
+			%>
+		<% when 4 %>
+			<% 
+			meta rel:  {
+				licencia: "Creative Commons CC-BY-NC-SA"	
+			},
+			copyright: "http://creativecommons.org/licenses/by-nc-sa/4.0/"
+			%>
+		<% when 5 %>
+			<% 
+			meta rel:  {
+				licencia: "Creative Commons CC-BY-ND"	
+			},
+			copyright: "http://creativecommons.org/licenses/by-nd/4.0/"
+			%>
+		<% when 6 %>
+			<% 
+			meta rel:  {
+				licencia: "Creative Commons CC-BY-NC-ND"	
+			},
+			copyright: "http://creativecommons.org/licenses/by-nc-nd/4.0/"
+			%>
+	<%end%>
+	<%
+	meta	title: @element.title,
+			date: @element.created_at,
+			author: @element.user.profile.first_name+' '+@element.user.profile.last_name
+	%>
+	<% if @element.keywords != nil%> 
+		<% keywords = ""
+		 @element.keywords.each do |keyword|
+			keywords = keyword.keyword + ',' + keywords 
+		end
+		%>
+		<%	meta	keywords: keywords[-keywords.length..-2] %>
+	<% end %>
+<% end %>

@@ -1,0 +1,5 @@
+<div id="content_container" class="profile_container">
+	<%= form_for(@user,:html => { :class => "user_form" }) do |f_user| %>
+		<%= render :partial => "form" , :locals => {:f => f_user} %>
+	<% end %>
+</div> <!-- CONTENT -->

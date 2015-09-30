@@ -1,0 +1,64 @@
+<% 
+case editbox.page_position  
+	when "full"
+%> 
+		<div class="clear"></div>
+<%
+	when "left"
+%>
+		<div style="clear:left"></div>
+<%
+	when "right"
+%>
+		<div style="clear:right"></div>
+
+	<% end %>	
+<div class="updateable_box pp_<%= editbox.page_position %>">
+
+	<input type="hidden" class="updateable_box_id" value="<%= editbox.id %>">
+	
+	<% case editbox.box_type 
+	
+	 when "BSV" 
+	 	#select(object, method, choices, options = {}, html_options = {})
+	 	%> 
+	 	<input type="text" class="updateable_box_title" value="<%= editbox.title.blank? ? "Introduzca Título" : editbox.title %>">
+		<input type="text" class="updateable_box_description" value="<%= editbox.description.blank? ? "Introduzca Description" : editbox.description %>">
+		<%= select :box,:data_type, options_for_select([[t("DT_Integer"),"Integer"],[t("DT_String"), "String"],[t("DT_Float"),"Float"],[t("DT_Date"),"Date"]], :selected => editbox.data_type), {:prompt => true}, {:class => "updateable_box_BSV_type", :disabled => "true"} %> 
+		<%		
+	when "BEI" 
+	 	
+	 	%> 
+	 	<input type="text" class="updateable_box_title" value="<%= editbox.title.blank? ? "Introduzca Título" : editbox.title %>">
+		<input type="text" class="updateable_box_description" value="<%= editbox.description.blank? ? "Introduzca Description" : editbox.description %>">
+		<%= select(:box, :data_type, options_for_select([[t("Device"),"Device"],[t("Application"), "Application"],["Event","Event"],[t("contents"),"Content"],[t("Collaborator"),"Collaborator"],[t("resource"),"resources"]], :selected => editbox.data_type), {:prompt => true}, {:class => "updateable_box_BEI_type", :disabled => "true"}) 
+		%>
+	<% when "BI" %>
+		<%= 
+		#object, method, collection, value_method, text_method, options = {}, html_options = {}
+		%>
+		<input type="text" class="updateable_box_title" value="<%= editbox.title.blank? ? "Introduzca Título" : editbox.title %>">
+		<input type="text" class="updateable_box_description" value="<%= editbox.description.blank? ? "Introduzca Description" : editbox.description %>">
+		<%=	collection_select :box, :data_type, Vocabulary.all, :id, :title, {:selected => editbox.vocabulary_id, :prompt => true}, {:class => "updateable_box_BI_voc", :disabled => "true"} %>
+	<% when "BR" %>
+		<hr>
+	<% when "BFTI" 
+	 	#select(object, method, choices, options = {}, html_options = {})
+	 	%> 
+	 	<input type="text" class="updateable_box_title" value="<%= editbox.title.blank? ? "Introduzca Título" : editbox.title %>">
+		<input type="text" class="updateable_box_description" value="<%= editbox.description.blank? ? "Introduzca Description" : editbox.description %>">
+ 	<% when "BT" 
+	 	#select(object, method, choices, options = {}, html_options = {})
+	 	%> 
+	 	<input type="text" class="updateable_box_title" value="<%= editbox.title.blank? ? "Introduzca Título" : editbox.title %>">
+	<% when "BTA" 
+	 	#select(object, method, choices, options = {}, html_options = {})
+	 	%> 
+	 	<input type="text" class="updateable_box_title" value="<%= editbox.title.blank? ? "Introduzca Título" : editbox.title %>">
+		<input type="text" class="updateable_box_description" value="<%= editbox.description.blank? ? "Introduzca Description" : editbox.description %>">		
+		
+	<% end %>
+	<div class="info_changes_box"></div>
+	<div class="delete_box_from_template invisible"></div>
+
+</div>

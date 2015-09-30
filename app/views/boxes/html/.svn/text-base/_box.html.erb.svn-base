@@ -1,0 +1,47 @@
+<% if (box.box_type != 'BEI') %> 
+	<div class="box_container <%= box.box_type.to_s %> has_template_controls active pp_<%= box.page_position %>" id = "box_container_<%= box.id.to_s%>">
+		<% if (box.box_type.to_s) != 'BR' %>
+		<% unless table_view %>
+			<div class= "header editable active">
+			<%= f.fields_for :boxes do |builder| %>
+				<% unless box.title.blank? %>
+					<%= builder.label :title, box.title %>
+				<% end %>
+				<% unless box.description.blank? %>
+					<%= image_tag("/images/icons/Black/info.svg", :width => 16,:class=>"show_info")%>
+					<ul class="dropdown info_bubble"  style="display:none;">
+						<li class="<%= params[:controller].underscore.singularize %>"><%= box.description %></li>
+					</ul>		
+				<% end %>	
+			<% end %>
+			</div>
+		<% end %>
+			
+			<% if (box.box_type) == 'BFTI' %>
+				<%= image_tag("/images/icons/Black/plus.svg", :width => 16, :class => !created ? "plus_box add_free_text invisible" : "plus_box add_free_text", :style => "margin-left: 10px;") %>
+			<% end %>
+			
+			<div class="box_components <%= box.box_type.to_s %>">
+				<% if ((box.box_type.to_s) == "BI" or (box.box_type.to_s) == "BFTI") %><ul class="<%= "data_box_bfti" if box.box_type == "BFTI"%>" data-box_id="<%= box.id.to_s%>"><% end %>
+				<%= render :partial => "data_boxes/html/"+box.box_type.downcase,:collection => box.data_boxes.where(:element_id => element.id).order("position ASC"), :locals => {:f => f, :created => created} %>
+				<% if ((box.box_type.to_s)== "BI" or (box.box_type.to_s)== "BFTI") %></ul><% end %>
+			</div>
+			
+			<% if (box.box_type) == 'BI' %>
+				<div class="itemizes <%= "invisible" if !created %>" data-box-id="<%= box.id %>">
+					<% @vocabularies = VocabularyTerm.where("id not in (select type_value from data_boxes DB, boxes B where DB.box_id='"+box.id.to_s+"' and DB.element_id='"+element.id.to_s+"' and B.box_type='BI') and (vocabulary_terms.element_id = '"+box.vocabulary_id.to_s+"')")%>
+					<%= f.fields_for :data_boxes do |builder| %>
+						<%= builder.select(:content_value, options_from_collection_for_select(@vocabularies, 'id', 'term'),{:prompt => t('Select')},{:class => 'add_option_item'})%>
+					<% end %>
+				</div>	
+			<% end %>
+			
+		<% else %>
+			<%= render :partial => "data_boxes/html/br", :locals => {:f => f} %>
+		<% end %>		
+	</div>
+	
+	<% if  box.page_position == "right" %>
+		<div class="clear"></div>
+	<% end %>
+<% end %>

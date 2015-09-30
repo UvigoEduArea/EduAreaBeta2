@@ -1,0 +1,46 @@
+<%= render :partial => "application/html/navigation", :locals => {:page => "info_page"} %>
+
+<div id="content_container" class="content_index">
+	<div class= "information">
+		<% case I18n.locale %>
+      		<% when :es %>
+      			<img class= "about_img" src="/images/about_es.png"></img>
+      		<% when :gl %>
+      			<img class= "about_img" src="/images/about_gl.png"></img>
+      		<% when :en %>
+      			<img class= "about_img" src="/images/about_en.png"></img>
+      		<% when :pt %>
+      			<img class= "about_img" src="/images/about_pt.png"></img>
+      	<% end %>
+       
+		<span><%= t("What_Find")%></span>
+		</br></br>
+		<p><%= t("AboutArea_P1") %></p>
+		</br>
+		<p><%= t("AboutArea_P2") %></p>
+		</br>
+		<ul>
+			<li><%= link_to t("lesson_plans"), info_lesson_plans_path%><%= t("AboutArea_I1_3")%></li></br>
+			<li><%= link_to t("activities"), info_activities_path%><%= t("AboutArea_I1_2")%></li></br>
+			<li><%= link_to t("resources"), info_resources_path%><%= t("AboutArea_I1_1")%></li></br>	
+		</ul>
+		</br>
+		<p><%= t("AboutArea_P3") %></p>
+		</br>
+		<ul>
+			<li><%= image_tag("/images/icons/Black/unlocked.svg", :width => 16, :class => "image_info_page")%><%= t("AboutArea_I2_1") %></li></br>
+			<li><%= image_tag("/images/icons/Black/lock2.svg", :width => 16, :class => "image_info_page")%><%= t("AboutArea_I2_2") %></li></br>
+		</ul>
+		</br>
+		<p><%= t("AboutArea_P4") %></p>
+		</br>
+		<p><%= t("AboutArea_P5") %></p>
+		</br>
+		<ul>
+			<li><%= image_tag("/images/icons/Black/checkbox-unchecked.svg", :width => 16, :class => "image_info_page")%><%= t("AboutArea_I3_1") %></li></br>
+			<li><%= image_tag("/images/icons/Black/checkbox-partial.svg", :width => 16, :class => "image_info_page")%><%= t("AboutArea_I3_2") %></li></br>
+		</ul>
+		</br>
+		<p><%= t("AboutArea_P6") %></p>
+	</div>	
+</div> <!-- CONTENT -->

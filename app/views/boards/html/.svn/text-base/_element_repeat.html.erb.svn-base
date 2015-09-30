@@ -1,0 +1,3 @@
+<div id= 'element_repeat' >
+	<span> <%= t('element_repeat')%> </span>
+</div>

@@ -1,0 +1,24 @@
+<%= render :partial => "application/html/navigation", :locals => {:page => "info_page"} %>
+
+<div id="content_container" class="content_index">
+	<div class= "information">
+		<span><%= t("What_Do")%></span><br><br>
+		<p><%= t("UseGuide_P1") %></p>
+		</br>
+		<p><%= t("UseGuide_P2") %> <a href="http://blog.edu-area.com">http://blog.edu-area.com</a></p>
+		</br>
+		<p><%= t("UseGuide_P3") %></p>
+		</br>
+		<ul>
+			<li><%= t("UseGuide_I1_1") %></li></br>
+			<li><%= t("UseGuide_I1_2") %></li></br>
+			<li><%= t("UseGuide_I1_3") %></li></br>
+			<li><%= t("UseGuide_I1_4") %></li></br>
+			<li><%= t("UseGuide_I1_5") %></li></br>
+		</ul>
+		</br>
+		<p><%= t("UseGuide_P4") %></p>
+		</br>
+<!--	<p><%= t("Info_UseGuide_P5") %></p> -->
+	</div>	
+</div> <!-- CONTENT -->

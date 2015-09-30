@@ -1,0 +1,7 @@
+<%= render :partial => "application/html/navigation", :locals => {:section_title => (t ("profile")), :page => "profile"} %>
+<div id="content_container" class="content_show content_profile">
+	<input type="hidden" id="show_mode" data-mode="<%= created ? "2":"1" %>">
+	<%= form_for(@user,:html => {:method => "patch", :id => "edit_user", :class => "user_form" }) do |f_user| %>
+		<%= render :partial => "form" , :locals => {:f => f_user, :created => created} %>
+	<% end %>
+</div> <!-- CONTENT -->

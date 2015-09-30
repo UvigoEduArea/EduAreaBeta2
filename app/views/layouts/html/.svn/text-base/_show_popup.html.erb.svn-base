@@ -1,0 +1,19 @@
+<% case resource %>
+<% when "applications", "devices", "events", "collaborators", "resources"%>
+	<%= render :partial => "resources/html/form", :object => @element, :as => :form, :locals => {:created => false, :controller => resource, :popup => true} %>
+
+<% when "contents"%>
+	<%= render :partial => "resources/html/form", :object => @element, :as => :form, :locals => {:attributions => attributions, :created => false, :controller => resource, :popup => true} %>
+
+<% when "boards"%>
+	<%= render :partial => resource+"/html/form", :object => @element, :as => :form, :locals => {:created => false, :popup => true} %>
+
+<% when "lesson_plans"%>
+	<%= render :partial => resource+"/html/form", :object => @element, :as => :form, :locals => {:attributions => attributions, :vector_licenses =>vector_licenses, :created => false, :popup => true, :experience => false} %>
+
+<% when "experiences"%>
+	<%= render :partial => "lesson_plans/html/form", :object => @element.lesson_plan, :as => :form, :locals => {:attributions => attributions, :vector_licenses =>vector_licenses, :created => false, :popup => true, :experience => true} %>
+
+<% else %>
+	<%= render :partial => resource+"/html/form", :object => @element, :as => :form, :locals => {:attributions => attributions, :vector_licenses =>vector_licenses, :created => false, :popup => true} %>
+<% end %>	

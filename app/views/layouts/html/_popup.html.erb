@@ -1,0 +1,40 @@
+<div id="marco_popup">
+	<div id="header_popup" data-type="<%= ((params[:controller] == "resources") || (params[:controller] == "applications") || (params[:controller] == "collaborators") || (params[:controller] == "contents") || (params[:controller] == "devices") || (params[:controller] == "events")) ? "resources" : params[:controller]%>">
+		<% case params[:controller] 
+			when "templates", "activity_templates", "lesson_plan_templates" %>
+				<h2 id="popup_title"><%= t('select') %><%= t(' ') %><%= t('template') %></h2>
+			<% when "operations" %>
+				<h2 id="popup_title"><%= t("export")%></h2>
+			<% when "accounts"%>
+				<h2 id="popup_title"><%= t("GoogleDrive")%></h2>
+		<% else %>
+			<% if !params.has_key?(:back)%>
+				<h2 id="popup_title"><%= t('select') %><%= " "%><%= t(params[:controller].singularize.downcase)%></h2>
+			<% end %>
+		<% end %>
+		<!-- Filtrado entre todos los elementos y los del usuario-->	
+
+		<% if user_signed_in? && params[:controller] != "templates" && params[:controller] != "activity_templates" && params[:controller] != "lesson_plan_templates" && params[:controller] != "boards" && !params.has_key?(:back) && !params[:use_element]%>
+			<% if ((params[:controller] == "resources") || (params[:controller] == "applications") || (params[:controller] == "collaborators") || (params[:controller] == "contents") || (params[:controller] == "devices") || (params[:controller] == "events")) %>
+				<%= select_tag "selector_resources_popup", options_for_select([[t("all_types"), "resources"],[t("applications"), "applications"],[t("devices"), "devices"],[t("documents"), "contents"],[t("guests"), "collaborators"],[t("trips"), "events"]], params[:controller]), :class => "header_actions_selector action_icon small-1 columns" %>
+			<% end %>
+			<!--span class= "abre_popup index action_icon filter_on" value= "<%= params[:controller]%>" data-owner="false"><%= t(params[:controller])%></span--> 
+			<!--span class= "abre_popup index action_icon filter_on" value= "<%= params[:controller]%>" data-owner="true"><%= t("My_"+params[:controller])%></span-->
+		<% end %>
+		<% unless params.has_key?(:back)%>
+			<% if params[:controller] != "templates" && params[:controller] != "activity_templates" && params[:controller] != "lesson_plan_templates" %>
+				<%= text_field_tag :search, params[:search], placeholder: t('Enter_search_term'), :class => "search_in_popup index action_icon small-2 columns" %>
+				<%= image_tag "/images/icons/Black/search.svg", :width => 15 ,:class=>"search_in_popup index action_icon" %>
+			<% end %>
+		<% else %>
+			<% if params[:back] != 'false'%>
+				<div class="back_popup" data-info="<%= params[:back] %>"><%= image_tag("/images/icons/Black/undo2.svg", :width => 32) %></div>
+			<% end %>
+		<% end %>
+
+	</div>
+	<div id="content_popup" class="content">
+		<%= yield %>
+	</div>
+</div>
+<div id="background_overlay" class="close_popup"></div>

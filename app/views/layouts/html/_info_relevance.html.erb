@@ -1,0 +1,120 @@
+<div class= "comments" value="relevances">
+	<div class= "actual_comments">
+		<% if (((@element.type.downcase != "lessonplan") && (@element.type != "TechnicalSetting")&& (@element.type != "EducationalSetting"))) %>
+			<div>
+				<%= link_to eval(@element.type.downcase.to_s + "_path("+@element.id.to_s+")"), :class => "a-right" do%>
+					<%= image_tag("/images/icons/slicedsprites/social_3.png", :size => "28x28", :class => "action_icon") %>
+					<% if @element.type.downcase != "boards" %>
+						<% case boards_number %>
+						<% when 0 %>
+							<span style="color:#ffffff;font-size:13px;padding:1%;"><%= t('Paradata_no_boards') %>.</span>
+						<% when 1 %>
+							<span style="color:#ffffff;font-size:13px;padding:1%;"><%= t('Included') %> <%= t('in') %> <%= boards_number %> <%= t('board') %>.</span>
+						<% else %>
+							<span style="color:#ffffff;font-size:13px;padding:1%;"><%= t('Included')%> <%= t('in') %> <%= boards_number %> <%= t('boards') %>.</span>
+						<% end %>
+					<% else %>
+						<span style="color:#ffffff;font-size:13px;padding:1%;"><%= t('Paradata_no_boards') %>.</span>
+					<% end %>
+				<% end %>
+			</div>
+			
+			<div>
+				<%= link_to eval(@element.type.downcase.to_s + "_path("+@element.id.to_s+")"), :class => "a-right" do%>
+					<%= image_tag("/images/icons/slicedsprites/sprites_3_4.png", :size => "28x28", :class => "action_icon") %>
+					<% case views %>
+					<% when 0 %>
+						<span style="color:#ffffff;font-size:13px;padding:1%;"><%= t('Paradata_no_views') %>.</span>
+					<% when 1 %>
+						<span style="color:#ffffff;font-size:13px;padding:1%;"><%= t('Seen')%> <%= views %> <%= t('time_by') %> <%= t('different_user') %>.</span>
+					<% else %>
+						<% case users_views_number %>
+						<% when 1 %>
+							<span style="color:#ffffff;font-size:13px;padding:1%;"><%= t('Seen')%> <%= views %> <%= t('times_by') %> <%= users_views_number %> <%= t('different_user') %>.</span>
+						<% else %>
+							<span style="color:#ffffff;font-size:13px;padding:1%;"><%= t('Seen') %> <%= views %> <%= t('times_by') %> <%= users_views_number %> <%= t('different_users') %>.</span>
+						<% end %>
+					<% end %>
+				<% end %>
+			</div>
+			
+			<div>
+				<%= link_to eval(@element.type.downcase.to_s + "_path("+@element.id.to_s+")"), :class => "a-right" do%>
+					<%= image_tag("/images/icons/slicedsprites/copy_3.png", :size => "28x28", :class => "action_icon") %>
+					<% case copies_includes %>
+					<% when 0 %>
+						<span style="color:#ffffff;font-size:13px;padding:1%;"><%= t('Paradata_no_copies') %>.</span>
+					<% when 1 %>
+						<span style="color:#ffffff;font-size:13px;padding:1%;"><%= t('Copied')%>/<%= t('Included')%> <%= copies_includes %> <%= t('time_by')%> <%= users_copies_number %> <%=t('different_user') %>.</span>
+					<% else %>
+						<% case users_copies_number %>
+						<% when 1 %>
+							<span style="color:#ffffff;font-size:13px;padding:1%;"><%= t('Copied')%>/<%= t('Included')%> <%= copies_includes%> <%= t('times_by')%> <%= users_copies_number%> <%= t('different_user') %>.</span>
+						<% else %>
+							<span style="color:#ffffff;font-size:13px;padding:1%;"><%= t('Copied')%>/<%= t('Included')%> <%= copies_includes%> <%= t('times_by')%> <%= users_copies_number%> <%= t('different_users') %>.</span>
+						<% end %>
+					<% end %>
+				<% end %>
+			</div>
+			
+		<% else %>
+		
+			<% if (@element.type.downcase == "lessonplan") %>
+				<% path = "show_lesson_plan_path"%>
+			<% end %>
+			<div>
+				<%= link_to eval(path + "(" +@element.id.to_s+")"), :class => "a-right" do%>
+					<%= image_tag("/images/icons/slicedsprites/social_3.png", :size => "28x28", :class => "action_icon") %>
+					<% case boards_number %>
+					<% when 0 %>
+						<span style="color:#ffffff;font-size:13px;padding:1%;"><%= t('Paradata_no_boards') %>.</span>
+					<% when 1 %>
+						<span style="color:#ffffff;font-size:13px;padding:1%;"><%= t('Included')%> <%= t('In')%> <%= boards_number %> <%= t('board') %>.</span>
+					<% else %>
+						<span style="color:#ffffff;font-size:13px;padding:1%;"><%= t('Included')%> <%= t('In')%> <%= boards_number %> <%= t('boards') %>.</span>
+					<% end %>
+				<% end %>
+			</div>
+			
+			<div>
+				<%= link_to eval(path + "(" +@element.id.to_s+")"), :class => "a-right" do%>
+					<%= image_tag("/images/icons/slicedsprites/sprites_3_4.png", :size => "28x28", :class => "action_icon") %>
+					<% case views %>
+					<% when 0 %>
+						<span style="color:#ffffff;font-size:13px;padding:1%;"><%= t('Paradata_no_views') %>.</span>
+					<% when 1 %>
+						<span style="color:#ffffff;font-size:13px;padding:1%;"><%= t('Seen') %> <%= views %> <%= t('time_by')%> <%= t('different_user') %>.</span>
+					<% else %>
+						<% case users_views_number %>
+						<% when 1 %>
+							<span style="color:#ffffff;font-size:13px;padding:1%;"><%= t('Seen') %> <%= views %> <%= t('times_by')%> <%= users_views_number %> <%= t('different_user') %>.</span>
+						<% else %>
+							<span style="color:#ffffff;font-size:13px;padding:1%;"><%= t('Seen') %> <%= views %> <%=t('times_by')%> <%= users_views_number %> <%= t('different_users') %>.</span>
+						<% end %>
+					<% end %>
+				<% end %>
+			</div>
+			
+			<div>
+				<%= link_to eval(path + "(" +@element.id.to_s+")"), :class => "a-right" do%>
+					<%= image_tag("/images/icons/slicedsprites/copy_3.png", :size => "28x28", :class => "action_icon") %>
+					<% case copies_includes %>
+					<% when 0 %>
+						<span style="color:#ffffff;font-size:13px;padding:1%;"><%= t('Paradata_no_copies') %>.</span>
+					<% when 1 %>
+						<span style="color:#ffffff;font-size:13px;padding:1%;"><%= t('Copied') %>/<%= t('Included') %> <%= copies_includes%> <%= t('time_by')%> <%= users_copies_number %> <%=t('different_user') %>.</span>
+					<% else %>
+						<% case users_copies_number %>
+						<% when 1 %>
+							<span style="color:#ffffff;font-size:13px;padding:1%;"><%= t('Copied') %>/<%= t('Included')%> <%= copies_includes %> <%=t('times_by')%> <%= users_copies_number %> <%=t('different_user') %>.</span>
+						<% else %>
+							<span style="color:#ffffff;font-size:13px;padding:1%;"><%= t('Copied') %>/<%= t('Included')%> <%= copies_includes %> <%= t('times_by')%> <%= users_copies_number %> <%=t('different_users') %>.</span>
+						<% end %>
+					<% end %>
+				<% end %>
+			</div>
+		<% end %>
+		
+	</div>
+	
+</div>

@@ -1,0 +1,48 @@
+<div class="paradata_information">
+	<div id="paradata_actions">
+		<div class="paradata_icon user_info hide-for-large-only">
+			<%= image_tag(element.user.profile.avatar.url(:medium), :class => "", :width => "48px") %>
+		</div>
+		<div class="info paradata_icon" data-info="<%= element.type.downcase.pluralize+";"+element.id.to_s %>">
+			<%= image_tag("/images/icons/Botones/Negro/text.png") %>
+			<span class="invisible" style="font-size: 14px;">Info</span>
+		</div>
+		<div class="view_info paradata_icon" data-info="<%= element.type.downcase.pluralize+";"+element.id.to_s %>">
+			<%= image_tag("/images/icons/Botones/Negro/view.png") %>
+			<% if element.view_count != 0 %>
+				<span style="font-size: 14px;"><%=element.view_count + 1%></span>
+			<% else %>
+				<span style="font-size: 14px;">0</span>
+			<% end %>
+		</div>
+		<div class="copy_info paradata_icon" data-info="<%= element.type.downcase.pluralize+";"+element.id.to_s %>">
+			<%= image_tag("/images/icons/Botones/Negro/clone.png") %>
+			<% if ((element.copy_count != 0)&&(element.copy_count != nil)) %>
+				<span style="font-size: 14px;"><%= element.copy_count %></span>
+			<% else %>
+				<span style="font-size: 14px;">0</span>
+			<% end %>
+		</div>		
+		
+		<div class="comments_info paradata_icon" data-info="<%= element.type.downcase.pluralize+";"+element.id.to_s %>">
+			<%= image_tag("/images/icons/Botones/Negro/comments.png") %>
+			<% if element.comments.count != 0 %>
+				<span style="font-size: 14px;"><%= element.comments.count %></span>
+			<% else %>
+				<span style="font-size: 14px;">0</span>
+			<% end %>
+		</div>		
+		
+		<% if ((element.type.downcase != "board") && (element.type != "ActivityTemplate") && (element.type != "LessonPlanTemplate") && (element.type.downcase != "template")&& (element.type != "TechnicalSetting")&& (element.type != "EducationalSetting")) %>
+			<div class="boards_info paradata_icon" data-info="<%= element.type.downcase.pluralize+";"+element.id.to_s %>">
+				<%= image_tag("/images/icons/Botones/Negro/eduarea.png") %>
+				<% if element.boards.count != 0 %>
+					<span style="font-size: 14px;"><%= element.boards.count %></span>
+				<% else %>
+					<span style="font-size: 14px;">0</span>
+				<% end %>
+			</div>		
+		<% end %>
+	</div>	
+</div>
+<div id="paradata_content"></div>

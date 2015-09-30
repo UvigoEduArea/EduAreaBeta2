@@ -1,0 +1,11 @@
+<div class="user_actions">
+	<ul class="home_language_selector">
+		<li class="guestuser">
+			<%= link_to t("Log_in"),  new_user_session_path , :class => "user_profile_link" %>
+		</li>
+		
+		<li class="guestuser">
+			<%= link_to t("Sign_up"),  new_user_registration_path, :class => "user_profile_link" %>
+		</li>
+	</ul>
+</div>

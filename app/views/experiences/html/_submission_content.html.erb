@@ -1,0 +1,50 @@
+<% case(records.record_type)
+	when "Image"%>
+		<div class="images_container small-offset-2">
+			<%= image_tag(records.original_image.url(:medium), :class => "record_image")%>
+			<%= if records.blurred_image_content_type != nil
+			 		image_tag(records.blurred_image.url(:medium), :class => "record_image")
+			 	end %>
+		</div>
+		<span class="<%= (records.experience_element_record.user_id == current_user.id) ? "image_selector record_invisible selector submission_edition" : "image_selector record_invisible invisible selector submission_edition_disabled"%>"><%=t("change_image")%></span>			
+		
+		<%= file_field_tag("file_field", 
+		:class => "image_selector_input record_input file_field invisible", 
+		:disabled => (records.experience_element_record.user_id == current_user.id) ? false : true, :accept => ".jpeg, .png, .svg")%>
+		<% text_field_tag("image_description", records.text_content, 
+		:class => "record_image_description record_input", 
+		:disabled => (records.experience_element_record.user_id == current_user.id) ? false : true, :id => nil, :placeholder => t("Description"))%>
+		
+	<% when "PositiveComment", "NegativeComment", "FreeText", "Idea" %>
+		<%= text_area_tag("record_content", records.text_content, 
+		:class => (records.experience_element_record.user_id == current_user.id) ? "record_input submission_edition record_content_"+records.record_type.underscore : "record_input submission_edition_disabled record_content_"+records.record_type.underscore, 
+		:disabled => (records.experience_element_record.user_id == current_user.id) ? false : true, :id => nil, :method => "patch")%> 
+		
+	<% when "Snippet" %>
+		<%= text_field_tag("record_content_snippet_input", records.text_content, :id => nil, 
+		:class => records.experience_element_record.user_id == current_user.id ? "record_input record_content_snippet_input submission_edition" : "record_input record_content_snippet_input submission_edition_disabled", 
+		:disabled => records.experience_element_record.user_id == current_user.id ? false : true,  :placeholder => t("SnippetCode"))%>
+		<div class="snippet_view">
+			<%= raw records.text_content if records.text_content != nil %>
+		</div>
+		
+	<% when "Video" %>
+		<%= video_tag(records.video.url(), :controls => true, :width => "95%", :class => "record_video") %>
+		<span class="<%= (records.experience_element_record.user_id == current_user.id) ? "video_selector record_invisible selector submission_edition" : "video_selector record_invisible invisible selector submission_edition_disabled" %>"><%=t("change_video")%></span>	
+		<% text_field_tag("video_description", records.text_content, :class => "record_video_description record_input", 
+		:disabled => records.experience_element_record.user_id == current_user.id ? false : true, :id => nil, :placeholder => t("Description"))%>
+		<%= file_field_tag("file_field", :class => "video_selector_input record_input file_field invisible", 
+		:disabled => records.experience_element_record.user_id == current_user.id ? false : true, :accept => ".mp4, .ogg, .webm")%>
+		
+	<% when "Document" %>
+		<% unless records.document.blank?%>
+			<%= link_to(records.document.url, :target => "_blank", :class => "record_document") do %>
+				<%= image_tag("/images/icons/Black/download.svg", :class => "record_document small-offset-2 columns") %>
+			<% end %>
+		<% else %>
+			<%= image_tag(records.document.url, :class => "record_image") %>
+		<% end %>
+		<span class="<%= (records.experience_element_record.user_id == current_user.id) ? "document_selector record_invisible selector submission_edition" : "document_selector record_invisible invisible selector submission_edition_disabled" %>"><%=t("change_document")%></span>
+		<%= file_field_tag("file_field", :class => "document_selector_input record_input file_field invisible", 
+		:disabled => records.experience_element_record.user_id == current_user.id ? false : true, :accept => ".pdf")%>
+<% end %>

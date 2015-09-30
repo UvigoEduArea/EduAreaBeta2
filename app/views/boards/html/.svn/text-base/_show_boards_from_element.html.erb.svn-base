@@ -1,0 +1,76 @@
+<% if (show == "false") %>
+	<% if boards_number != 0 %>
+		<div class= "comments" value="boards">
+			<div class= "actual_comments">
+				<% unless @public_boards.blank? %>
+					<% @public_boards.each do |board| %>
+						<div class="comment">
+							<%= link_to user_path(board.user), :class => "a-left" do%>
+								<%= image_tag(board.user.profile.avatar.url(:thumb), :width => 22) %>
+							<% end %>
+							
+							<%= link_to board_path(board.id), :class => "a-right" do%>
+								<p><%= board.title %></p>
+							<% end %>							
+						</div>
+					<% end %>
+					<div class="clear"></div>
+					<div>
+						<p style="font-style:italic;color:#FFFFFF;font-size:13px;padding:1%;"><%= t('In') %><%= ((boards_number) - (@public_boards.length)) %><%= t('private_boards') %></p>
+					</div>
+				<% else %>
+					<div>
+						<p style="font-style:italic;color:#FFFFFF;font-size:13px;padding:1%;"><%= t('In') %><%= boards_number %><%= t('private_boards') %></p>
+					</div>
+				<% end %>
+			</div>
+		</div>
+	<% else %>
+		<div class= "comments" value="boards">
+			<div class= "actual_comments">
+				<div>
+					<p style="font-style:italic;color:#FFFFFF;font-size:13px;padding:1%;"><%= t('No_boards') %></p>
+				</div>
+			</div>
+		</div>
+	<% end %>
+	</br>
+	
+<% else %>
+
+	<ul class="dropdown_paradata <%= type %>">
+		<% if boards_number != 0 %>
+			<% unless @public_boards.blank? %>
+				<% @public_boards.each do |board| %>
+					<li>
+						<%= link_to user_path(board.user), :class => "a-left" do%>
+							<%= image_tag(board.user.profile.avatar.url(:thumb), :width => 22) %>
+						<% end %>
+						
+						<%= link_to board_path(board.id), :class => "a-right" do%>
+							<p><%= board.title %></p>
+						<% end %>							
+					</li>
+				<% end %>
+				<li>
+					<p style="font-style:italic;font-size:13px;padding:1%;"><%= t('In') %><%= ((boards_number) - (@public_boards.length)) %><%= t('private_boards') %></p>
+				</li>
+			<% else %>
+				<% if (boards_number == "0")%>
+					<li>
+						<p style="font-style:italic;font-size:13px;padding:1%;"><%= t('In') %><%= boards_number %><%= " " %><%= t('boards') %></p>
+					</li>
+				<% else %>
+					<li>
+						<p style="font-style:italic;font-size:13px;padding:1%;"><%= t('In') %><%= boards_number %><%= t('private_boards') %></p>
+					</li>
+				<% end %>
+			<% end %>
+		<% else %>
+			<li>
+				<p style="font-style:italic;font-size:13px;padding:1%;"><%= t('No_boards') %></p>
+			</li>
+		<% end %>
+	</ul>
+
+<% end %>

@@ -1,0 +1,67 @@
+<% if (show == "false") %>	
+	<div class= "comments" value="views">
+		<div class= "actual_comments">
+			<% unless @users.blank? %>
+				<% @users.each do |user| %>
+					<% if (user != 0) && ( (user.profile.private == 'Everybody')||((user.profile.private == 'Somebody')&&(user_signed_in?)) ) %>
+						<div class="comment">
+							<% if user_signed_in? %>
+								<%= link_to user_path(user), :class => "a-left" do%>
+									<%= image_tag(user.profile.avatar.url(:thumb), :width => 22) %>
+									<span class="user_name"><%= user.profile.first_name + " " + user.profile.last_name %></span>
+								<% end %>
+							<% else %>
+								<%= image_tag(user.profile.avatar.url(:thumb), :width => 22) %>
+								<span class="user_name"><%= user.profile.first_name + " " + user.profile.last_name %></span>
+							<% end %>							
+						</div>
+					<% end %>
+				<% end %>
+				<div class="clear"></div>
+				<div>
+					<p><%= t('Seen') %><%= (views) %><%= t('times_by') %><%= (@users.length) %><%= t('different_users') %></p>
+				</div>
+			<% else %>
+				<div>
+					<p><%= t('Seen') %><%= (views) %><%= " "%><%= t('Times') %></p>
+				</div>
+			<% end %>
+		</div>
+	</div>
+	</br>
+
+<% else %>
+	
+	<ul class="dropdown_paradata <%= type %>">
+	
+		<% unless @users.blank? %>
+			<% @users.each do |user| %>
+				<% if user != 0 && ( (user.profile.private == 'Everybody')||((user.profile.private == 'Somebody')&&(user_signed_in?)) )%>
+					<li>
+						<% if user_signed_in? %>
+							<%= link_to user_path(user), :class => "a-left" do%>
+								<%= image_tag(user.profile.avatar.url(:thumb), :width => 22) %>
+								<span class="user_name"><%= user.profile.first_name + " " + user.profile.last_name %></span>
+							<% end %>
+						<% else %>
+							<%= image_tag(user.profile.avatar.url(:thumb), :width => 22) %>
+							<span class="user_name"><%= user.profile.first_name + " " + user.profile.last_name %></span>
+						<% end %>							
+					</li>
+				<% end %>
+			<% end %>
+			</br>
+			<li>
+				<p><%= t('Seen') %><%= (views) %><%= t('times_by') %></p>
+			</li>
+			<li>
+				<p><%= (@users.length) %><%= t('different_users') %></p>
+			</li>
+		<% else %>
+			<li>
+				<p><%= t('Seen') %><%= (views) %><%= " "%><%= t('Times') %></p>
+			</li>
+		<% end %>
+	</ul>
+
+<% end %>

@@ -1,0 +1,64 @@
+<% if second_level || second_level=="true"%>
+
+	<span id="second_level_options" class= "small-12 columns" style="background-color: #32C3D6;"><%= t('Select_second_level') %></span>
+	
+	<div class="vocabularies small-6 columns">
+		<label for="educational_setting_educationalsetting_Objectives" class="small-12 columns"><%= t("Profile_Objectives") %></label>	
+		<%= select(:field_type, :add_vocabulary, options_from_collection_for_select(@esoptions["Objectives"][0], "id", "term"), {:prompt => t("select")}, :class => "add_vocabulary_setting educational", :name =>"Objectives")%>
+		<% element_setting.settings.where("field_type = 'Objectives'").each do |voc|%>
+			<div class="vocabulary_boxy" data-id="<%= voc.id %>"><%= image_tag "/images/icons/Black/close.svg", :width => 11, :class => "delete_setting_term delete"%><%= voc.vocabulary_term.term%></div>
+		<% end %>
+	</div>
+	
+	<div class="vocabularies small-6 columns clearfix">
+		<label for="educational_setting_educationalsetting_Block" class="small-12 columns"><%= t("Profile_Block") %></label>
+		<%= select(:field_type, :add_vocabulary, options_from_collection_for_select(@esoptions["Block"][0], "id", "term"), {:prompt => t("select")}, :class => "add_vocabulary_setting educational", :name =>"Block") %>
+		<% element_setting.settings.where("field_type = 'Block'").each do |voc|%>
+			<div class="vocabulary_boxy" data-id="<%= voc.id %>"><%= image_tag "/images/icons/Black/close.svg", :width => 11, :class => "delete_setting_term delete"%><%= voc.vocabulary_term.term%></div>
+		<% end %>
+	</div>
+	
+	<hr class="small-12 columns">
+	
+	<div class="vocabularies small-6 columns">
+		<label for="educational_setting_educationalsetting_Contents" class="small-12 columns"><%= t("Profile_Contents") %></label>
+		<%= select(:field_type, :add_vocabulary, options_from_collection_for_select(@esoptions["Contents"][0], "id", "term"), {:prompt => t("select")}, :class => "add_vocabulary_setting educational", :name =>"Contents")%>
+		<% element_setting.settings.where("field_type = 'Contents'").each do |voc|%>
+			<div class="vocabulary_boxy" data-id="<%= voc.id %>"><%= image_tag "/images/icons/Black/close.svg", :width => 11, :class => "delete_setting_term delete"%><%= voc.vocabulary_term.term%></div>
+		<% end %>
+	</div>
+	
+	<div class="vocabularies small-6 columns">
+		<label for="educational_setting_educationalsetting_Competences" class="small-12 columns"><%= t("Profile_Competences") %></label>
+		<%= select(:field_type, :add_vocabulary, options_from_collection_for_select(@esoptions["Competences"][0], "id", "term"), {:prompt => t("select")}, :class => "add_vocabulary_setting educational", :name =>"Competences")%>
+		<% element_setting.settings.where("field_type = 'Competences'").each do |voc|%>
+			<div class="vocabulary_boxy" data-id="<%= voc.id %>"><%= image_tag "/images/icons/Black/close.svg", :width => 11, :class => "delete_setting_term delete"%><%= voc.vocabulary_term.term%></div>
+		<% end %>
+	</div>
+				
+<% else %>
+
+	<span id="first_level_options" class= "small-12 columns" style="background-color: #32C3D6;"><%= t('Select_first_level') %></span>
+	<div class="vocabularies small-4 columns">
+		<label for="educational_setting_educationalsetting_EducationalLevel" class="small-12 columns"><%= t("Profile_EducationalLevel") %></label>
+		<%= select(:field_type, :add_vocabulary, options_from_collection_for_select(@esoptions["EducationalLevel"][0], "id", "term"), {:prompt => t("select")}, :class => "add_vocabulary_setting educational no_reload", :name =>"EducationalLevel")%>
+		<% element_setting.settings.where("field_type = 'EducationalLevel'").each do |voc|%>
+			<div class="vocabulary_boxy" data-id="<%= voc.id %>"><%= image_tag "/images/icons/Black/close.svg", :width => 11, :class => "delete_setting_term delete"%><%= voc.vocabulary_term.term%></div>
+		<% end %>
+	</div>			
+	<div class="vocabularies small-4 columns">
+		<label for="educational_setting_educationalsetting_Grade" class="small-12 columns"><%= t("Profile_Grade") %></label>
+		<%= select(:field_type, :add_vocabulary, options_from_collection_for_select(@esoptions["Grade"][0], "id", "term"), {:prompt => t("select")}, :class => "add_vocabulary_setting educational no_reload", :name =>"Grade")%>
+		<% element_setting.settings.where("field_type = 'Grade'").each do |voc|%>
+			<div class="vocabulary_boxy" data-id="<%= voc.id %>"><%= image_tag "/images/icons/Black/close.svg", :width => 11, :class => "delete_setting_term delete"%><%= voc.vocabulary_term.term%></div>
+		<% end %>
+	</div>
+	<div class="vocabularies small-4 columns clearfix">
+		<label for="educational_setting_educationalsetting_KnowledgeArea" class="small-12 columns"><%= t("Profile_KnowledgeArea") %></label>
+		<%= select(:field_type, :add_vocabulary, options_from_collection_for_select(@esoptions["KnowledgeArea"][0], "id", "term"), {:prompt => t("select")}, :class => "add_vocabulary_setting educational no_reload", :name =>"KnowledgeArea")%>
+		<% element_setting.settings.where("field_type = 'KnowledgeArea'").each do |voc|%>
+			<div class="vocabulary_boxy" data-id="<%= voc.id %>"><%= image_tag "/images/icons/Black/close.svg", :width => 11, :class => "delete_setting_term delete"%><%= voc.vocabulary_term.term%></div>
+		<% end %>
+	</div>
+	
+<% end %>

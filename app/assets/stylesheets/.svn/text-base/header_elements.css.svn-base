@@ -1,0 +1,323 @@
+/* CSS utilizado para todos los elementos comunos -> titulo, descripción, imágen, URL, privacidad y keywords */
+form{
+	padding-left: 1%;
+	padding-right: 1%;
+}
+label{
+	font-weight: bold;
+	vertical-align: top;
+}
+
+.title input.editing, .url input.editing{
+	background-color: #eee;
+}
+
+.title, .description, .url, .snippet_url{
+	padding-top: 5px;
+}
+
+.url input, .snippet_url input{
+	width: 100%;
+}
+
+.url a{
+	color: blue;
+	cursor: pointer;
+}
+/*
+.image{
+	width: 300px;
+	margin-top: 7px;
+}
+
+.description{
+	max-width: 1000px;
+	width: 75%;
+	vertical-align: top;
+}
+*/
+div#form_header
+{
+	background-color:#fbfbfb;
+	box-shadow:5px 5px 5px #bac4ce;
+	margin-top:20px;
+	padding:0px;
+}
+div#informacionficha
+{
+	margin-top:20px;
+	margin-left:20px;
+	padding:0px;
+}
+div#informacionficha.informacionfichapeque
+{
+	margin-top:20px;
+	margin-left:0px;
+	padding:0px;
+}
+div#informacionficha .paradata_icon:hover,
+div#informacionficha.informacionfichapeque .paradata_icon:hover
+{
+	cursor:pointer;	
+}
+div.description_and_image
+{
+}
+div.description_and_image div.inline_image 
+{
+	margin:0px;
+	padding:0px;
+}
+div.description_and_image div.inline_image img
+{
+	width:100%;
+}
+div.description_and_image div#title_and_description
+{
+	margin:0px;
+	padding:10px;
+}
+div#title_and_description div.title_container
+{
+	margin-top:10px;
+}
+div#title_and_description div.title_container input, div#title_and_description div.title_container p
+{
+	background-color:#fff;
+	border:none;
+	box-shadow:0px 0px 0px;
+	  font-family: 'ralewayregular';
+    font-size: 1.5em !important;
+    padding:0px 15px;
+    color:black;
+}
+div.jqte
+{
+	margin:0px;
+	border-radius:0px;
+	box-shadow:0px 0px 0px;	
+	font-family: "ralewaylight";
+	font-size: 0.875em !important;
+	padding: 5px;
+	color: #000;
+}
+div.jqte div.jqte_editor
+{
+	padding-left:20px;
+}
+div.jqte div.jqte_editor,
+div.jqte div.jqte_editor div,
+div.jqte div.jqte_editor p,
+div.jqte div.jqte_editor span
+{
+	line-height:125%;
+}
+.privacy{
+	clear: both;
+	margin-bottom: 1%;
+}
+
+.privacy .private_icon{
+	background-image: url("/images/icons/Botones/Blanco/private.png");
+	background-position: center center;
+	display: inline-block;
+	width: 30px;
+	height: 30px;
+	background-repeat: no-repeat;
+	background-size: 30px 30px;
+}
+div#PrivacyAbstract,
+div#SelectImageBox
+{
+	background-color:#37414b;	
+	border:1px solid #717984;
+}
+div#LicenciasBoxTop,
+div#LicenciasBoxBot
+{
+	background-color:#737d87;
+	padding:10px;
+}
+div#LeftModule
+{
+	background-color:#717984;	
+}
+
+div#LicenciasBoxMid
+{
+	background-color:#cad4de;
+	border:1px solid #b5bfc9;
+	padding:10px;
+}
+
+
+div#PrivacyAbstract .centradovertical
+{
+	min-height:30px;
+	margin-top:10px;
+	
+}
+div#PrivacyAbstract > div
+{
+	border-left:1px solid #4c5660;
+}
+div#PrivacyAbstract div
+{
+	padding:5px 0px;
+}
+div#PrivacyAbstract div,
+div#PrivacyAbstract div *,
+div#SelectImageBox *,
+div#LicenciasBoxTop div,
+div#LicenciasBoxTop div *,
+div#LicenciasBoxBot div,
+div#LicenciasBoxBot div *
+{
+	background-color:transparent !important;
+	color:white;
+	margin:0px;
+}
+div#LicenciasBoxMid div,
+div#LicenciasBoxMid div *
+{
+	color:#222c36;
+}
+.privacy .private_icon.public{
+	background-image: url("/images/icons/Botones/Blanco/public.png") ;
+}
+
+.abstract .abstract_icon{
+	background-image: url("/images/icons/Botones/Blanco/relevance.png");
+	display: inline-block;
+	width: 30px;
+	height: 30px;
+	background-repeat: no-repeat;
+	background-size: 30px 30px;
+}
+
+.abstract .abstract_icon.public{
+	background-image: url("/images/icons/Botones/Blanco/relevance.png") ;
+}
+
+.license {
+	margin-bottom: 1%;
+	margin-top: 0%;
+}
+
+.show_license{
+	margin-left: 3%;
+}
+
+.author, .copyright{
+	margin-bottom: 1%;
+	margin-top: 1%;
+}
+
+.author_name, .URL_edition{
+	background-color: white;
+	border: none;
+	font-size: 16px;
+	margin-bottom: 10px;
+	width: 350px;
+}
+
+.author_attribution{
+	width : 80%
+}
+
+.modified_license, .original_license, .modified_title, .original_title, .user_author, .original_author{
+	color: blue;
+}
+
+.show_url{
+	margin-left: 5px;
+}
+.keywords{
+	position: relative;
+	padding-top: 1%;
+	height: 80px;
+}
+
+.title input, .url input, .snippet_url input{
+	border:none;
+	background-color: transparent;
+}
+
+.title input{
+	font-weight: bold;
+	font-size: 30px;
+	width: 100%;
+}
+
+.image_updateable{
+	width: 45%;
+	position:relative;
+}
+
+.change_file_input{
+	position: absolute;
+	text-align: center;
+	cursor: default;
+	color: buttontext;
+	border: 2px outset buttonface;
+	border-image-source: initial;
+	border-image-slice: initial;
+	border-image-width: initial;
+	border-image-outset: initial;
+	border-image-repeat: initial;
+	background-color: buttonface;
+	box-sizing: border-box;
+	font: -webkit-small-control;
+	-webkit-writing-mode: horizontal-tb;
+	-webkit-appearance: button;
+}
+
+/********************/
+/*** Keywords CSS ***/
+/********************/
+
+.keyword_input{
+	position: relative;
+	border: none;
+	width: 25%;
+	background-color: transparent;
+}
+
+.keyword_input_container{
+	position: relative;
+	top: 8%;
+}
+
+.keywords_container{
+	position: relative;
+	/*top: 20%;
+	height: 40px;*/
+}
+
+.keyword_box{
+	position: relative;
+	background-color: rgba(110,210,255,0.5);
+	display: inline-block;
+	min-width: 1%;
+	padding: 5px 5px 5px 5px;
+	cursor: default;
+	margin-right: 15px;
+	margin-top: 5px;
+}
+
+.keyword_box::after{
+	content: "";
+	border:13px solid transparent;
+	position: absolute;
+	border-left-color: #e2ecf5;
+	left: 100%;
+	top: 0px;
+}
+
+.delete_keyword{
+	position: absolute;
+	width: 14px;
+	top: -7px;
+	left: -5px;
+	cursor: pointer;
+}

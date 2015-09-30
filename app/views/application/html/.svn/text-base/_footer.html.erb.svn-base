@@ -1,0 +1,42 @@
+<% if params[:controller] == "devise/sessions" || params[:controller]== "registrations" || params[:controller]== "devise/passwords" %>
+<div class="footer user">
+<% else %>
+<div class="footer">
+<% end %>
+	<%= image_tag("/images/icons/White/arrow-up.svg", :class => "expand_footer")%>
+	<%= image_tag("/images/icons/White/arrow-down.svg", :class => "contract_footer invisible")%>
+	<div class="about_area"><%= link_to t('What_Find'), info_what_find_path%>
+		<ul>
+			<li><%= link_to t("resources"), info_resources_path %></li>	
+			<li><%= link_to t("activities"), info_activities_path %></li>
+			<li><%= link_to t("lesson_plans"), info_lesson_plans_path %></li>
+		</ul>
+	</div>
+	<div class="about_area"><%= link_to t('What_Do'), info_what_do_path%>
+	<ul>
+			<li><%= link_to t("Before"), info_before_path %></li>	
+			<li><%= link_to t("During"), info_during_path %></li>
+			<li><%= link_to t("After"), info_after_path %></li>
+		</ul>
+	</div>
+	<div class="contact_area"><%= link_to t('Contact'), info_contact_path%></div>
+	
+	<div class="about_licenses"><%= link_to t('Licenses'), info_licenses_path%>
+	<ul>
+			<li><%= link_to t("Types_Licenses"), info_types_path%></li>
+			<li><%= link_to t("Compatibility"), info_compatibility_path%></li>
+			<li><%= link_to t("Assign_License"), info_assign_license_path%></li>
+	</ul>
+	</div>
+	
+	<div class="about_paradata"><%= link_to t('Paradata'), info_paradata_path%>
+	<ul>
+			<li><%= link_to t("Paradata_general"), info_general_path%></li>
+			<li><%= link_to t("Paradata_uses"), info_uses_path%></li>
+			<li><%= link_to t("Paradata_comments"), info_comments_path%></li>
+	</ul>
+	</div>
+	
+	<div class="sign_area">&#169; 2015 Edu-AREA</div>	
+</div>
+

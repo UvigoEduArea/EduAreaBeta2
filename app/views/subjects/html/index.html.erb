@@ -1,0 +1,36 @@
+<%
+=begin
+		############################################
+		# RENDERIZAMOS LAS PESTAÑAS Y LAS ACCIONES #
+		############################################
+=end
+%>
+<%= render :partial => "application/html/navigation", :locals => {:page => "subjects"} %>
+
+
+<%
+=begin
+		##############################################################################################################
+		#       SI EL USUARIO ES UN USUARIO REGISTRADO TENDRÁ LA POSIBILIDAD DE CREAR UNA NUEVA SUBJECT              #
+		#                EN CASO DE NO ESTAR REGISTRADO EL BOTÓN MÁS YA NO APARECERÁ                                 #
+		##############################################################################################################
+=end
+%>
+
+<div id="content_container" class="content">
+
+	<% if user_signed_in? %>
+		<%= link_to "+", eval("#create_"+params[:controller].singularize+"_path"), html_options = {:class => "new_subject", :method => :post} %>
+	<% end %>
+	
+	<% @elements.each do |element| %>
+		<div><p>
+			<%= link_to "Enlace", subject_path(element.id.to_s) %>
+	 		<%= element.id.to_s %>
+	    	<%= element.type.to_s %>
+	    	<%= element.title.to_s %>
+	    	<%= element.description.to_s %>
+	    </p></div>
+	<% end %>
+
+</div>

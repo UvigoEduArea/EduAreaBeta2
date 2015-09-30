@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
+  </head>
+  <body>
+    <h1><%= t("Mail_I") %></h1>
+    	
+	<p>
+		<%= t("Mail_II") %><%= @user.profile.first_name %> <%= @user.profile.last_name %><%= t("Mail_III") %><br/>
+	</p>
+	
+    <p><%= t("Mail_IV") %><a href="<%= @url %>"><%= @url %></a></p>
+    <p><%= t("Mail_V") %></p>
+  </body>
+</html>

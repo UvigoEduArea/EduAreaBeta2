@@ -1,0 +1,22 @@
+<%= render :partial => "application/html/navigation", :locals => {:page => "info_page"} %>
+
+<div id="content_container" class="content_index">
+	<div class= "information">
+		<span><%= t("Paradata_comments")%></span>
+		</br></br>
+		<p><%= t("Paradata_comments_P1") %></p>
+		</br>
+		
+		<ul>
+			<li><b><%= t("Paradata_comments_P2_1") %>: </b><%= t("Paradata_comments_P2_2") %></li></br>
+			<li><b><%= t("Paradata_comments_P3_1") %>: </b><%= t("Paradata_comments_P3_2") %></li></br>
+		</ul>
+		
+	</div>	
+</div> <!-- CONTENT -->
+		
+		
+		
+		<div class="clear"></div>
+	</div>	
+</div> <!-- CONTENT -->

@@ -1,0 +1,119 @@
+#setting_header{
+	height: 60px;
+	background-color: #737d87;
+	border-radius: 4px 4px 4px 4px;
+	padding:5px 20px;
+	color:#8f939c;
+}
+
+#setting_body{
+	min-height: 50px;
+	background-color: #f1f4fd;
+	padding: 15px;
+	margin-bottom: 5px;
+	
+}
+
+#setting_actions_bar{
+	margin-left: 5px;
+	margin-top: 2px;
+}
+
+#setting_title{
+	color: white;
+	font-size: 18px;
+	top: 25px;
+	margin-right: 6px;
+	margin-top: 5px;
+}
+
+.setting_icon{
+	cursor: pointer;
+}
+
+#setting_body.collapsed{
+	height: 0;
+	overflow: hidden;
+	min-height: 0;
+	padding: 0;
+}
+
+#setting_actions_bar span.expand_setting.collapsed{
+	width: 16px;
+	background: url("/images/icons/back_30.png") no-repeat;
+	height: 16px;
+}
+
+#setting_actions_bar span.expand_setting{
+	width: 16px;
+	background: url("/images/icons/White/plus.svg") no-repeat;
+	height: 16px;
+}
+
+.vocabulary_boxy{
+	border-radius: 3px;
+	background-color: #737373;
+	display: inline;
+	width: 5%;
+	border: 1px solid black;
+	padding: 1px 5px 1px 5px;
+	
+}
+
+.ts_children{
+	/*width: 50%;
+	padding-top: 1%;*/
+}
+
+.delete_setting_term{
+	padding-right: 4px;
+	cursor: pointer;
+}
+
+.a-right.tool_label{
+	margin-right: 43%;
+}
+
+.vocabularies{
+	padding: 5px;
+}
+
+.add_vocabulary_setting{
+	width: 23%;
+}
+
+#first_level_options, #second_level_options{
+	height: 40px;
+	text-align: center;
+	cursor: pointer;
+	background-color: #32C3D6;
+	color: white;
+	font-size: 20px;
+	padding-top:7px;
+	border-radius: 30px;
+}
+
+#loading{
+	width:50%;
+	height: 50%;
+	position:absolute;
+	left: 35%;
+	top: 35%;
+	background-color: #737D87;
+	border-radius: 30px;
+}
+
+#loading img{
+	width: 100px;
+	position: relative;
+	top: 20%;
+	left: 30%;
+}
+
+#loading span{
+	color: white;
+	font-size: 45px;
+	position: relative;
+	left: 32%;
+	top: 26%
+}

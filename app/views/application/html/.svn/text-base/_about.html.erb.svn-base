@@ -1,0 +1,43 @@
+<ul id="ddabout">
+	<li class="singlefirstlevel"><%= link_to t('Send_feedback'), info_contact_path%>
+	</li>
+	<li class="singlefirstlevel"><%= link_to t('Edu_Videos'), info_videos_path%>
+	</li>
+	<li class="singlefirstlevel"><%= link_to t('FAQ'), info_faq_path%>
+	</li>
+	<li class="singlefirstlevel"><%= link_to t('Newsletter'), info_newsletter_path%>
+	</li>
+	<li class="singlefirstlevel"><%= link_to t('What_Find'), info_what_find_path%>
+	</li>
+	<li><ul>
+			<li><%= link_to t("resources"), info_resources_path %></li>	
+			<li><%= link_to t("activities"), info_activities_path %></li>
+			<li><%= link_to t("lesson_plans"), info_lesson_plans_path %></li>
+		</ul>
+	</li>
+		
+	<li class="singlefirstlevel">
+		<%= link_to t('Licenses'), info_licenses_path%>
+	</li>
+	<li>
+		<ul>
+			<li><%= link_to t("Types_Licenses"), info_types_path%></li>
+			<li><%= link_to t("Assign_License"), info_assign_license_path%></li>
+			<li><%= link_to t("Compatibility"), info_compatibility_path%></li>
+		</ul>
+	</li>
+	<li class="singlefirstlevel">
+		<%= link_to t('Paradata'), info_paradata_path%>
+	</li>
+	<li>
+		<ul>
+			<li><%= link_to t("Paradata_general"), info_general_path%></li>
+			<li><%= link_to t("Paradata_uses"), info_uses_path%></li>
+			<li><%= link_to t("Paradata_comments"), info_comments_path%></li>
+		</ul>
+	</li>
+	<li class="singlefirstlevel">		
+			<%= link_to raw "&#169; 2015 Edu-AREA" %>		
+	</li>
+	
+</ul>

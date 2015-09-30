@@ -1,0 +1,23 @@
+<div class="element_info_box show-for-large-only">
+	<fieldset>
+		<div class="user_information_in_box small-12 clearfix text-left">
+			<%= image_tag(element.user.profile.avatar(:original), :width => "100%", :class => "left") %>
+			<%= link_to(user_path(element.user.id)) do %>
+				<span>
+					<p><%= t("Created_by")%>:</p><%= element.user.profile.first_name + " " + element.user.profile.last_name %>
+				</span>
+			<% end %>
+		</div>
+		
+		<div class="time_info text-left">
+			<%= image_tag '/images/icons/Botones/Negro/new.png',:crop => :scale %>
+			<%= t("Created_at")%>
+			<%= time_tag(element.created_at, :class => "form_timestamp", :style => "padding: 1%") %>
+			</br>
+			<%= image_tag '/images/icons/Botones/Negro/edit.png',:crop => :scale%>
+			<%= t("Last_change")%>
+			<%= time_tag(element.updated_at, :class => "form_timestamp", :style => "padding: 1%") %>
+		</div>
+			
+	</fieldset>
+</div>

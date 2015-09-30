@@ -1,0 +1,48 @@
+.box_container.pp_left,
+.box_container.pp_right,
+.box_container.pp_full{
+	box-shadow:0px 0px;	
+}
+
+.box_container
+ div label{
+	
+	font-size:1.3em;
+	color:#000;
+	font-weight:normal;
+}
+.box_container div label:first-child{
+	font-size:1.5em;
+	font-weight:bold;
+}
+
+.box_container.BT{
+	font-size: 1.2em;
+	text-decoration: underline;
+}
+.box_container ul{}
+.box_container ul li{
+	position: relative;
+	left: 10px;
+}
+
+.box_container.pp_left .header,
+.box_container.pp_right .header,
+.box_container.pp_full .header{
+	margin-bottom: 0.5%;	
+}
+
+ul.dropdown.activities_where{
+	background: #37414B;
+	top: 52%;
+	color: white;
+	left: 72%;
+	top: 0%;
+}
+
+ul.dropdown.activities_where li{
+	margin-top: 10px;
+	height: 25px;
+	cursor: pointer;
+	color: white;
+}

@@ -1,0 +1,81 @@
+<div class="element_list_box small-12 columns">
+	<div class= "icons_area select_element_to_move">
+		<%= case(list_view.record_type)
+		when "Image"
+			image_tag("/images/icons/Botones/Negro/image.png")
+		when "Video"
+			image_tag("/images/icons/Botones/Negro/video.png")
+		when "Document"
+			image_tag("/images/icons/Botones/Negro/document.png")
+		when "Snippet"
+			image_tag("/images/icons/Botones/Negro/snippet.png")
+		when "PositiveComment"
+			image_tag("/images/icons/Botones/Negro/positive.png")
+		when "NegativeComment"
+			image_tag("/images/icons/Botones/Negro/negative.png")
+		when "FreeText"
+			image_tag("/images/icons/Botones/Negro/text2.png")
+		when "Idea"
+			image_tag("/images/icons/Botones/Negro/idea.png") 
+		end
+		%>
+		
+			<%= check_box_tag("delete_"+info_type.singularize+"_checkbox",list_view.id.to_s) %>
+	</div>
+	
+	<% if info_type == "records_submissions" %>
+		<% info_type = "submissions" %>
+	<% end %>
+	
+	<% if list_view.record_type != "Document" and list_view.record_type != "PositiveComment" and list_view.record_type != "NegativeComment" and list_view.record_type != "FreeText" and  list_view.record_type != "Idea" and list_view.record_type != "Snippet" %>
+		<% case(list_view.record_type) %>
+		<% when "Image" %>
+			<div class="image show_content_element" value="<%= info_type %>" data-info="Observation;<%= list_view.id.to_s%>">
+				<% unless list_view.original_image.blank? %>
+					<%= image_tag(list_view.original_image.url()) %>
+			</div>
+					<div class="element_list_content show_content_element" value="<%= info_type %>" data-info="Observation;<%= list_view.id.to_s%>">
+				<% else %>
+			</div>
+					<div class="element_list_content show_content_element" style="margin-left: 20px;" value="<%= info_type %>" data-info="Observation;<%= list_view.id.to_s%>">
+				<% end %>
+		<% when "Video" %>
+			<div class="image show_content_element" value="<%= info_type %>" data-info="Observation;<%= list_view.id.to_s%>">
+				<% unless list_view.video_frame_path.blank? %>
+					<%= image_tag(list_view.video_frame_path) %>
+			</div>
+				<div class="element_list_content show_content_element" value="<%= info_type %>" data-info="Observation;<%= list_view.id.to_s%>">
+				<% else %>
+			</div>
+				<div class="element_list_content show_content_element" style="margin-left: 20px;" value="<%= info_type %>" data-info="Observation;<%= list_view.id.to_s%>">
+				<% end %>
+			
+		<% end %>
+			
+	<% else %>
+		<div class="element_list_content show_content_element" style="margin-left: 20px;" value="<%= info_type %>" data-info="Observation;<%= list_view.id.to_s%>">
+	<% end %>
+	
+		<div class="element_list_information title description small-9 columns end">
+			<%unless list_view.title.blank? %>
+				<p class="title"><%= list_view.title%></p>
+			<% else %>
+				<p class="title"><%= t('title') %></p>
+			<% end %>
+			<div class="description"><%= !list_view.description.blank? ? (list_view.description.html_safe) : ""%></div>
+		</div>
+		
+		<div class="other_info">
+			<div class= "name_and_avatar">
+				<%= image_tag(list_view.experience_element_record.user.profile.avatar.url(:thumb)) %>
+				<% if (list_view.experience_element_record.user.profile.first_name.length + list_view.experience_element_record.user.profile.last_name.length) > 15 %>
+					<span><%= list_view.experience_element_record.user.profile.first_name + " " + (sanitize list_view.experience_element_record.user.profile.last_name[0,14-(list_view.experience_element_record.user.profile.first_name.length)]) %></span>
+				<% else %>
+					<span><%= list_view.experience_element_record.user.profile.first_name + " " + list_view.experience_element_record.user.profile.last_name %></span>
+				<% end %>
+			</div>
+			<p class="p_records"><%= "Mod: " %><%= time_tag(list_view.updated_at, :class => "last_change") %></p>
+		</div>
+	
+	</div>
+</div>

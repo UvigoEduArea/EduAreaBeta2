@@ -1,0 +1,92 @@
+.area_introduction{
+	height:100px;
+	text-align: center;
+	margin-top: 15px;
+	position: relative;
+}
+
+.last_elements{
+	position: relative;
+}
+
+.user_activity_header{
+	margin-top: 15px;
+	padding-left: 5px;
+}
+
+
+.last_elements_box{ /* < 960px preparado >800px */
+	float:left;
+	/*margin-bottom: 5px;*/
+	min-height: 300px;
+	min-width:532px;
+	max-width:732px;
+	width:100%;
+
+}
+@media only screen and (min-width: 60.000em) /* >= 960px */
+{
+	.last_elements_box{
+		min-width:660px;
+		max-width:896px;
+	}
+}
+@media only screen and (min-width: 64.000em) /* >= 1024px */
+{
+	.last_elements_box{
+		min-width:760px;
+		max-width:960px;
+	}
+}
+@media only screen and (min-width: 80.000em) /* >= 1280px */
+{
+	.last_elements_box{
+		min-width:1016px;
+		max-width:1216px;
+	}
+}
+@media only screen and (min-width: 90.000em) /* >= 1440px */
+{
+	.last_elements_box{
+		min-width:1276px;
+		max-width:1476px;
+	}
+}
+@media only screen and (min-width: 105.000em) /* >= 1680px */
+{
+	.last_elements_box{
+		min-width:1416px;
+		max-width:1616px;
+	}
+}
+@media only screen and (min-width: 120.000em) /* >= 1920px */
+{
+	.last_elements_box{
+		min-width:1586px;
+		max-width:1840px;
+	}
+}
+.last_elements_box.resource{
+	background: none repeat scroll 0% 0% #dfe6ee;
+	/*border: 1px solid #d9e0e8;*/
+}
+
+.last_elements_box.activity{
+	background: none repeat scroll 0% 0% #dfe6ee;
+	/*border: 1px solid #d9e0e8;*/
+}
+
+.last_elements_box.lessons_plans{
+	background: none repeat scroll 0% 0% #dfe6ee;
+	/*border: 1px solid #d9e0e8;*/
+}
+
+#last_resources, #last_activities, #last_sequences{
+	padding-left: 5px;
+}
+
+.area_introduction{
+	font-size: 23px;
+	font-weight: bold;
+	margin-top: 50px;
+}

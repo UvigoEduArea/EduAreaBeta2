@@ -1,0 +1,36 @@
+<%
+=begin
+		######################################################################################
+		#  PRIMERA PARTE DEL FORM, DONDE APARECE LA MISMA ESTRUCTURA Y LOS MISMO CAMPOS QUE  #
+		#  SON COMUNES A TODOS LOS ELEMENTOS DE LA WEB                                       #
+		######################################################################################
+=end
+%>
+
+<%= form_for(@element, :method => "patch", :html => {:id => "Edit_Element"}) do |f| %>
+
+	<div class= "editable active">
+	<%= f.label :title, t("title") %>
+	<%= f.text_field :title, :class => "updateable" %>
+	</div><div class= "editable active">
+	<%= f.label :description, t("Description") %>
+	<%= f.text_area :description, size: "100x6", :class => "updateable" %> 
+	</div><div class= "editable active">
+	<%= f.label :private, t("Private") %>
+	<%= f.radio_button :private, 'true', :class => "updateable" %> 
+	<%= f.label :private, t("Public") %>
+	<%= f.radio_button :private, 'false', :class => "updateable" %>
+	</div><div>
+	<% if @element.image.url() != "none" %>
+		<%= image_tag @element.image.url(),:crop => :scale, :width => 200, :class => "image_preview" %>
+	<% else %>
+		<img class="image_preview" width="100%"/>
+	<% end %>
+		<div class= "image editable active">
+			<%= f.label :image, t("image") %>
+			<%= f.file_field :image, :class => "image_updateable" %>
+		</div>
+	</div>
+
+<% end %>
+

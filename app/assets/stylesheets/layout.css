@@ -1,0 +1,130 @@
+ul.dropdown.info_bubble{
+	width: auto;
+	text-align: center;
+	line-height: 26px;
+	color: #fff;
+	font-weight: bold;
+	position: relative;
+	list-style: none;
+	text-align: center;
+	left: 0%;
+	top: 4%;
+	border-radius: 20px 20px 20px 20px;
+	background: #737D87;
+}
+
+ul.dropdown.info_bubble li{
+	width: 99%;
+}
+
+
+
+/*p.speech:before{
+	content: ' ';
+	position: absolute;
+	
+	left: 8px;
+	top: 25px;
+	border: 10px solid;
+	border-color: #666 transparent transparent #666;
+}
+
+p.speech:after{
+	content: ' ';
+	position: absolute;
+	
+	left: 11px;
+	top: 23px;
+	border: 7px solid;
+	border-color: #fff transparent transparent #fff;
+}
+*/
+
+
+.itemize_li{
+	width: 100%;
+	margin-left: 27px;
+	background-color: transparent;
+}
+
+.box_item_value_no_updateable, .box_item_value_updateable{
+	border: none;
+	color: black;
+	font-size: 14px;
+	background-color: transparent;
+}
+
+.bsv{
+	background-color: transparent;
+	color: black;
+	border: none;
+	width: 50%;
+}
+
+.add_box_popup_icon{
+	width: 16px;
+}
+
+
+p.show_whole_view_popup.mini_view{
+	position: relative;
+	border: none;
+}
+
+.mini_view_box{
+	float: left;
+	width: 120px;
+	height: 120px;
+	margin-right: 1.5%;
+	margin-bottom: 1.5%;
+	background-image: url('/images/defaults/no_image.jpg');
+	background-repeat:no-repeat;
+	background-size:cover;
+	-moz-border-radius: 4px;
+	-webkit-border-radius: 4px;
+	border-radius: 4px;
+	-ms-border-radius: 4px;
+	position: relative;
+	box-shadow: 0px 1px 2px 1px rgba(68, 68, 68, 0.5);
+}
+
+.mini_view{
+	position: absolute;
+	padding: 2px 0.5%;
+	width: 99%;
+	height: 100%;
+	cursor: pointer;
+}
+.mini_view p{
+	font-size: 13px;
+	background: none repeat scroll 0% 0% rgba(255, 255, 255, 0.8);
+	font-weight: bold;
+	text-align: center;
+	position: relative;
+}
+
+.box_item_value_updateable.page_full, .box_item_value_updateable.page_full{
+	max-width: 95%;
+	width: inherit;
+} 
+
+.box_item_value_updateable.page_right, .box_item_value_updateable.page_right, .box_item_value_updateable.page_left, .box_item_value_updateable.page_left{
+	max-width: 87%;
+	width: inherit;
+}
+
+.delete_element, .delete_data_box_miniview{
+	background-color: white;
+	cursor: pointer;
+}
+
+.show_content_url img{
+	cursor: pointer;
+	width: 16px;
+	background-color: white;
+}
+
+.mini_view_license_icon{
+	float: right;
+	position: relative;
+}

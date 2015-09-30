@@ -1,0 +1,241 @@
+<div class="element_summary">
+	<% unless defined?(contents) && contents %>
+		<div id="informacionficha" class="small-11 columns hide-for-large-only informacionfichapeque">
+				<%= render :partial => "layouts/html/info_element_box", :object => form, :as => :element %>
+				<%= render :partial => "layouts/html/info_paradata", :object => form, :as => :element %>
+		</div>
+	<% end %>
+	<%= form_for(form, :method => "patch", :html => {:class => "edit_activity small-11 medium-11 large-8 columns left"}) do |f| %>
+	
+	<div id="form_header" class="">	
+		
+		<div class="description_and_image clearfix">
+			<div id="LeftModulo" class="inline_image left small-5 columns">				
+				<% if form.image.url() != "none" %>	
+					<%= image_tag form.image.url(),:crop => :scale, :width => 300, :class => "image_preview" %>
+				<% else %>
+					<%= image_tag '/images/img_defecto.png',:crop => :scale, :width => 300, :class => 'image_preview' %>
+				<% end %>
+				<div id="SelectImageBox">
+					<%= button_tag t('Remove_Image'), {:id => "remove_image", :type => "button", :disabled => created ? false:true, :class => created ?  "":"invisible"}  %>
+					<%= f.file_field :image, :class => created ? "image_updateable":"image_updateable invisible"%>
+				</div>
+				
+				<% unless defined?(contents) && contents %>
+					<div id="PrivacyAbstract" class="clearfix">
+						<div class= "privacy editable active small-6 columns">
+							<div class="small-offset-3 small-2 columns">
+								<span class="private_icon change_icon centradovertical <%= "public" unless form.private %>"></span>								
+							</div>
+							<div class="small-7 columns">
+								<%= f.radio_button :private, 'true', :class => "updateable ", :disabled => created ? false:true %>
+								<%= f.label :private, t("Private"),:class => "" %><br>
+								<%= f.radio_button :private, 'false', :class => "updateable ", :disabled => created ? false:true %>
+								<%= f.label :private, t("Public"),:class => "" %>
+							</div>
+						</div>
+					
+						<div class="abstract small-6 columns">
+							<div class="small-offset-2 small-2 columns">
+								<span class="abstract_icon change_icon centradovertical <%= "public" unless form.abstract %>"></span>
+							</div>
+							<div class="small-8 columns">
+								
+								<%= f.radio_button :abstract, 'true', :class => "updateable", :disabled => created ? false:true %>
+								<%= f.label :abstract, t("Abstract") %>
+								<br>
+								<%= f.radio_button :abstract, 'false', :class => "updateable", :disabled => created ? false:true %>
+								<%= f.label :abstract, t("Concrete") %><br>
+							</div>
+						</div>
+					</div>
+				<% end %>
+				
+				<%= f.fields_for :licenses, form.license do |builder| %>	
+					<div id="LicenciasBoxTop" class="clearfix <%="invisible" if !created%>">
+						<% if form.original_license_id.nil? %>
+						
+							<div class="copyright">
+								<span><%= t("Does_the_activity_have_a_known_CC_license")%></span>
+								<br/>
+								<%= f.radio_button :known_CC_license,'true', :checked => (form.right_id != 8) ? true : false, :class => "known_CC_license", :disabled => created ? false:true %>
+								<%= f.label :known_CC_license, t("yes") %>
+								<br/>
+								<%= f.radio_button :known_CC_license,'false', :checked => (form.right_id == 8) ? true : false, :class => "known_CC_license", :disabled => created ? false:true %>
+								<%= f.label :known_CC_license,t("no") %>
+								
+							</div>
+						
+						<% end %>
+							
+						<% if form.original_license_id != 8 %>
+							<div class="show_license <%="invisible" if form.right_id == 8%>">
+								<div class="condition <%="invisible" if !created%>">
+									<span><%=t("Waive_all_rights_and_place_work_in_the_public_domain")%>(CC0)?</span>
+									<br/>
+									<%= builder.radio_button :license_condition, 'true', :checked => (form.right_id == 7) ? true : false, :class => "active_condition", :disabled => created ? false:true %>
+									<%= builder.label :license_condition, t("yes") %>
+									<br>
+									<%= builder.radio_button :license_condition, 'false', :checked => (form.right_id != 7) ? true : false, :class => "active_condition", :disabled => created ? false:true %>
+									<%= builder.label :license_condition, t("no") %>
+									
+								</div>	
+							</div>
+						<% end %>
+					</div>
+					<div id="LicenciasBoxMid" class="clearfix ">
+						<div id="LicenciasBoxLeft" class="small-8 columns <%= "invisible" if form.original_license_id != 8 and form.right_id == 8%>">
+							<% if form.original_license_id != 8 %>
+								<div class="license">
+									<div class="commercial <%="invisible" if !created%>">
+										<span><%= t("Allow_commercial_uses") %></span>
+										<%=builder.select :commercial, options_for_select([[t("no"), 0],[t("yes"),1]],[form.license.commercial ? 1 : 0]) , {}, {:disabled => (created && form.right_id!=7) ? false:true, :class => "active_select"}%>
+									</div>	
+									<div class="derivative <%="invisible" if !created%>">
+										<span><%= t("Allow_modifications") %></span>
+										<%=builder.select :derivative, options_for_select([[t("no"), 0],[t("yes"),1],[t("yes_but share alike"),2]],[get_license(form.license.derivative, form.license.license_condition)]) , {}, {:disabled => (created && form.right_id!=7) ? false:true, :class => "active_select"}%>
+									</div>	
+								</div>
+							<% end %>
+						</div>
+						<div id="LicenciasBoxRight" class="small-4 columns">
+							<div class="row">
+								<%= link_to info_types_path do %>
+									<%= image_tag(form.license.license_icon, :class => "licenses_image", :data_value => form.right_id) %>
+								<% end %>	
+							</div>
+						
+							<%= render :partial => "/layouts/html/input_licenses", :locals => {:vector_licenses => vector_licenses[form.id.to_s],:element => form }%>	
+						
+						</div>
+					</div>
+					<div id="LicenciasBoxBot" class="clearfix">
+						<div class= "author <%="invisible" if !created%>">
+							<span><%= t("Are you the original author")%></span>
+							<br />
+							<%= f.radio_button :author, 'true', :checked => (form.author == nil) ? true : false,:class => "choose_author", :disabled => created ? false:true %>
+							<%= f.label :author, t("yes") %>
+							<br />
+							<%= f.radio_button :author, 'false', :checked => (form.author != nil) ? true : false,:class => "choose_author", :disabled => created ? false:true %>
+							<%= f.label :author, t("no") %>
+						</div>
+						<div class="show_name_edition <%="invisible" if form.author.nil?%>">
+							<div class="name_edition <%="invisible" if !created%>">
+								<%= f.text_field :author_name, :class => "author_name",:placeholder => t("Insert_complete_name"), :value => form.author, :style => created ? "background-color: #eee" : "",:disabled => !created ? true: false%>
+							</div>
+							<div class="name_edition <%="invisible" if !created%>">
+								<%= f.text_field :author_URL, :class => "URL_edition",:placeholder => t("Insert_author_URL"), :value => form.author_URL, :style => created ? "background-color: #eee" : "", :disabled => !created ? true: false %>
+							</div>
+						</div>
+						
+						<div class= "author_attribution <%= if created then "invisible" else if form.right_id == 8 then "invisible" end end %>">
+							<div>
+								<span> <b><%=t("This_work")%></b></span>
+							</div>
+								
+							<% if form.source_id.nil?%> <!-- El recurso es no clonado-->
+								<%if form.author.nil?%> <!-- El autor original es el usuario que subió ese recurso-->
+									<p><%=t("This_work_1")%> "<%=link_to form.title, show_activity_path(form.id), :target => "_blank",:class => "original_title attribution_title"%>" 
+									   <%=t("This_work_5")%> 
+									   <%=link_to(attributions[form.id.to_s]["modified_license_name"].first.full_license_name == "unknown" ? t("unknown") : attributions[form.id.to_s]["modified_license_name"].first.full_license_name, attributions[form.id.to_s]["url_license_modified"], :target => "_blank", :class => "original_license attribution_license")%> 
+									   <%=t("This_work_3")%>
+									   <%=link_to form.user.profile.first_name+' '+form.user.profile.last_name,user_path(form.user.id),:target => "_blank",:class => "user_author"%><%= "."%>
+									</p>
+								<%else%> <!-- El autor original es el especificado en el author input-->
+									<p><%=t("This_work_1")%> "<%=link_to form.title,show_activity_path(form.id), :target => "_blank",:class => "original_title attribution_title" %>" 
+										<%=t("This_work_5")%> 
+										<%=link_to attributions[form.id.to_s]["modified_license_name"].first.full_license_name == "unknown" ? t("unknown") : attributions[form.id.to_s]["modified_license_name"].first.full_license_name , attributions[form.id.to_s]["url_license_modified"], :target => "_blank", :class => "original_license attribution_license"%> 
+										<%=t("This_work_3")%><%=link_to form.author, ext_link(form.author_URL), :target => "_blank",:class => "user_author"%><%= "."%>
+									</p>
+								<%end%>
+							<% else %> <!-- El recurso es clonado-->
+								<%if !attributions[form.id.to_s]["original_element"].author.nil?%> <!-- El autor original es el que aparece en el input del autor en el recurso original-->
+									<p>
+										<%=t("This_work_1")%> "<%=link_to form.title, show_activity_path(form.id), :target => "_blank",:class => "modified_title attribution_title"%>" 
+										<%=t("This_work_2")%> "<%=unless attributions[form.id.to_s]["original_element"].nil? then link_to(attributions[form.id.to_s]["original_element"].title,show_activity_path(form.source_id), :class => "original_title") end%>"
+										<%=t("This_work_3")%> <%=unless attributions[form.id.to_s]["original_element"].nil? then unless attributions[form.id.to_s]["original_element"].author_URL.nil? then link_to(attributions[form.id.to_s]["original_element"].author, ext_link(attributions[form.id.to_s]["original_element"].author_URL),
+										:target => "_blank", :class => "original_author") else attributions[form.id.to_s]["original_element"].author end end%>
+										<%=t("This_work_4")%> <%=link_to attributions[form.id.to_s]["original_license_name"].first.full_license_name, attributions[form.id.to_s]["url_license"],
+										:target => "_blank", :class => "original_license"%>."<%= " "%>"<%=link_to form.title, show_activity_path(form.id), :target => "_blank",:class => "modified_title attribution_title"%>""
+										<%= " " + t("This_work_5")%> <%= link_to attributions[form.id.to_s]["modified_license_name"].first.full_license_name == "unknown" ? t("unknown") : attributions[form.id.to_s]["modified_license_name"].first.full_license_name, attributions[form.id.to_s]["url_license_modified"],
+										:target => "_blank", :class => "modified_license attribution_license"%> 
+										<%=t("This_work_3")%> <%=link_to form.user.profile.first_name+' '+form.user.profile.last_name,user_path(form.user.id),
+										:target => "_blank",:class => "user_author"%><%= "." %>
+									</p>
+								<%else%>
+									<!-- El autor ha clonado su propio recurso -->
+									<p><%=t("This_work_1")%> "<%=link_to form.title, show_activity_path(form.id), :target => "_blank",:class => "modified_title attribution_title"%>" 
+									   <%=t("This_work_2")%> "<%= unless attributions[form.id.to_s]["original_element"].nil? then link_to(attributions[form.id.to_s]["original_element"].title,show_activity_path(form.source_id), :class => "original_title") end%>" 
+									   <%=t("This_work_3")%> <%=unless attributions[form.id.to_s]["original_element"].nil? then link_to(attributions[form.id.to_s]["original_element"].user.profile.first_name+' '+attributions[form.id.to_s]["original_element"].user.profile.last_name, user_path(attributions[form.id.to_s]["original_element"].user.id), :target => "_blank", :class => "original_author") end%>
+									   <%=t("This_work_4")%> "<%=link_to attributions[form.id.to_s]["original_license_name"].first.full_license_name == "unknown" ? t("unknown") : attributions[form.id.to_s]["original_license_name"].first.full_license_name, attributions[form.id.to_s]["url_license"], 
+									   :target => "_blank", :class => "original_license"%>". <%= " "%>"<%=link_to form.title, show_activity_path(form.id), :target => "_blank",
+									   :class => "modified_title attribution_title"%>"
+									   <%= " " + t("This_work_5")%> <%=link_to attributions[form.id.to_s]["modified_license_name"].first.full_license_name == "unknown" ? t("unknown") : attributions[form.id.to_s]["modified_license_name"].first.full_license_name, attributions[form.id.to_s]["url_license_modified"],
+									   :target => "_blank", :class => "modified_license attribution_license" %> 
+									   <%=t("This_work_3")%> <%=link_to form.user.profile.first_name+' '+form.user.profile.last_name,user_path(form.user.id),:target => "_blank",:class => "user_author"%><%= "."%>
+									</p>
+								<%end%>
+							<% end %>
+						</div>
+					</div>
+				<% 
+				end #del fields_for del form.license 
+				%>
+			</div>
+			<div id="title_and_description" class="left small-7 columns">
+				<div class="title_container">
+					<% if user_signed_in? && current_user.id == form.creator_id %>
+						<%= f.text_field :title, :class => "updateable focusable", :disabled => created ? false:true, :placeholder => t("title"), :style => created ? "background-color: #eee" : "" %>
+					<% else %>
+						<p class="updateable focusable" value="<%= form.title %>"><%= form.title %></p>
+					<% end %>
+				</div>
+				<% if user_signed_in? and current_user.type == "Student" && experience %>
+					<div class="inline description description_container">
+						<%= f.label :description_student, t("Description_student") %>
+						<%= f.text_area :description_student, size: "100x6", :class => "updateable focusable", :disabled => created ? false:true, :placeholder => t("Description_student") %> 
+					</div>
+				<% else %>
+					<div class="inline description description_container">
+						<%= f.label :description, t("Description") %>
+						<%= f.text_area :description, size: "100x6", :class => "updateable focusable", :disabled => created ? false:true, :placeholder => t("Description") %> 
+					</div>
+					<!--% if experience %-->
+						<div class="inline description description_container student">
+							<%= f.label :description_student, t("Description_student") %>
+							<%= f.text_area :description_student, size: "100x6", :class => "updateable focusable", :disabled => created ? false:true, :placeholder => t("Description_student") %> 
+						</div>
+					<!--% end %-->
+				<% end %>
+					
+				<div class="keywords">
+					<%= f.label :keywords, t("keywords")%>
+					<% if !current_user.nil? && (current_user.id == form.creator_id) %>
+						<div class="keyword_input_container">
+							<%= text_field_tag :keyword,nil, {:class => created ? "keyword_input focusable" : "keyword_input focusable invisible", :disabled => created ? false:true, :placeholder => t("keywords"), :style => created ? "background-color: #eee" : ""} %>
+						</div>
+					<% end %>
+					<div class="keywords_container">
+						<% form.keywords.each do |keyword| %>
+							<div id="keyword_<%= keyword.id%>"class="keyword_box"><%= image_tag("/images/icons/Black/cancel-circle.svg", :class => created ? "delete_keyword" : "delete_keyword invisible")%><span><%= keyword.keyword %></span></div>
+						<% end %>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	
+		<div class="clear"></div>
+	
+	<% end %>
+	
+	
+	<% unless defined?(contents) && contents %>
+		<div id="informacionficha" class="left small-3 columns show-for-large-only">
+			<%= render :partial => "layouts/html/info_element_box", :object => form, :as => :element%>
+			<%= render :partial => "layouts/html/share_buttons", :object => form, :as => :element %>
+			<%= render :partial => "layouts/html/info_paradata", :object => form, :as => :element %>
+		</div>
+	<% end %>
+	
+</div>

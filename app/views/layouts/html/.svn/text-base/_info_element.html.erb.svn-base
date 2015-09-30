@@ -1,0 +1,50 @@
+<ul class="dropdown_paradata <%= element.type.downcase %>">
+	<% unless element.source_id.blank? %>
+		<li>
+			<p><%= t('No_original_element') %><%= "." %></p>
+		</li>
+		<% unless original.blank? %>	
+			<li>
+				<p><%= t("This_element_was_copied") %><%= " " %></p>
+			</li>
+			<li>
+				<% if (original.type.downcase != "lessonplan") %>
+					<%= link_to eval(original.type.downcase.to_s + "_path("+original.id.to_s+")"), :class => "a-right" do%>
+						<% if original.title != nil%>
+							<p style="color: blue"><%= original.title %></p>
+						<% else %>
+							<p style="color: blue"><%= t('element') %></p>
+						<% end %>
+					<% end %>
+				<% else %>
+					<% if (original.type.downcase == "lessonplan") %>
+	 					<% path = "show_lesson_plan_path"%>
+					<% end %>
+					<%= link_to eval(path + "(" +original.id.to_s+")"), :class => "a-right" do%>
+						<% if original.title != nil%>
+							<p style="color: blue"><%= original.title %></p>
+						<% else %>
+							<p style="color: blue"><%= t('element') %></p>
+						<% end %>
+					<% end %>
+				<% end %>
+			</li>
+			<% if defined?(attributions) %>
+				<li>
+				<p><%= t("With_license")+" "%></p>
+				</li>
+				<li>
+				<p><%=link_to attributions[element.id.to_s]["original_license_name"].first.full_license_name, attributions[element.id.to_s]["url_license"], :target => "_blank", :class => "a-right",  :style => "color: blue" %></p>
+				</li>
+			<% end %>									
+		<% else %>
+			<li>
+				<p><%= t('Original_element_removed') %></p>
+			</li>
+		<% end %>
+	<% else %>
+		<li>
+			<p><%= t('Original_element') %></p>
+		</li>
+	<% end %>
+</ul>

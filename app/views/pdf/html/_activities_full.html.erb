@@ -1,0 +1,59 @@
+<div id="form_header" class="description_and_image activity">
+	<h3 class="activity_number header"><%= t("activity") + " - " + (form_counter + 1).to_s + ": " + (form.title.blank? ? "No title" : form.title)%></h3>	
+	<div id="LeftModulo" class="inline_image left small-5 columns">				
+		<% if form.image.url() != "none" %>	
+			<%= wicked_pdf_image_tag form.image.url(),:crop => :scale, :class => "image_preview" %>
+		<% else %>
+			<%= wicked_pdf_image_tag '/images/img_defecto.png',:crop => :scale, :class => 'image_preview' %>
+		<% end %>
+	</div>
+	<div class="keywords">
+		<%= label_tag :keywords, t("keywords")%>
+		<div class="keywords_container">
+			<% form.keywords.each do |keyword| %>
+				<div id="keyword_<%= keyword.id%>"class="keyword_box"><span><%= keyword.keyword %></span></div>
+			<% end %>
+		</div>
+	</div>
+</div>
+<br />
+<h4 class="header clear"><%= t("Descriptions")%></h4>
+<div id="title_and_description" class="left small-7 columns">
+	<% if user_signed_in? and current_user.type == "Student" %>
+		<div class="inline description description_container student">
+			<%= label_tag :description_student, t("Description_student") %>
+			<div><%= unless form.description_student.blank? then form.description_student.html_safe else t("no_description") end %></div>
+		</div>
+	<% else %>
+		<div class="inline description description_container ">
+			<%= label_tag :description, t("Description") %>
+			<div><%= unless form.description.blank? then form.description.html_safe else t("no_description") end %></div>
+		</div>
+		<br />
+		<div class="inline description description_container student ">
+			<%= label_tag :description_student, t("Description_student") %>
+			<div><%= unless form.description_student.blank? then form.description_student.html_safe else t("no_description") end %></div>  
+		</div>
+	<% end %>
+		
+</div>
+<br class="clear"/>
+<% if user_signed_in? && (current_user.type == "Admin" || current_user.type == "Teacher")%>
+	<div class="details_container details lesson_plan">
+		<h4 class="header"><%= t("Details")%></h4>
+		<% if form.template.boxes.blank? %>
+			<p><%= t("no_details")%></p>
+		<% else %>
+			<%= render :partial => "/pdf/html/details", :object => form.template, :as => "template", :locals => {:object => form} %>
+		<% end %>
+	</div>
+<% end %>
+
+<div class="resources_container resources lesson_plan">
+	<h4 class="header"><%= t("Resources")%></h4>
+	<% if Element.where("parent_id = " + form.id.to_s + " and (type = 'Application' or type = 'Device' or type = 'Content' or type = 'Event' or type = 'Collaborator') and removed = false").blank? %>
+		<p><%= t("no_resources")%></p>
+	<% else %>
+		<%= render :partial => "/pdf/html/resources", :collection => Element.where("parent_id = " + form.id.to_s + " and (type = 'Application' or type = 'Device' or type = 'Content' or type = 'Event' or type = 'Collaborator') and removed = false"), :as => "object" %>
+	<% end %>
+</div>

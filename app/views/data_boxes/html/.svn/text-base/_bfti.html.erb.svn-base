@@ -1,0 +1,13 @@
+<%
+=begin
+		LAS CAJAS BFTI, BOX FREE TEXT ITEM, SON CAJAS ITEMICES QUE INCLUYEN TEXTO LIBRE
+=end
+%>
+
+<%= f.fields_for :data_boxes do |builder| %>
+	<li class="itemize_li" data-position="<%= bfti.position.to_s %>" data-bfti_id="<%= bfti.id.to_s %>"> 
+		<%= image_tag "/images/icons/Black/close.svg",:width => 16, :class => created ? "delete_data_box_item":"delete_data_box_item invisible", :id => bfti.id.to_s %> 
+		<%= builder.text_field :content, :class => "box_item_value_updateable updateable focusable page_"+bfti.box.page_position, :value => bfti.content_value, :disabled => created ? false:true, :data_type => "free_text", :style => created ? "background-color: #eee" : ""%>
+	</li> 
+<% end %>
+

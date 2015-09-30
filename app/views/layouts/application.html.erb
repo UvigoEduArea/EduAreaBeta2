@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Edu-AREA Beta</title>
+  <%= metamagic %>
+  <% #set_meta_tags :refresh => 0 
+  %>
+  <%= stylesheet_link_tag 'application', 'data-turbolinks-track' => true 
+  %>
+  <script src="http://edu-area.com:9292/faye/client.js"></script>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <%= csrf_meta_tags %>
+  <script src="/javascript/jquery-te-1.4.0.min.js"></script>
+<link href="/css/jquery-te-1.4.0.css" media="screen" rel="stylesheet" />
+<link href='http://fonts.googleapis.com/css?family=Roboto:300,700' rel='stylesheet' type='text/css'>
+
+</head>
+<body>
+	<%
+		################################################################################
+		# EL SIGUIENTE CÓDIGO PERMITE EL CAMBIO DE IDIOMA, EL LOG IN Y EL SIGN UP 
+		################################################################################
+	
+	%>
+	<%
+		if (params[:controller] == "devise/sessions" || params[:controller] == "registrations") && params[:action] == "new"
+	%>
+		<%= render :partial => "application/html/navigation", :locals => {:section_title => (t ("profile")), :page => "profile"} %>
+		
+	<% end %>
+	<% p params %>
+	
+	<%= yield %>
+	<script src="/javascript/masonry.pkgd.min.js"></script>
+	<script src="/javascript/imagesloaded.pkgd.min.js"></script>
+
+	<div id="popup_background"></div>
+</div>
+
+<%= #render :partial => "application/html/footer"
+%>
+
+<div class="clear"></div>
+<input type="hidden" id="locale" value="<%= I18n.locale %>"/>
+</body>
+</html>

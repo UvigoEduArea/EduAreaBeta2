@@ -1,0 +1,39 @@
+<%= render :partial => "application/html/navigation", :locals => {:page => "info_page"} %>
+
+<div id="content_container" class="content_index">
+	<div class= "information">
+		<span><%= t("Compatibility_P4")%></span>	
+		</br></br>
+		<p><%= t("Compatibility_P4_1")%></p>
+		</br>
+		<p><%= t("Compatibility_P4_intro")%></p>
+		</br>
+		<iframe width="560" height="315" src="https://www.youtube.com/embed/uz3owO6JTK8" frameborder="0"  style = "margin: 0px 30%" allowfullscreen></iframe>
+		</br></br>
+		<p><%= t("Compatibility_P4_2")%></p>
+		</br>
+		<div class = "compatibility_chart2" >
+			<%= link_to 'https://wiki.creativecommons.org/Frequently_Asked_Questions#Can_I_combine_material_under_different_Creative_Commons_licenses_in_my_work.3F', :target => "_blank" do %>
+					<%= image_tag("/images/icons/licenses/license_chart.png", class: "icon_compatibility_chart2") %>
+			<% end %>
+		</div>
+		</br>
+		
+		<span><%= t("Compatibility_P1")%></span>
+		</br></br>
+		<p><%= t("Compatibility_P2")%><b><%= t("Compatibility_P2_1")%></b><%= t("Compatibility_P2_2")%></p>
+		</br>
+		<p><%= t("Compatibility_P1_intro")%></p>
+		</br>
+		<iframe width="560" height="315" src="https://www.youtube.com/embed/0XwQhM9KFHM" frameborder="0" style = "margin: 0px 30%" allowfullscreen></iframe>
+		</br></br>
+		<p><%= t("Compatibility_P3")%><%= t("Compatibility_P3_1")%></p>
+		</br>
+		<div class = "compatibility_chart">
+			<%= link_to 'https://wiki.creativecommons.org/File:CC_License_Compatibility_Chart.png', :target => "_blank" do %>
+					<%= image_tag("/images/icons/licenses/Compatibility_Chart.png", class: "icon_compatibility_chart") %>
+			<% end %>
+		</div>
+		
+	</div>
+</div> <!-- CONTENT -->

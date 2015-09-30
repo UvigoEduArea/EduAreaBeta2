@@ -1,0 +1,172 @@
+<div id="marco_popup">
+	<div id="header_popup">
+		<h2 id="popup_title">Editor</h2>
+	</div>
+	<div id="content_popup" class="content">
+		<div id="photo_editor">
+			<div class='image_bottons_top'>
+				<%if !element.blurred_image.path.blank?%>
+					<%=button_tag nil, {
+						:type => "button", :value => "experiences", :class => "abre_popup boton",
+						:"data-info"=> "Experience;0", 'data-no-turbolink' => true} do %>
+						<%= image_tag('/images/icons/recover_original.png', :class => "action_icon",
+						:value => "recover_image")%>
+						<p>
+							Recuperar original
+						</p>
+					<% end %>
+				<% end %>
+				
+				<%=button_tag nil, {
+					:type => "button", :value => "experiences", :class => "abre_popup boton",
+					:"data-info"=> "Experience;0", 'data-no-turbolink' => true} do %>
+					<%= image_tag('/images/icons/exit.png', :class => "action_icon",
+					:value => "out")%>
+					<p>
+						Salir
+					</p>
+				<% end %>
+				
+				<%if !clean%>
+					<%=button_tag nil, {
+						:type => "button", :value => "experiences", :class => "abre_popup boton",
+						:"data-info"=> "Experience;0", 'data-no-turbolink' => true} do %>
+						<%= image_tag('/images/icons/delete_account.png', :class => "action_icon",
+						:value => "undo_changes")%>
+						<p>
+							Borrar ajustes
+						</p>
+					<% end %>
+		
+					<%=button_tag nil, {
+						:type => "button", :value => "experiences", :class => "abre_popup boton",
+						:"data-info"=> "Experience;0", 'data-no-turbolink' => true} do %>
+						<%= image_tag('/images/icons/checkmark.png', :class => "action_icon",
+						:value => "save_image")%>
+						<p>
+							Guardar
+						</p>
+					<% end %>
+				<% end %>
+		
+			</div>
+			
+			<div class='image_present'>
+				<%= image_tag(element.original_image.url(:original), :class => 'image_edit left')%>
+				<%= image_tag(@image_element, :class => 'image_edit right')%>
+			</div>
+			
+			<div class='image_bottons_bottom'>
+				<div class='buttons_editor' style="margin-right:93px;">
+					<%=button_tag nil, {
+						:type => "button", :value => "experiences", :class => "abre_popup boton",
+						:"data-info"=> "Experience;0", 'data-no-turbolink' => true} do %>
+						<%= image_tag('/images/icons/automatic.png', :class => "action_icon",
+						:value => "adjust_image", :type => "nivel_adjust")%>
+						<p>
+							Ajuste de blancos
+						</p>
+					<% end %>	
+					<%=button_tag nil, {
+						:type => "button", :value => "experiences", :class => "abre_popup boton",
+						:"data-info"=> "Experience;0", 'data-no-turbolink' => true} do %>
+						<%= image_tag('/images/icons/automatic.png', :class => "action_icon",
+						:value => "adjust_image", :type => "auto_gamma")%>
+						<p>
+							Ajuste de gamma
+						</p>
+					<% end %>
+				</div>
+				<div class='buttons_editor'></div>
+				<div class='buttons_editor'>
+					<%=button_tag nil, {
+						:type => "button", :value => "experiences", :class => "abre_popup boton",
+						:"data-info"=> "Experience;0", 'data-no-turbolink' => true} do %>
+						<%= image_tag('/images/icons/contrast_add.png', :class => "action_icon",
+						:value => "adjust_image", :type => "contrast")%>
+						<p>
+							Añadir contraste
+						</p>
+					<% end %>
+			
+					<%=button_tag nil, {
+						:type => "button", :value => "experiences", :class => "abre_popup boton",
+						:"data-info"=> "Experience;0", 'data-no-turbolink' => true} do %>
+						<%= image_tag('/images/icons/contrast_minus.png', :class => "action_icon",
+						:value => "adjust_image", :type => "del_contrast")%>
+						<p>
+							Quitar contraste
+						</p>
+					<% end %>
+				</div>
+				
+				<div class='buttons_editor'>
+					<%=button_tag nil, {
+						:type => "button", :value => "experiences", :class => "abre_popup boton",
+						:"data-info"=> "Experience;0", 'data-no-turbolink' => true} do %>
+						<%= image_tag('/images/icons/brightness_add.png', :class => "action_icon",
+						:value => "adjust_image", :type => "brightness")%>
+						<p>
+							Añadir brillo
+						</p>
+					<% end %>
+					
+					<%=button_tag nil, {
+						:type => "button", :value => "experiences", :class => "abre_popup boton",
+						:"data-info"=> "Experience;0", 'data-no-turbolink' => true} do %>
+						<%= image_tag('/images/icons/brightness_minus.png', :class => "action_icon",
+						:value => "adjust_image", :type => "del_brightness")%>
+						<p>
+							Quitar brillo
+						</p>
+					<% end %>
+				</div>
+				
+				<div class='buttons_editor'>
+					<%=button_tag nil, {
+						:type => "button", :value => "experiences", :class => "abre_popup boton",
+						:"data-info"=> "Experience;0", 'data-no-turbolink' => true} do %>
+						<%= image_tag('/images/icons/color_add.png', :class => "action_icon",
+						:value => "adjust_image", :type => "saturation")%>
+						<p>
+							Aumenta saturación
+						</p>
+					<% end %>
+					
+					<%=button_tag nil, {
+						:type => "button", :value => "experiences", :class => "abre_popup boton boton",
+						:"data-info"=> "Experience;0", 'data-no-turbolink' => true} do %>
+						<%= image_tag('/images/icons/color_minus.png', :class => "action_icon",
+						:value => "adjust_image", :type => "del_saturation")%>
+						<p>
+							Quita saturación
+						</p>
+					<% end %>
+				</div>
+				
+				<div class='buttons_editor'>
+					<%=button_tag nil, {
+						:type => "button", :value => "experiences", :class => "abre_popup boton",
+						:"data-info"=> "Experience;0", 'data-no-turbolink' => true} do %>
+						<%= image_tag('/images/icons/focus_add.png', :class => "action_icon",
+						:value => "adjust_image", :type => "sharpen")%>
+						<p>
+							Enfocar
+						</p>
+					<% end %>
+					
+					<%=button_tag nil, {
+						:type => "button", :value => "experiences", :class => "abre_popup boton",
+						:"data-info"=> "Experience;0", 'data-no-turbolink' => true} do %>
+						<%= image_tag('/images/icons/focus_minus.png', :class => "action_icon",
+						:value => "adjust_image", :type => "blur")%>
+						<p>
+							Desenfocar
+						</p>
+					<% end %>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<div id="background_overlay" class="close_popup"></div>

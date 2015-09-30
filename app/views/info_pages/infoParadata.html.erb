@@ -1,0 +1,30 @@
+<%= render :partial => "application/html/navigation", :locals => {:page => "info_page"} %>
+
+<div id="content_container" class="content_index">
+	<div class= "information">
+		<!--Title -->
+		<span><%= t("Paradata_title")%></span>
+		</br></br>
+		<p><%= t("Paradata_P1") %></p><p><%= t("Paradata_P2") %></p>
+		</br>
+		<div class = "paradata_images">
+			<%= image_tag("/images/record_card_paradata.png", size:"400x200") %>
+			<%= image_tag("/images/show_paradata.png", size:"320x200") %>
+		</div>	
+				
+		<p><%= t("Paradata_P3") %></p>
+		</br>
+		
+		<ul>
+			<li><%= link_to t("Paradata_general"), info_general_path%><%= t("Paradata_P4")%></li></br>
+			<li><%= link_to t("Paradata_uses"), info_uses_path%><%= t("Paradata_P5")%></li></br>
+			<li><%= link_to t("Paradata_comments"), info_comments_path%><%= t("Paradata_P6")%></li></br>	
+		</ul>
+		
+	</div>	
+</div> 
+
+
+<div class="clear"></div>
+	</div>	
+</div> <!-- CONTENT -->

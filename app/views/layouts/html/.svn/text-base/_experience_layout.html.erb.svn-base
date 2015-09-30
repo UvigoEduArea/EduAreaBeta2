@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset='utf-8' />
+	<%= wicked_pdf_stylesheet_link_tag "/css/export.css" %>
+	<% wicked_pdf_javascript_include_tag "/javascript/export.js" %>
+</head>
+<body>
+	<div class="pdf_header">
+		<%= wicked_pdf_image_tag '/images/logo_negro.svg'%>
+		<a href="<%= experience_url(@lp.experience)%>"><%= experience_url(@lp.experience)%></a>
+		<%= time_tag(Time.now) %>
+	</div>
+	<hr style="clear:both;"/>
+	<% if user_signed_in? and current_user.type != "Student" %>
+		<div class="info_element_box">
+			<fieldset>
+				<div class="user_information_in_box small-12 clearfix text-left">
+					<%= wicked_pdf_image_tag(@lp.user.profile.avatar(:original)) %>
+					<p><span><%= t("Created_by")%>: &nbsp;</span><%= @lp.user.profile.first_name + " " + @lp.user.profile.last_name %></p>
+				</div>
+				<div class="time_info text-left">
+					<div>
+						<%= wicked_pdf_image_tag '/images/icons/Botones/Negro/new.png' %>
+						<p>
+							<span><%= t("Created_at")%></span>
+							<%= time_tag(@lp.created_at, :class => "form_timestamp") %>
+						</p>
+					</div>
+					<div>
+						<%= wicked_pdf_image_tag '/images/icons/Botones/Negro/edit.png'%>
+						<p>
+							<span><%= t("Modificado")%></span>
+							<%= time_tag(@lp.updated_at, :class => "form_timestamp") %>
+						</p>
+					</div>
+				</div>
+				<div class="license_section">
+					<%= wicked_pdf_image_tag(@lp.license.license_icon) %>
+					<% if @lp.source_id.nil?%> <!-- El recurso es no clonado-->
+						<%if @lp.author.nil?%> <!-- El autor original es el usuario que subió ese recurso-->
+							<p>
+								<%=t("This_work_1")%> "<%=link_to @lp.title, show_lesson_plan_url(@lp.id), :target => "_blank",:class => "original_title attribution_title"%>" 
+								<%=t("This_work_5")%>
+								<%= link_to(attributions["modified_license_name"].first.full_license_name == "unknown" ? t("unknown") : attributions["modified_license_name"].first.full_license_name, attributions["url_license_modified"], :target => "_blank", :class => "original_license attribution_license")%>
+								<%=t("This_work_3")%>
+								<%= link_to @lp.user.profile.first_name+' '+@lp.user.profile.last_name,user_url(@lp.user.id),:target => "_blank",:class => "user_author"%><%= "."%>
+							</p>
+						<%else%> <!-- El autor original es el especificado en el author input-->
+							<p>
+								<%=t("This_work_1")%> "<%=link_to @lp.title,show_lesson_plan_url(@lp.id), :target => "_blank",:class => "original_title attribution_title" %>" 
+								<%=t("This_work_5")%> 
+								<%=link_to attributions["modified_license_name"].first.full_license_name == "unknown" ? t("unknown") : attributions["modified_license_name"].first.full_license_name, attributions["url_license_modified"], :target => "_blank", :class => "original_license attribution_license"%> 
+								<%=t("This_work_3")%><%=link_to @lp.author, ext_link(@lp.author_URL), :target => "_blank",:class => "user_author"%><%= "."%>
+							</p>
+						<%end%>
+					<% else %> <!-- El recurso es clonado-->
+						<%if !attributions["original_element"].author.nil?%> <!-- El autor original es el que aparece en el input del autor en el recurso original-->
+							<p>
+								<%=t("This_work_1")%> "<%=link_to @lp.title, show_lesson_plan_url(@lp.id), :target => "_blank",:class => "modified_title attribution_title"%>" 
+								<%=t("This_work_2")%> "<%=unless attributions["original_element"].nil? then link_to(attributions["original_element"].title,show_lesson_plan_url(@lp.source_id),:class => "original_title") end%>" 
+								<%=t("This_work_3")%> <%=unless attributions["original_element"].nil? then unless attributions["original_element"].author_URL.nil? then link_to(attributions["original_element"].author, ext_link(attributions["original_element"].author_URL), 
+								:target => "_blank", :class => "original_author") else attributions["original_element"].author end end%>
+								<%=t("This_work_4")%> <%=link_to attributions["original_license_name"].first.full_license_name == "unknown" ? t("unknown") : attributions["original_license_name"].first.full_license_name, attributions["url_license"], 
+								:target => "_blank", :class => "original_license"%>."<%= " "%>"rails<%=link_to @lp.title, show_lesson_plan_url(@lp.id), :target => "_blank",:class => "modified_title attribution_title"%>"" 
+								<%=t("This_work_5")%> <%= link_to attributions["modified_license_name"].first.full_license_name == "unknown" ? t("unknown") : attributions["modified_license_name"].first.full_license_name, attributions["url_license_modified"],
+								:target => "_blank", :class => "modified_license attribution_license"%> <%=t("This_work_3")%> <%=link_to @lp.user.profile.first_name+' '+@lp.user.profile.last_name,user_url(@lp.user.id),
+								:target => "_blank",:class => "user_author"%><%= "." %>
+							</p>
+						<%else%>
+							<!-- El autor ha clonado su propio recurso -->
+						<p>
+							<%=t("This_work_1")%> "<%=link_to @lp.title.blank? ? "" : @lp.title, show_lesson_plan_url(@lp.id), :target => "_blank",:class => "modified_title attribution_title"%>" 
+							<%=t("This_work_2")%> "<%= unless attributions["original_element"].nil? then link_to(attributions["original_element"].title.blank? ? "" : attributions["original_element"].title, show_lesson_plan_url(@lp.source_id), :class => "original_title") end%>" 
+							<%=t("This_work_3")%> <%=unless attributions["original_element"].nil? then link_to(attributions["original_element"].user.profile.first_name+' '+attributions["original_element"].user.profile.last_name, user_url(attributions["original_element"].user.id), :target => "_blank", :class => "original_author") end%>
+							<%=t("This_work_4")%> "<%=link_to attributions["original_license_name"].first.full_license_name == "unknown" ? t("unknown") : attributions["original_license_name"].first.full_license_name, attributions["url_license"], 
+							:target => "_blank", :class => "original_license"%>".<%= " "%>"<%=link_to @lp.title.blank? ? "" : @lp.title, show_lesson_plan_url(@lp.id), :target => "_blank",
+							:class => "modified_title attribution_title"%>"<%= " " + t("This_work_5")%> <%=link_to attributions["modified_license_name"].first.full_license_name == "unknown" ? t("unknown") : attributions["modified_license_name"].first.full_license_name, attributions["url_license_modified"],
+							:target => "_blank", :class => "modified_license attribution_license" %> <%=t("This_work_3")%> <%=link_to @lp.user.profile.first_name+' '+@lp.user.profile.last_name,user_url(@lp.user.id),:target => "_blank",:class => "user_author"%><%= "."%>
+						</p>
+						<%end%>
+					<% end %>
+				</div>
+			</fieldset>
+		</div>
+	<% end %>
+	<%= yield %>
+</body>
+</html>

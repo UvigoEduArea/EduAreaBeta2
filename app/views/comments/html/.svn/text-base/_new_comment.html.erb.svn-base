@@ -1,0 +1,27 @@
+<% if nav_bar == 'false' %>
+	<div class="comment">
+		<span class= "comment_image">	
+			<%= link_to user_path(new_comment.user), :class => "a-left" do%>
+				<%= image_tag(new_comment.user.profile.avatar.url(:thumb), :width => 22) %>
+				<span class="user_name"><%= new_comment.user.profile.first_name + " " + new_comment.user.profile.last_name %></span>
+			<% end %>
+		</span>			
+		<span class= "comment_text">		
+			<p><%= new_comment.description %></p>
+			<span class="comment_timestamp"><%= new_comment.created_at.strftime("%d %b. %Y") %> - <%= new_comment.created_at.strftime("%H:%M") %></span>
+		</span>
+	</div>
+<% else %>
+	<li>	
+		<%= link_to user_path(new_comment.user), :class => "a-left" do%>
+			<%= image_tag(new_comment.user.profile.avatar.url(:thumb), :width => 22) %>
+			<span class="user_name"><%= new_comment.user.profile.first_name + " " + new_comment.user.profile.last_name %></span>
+		<% end %>
+	</li>	
+	<li>
+		<p><%= new_comment.description %></p>
+	</li>
+	<li>
+		<span class="comment_timestamp"><%= new_comment.created_at.strftime("%d %b. %Y") %> - <%= new_comment.created_at.strftime("%H:%M") %></span>		
+	</li>
+<% end %>

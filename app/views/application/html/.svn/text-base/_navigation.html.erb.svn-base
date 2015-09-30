@@ -1,0 +1,235 @@
+<div id="nav_bar" class="">
+	<div id="left_bar_dropdown" class="">
+		<%= image_tag("/images/icons/slicedsprites/about_2_0.png") %>
+		<%=	render :partial => "application/html/about.html.erb" %>
+		
+	</div>
+	<div id="logo" class="">
+		<%= link_to image_tag("/images/logo.svg"), root_path , :class => "web_logo"%>
+	</div>
+<div class="">
+	
+<%
+#Recursos: Documentos, Aplicaciones, Dispositivos, Salidas, Colaboradores 
+%>	
+	<div id="header_elements" class="left">
+		<ul>
+			<li>
+				<span title="Qué puedes utilizar"><%= t("resources")%></span>
+				<ul class="">
+					<li><%= link_to(contents_path) do t("contents") end %></li>
+					<li><%= link_to(applications_path) do t("applications") end %></li>
+					<li><%= link_to(devices_path) do t("devices") end %></li>
+					<li><%= link_to(events_path) do t("events") end %></li>
+					<li><%= link_to(collaborators_path) do t("collaborators") end %></li>					
+				</ul>
+			</li>
+			<li>
+				<span title="Qué puedes hacer"><%= t("plans")%></span>
+				<ul class="">
+					
+					<li><%= link_to(activities_path) do t("activities") end %></li>
+					<li><%= link_to(lesson_plans_path) do t("lesson_plans") end %></li>
+				</ul>			
+			</li>
+		</ul>
+	</div>
+
+<%
+#Tableros 
+%>	
+	<div id="header_boards" class="left">
+		<div class="name_image_dropdown"><%= link_to(boards_path) do%><span><%= t("boards") %></span><% end %></div>
+	</div>
+	
+</div>
+
+
+	<div class="action_icon_container">
+		<span class="invisible" style="display:none; color: #3B576D; left: 23px; top: 12px; background-color: white; padding: 5px; font-style: oblique; font-weight: bolder" id="cambiossinguardar"><%= t("Unsaved_Changes")%></span>
+		<span class="invisible" style="display:none; color: #3B576D; left: 23px; top: 12px; background-color: white; padding: 5px; font-style: oblique; font-weight: bolder" id="cambiosguardados"><%= t("Saved_Changes")%></span>
+	</div>	
+
+<%
+#Menu de usuario: Idioma, versión, log out... 
+%>	
+
+	<div id="header_profile" class="right">
+		<!--<div class="name_image_dropdown"><span>Menu usuario</span><%= image_tag("/images/icons/White/arrow-down2.svg", :class => "arrow_down_dropdown")%></div>-->
+		<div id="user_menu">
+			<%
+			if user_signed_in?
+			%>
+				<%=	#render :partial => "users/user_config.html.erb" 
+				%>
+				<%= render :partial => "users/user_profile.html.erb" %>
+			<%
+			else
+			%>
+				<%= render :partial => "users/user_loginlinks.html.erb" %>
+			<%
+			end
+			%>
+			
+			<div class="user_information">
+				<% path = request.fullpath %>
+				<% case I18n.locale %>
+				<% when :en %>
+					<ul class="language_selector hide">
+						<% path.slice!("/en/") %>
+						<li class="active"><%= image_tag("/images/languages/en.gif") %></li>
+						<li><%= link_to image_tag("/images/languages/gal.gif"),("/gl/"+request.fullpath.split("/")[0]) %></li>
+						<li><%= link_to image_tag("/images/languages/es.gif"),("/es/"+request.fullpath.split("/")[0]) %></li>
+						<li><%= link_to image_tag("/images/languages/pt.png"),("/pt/"+request.fullpath.split("/")[0]) %></li>
+					</ul>
+				<% when :es %>
+					<ul class="language_selector hide">
+						<% path.slice!("/es/") %>
+						<li class="active"><%= image_tag("/images/languages/es.gif") %></li>
+						<li><%= link_to image_tag("/images/languages/en.gif"),("/en/"+request.fullpath.split("/")[0]) %></li>
+						<li><%= link_to image_tag("/images/languages/gal.gif"),("/gl/"+request.fullpath.split("/")[0]) %></li>
+						<li><%= link_to image_tag("/images/languages/pt.png"),("/pt/"+request.fullpath.split("/")[0]) %></li>
+					</ul>
+				<% when :gl%>
+					<ul class="language_selector hide">
+						<% path.slice!("/gl/") %>
+						<li class="active"><%= image_tag("/images/languages/gal.gif") %></li>
+						<li><%= link_to image_tag("/images/languages/en.gif"),("/en/"+request.fullpath.split("/")[0]) %></li>
+						<li><%= link_to image_tag("/images/languages/es.gif"),("/es/"+request.fullpath.split("/")[0]) %></li>
+						<li><%= link_to image_tag("/images/languages/pt.png"),("/pt/"+request.fullpath.split("/")[0]) %></li>
+					</ul>
+				<% when :pt%>
+				<ul class="language_selector hide">
+					<% path.slice!("/pt/") %>
+					<li class="active"><%= image_tag("/images/languages/pt.png") %></li>
+					<li><%= link_to image_tag("/images/languages/en.gif"),("/en/"+request.fullpath.split("/")[0]) %></li>
+					<li><%= link_to image_tag("/images/languages/gal.gif"),("/gl/"+request.fullpath.split("/")[0]) %></li>
+					<li><%= link_to image_tag("/images/languages/es.gif"),("/es/"+request.fullpath.split("/")[0]) %></li>
+				</ul>
+				<% end %>
+			
+			</div>
+		</div>
+	</div>
+<%
+#Experiencias y menú de administrador 
+%>
+	<% if user_signed_in?%>
+		<div id="header_mycourses" class="right">
+			<ul>
+				<li>
+					<span><%= t("Personal_area") %></span>
+					<ul>
+						<li><%= link_to(show_courses_path("all")) do t("all_courses") end %></li>
+						<% if user_signed_in? && current_user.type != "Student" %>
+						<li><%= link_to(show_courses_path("beingPrepared")) do t("being_prepared") end %></li>
+						<li><%= link_to(show_courses_path("inProgress")) do t("in_progress") end %></li>
+						<li><%= link_to(show_courses_path("finished")) do t("finished") end %></li>
+						<% end %>
+						<% if user_signed_in? && current_user.type == "Admin" %>
+						<li><%= link_to(admins_path) do %> Admins <% end %></li>
+						<li><%= link_to(templates_path) do %> Templates <% end %></li>
+						<% end %>
+					</ul>
+				</li>
+			</ul>
+		</div>
+	<% end %>	
+</div>
+
+
+<%
+#Contenedor global donde están incluidas las barras laterales de navegación: acciones y filtrado 
+%>
+<div id="global_container">
+	<%
+	#Barra de acciones, la de más a la izquierda 
+	%>	
+	
+	<div id="section_header" class="<%= page %>_header">
+		<div id="actions" class="a-left">
+			<%= render :partial => "application/html/buttons_navigation", :locals => {:type_button => "show_text"} %>
+			
+			<% if params[:controller] == "home" %>
+				<%= render :partial => "application/html/buttons_navigation", :locals => {:type_button => "filter"} %>
+			
+			<% else %>
+				<%= render :partial => "application/html/buttons_navigation", :locals => {:type_button => "back"} %>
+				 
+				<% case params[:action] %>	
+					<% when "index" %>
+						<%= render :partial => "application/html/buttons_navigation", :locals => {:type_button => "filter"} %>
+						<% if user_signed_in? && current_user.type != "Student" %>
+							<% if params[:controller] == "experiences" %>
+								<%= render :partial => "application/html/buttons_navigation", :locals => {:type_button => "new"} %>
+								<%= render :partial => "application/html/buttons_navigation", :locals => {:type_button => "new_from_zero"} %>
+							<% else %>
+								<%= render :partial => "application/html/buttons_navigation", :locals => {:type_button => "new"} %>
+							<% end %>						
+						<% end %>
+						
+						<% if user_signed_in? && current_user.type == "Student" and params[:controller] == "experiences" %>
+							<%= render :partial => "application/html/buttons_navigation", :locals => {:type_button => "use_code"} %>
+						<% end %>
+								
+					
+					<% when "show" %> <% #Solo se da en el caso de profile
+					%>
+						<% if user_signed_in?%>
+							<% if @user.profile.user_id == current_user.id %>
+								<%= render :partial => "application/html/buttons_navigation", :locals => {:type_button => "edit_show", :editing => current_user.id == @user.profile.user_id ? true : false} %>
+							<% end %>
+						<% end %>	
+						
+						
+					<% when "getWholeView" %>
+						<% if user_signed_in? && current_user.type != "Student"  %>
+							
+							<% if @element.creator_id == current_user.id %>
+								<%= render :partial => "application/html/buttons_navigation", :locals => {:type_button => "edit_show", :editing => current_user.id == @element.creator_id ? true : false} %>	
+								<%= render :partial => "application/html/buttons_navigation", :locals => {:type_button => "remove"} %>
+							<% end %>
+							
+							<%= render :partial => "application/html/buttons_navigation", :locals => {:type_button => "copy"} %>
+							<%= render :partial => "application/html/buttons_navigation", :locals => {:type_button => "pin_it"} %>
+							
+							<% case params[:controller] %>
+								<% when "contents", "devices", "collaborators", "events", "applications", "activities" %>
+									<%= render :partial => "application/html/buttons_navigation", :locals => {:type_button => "add_to"} %>
+															
+								<% when "experiences" %>
+									<%= #render :partial => "application/html/buttons_navigation", :locals => {:type_button => "documentation_mode"} 
+									%>
+									
+									<% if @element.creator_id == current_user.id %>
+										<%= render :partial => "application/html/buttons_navigation", :locals => {:type_button => "cloud"} %>
+										<%= render :partial => "application/html/buttons_navigation", :locals => {:type_button => "download_observations"} %>
+										<%= render :partial => "application/html/buttons_navigation", :locals => {:type_button => "share"} %>
+										<%= render :partial => "application/html/buttons_navigation", :locals => {:type_button => "get_code"} %>
+										<% #Botón para el modo compartir en experiencias que todavía está por crear
+										%>
+									<% end %>						
+							<% end %>	
+						<% end %>
+				<% end %>
+			<% end %>
+		</div>
+	</div>
+
+
+	<%
+	#Barra de filtrado, la segunda por la izquierda 
+	%>	
+	
+	<% if (params[:action]!="filter" && params[:action] == "index") && (params[:controller] != "templates") && (params[:controller] != "users") && (params[:controller]!='info_pages')%>
+		<div class="filter_bar <%= page %>  <%= "invisible" if (params[:action] != "filter")%>">
+			<%= render :partial => "application/html/filter", :locals => {:page => page} %>
+		</div>
+	<% end %>
+	<!-- NAVIGATION AND ACTIONS -->
+
+<%
+#Aquí todavía no se cierra el div de global_container, continúa en los demás renders. 
+#Estarían cerrados el div de section_header de action_search y de filter_bar. 
+%>	
+

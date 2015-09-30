@@ -1,0 +1,11 @@
+<div class="image_bottons_top" style="margin-bottom: 20px">
+	<input type="hidden" class="is_student" value="<%= student %>">
+	<input type="hidden" class="type" value="<%= @tipo %>">
+	<%=link_to  accounts_new_path, :class => "boton", :target => "_blank", 'data-no-turbolink' => true do %>
+		<%= image_tag("/images/icons/plus.png", :class => "action_icon") %>
+		<span style="display: block;"><%= t("add_account") %></span>
+	<% end %>
+</div>
+<%= render :partial => "/accounts/html/row", :collection => @accounts, :as => "account", :locals => {:student => student}%>
+<br>
+

@@ -1,0 +1,22 @@
+<%
+=begin
+		############################################
+		# RENDERIZAMOS LAS PESTAÑAS Y LAS ACCIONES #
+		############################################
+=end
+%>
+<%= render :partial => "application/html/navigation", :locals => {:page => "resources"} %>
+
+<%
+=begin
+		#############################
+		# RENDERIZAMOS LOS RECURSOS #
+		#############################
+=end
+%>
+<div id="content_container" class="content <%= "more_width" if ((params[:action] == "filter")) %>">
+	<% unless @elements.blank? %>
+		<%= paginate @elements %>
+		<%= render :partial => "layouts/html/record_cards", :collection => @elements, :locals => {:resource => true} %>
+	<% end %>
+</div>

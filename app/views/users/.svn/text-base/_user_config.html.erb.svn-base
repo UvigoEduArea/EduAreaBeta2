@@ -1,0 +1,5 @@
+<ul class="nav_user">
+	<li>
+		<%= link_to(image_tag("/images/icons/White/exit.svg", :width => 24), destroy_user_session_path, :method => :delete) %>
+	</li>
+</ul>

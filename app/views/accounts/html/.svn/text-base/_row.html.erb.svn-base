@@ -1,0 +1,18 @@
+<div class="entrada">
+	<div class="account_description">
+		<h2><%= account.email %></h2>
+		<h3><%= account.tipo %></h3>
+	</div>
+	<div class="account_bottons">
+		<a id="select_account" class="abre_popup boton <%= if student == "true" then "student" end%>" data-info="Experience;0" value="experiences">
+			<%= image_tag("/images/icons/checkmark.png", :class => "", :value => "select_account", :data_id => account.id, :type => @tipo) %>
+			<span style="display: block;;"><%= t("Seleccionar") %></span>
+		</a>
+		
+		<a id="delete_account" class="abre_popup boton" value="experiences" data-info="Experience;0">
+			<%= image_tag("/images/icons/delete_account.png", :class => "action_icon", :value => "delete_account", 
+				:data_id => account.id) %>
+			<span style="display: block;"><%= t("Borrar") %></span>
+		</a>
+	</div>
+</div>

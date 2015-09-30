@@ -1,0 +1,15 @@
+<div class="show-for-large-only">
+	<fieldset>
+		<%= t("Students_in_the_experience") %>
+		<% unless element.experience.experience_element_records.blank? %>
+		 	<% element.experience.experience_element_records.each do |eer| %>
+				<div class="user_information_in_box small-12 clearfix text-left">
+					<%= image_tag(eer.user.profile.avatar(:original), :width => "32px", :class => "left") %>
+					<%= link_to(user_path(eer.user.id)) do %>
+						<span><%= eer.user.profile.first_name + " " + eer.user.profile.last_name %></span>
+					<% end %>
+				</div>
+			<% end %>
+		<% end %>
+	</fieldset>
+</div>

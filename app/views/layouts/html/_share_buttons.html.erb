@@ -1,0 +1,65 @@
+<div id="share_actions">
+	
+	<div id= "twitter_button">
+		
+		<script>
+		!function(d,s,id){
+			var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';
+			if(!d.getElementById(id)){
+				js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';
+				fjs.parentNode.insertBefore(js,fjs);
+			}
+			twttr.widgets.load();
+		}(document, 'script', 'twitter-wjs');
+		</script>
+		
+		<% unless element.title.blank? %>
+			<a href="https://twitter.com/share" class="twitter-share-button" data-url="<%= request.original_url %>" data-text="<%= element.title %>">Tweet</a>
+		<% else %>
+			<a href="https://twitter.com/share" class="twitter-share-button" data-url="<%= request.original_url %>" data-text="Edu-AREA">Tweet</a>
+		<% end %>
+	</div>
+	
+	
+	
+	<div id= "google_plus_button">
+		<div class="g-plus" data-action="share" data-annotation="bubble" data-href="<%= request.original_url %>"></div>
+		
+		<script type="text/javascript">
+		  window.___gcfg = {lang: '<%= params[:locale] %>'};
+		
+		  (function() {
+		    var po = document.createElement('script'); po.type = 'text/javascript'; po.async = true;
+		    po.src = 'https://apis.google.com/js/platform.js';
+		    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);
+		  })();
+		</script>
+	</div>
+	
+	
+	<div id = "email_button">
+		<%= image_tag("/images/icons/Black/mail2.svg", :width => 8, :class => "share_content_by_email") %>
+		<div class="form_share_email invisible">
+			<% if defined?(popup) && popup %>
+				<%= form_tag(:controller => params[:controller], :action => "shareByEmail", :method => "POST", :popup => "true") do%>
+					<ul>
+						<%= text_field_tag :share_email, params[:share_email], placeholder: t('Mail_to_share') %>
+					</ul>
+					<%= submit_tag(t("Mail_share_button"))%>
+				<%end %>
+			<% else %>
+				<%= form_tag(:controller => params[:controller], :action => "shareByEmail", :method => "POST") do%>
+					<ul>
+						<%= text_field_tag :share_email, params[:share_email], placeholder: t('Mail_to_share') %>
+					</ul>
+					<%= submit_tag(t("Mail_share_button"))%>
+				<%end %>
+			<% end %>	
+		</div>
+	</div>
+	
+	<% if flash[:bad_email] %>
+    	<p id='error_email'><%= flash[:bad_email] %></p>
+  	<% end %>
+
+</div>

@@ -1,0 +1,7 @@
+<%= paginate @object %>
+
+<% if resource == "applications" || resource == "contents"|| resource == "devices"|| resource == "events"|| resource == "collaborators"|| resource == "resources" %>
+	<%= render :partial => "layouts/html/record_cards", :collection => @object, :locals => {:resource => true, :popup => true} %>
+<% else %>
+	<%= render :partial => "layouts/html/record_cards", :collection => @object, :locals => {:resource => false, :popup => true, :use_element => (defined?(use_element) and use_element == true) ? true : false, :path => "show_"+resource.downcase.singularize+"_path"} %>
+<% end %>	

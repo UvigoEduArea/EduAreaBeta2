@@ -1,0 +1,18 @@
+<%
+=begin
+		LAS CAJAS BI, BOX ITEM, SON CAJAS ITEMICES QUE INCLUYEN ELEMENTOS DE LOS VOCABULARIOS
+=end
+%>
+
+
+
+<div class="data_box_bi">
+	<%= f.fields_for :data_boxes do |builder| %>
+		<li class="itemize_li"> 
+			<%= image_tag "/images/icons/Black/close.svg",:width => 16, :class => created ? "delete_data_box_item":"delete_data_box_item invisible", :id => bi.id.to_s %> 
+			<%= builder.text_field :content, :class => "box_item_value_no_updateable", :value => bi.content_value, :disabled => created ? false:true, :size => "40" , :style => created ? "background-color: #eee" : ""%>
+		</li> 
+	<% end %>
+</div>
+
+

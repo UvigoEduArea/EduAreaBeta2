@@ -1,0 +1,94 @@
+/*************************/
+/* ESTRUCTURA DEL HEADER */
+/*************************/
+/*************************/
+/* 1 col ICONO DESPLEGABLE
+ * 2 cols LOGO
+ * 4 cols RECURSOS, PLANES, TABLEROS 
+ * 2 cols MIS CURSOS
+ * 3 cols PERFIL
+ */
+
+#nav_bar{
+	position:fixed;
+	z-index: 2;
+	text-align: center;
+	left: 0;
+	background: -webkit-gradient(linear,left bottom,left top,color-stop(0.37, rgb(31,58,77)),color-stop(0.76, rgb(53,81,102)),color-stop(1, rgb(76,104,126)));
+	background: -moz-linear-gradient(bottom, rgb(31,58,77) 37%,rgb(53,81,102) 76%,rgb(76,104,126) 100%);
+	height: 64px;
+	top: 0;
+	width: 100%;
+
+}
+
+#nav_bar > div
+{
+	float:left;
+	height:64px;
+}
+#nav_bar #left_bar_dropdown
+{
+	width:64px;
+}
+#nav_bar #left_bar_dropdown p
+{
+	padding: 0px;
+}
+#nav_bar #logo
+{
+	width:100px;
+}
+#nav_bar #logo a
+{
+	display: block;
+	padding: 17px 0px;
+}
+@media only screen and (min-width: 64.000em) 
+{
+	#nav_bar #logo
+	{
+		width:200px;
+	}
+	#nav_bar #logo a
+	{
+	display: block;
+	padding: 2px 0px;
+	}
+}
+
+#nav_bar #header_elements
+{
+	
+}
+#nav_bar #header_boards
+{
+	
+
+}
+#nav_bar #header_mycourses
+{
+	min-width:135px;	
+	
+}
+#nav_bar #header_profile
+{
+}
+#nav_bar .user_name,
+#nav_bar .user_profile_link
+{
+	display:none;
+}
+#nav_bar .user_name
+{
+	padding:10px;
+}
+@media only screen and (min-width: 48.036em) 
+{
+	#nav_bar .user_name,
+	#nav_bar .user_profile_link
+	{
+		display:inherit;	
+		font-size:0.8em;
+	}
+}

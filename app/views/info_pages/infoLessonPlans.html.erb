@@ -1,0 +1,21 @@
+<%= render :partial => "application/html/navigation", :locals => {:page => "info_page"} %>
+
+<div id="content_container" class="content_index">
+	<div class= "information">
+		<span><%= t("lesson_plans")%></span>
+		<img src="/images/watermarks/guide_watermark_c.png"></img>
+		</br></br>
+		<p><%= t("LessonPlans_P1") %></p>
+		</br>
+		<p><%= t("LessonPlans_P2_1") %><%= link_to t("activities"), info_activities_path%><%= t("LessonPlans_P2_2") %><%= link_to t("resources"), info_resources_path%><%= t("LessonPlans_P2_3") %></p>
+		</br>
+		<p><%= t("LessonPlans_P3") %></p>
+		</br>
+		<ul>
+			<li><b><%= t("Technological_Profile") %></b>. <%= t("LessonPlans_I1_1") %></li></br>
+			<li><b><%= t("Curriculum_Profile") %></b>. <%= t("LessonPlans_I1_2") %></li></br>
+		</ul>
+		</br>
+		<p><%= t("LessonPlans_P4") %></p>
+	</div>	
+</div> <!-- CONTENT -->

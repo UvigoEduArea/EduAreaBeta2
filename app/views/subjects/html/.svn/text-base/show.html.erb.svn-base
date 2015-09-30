@@ -1,0 +1,6 @@
+<%= render :partial => "application/html/navigation", :locals => {:page => "subjects"} %>
+
+<!-- CONTENT -->
+<div id="content_container" class="content">
+	<%= render :partial => "subjects/html/form" %>
+</div>

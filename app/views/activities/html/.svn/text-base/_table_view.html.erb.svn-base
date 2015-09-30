@@ -1,0 +1,32 @@
+<% if defined?(positions)%>
+	<% position = positions.index{|x| x == table_view} %>
+	<div class="activity_number">
+		<a name="activity_position_<%= (position+1).to_s %>"><span><%= t("activity")+" "+(position+1).to_s%></span></a>
+	</div>
+<% end %>
+
+<div class="activity_container_table_view element_contained" data-template="<%= table_view.template_id %>">
+<%= form_for(table_view, method: "patch") do |f| %>
+	<%= render :partial => "layouts/html/input_licenses", :locals => {:vector_licenses => vector_licenses[table_view.id.to_s], :element => table_view}%>
+	<table>
+		<tr>
+			<td class="table_title title">
+				<%= f.text_field :title, :class => "updateable focusable", :disabled => created ? false:true, :placeholder => t("title") %>
+			</td>
+			<td class="table_description">
+				<%= f.text_area :description, :class => "updateable focusable", :disabled => created ? false:true, :placeholder => t("Description") %>
+			</td>
+			
+			<% cont = 0;
+			boxes = table_view.template.boxes 
+			boxes.each do |box|
+			 	cont = cont + 1 %>
+			<td class="table_view_template_box content_template contents col<%= cont %> <%= "invisible" if cont >=4 %>" data-id="<%= table_view.id.to_s %>" data-type="activity">
+				<%= render :partial => "boxes/html/box", :object => box, :locals => {:f => f, :created => created, :element => table_view, :table_view => true} %>
+			</td>
+			<% end %>
+		
+		</tr>
+	</table>
+<% end %>
+</div>

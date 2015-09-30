@@ -1,0 +1,82 @@
+<%= render :partial => "application/html/navigation", :locals => {:page => "info_page"} %>
+
+<div id="content_container" class="content_index">
+	<div class= "information">
+		<!--Title -->
+		<span><%= t("Types_Licenses")%></span>
+		</br></br>
+		<p><%= t("Types_Licenses_intro")%></p>
+		</br>
+		<p><%= t("Types_Licenses_intro_1")%></p>
+		</br>
+		<iframe width="560" height="315" src="https://www.youtube.com/embed/l7phEJ5pf9g" frameborder="0" style = "margin: 0px 30%" allowfullscreen></iframe>
+		</br></br>		
+		<span><%= t("Creative_Commons_Licenses")%></span>
+		</br></br>
+		<p><%= t("Types_Licenses_P1") %><b><%= t("Types_Licenses_P1_1") %></b><%= t("Types_Licenses_P1_2") %></p>
+		</br>
+		<ul>
+			<li><%= link_to 'http://creativecommons.org/licenses/by/4.0/', :target => "_blank", :class => "icon_license" do %>
+					<%= image_tag("/images/icons/licenses/by.svg", size:"80x30") %>
+				<% end %>
+				<b><%= t("CC_BY")%></b><%= t("CC_BY_1")%>
+			</li></br>
+			
+			<li><%= link_to 'http://creativecommons.org/licenses/by-sa/4.0/', :target => "_blank", :class => "icon_license" do %>
+					<%= image_tag("/images/icons/licenses/by-sa.svg", size:"80x30") %>
+				<% end %>
+				<b><%= t("CC_BY_SA")%></b><%= t("CC_BY_SA_1")%>
+			</li></br>
+			
+			<li><%= link_to 'http://creativecommons.org/licenses/by-nc/4.0/', :target => "_blank", :class => "icon_license" do %>
+					<%= image_tag("/images/icons/licenses/by-nc.eu.svg", size:"80x30") %>
+				<% end %>
+				<b><%= t("CC_BY_NC")%></b><%= t("CC_BY_NC_1")%>
+			</li></br>
+			
+			<li><%= link_to 'http://creativecommons.org/licenses/by-nc-sa/4.0/', :target => "_blank", :class => "icon_license" do %>
+					<%= image_tag("/images/icons/licenses/by-nc-sa.eu.svg", size:"80x30") %>
+				<% end %>
+				<b><%= t("CC_BY_NC_SA")%></b><%= t("CC_BY_NC_SA_1")%>
+			</li></br>
+		</ul>
+		</br>
+		<p><%= t("Types_Licenses_P2") %><b><%= t("Types_Licenses_P2_1") %></b><%= t("Types_Licenses_P2_2") %><%= t("Types_Licenses_P2_3") %><b><%= t("Types_Licenses_P2_4") %></b><%= t("Types_Licenses_P2_5") %></p>
+		</br>
+		<ul>
+			<li><%= link_to 'http://creativecommons.org/licenses/by-nd/4.0/', :target => "_blank", :class => "icon_license" do %>
+					<%= image_tag("/images/icons/licenses/by-nd.svg", size:"80x30") %>
+				<% end %>
+				<b><%= t("CC_BY_ND")%></b><%= t("CC_BY_ND_1")%>
+			</li></br>
+			
+			<li><%= link_to 'http://creativecommons.org/licenses/by-nc-nd/4.0/', :target => "_blank", :class => "icon_license" do %>
+					<%= image_tag("/images/icons/licenses/by-nc-nd.eu.svg", size:"80x30") %>
+				<% end %>
+				<b><%= t("CC_BY_NC_ND")%></b><%= t("CC_BY_NC_ND_1")%>
+			</li></br>
+		</ul>
+		<p><b><%= t("CC_BY_NC_ND_no use") %></b></p>
+		</br>
+		<p><%= t("CC0_1") %><b><%= t("CC0_2") %></b><%= t("CC0_3") %></p>
+		</br>
+		<ul>
+			<li><%= link_to 'http://creativecommons.org/publicdomain/zero/1.0/', :target => "_blank", :class => "icon_license" do %>
+					<%= image_tag("/images/icons/licenses/cc-zero.svg", size:"80x30") %>
+				<% end %>
+				<b><%= t("CC0")%></b>
+			</li></br>
+		</ul>
+		</br>
+	<span><%= t("Some_Rights_Reserved")%></span>
+	</br></br>
+	<p><%= t("Some_Rights_Reserved_1")%><%= t("Some_Rights_Reserved_2") %><%= t("Some_Rights_Reserved_3") %></p>
+	</br>
+	<span><%= t("Unknown_license")%></span>
+	</br></br>
+	<p><%= t("Unknown_license_1")%><%= t("Unknown_license_2")%></p>
+	</br>
+	<p><b><%= t("Unknown_license_3")%></b></p>
+	</div>	
+</div> <!-- CONTENT -->
+		

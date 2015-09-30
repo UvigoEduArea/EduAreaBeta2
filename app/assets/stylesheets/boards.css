@@ -1,0 +1,96 @@
+.add_element_to_board{
+	background: #9D5116;
+  	height: 125px;
+  	-moz-border-radius: 10px;
+  	-webkit-border-radius: 10px;
+  	border-radius: 10px;
+	-ms-border-radius: 10px;
+  	margin-bottom: 10px;
+	border:2px dotted #FBFBFB;
+	text-decoration: none;
+	position:relative;
+	margin: 15px auto auto;
+	padding: 10px;
+	width: 530px;
+}
+
+
+.add_element_to_board_align {
+	text-align: center;
+}
+
+.add_element_to_board .plus{
+	color: #E1EFFA;
+	font-size: 70px;
+	line-height: 56px;
+	margin-right: 5px;
+	display: table-cell;
+	float: left;
+	text-align: center;
+	margin-left: 20px;
+}
+
+.add_element_to_board_button{
+	position: relative;
+	background-image: url("/images/icons/sp_area_50.png");
+	width: 50px;
+	height: 50px;
+	cursor: pointer;
+	top: 5px;
+	margin-left: 50px;
+	display: table-cell;
+	float: left;
+}
+
+.add_element_to_board .resource_button{
+	background-position: -250px 0px;
+}
+
+.add_element_to_board .resource_button:hover{
+	background-position: -650px -150px;
+}
+
+.add_element_to_board .activity_button{
+	background-position: -100px 0px;
+}
+
+.add_element_to_board .activity_button:hover{
+	background-position: -500px -150px;
+}
+
+.add_element_to_board .lesson_plan_button{
+	background-position: 0px 0px;
+}
+
+.add_element_to_board .lesson_plan_button:hover{
+	background-position: 400px -150px;
+}
+
+.add_element_to_board .experience_button{
+	background-position: -150px 0px;
+}
+
+.add_element_to_board .experience_button:hover{
+	background-position: -550px -150px;
+}
+
+.add_element_to_board p {
+	padding-top: 52px;
+	margin-left: -4px;
+	color: white;
+}
+
+#board_element_list{
+	background-color: #F7E7D3;
+	padding-top: 10px;
+	padding-bottom: 10px;
+	padding-left: 10px;
+	padding-right: 10px;
+	border-radius: 15px;
+	-moz-border-radius: 15px;
+	-webkit-border-radius: 15px;
+	margin-top: 20px;
+	margin-bottom: 10px; 
+	margin-left: 10px;
+	margin-right: 10px;
+}

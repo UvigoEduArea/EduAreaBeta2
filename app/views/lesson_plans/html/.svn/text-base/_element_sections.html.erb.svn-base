@@ -1,0 +1,226 @@
+<div class="element_technical_setting hide">
+	<%= render :partial => "/settings/html/settings", :object => form, :as => :element, :locals => {:created => created, :setting => "technical_setting"} %>
+</div>
+
+<div class="element_educational_setting hide">
+	<%= render :partial => "/settings/html/settings", :object => form, :as => :element, :locals => {:created => created, :setting => "educational_setting"} %>
+</div>
+
+<div class="element_details hide">
+	<div class= "content_template contents" data-id="<%= form.id.to_s%>" data-type="<%= form.type.underscore%>" >
+		<%= form_for(form, method: "patch") do |f| %>
+			<%= render :partial => "boxes/html/box", :collection => form.template.boxes.sort_by{|e| e[:position]}, :locals => {:f => f, :created => created, :element => form, :table_view => false} %>
+		<% end %>
+	</div>
+</div>
+
+<div class="element_resources hide">
+	<div id="resources" class="resources subcategorie_top contents" value="false" data-type="lesson_plan">
+		<div class="<%= created ? "resources_section_header" : "resources_section_header invisible" %>">
+			<div id="resources_action_bar_<%= form.id.to_s %>" class="resources_action_bar a-left">
+				<div class="checkbox_area">
+					<% if user_signed_in? && created %>
+						<%= check_box_tag("select_all_checkbox",form.id.to_s, false, :"data-type" => "resource") %>
+					<% end %>
+				</div>
+				<div class="icons_space">
+					<input type="hidden" data-view="list">
+					<%= image_tag("/images/icons/Botones/Negro/add.png", :class => created ? "search_resources abre_popup subcategorie_icon":"search_resources abre_popup invisible subcategorie_icon", :value => "resources", :"data-info" => form.type+";"+form.id.to_s)%>
+					<%= image_tag("/images/icons/Botones/Negro/bin.png", :class => created ? "delete_element_checkbox subcategorie_icon" : "delete_element_checkbox subcategorie_icon invisible", :value => "resource")%>
+				</div>
+			</div>
+			
+			<div id="show_content_resources_action_bar_<%= form.id.to_s %>" class="resources_action_bar a-left invisible">
+				<%= image_tag("/images/icons/Botones/Negro/back.png", :class => "back_list_elements subcategorie_icon", :value => "resources", :"data-info" => form.type+";"+form.id.to_s)%>
+			</div>
+			
+		</div>
+		<div class="resources_section_body">
+			<% modifier = "type = 'Application' or type = 'Device' or type = 'Content' or type = 'Event' or type = 'Collaborator'" %>
+			<% collection = Element.where("("+modifier+") and (removed = false) and (parent_id = "+form.id.to_s+")").order("position ASC") %>
+			
+			<div id="resources_mini_view_<%= form.id.to_s%>" class="resources_mini_view invisible clearfix">
+				<!--%= render :partial => "/layouts/html/mini_view",:collection => collection, :locals => {:type => "resources", :created => created} %-->
+			</div>
+			<div class="clear"></div>
+			<div id='resources_list_view_<%= form.id.to_s%>' class="clearfix">
+				<% unless collection.blank? %>
+					<%= render :partial => "/layouts/html/list_view",:collection => collection, :locals => {:created => created, :experience => false} %>
+				<% end %>
+				<!--%= render :partial => "resources/html/form", :collection => collection, :locals => {:contents => true, :created => created} %-->
+			</div>
+		</div>
+		
+		<div id="show_content_resources" class="clearfix invisible">
+			<div class="show_content_body">
+				
+			</div>	
+		</div>
+	
+	</div>
+</div>
+
+<div class="element_activities hide">
+	<div id="activities" class="activities subcategorie_top contents" value="false" data-type="lesson_plan"> 
+		<div class="<%= created ? "activities_section_header" : "activities_section_header invisible" %>">
+			<div id="activities_action_bar_<%= form.id.to_s %>" class="a-left">
+				<div class="checkbox_area">
+					<% if user_signed_in? && created %>
+						<%= check_box_tag("select_all_checkbox",form.id.to_s, false, :"data-type" => "activity") %>
+					<% end %>
+				</div>
+				<div class="icons_space">
+					<input type="hidden" data-view="list">
+					<% if user_signed_in? %>
+						<% image_tag("/images/icons/Botones/Negro/add.png", :class => created ? "add_fast_elements subcategorie_icon" : "add_fast_elements subcategorie_icon invisible", :"data-info" => form.type+";"+form.id.to_s) %>
+						<%= image_tag("/images/icons/Botones/Negro/add.png", :class => created ? "search_activities abre_popup subcategorie_icon":"search_activities abre_popup invisible subcategorie_icon", :value => "activities", :"data-info" => form.type+";"+form.id.to_s)%>
+						<%= image_tag("/images/icons/Botones/Negro/new.png", :class => created ? "add_activities abre_popup subcategorie_icon" : "add_activities abre_popup subcategorie_icon invisible", :value => "activity_templates", :"data-info" => form.type+";"+form.id.to_s) %>
+					<% end %>
+					
+					<% image_tag("/images/icons/Negro/list2.svg", :class => "list_view_icon subcategorie_icon", :value => "activities", :"data-info" => form.type+";"+form.id.to_s)%>
+					<%= image_tag("/images/icons/Botones/Negro/bin.png", :class => created ? "delete_element_checkbox subcategorie_icon" : "delete_element_checkbox subcategorie_icon invisible", :value => "activity")%>
+					
+					<% positions = Array.new
+					collection = form.activities.where(:removed => false).sort_by{|e| e[:position]}
+					unless collection.blank?
+						template_id = collection[0].template_id
+						collection.each do |activity|
+						positions.push(activity)
+							if(activity.template_id != template_id && template_id != 0)
+								template_id = 0 #Cuando el template_id es 0, quiere decir que las actividades tienen diferentes templates, y no se puede usar la table_view
+							end
+						end
+					else
+						template_id = 0
+					end
+					%>
+				</div>
+			</div>
+			
+		</div>
+		
+		<div class="activities_section_body">
+			<div id='activities_list_view_<%= form.id.to_s%>' class="activities_list_view clearfix">
+				<% collection = form.activities.where(:removed => false).sort_by{|e| e[:position]} %>
+				<% unless collection.blank? %>
+					<%= render :partial => "layouts/html/list_view", :collection => collection, :locals => {:experience => experience} %>
+				<% end %>
+			</div>
+			<div id="activities_mini_view_<%= form.id.to_s%>" class="activities_mini_view invisible clearfix">
+				<!--%= render :partial => "/layouts/html/mini_view",:collection => positions, :locals => {:type => "activities", :created => created} %-->
+			</div>
+			<div class="clear"></div>
+		</div>
+	</div>
+</div>
+
+<% if experience %>
+<div class="element_observations hide clearfix">
+	<div id="observations" class="observations subcategorie_top contents" value="false" data-type="lesson_plan">
+		<div class="<%= created ? "observations_section_header" : "observations_section_header invisible" %>">
+			<div id="observations_action_bar_<%= form.id.to_s %>" class="observations_action_bar a-left">
+				<div class="checkbox_area">
+					<% if user_signed_in? && created %>
+						<%= check_box_tag("select_all_checkbox",form.id.to_s, false, :"data-type" => "observation") %>
+					<% end %>
+				</div>
+				<div class="icons_space">
+					<%= image_tag("/images/icons/Botones/Negro/bin.png", :class => created ? "delete_element_checkbox subcategorie_icon" : "delete_element_checkbox subcategorie_icon invisible", :value => "observation", :"data-controller" => form.type.downcase.pluralize)%>
+					<%= image_tag("/images/icons/Botones/Negro/image.png", :class => "records subcategorie_icon images add_record", :data_type => "image")%>
+					<%= image_tag("/images/icons/Botones/Negro/video.png", :class => "records subcategorie_icon videos add_record", :data_type => "video")%>
+					<%= image_tag("/images/icons/Botones/Negro/document.png", :class => "records subcategorie_icon documents add_record", :data_type => "document")%>
+					<%= image_tag("/images/icons/Botones/Negro/snippet.png", :class => "records subcategorie_icon snippets add_record", :data_type => "snippet")%>				
+					<%= image_tag("/images/icons/Botones/Negro/positive.png", :class => "records subcategorie_icon positive_comments add_record", :data_type => "positive_comment")%>
+					<%= image_tag("/images/icons/Botones/Negro/negative.png", :class => "records subcategorie_icon negative_comments add_record", :data_type => "negative_comment")%>
+					<%= image_tag("/images/icons/Botones/Negro/text2.png", :class => "records subcategorie_icon free_texts add_record", :data_type => "free_text")%>
+					<%= image_tag("/images/icons/Botones/Negro/idea.png", :class => "records subcategorie_icon ideas add_record", :data_type => "idea")%>
+				</div>
+			</div>
+			<div id="show_content_observations_action_bar_<%= form.id.to_s %>" class="observations_action_bar a-left invisible">
+				<%= image_tag("/images/icons/Botones/Negro/back.png", :class => "back_list_elements subcategorie_icon", :value => "observations", :"data-info" => form.type+";"+form.id.to_s)%>
+			</div>	
+		</div>
+		
+		<div class="observations_section_body">
+			<div id='observations_list_view_<%= form.id.to_s%>' class="clearfix">
+				<% unless form.experience_element_records.blank? %>
+					<%= render :partial => "/experiences/html/records", :collection => form.experience_element_records.first.element_records.where(:removed => false).order("created_at DESC"), :as => "list_view", :locals => {:info_type => "observations"} %>
+				<% end %>
+			</div>
+		</div>
+		
+		<div id="show_content_observations" class="clearfix invisible">
+			<div class="show_content_body">
+				
+			</div>
+		</div>
+	
+	</div>
+</div>
+
+
+
+<% end %>
+
+
+<div class="element_submissions hide">
+	<div id="submissions" class="submissions subcategorie_top contents" value="false" data-type="lesson_plan">
+		<div class="<%= created ? "submissions_section_header" : "submissions_section_header invisible" %>">
+			<div id="submissions_action_bar_<%= form.id.to_s %>" class="submissions_action_bar a-left">
+				<div class="checkbox_area">
+					<% if user_signed_in? && created %>
+						<%= check_box_tag("select_all_checkbox",form.id.to_s, false, :"data-type" => "submission") %>
+					<% end %>
+				</div>
+				<div class="icons_space">
+					<%= image_tag("/images/icons/Botones/Negro/new.png", :class => created ? "add_new_submission subcategorie_icon" : "add_new_submission subcategorie_icon invisible") %>
+					<%= image_tag("/images/icons/Botones/Negro/bin.png", :class => created ? "delete_element_checkbox subcategorie_icon" : "delete_element_checkbox subcategorie_icon invisible", :value => "submission")%>
+				</div>
+			</div>
+			
+			<div id="show_content_submissions_action_bar_<%= form.id.to_s %>" class="submissions_action_bar a-left invisible">
+				<% if experience %>
+					<div class="checkbox_area">
+						<% if user_signed_in? && created %>
+							<%= check_box_tag("select_all_checkbox",form.id.to_s, false, :"data-type" => "records_submission") %>
+						<% end %>
+					</div>
+				
+					<div class="icons_space">
+						<%= image_tag("/images/icons/Botones/Negro/back.png", :class => "back_list_elements subcategorie_icon", :value => "submissions", :"data-info" => form.type+";"+form.id.to_s)%>
+						<%= image_tag("/images/icons/Botones/Negro/bin.png", :class => created ? "delete_element_checkbox subcategorie_icon" : "delete_element_checkbox subcategorie_icon invisible", :value => "records_submission", :"data-controller" => "submissions")%>
+						<%= image_tag("/images/icons/Botones/Negro/image.png", :class => "records subcategorie_icon images add_record", :data_type => "image")%>
+						<%= image_tag("/images/icons/Botones/Negro/video.png", :class => "records subcategorie_icon videos add_record", :data_type => "video")%>
+						<%= image_tag("/images/icons/Botones/Negro/document.png", :class => "records subcategorie_icon documents add_record", :data_type => "document")%>
+						<%= image_tag("/images/icons/Botones/Negro/snippet.png", :class => "records subcategorie_icon snippets add_record", :data_type => "snippet")%>				
+						<%= image_tag("/images/icons/Botones/Negro/positive.png", :class => "records subcategorie_icon positive_comments add_record", :data_type => "positive_comment")%>
+						<%= image_tag("/images/icons/Botones/Negro/negative.png", :class => "records subcategorie_icon negative_comments add_record", :data_type => "negative_comment")%>
+						<%= image_tag("/images/icons/Botones/Negro/text2.png", :class => "records subcategorie_icon free_texts add_record", :data_type => "free_text")%>
+						<%= image_tag("/images/icons/Botones/Negro/idea.png", :class => "records subcategorie_icon ideas add_record", :data_type => "idea")%>
+					</div>
+				
+				<% else %>
+					<%= image_tag("/images/icons/Botones/Negro/back.png", :class => "back_list_elements subcategorie_icon", :value => "submissions", :"data-info" => form.type+";"+form.id.to_s)%>
+				<% end %>
+			</div>	
+		</div>
+		
+		<div class="submissions_section_body">
+			<div id='submissions_list_view_<%= form.id.to_s%>' class="clearfix">
+				<% collection = form.submissions.where(:removed => false).order("position ASC") %>
+				<% unless collection.blank? %>
+					<%= render :partial => "layouts/html/list_view", :collection => collection, :locals => {:created => created, :experience => experience} %>
+				<% end %>				
+			</div>
+		</div>
+		
+		<div id="show_content_submissions" class="clearfix invisible">
+			<div class="show_content_body">
+				
+			</div>
+		</div>
+	
+	</div>
+</div>
+	
+

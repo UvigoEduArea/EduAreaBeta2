@@ -1,0 +1,21 @@
+<%
+=begin
+		LAS CAJAS BEI, BOX ELEMENTS ITEM, SON CAJAS QUE INCLUYEN RECURSOS DE CUALQUIERA DE LOS CINCO TIPOS POSIBLES
+		PARA INCLUIR UN NUEVO RECURSO SE UTILIZARÁ UN POPUP Y A CONTINUACIÓN SE MOSTRARÁ LA VISTA MINIVIEW DEL MISMO
+=end
+%>
+
+
+<%= f.fields_for :data_boxes do |builder| %>  
+	<% @data_box_resource = Element.find(bei.content_value) %>
+	<% if @data_box_resource.image_file_name != nil %>
+		<div style="background-image:url('<%= @data_box_resource.image.url(:medium) %>')" class="mini_view">
+	<% else %>
+		<div style="background-image:url('/images/defaults/no_image.jpg')" class="mini_view">
+	<% end %>
+			<%= image_tag "/images/icons/Black/close.svg", :width => 16, :class => created ? "delete_data_box_miniview":"delete_data_box_miniview invisible", :id => bei.id.to_s %> 
+			<div class="abre_popup small_view" value="<%=bei.type_value.downcase.pluralize%>" data-container="<%=bei.type_value.downcase%>" id="element_id_<%= @data_box_resource.id.to_s%>">
+				<%= @data_box_resource.title %>
+			</div>
+		</div>
+<% end %>

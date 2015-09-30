@@ -1,0 +1,126 @@
+/***************************/
+/* BARRA LATERAL IZQUIERDA */
+/***************************/
+#section_header{
+	/*min-height: 200px;*/
+	float:left;
+	width: 64px;
+	background-color: white;
+	color:black;
+	z-index: 1;
+	height: 100%;
+	position: fixed;
+}
+
+/********************************/
+/* PRIMERA BARRA LATERAL IZQUDA */
+/********************************/
+div#actions a.action_icon_container
+{
+	margin-bottom:15px;
+}
+div#actions a.action_icon_container.show_hide_text
+{
+	margin-bottom:23px;
+}
+
+.action_icon_container
+{
+	padding: 3px 0px;
+	display:block;
+}
+.action_icon_container.invisible
+{
+	
+	display:none;
+}
+
+.action_icon_container, .action_icon_container span{
+	cursor: pointer;
+	/*margin-top: 70px;*/
+	position: relative;
+	/*margin-left: 4px;*/
+	
+	text-align:left;
+	color:black;
+}
+.action_icon_container a
+{
+	padding:20px 15px 0px;
+}
+.action_icon_container img
+{
+	/*padding:1px 1px 1px;*/
+	width:32px;
+	vertical-align:middle;
+}
+.action_icon_container span{
+	font-size: 0.8em;
+}
+
+.action_icon_container button{
+	cursor: pointer;
+	background-color: transparent;
+}
+.action_icon_container button span{
+	margin-left:0px;
+}
+
+
+.action_icon_container.show_hide_text{
+	/*width: 90%;*/
+	margin: 0px 0px 23px;
+	text-align: left;
+}
+
+/********************************/
+/* SEGUNDA BARRA LATERAL IZQUDA */
+/********************************/
+
+
+.filter_bar{
+	height: 100%;
+	position: fixed;
+	width: 200px;
+	left: 100px;
+	/*top: 64px;*/
+	float: left;
+	z-index: 1;
+	background-color:#4b555f;
+	color:white;
+	background-color: #3D4D5A;
+}
+
+/*.filter_bar.activities{
+	background-color: #E87910;
+}
+
+.filter_bar.resources{
+	background-color: #DB9615;
+}
+
+.filter_bar.lesson_plans{
+	background-color: #1887E3;
+}
+
+.filter_bar.experiences{
+	background-color: #4682B4;
+}
+
+.filter_bar.boards{
+	background-color: #9D5116;
+}
+*/
+.action_search
+{
+	float:left;	
+}
+
+.filter_bar ul{
+	font-weight: bold;
+}
+
+.filter_bar label{
+	color: white;
+	font-weight: lighter;
+}

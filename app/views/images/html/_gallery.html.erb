@@ -1,0 +1,33 @@
+<div id="marco_popup">
+	<div id="header_popup">
+		<h2 id="popup_title">Descargar Observaciones</h2>
+	</div>
+	<div id="content_popup" class="content">
+		<%if @imagenes.empty? && @evidences.empty?%>
+			<p><%= t("No evidences") %></p>
+		<%else%>
+			<div class='image_bottons_top'>
+				<div class="boton">
+					<%= check_box_tag 'select_all' %><p><%= t("select_all") %></p>
+				</div>
+			<%if !up%>
+				<%=button_tag nil, {:type => "button", :value => "experiences", :class => "abre_popup boton",
+					:"data-info"=> "Experience;0", 'data-no-turbolink' => true} do %>
+					<%= image_tag('/images/icons/checkmark.png', :class => "action_icon",
+					:value => "download_evidences")%>
+					<p>Descargar seleccionados</p>
+				<% end %>
+			<%else%>
+					<%=button_tag nil, {:id => "up_evidences",
+					:type => "button", :value => "experiences", :class => "abre_popup boton", :"data-info"=> "Experience;0", 'data-no-turbolink' => true} do %>
+					<%= image_tag("/images/icons/checkmark.png", :class => "action_icon", :value => "up_evidences") %>
+				<p>Subir selecccionados</p>
+				<% end %>
+			<%end%>
+			</div>
+			<%= render :partial => "/images/html/image_element", :collection => @imagenes, :as => "image_element", :locals => {:up => up}%>
+			<%= render :partial => "/images/html/evidence_element", :collection => @evidences, :as => "records"%>
+		<%end%>
+	</div>
+</div>
+<div id="background_overlay" class="close_popup"></div>

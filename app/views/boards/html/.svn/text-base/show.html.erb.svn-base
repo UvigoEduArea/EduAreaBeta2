@@ -1,0 +1,32 @@
+<%= render :partial => "application/html/navigation", :locals => {:page => "boards"} %>
+<!-- CONTENT -->
+<div id="content_container" class="content_show boards">
+	<input type="hidden" id="show_mode" data-mode="<%= created ? "2":"1" %>">
+	<div class="element_summary">
+
+		<%= render :partial => "boards/html/form", :object => @element, :as => :form, :locals => {:created => created}%>
+		</div>	
+		<% if user_signed_in? %>
+			<% if @element.creator_id == current_user.id %>	
+				<div id="board_elements_selector" class="add_element_to_board_align small-12 columns clearfix" data-id="<%= @element.id %>" data-type="boards">
+					<div class="add_element_to_board">
+						<span class= "plus">+</span>
+						<span class= "abre_popup resource_button add_element_to_board_button" value= "resources" data-info="<%= @element.type+";"+@element.id.to_s %>" ><p><%= t("resources")%></p></span> 
+						<span class= "abre_popup activity_button add_element_to_board_button" value= "activities" data-info="<%= @element.type+";"+@element.id.to_s %>"><p><%= t("activities")%></p></span>
+						<span class= "abre_popup lesson_plan_button add_element_to_board_button" value= "lesson_plans" data-info="<%= @element.type+";"+@element.id.to_s %>"><p><%= t("lesson_plans")%></p></span>
+						<span class= "abre_popup experience_button add_element_to_board_button" value= "experiences" data-info="<%= @element.type+";"+@element.id.to_s %>"><p><%= t("experiences")%></p></span>
+					</div>
+				</div>
+			<% end %>
+		<% end %>
+	
+
+		<% if boards_elements != nil %>
+			<div id="board_element_list" class="content small-10 columns clearfix end">
+				<%= render :partial => "layouts/html/record_cards", :collection => boards_elements, 
+				:locals => {:path => "show_board_path", :resource => false, :board_creator => @element.creator_id, :content_board => true} %>
+			</div>
+		<% end %>
+	
+
+</div>

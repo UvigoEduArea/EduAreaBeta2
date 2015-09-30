@@ -1,0 +1,47 @@
+#section_header.profile_header{
+	background-color: #fff;
+}
+
+.profile_box{
+	border: solid 1px #737d87;
+	border-radius: 5px;
+	margin: 25px;
+	
+}
+
+.profile_image{
+	width: 300px;
+	
+}
+
+.name_edition .updateable, .author_name, .URL_edition{
+	background-color: white;
+	border: none;
+	font-size: 16px;
+	margin-bottom: 10px;
+	width: 350px;
+}
+
+.name_edition{
+	vertical-align: top;
+}
+
+.name_edition, .profile_image{
+	margin: 5px 5px;
+}
+
+hr{
+	margin-bottom: 5px;
+}
+
+.info_paradata_configuration{
+	padding: 2%;
+}
+
+.license_default{
+	background-color: white;
+	border: none;
+	font-size: 100%;
+	margin-top:20px;
+	padding:20px;
+}

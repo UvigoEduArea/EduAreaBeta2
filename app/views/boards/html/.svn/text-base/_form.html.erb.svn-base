@@ -1,0 +1,81 @@
+<%= form_for(form, :html => {:method => "patch", :id => "Edit_Element", :class => "small-8 columns"}) do |f| %>
+	
+	<div id="form_header" class="small-12 columns">			
+		<div class="description_and_image clearfix">
+			<div id="LeftModulo" class="inline_image left small-5 columns">				
+				<% if form.image.url() != "none" %>	
+					<%= image_tag form.image.url(),:crop => :scale, :width => 300, :class => "image_preview" %>
+				<% else %>
+					<%= image_tag '/images/img_degecto.png',:crop => :scale, :width => 300, :class => 'image_preview' %>
+				<% end %>
+				<div id="SelectImageBox">
+					<%= button_tag t('Remove_Image'), {:id => "remove_image", :type => "button", :disabled => created ? false:true, :class => created ?  "":"invisible"}  %>
+					<%= f.file_field :image, :class => created ? "image_updateable":"image_updateable invisible"%>
+				</div>
+				
+				
+				<div id="PrivacyAbstract" class="clearfix">
+					<div class= "privacy editable active small-6 columns">
+						<div class="small-offset-3 small-2 columns">
+							<span class="private_icon change_icon centradovertical <%= "public" unless form.private %>"></span>								
+						</div>
+						<div class="small-7 columns">
+							<%= f.radio_button :private, 'true', :class => "updateable ", :disabled => created ? false:true %>
+							<%= f.label :private, t("Private"),:class => "" %><br>
+							<%= f.radio_button :private, 'false', :class => "updateable ", :disabled => created ? false:true %>
+							<%= f.label :private, t("Public"),:class => "" %>
+						</div>
+					</div>
+				
+					<div class="abstract small-6 columns">
+						<div class="small-offset-2 small-2 columns">
+							<span class="abstract_icon change_icon centradovertical <%= "public" unless form.abstract %>"></span>
+						</div>
+						<div class="small-8 columns">
+							
+							<%= f.radio_button :abstract, 'true', :class => "updateable", :disabled => created ? false:true %>
+							<%= f.label :abstract, t("Abstract") %>
+							<br>
+							<%= f.radio_button :abstract, 'false', :class => "updateable", :disabled => created ? false:true %>
+							<%= f.label :abstract, t("Concrete") %><br>
+						</div>
+					</div>
+				</div>
+				
+			</div>
+			
+			<div id="title_and_description" class="left small-7 columns">
+				<div class="title_container">
+					<%= f.text_field :title, :class => "updateable focusable", :disabled => created ? false:true, :placeholder => t("title"), :style => created ? "background-color: #eee" : "" %>
+				</div>
+				<div class="inline description description_container">
+					<%= f.text_area :description, size: "100x6", :class => "updateable focusable", :disabled => created ? false:true, :placeholder => t("Description") %> 
+				</div>
+				<div class="keywords">
+					<%= f.label :keywords, t("keywords")%>
+					<% if !current_user.nil? && (current_user.id == form.creator_id) %>
+						<div class="keyword_input_container">
+							<%= text_field_tag :keyword,nil, {:class => created ? "keyword_input focusable" : "keyword_input focusable invisible", :disabled => created ? false:true, :placeholder => t("keywords"), :style => created ? "background-color: #eee" : ""} %>
+						</div>
+					<% end %>
+					<div class="keywords_container">
+						<% form.keywords.each do |keyword| %>
+							<div id="keyword_<%= keyword.id%>"class="keyword_box"><%= image_tag("/images/icons/Black/cancel-circle.svg", :class => created ? "delete_keyword" : "delete_keyword invisible")%><span><%= keyword.keyword %></span></div>
+						<% end %>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	
+	<div class="clear"></div>
+	
+	<% end %>
+
+	<div id="informacionficha" class="small-3 columns">
+			<%= render :partial => "layouts/html/info_element_box", :object => @element, :as => :element%>
+			<%= render :partial => "layouts/html/share_buttons", :object => @element, :as => :element %>
+			<%= render :partial => "layouts/html/info_paradata", :object => @element, :as => :element %>
+	</div>
+
+

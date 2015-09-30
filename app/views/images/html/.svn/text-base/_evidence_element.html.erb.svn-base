@@ -1,0 +1,19 @@
+<div class="image_element">
+	<div class="aunnose">
+		<% case(records.record_type)
+		when "Video" %>
+		<%= video_tag(records.video.url, :controls => true, :style => "width: 95%;margin-top: 10px;margin-bottom: 13px;", :class => "evidence_element") %>
+		<label> <%= check_box_tag records.id, records.id, checked = false, :class => "check_box_evidences_download"%>
+			Selecciona </label>
+
+		<% when "Document" %>
+		<%= link_to(records.document.url, :target => "_blank", :class => "evidence_element") do %>
+			<%= image_tag("/images/icons/Document.png", :class => "record_document", :style => "margin-top: 24px;") %>
+			<p style="text-align: center;margin-top: 6px;color: black;"><%=records.document_file_name%></p>
+		<% end %>
+		<label> <%= check_box_tag records.id, records.id, checked = false, :class => "check_box_evidences_download"%>
+			Selecciona </label>
+		<% end %>
+	</div>
+</div>
+

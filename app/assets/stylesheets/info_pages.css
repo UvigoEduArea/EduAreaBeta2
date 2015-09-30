@@ -1,0 +1,182 @@
+.information{
+	margin-top: 10px;
+	margin-right: 10px;
+	margin-left: 10px;
+	margin-bottom: 10px;
+	padding-left: 20px;
+	padding-right: 20px;
+	padding-top: 20px;
+	padding-bottom: 20px;
+	font-size: 16px;
+	text-align: justify;
+	background-color: white;
+	border-radius: 15px;
+	-moz-border-radius: 15px;
+	-webkit-border-radius: 15px;
+}
+
+.information ul{
+	padding-left: 20px;
+	font-size: 14px;
+	text-align: left;
+}
+
+.information a{
+	color: #1887E3;
+}
+
+#content_container.content{
+	min-height: 610px;
+	margin-left:64px;
+	background-color:#c9d3dd;
+}
+
+.information span{
+	font-size: 30px;
+	color: #1887E3;
+	padding-bottom: 5px;
+}
+
+.information img{
+	float: right;
+}
+
+.information .about_img{
+	width: 30%;
+	margin-left: 1%;
+	margin-top: 1%;
+}
+
+.information .video{
+	float: right;
+}
+
+
+.information .content_circle{
+	min-height: 100px;
+	width: 24%;
+	position:relative;
+	float: left;
+}
+
+.information .circle{
+	width: 100px;
+	height: 100px;
+	background-color: #1887E3;
+	color: white;
+	-moz-border-radius: 70px;
+	-webkit-border-radius: 70px;
+	border-radius: 70px;
+	margin-left: 25%;
+	text-align: center;
+}
+
+.information .circle p1{
+	position: relative;
+	top: 40%;
+}
+
+.information ul1{
+	text-align: left;
+}
+
+.information ul1 li{
+	max-width: 84%;
+	margin-top: 22px;
+	padding-left: 5%;
+	min-height: 50px;
+	font-size: 14px;
+}
+
+li .image_info_page{
+	float: left;
+	padding-right: 25px;
+}
+
+.icon_license{
+	float: left;
+	padding-right: 15px;
+}
+
+.icon_license_bar{
+	position: relative;
+	width: 85%;
+	height: 170px;
+	text-align: justify;
+	margin: 0px 85%;
+	
+}
+.information .license_bar{
+	width: 50%;
+	height: 160px;
+	margin-left: 64%;
+}
+
+.icon_compatibility_chart{
+	float: left;
+	padding-right: 15px;
+}
+
+.icon_compatibility_chart{
+	position: relative;
+	width: 105%;
+	height: 430px;
+	text-align: justify;
+	margin: 0px 74%;
+	
+}
+.information .compatibility_chart{
+	width: 50%;
+	height: 500px;
+	margin-left: 64%;
+}
+
+.icon_compatibility_chart2{
+	float: left;
+	padding-right: 15px;
+}
+
+.icon_compatibility_chart2{
+	position: relative;
+	width: 71%;
+	height: 100%;
+	text-align: justify;
+	margin: 0px 90%;
+	
+}
+
+.icon_table_assign{
+	position: relative;
+	padding-right: 80%;
+}
+.information .table_assign{
+	
+}
+
+
+.information .compatibility_chart2{
+	width: 50%;
+	height: 500px;
+	margin-left: 64%;
+}
+
+.information .video_tutorial{
+	
+}
+.paradata_images{
+	height: 250px;
+}
+
+.paradata_images img{
+	float: left;
+	padding: 1%;
+}
+
+.ul_uses li{
+	display: block;
+}
+
+.icon_uses img{
+	float: left;
+	margin-right: 1%;
+}

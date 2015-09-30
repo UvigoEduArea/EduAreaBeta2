@@ -1,0 +1,11 @@
+<li class="resource_box">
+	<div>
+		<h3><%= t("resource") + " - " + (object_counter + 1).to_s + ": " + object.title %></h3>
+		<% if object.image.url() != "none" %>
+			<%= wicked_pdf_image_tag object.image.url(:medium) %>
+		<% else %>
+			<%= wicked_pdf_image_tag "/images/img_defecto.png" %>
+		<% end %>
+		<a class="resource_url" href="<%= object.URL%>"><%= object.URL%></a>
+	</div>
+</li>

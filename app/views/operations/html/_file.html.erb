@@ -1,0 +1,6 @@
+<div id="download_file" class="image_bottons_top">
+	<%=link_to  "/exports_files/"+@idExperience.to_s+"/"+@name_file, :class => "download_file", 'data-no-turbolink' => true, :target => "_blank" do %>
+		<%= image_tag("/images/icons/download-file.png", :class => "action_icon") %>
+		<span style="display: block;"><%= t("download_file") %></span>
+	<% end %>
+</div>

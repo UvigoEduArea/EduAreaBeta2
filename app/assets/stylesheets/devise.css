@@ -1,0 +1,85 @@
+.devise
+{
+	margin-top:64px !important;	
+}
+div#loginbox
+{
+	background-color: #F1F4FD;
+	box-shadow: 5px 5px 5px #BAC4CE;
+}
+div#loginbox p
+{
+	padding:10px 5px;
+}
+.devise h2
+{
+	font-variant:small-caps;
+	font-size:1.2em;
+	
+}
+.devise row
+{
+	min-height:30px;
+}
+.devise #registration
+{
+	margin:0px auto 20px;
+	width:60%;
+	
+}
+.devise #registration tr th:first-child
+{
+	width:40%;
+	text-align:right;
+	vertical-align:middle;
+}
+.devise #registration tr th:last-child
+{
+	width:60%;
+	text-align:left;
+}
+/*.devise{
+	position:absolute;
+	top: 250px;
+	left: 27.38%;
+	width: 600px;
+	background-color: rgba(75,75,75,0.4);
+	text-align:center;
+	color: white;
+	padding-bottom: 40px;
+}
+
+.devise h2{
+	font-size: 40px;
+	margin-bottom: 20px;
+}
+
+.devise form div, .devise a{
+	text-decoration:none;
+	color: white;
+	font-size: 16px;
+	margin:15px;
+}
+
+.devise a{
+	font-weight: bolder;
+	font-size: 20px;
+}
+
+#registration{
+	margin-left: 25%;	
+}
+
+th{
+	text-align:right;
+}
+
+td{
+	text-align: left;
+}
+
+.devise h1 a, .devise h1{
+	margin-top: 40px;
+	font-size: 50px;
+}
+*/

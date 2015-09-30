@@ -1,0 +1,75 @@
+<%= render :partial => "application/html/navigation", :locals => {:page => "home", :mode_view => "advanced_filter"} %>
+
+
+
+<div id="content_container" class="content_index more_width">
+	<% if  @resources.blank? && @activities.blank? && @lessonplans.blank? && @experiences.blank? && @boards.blank?%>
+		<div id="no_available_elements" class="alert-box alert round small-offset-3 small-6 columns text-center clearfix">
+			<h1><%= t("No_available_elements") %></h1>
+		</div>
+	<% end %>
+	
+	<% unless @resources.blank? %>
+	<div class= "last_elements_box resource">
+		<h2 class="user_activity_header"><%= t("Resources") %></h2>
+		<hr />
+		<div class="clear"></div>
+		<div id="last_resources" class= "content">
+				<%= paginate @resources %>
+				<%= render :partial => "layouts/html/record_cards", :collection => @resources, :locals => {:path => "show_activity_path", :resource => true} %>
+		</div>
+	</div>
+	<div class="clear"></div>
+	<%end%>
+	
+	<% unless @activities.blank? %>
+	<div class= "last_elements_box activity">
+		<h2 class="user_activity_header"><%= t("activities") %></h2>
+		<hr />
+		<div class="clear"></div>
+		<div id="last_activities" class= "content">
+				<%= paginate @activities %>
+				<%= render :partial => "layouts/html/record_cards", :collection => @activities, :locals => {:path => "show_activity_path", :resource => false} %>
+		</div>
+	</div>
+	<div class="clear"></div>
+	<%end%>
+	
+	
+	<% unless @lessonplans.blank? %>
+	<div class= "last_elements_box lessons_plans">
+		<h2 class="user_activity_header"><%= t("Lesson_plans") %></h2>
+		<hr />
+		<div class="clear"></div>
+		<div id="last_lesson_plans" class= "content">
+				<%= paginate @lessonplans %>
+				<%= render :partial => "layouts/html/record_cards", :collection => @lessonplans, :locals => {:path => "show_activity_path", :resource => false}%>
+		</div>
+	</div>
+	<%end%>
+	
+	<% unless @experiences.blank? %>
+	<div class= "last_elements_box lessons_plans">
+		<h2 class="user_activity_header"><%= t("Experiences") %></h2>
+		<hr />
+		<div class="clear"></div>
+		<div id="las_experiences" class= "content">
+				<%= paginate @experiences %>
+				<%= render :partial => "layouts/html/record_cards", :collection => @experiences, :locals => {:path => "show_activity_path", :resource => false}%>
+		</div>
+	</div>
+	<%end%>
+	
+	<% unless @boards.blank? %>
+	<div class= "last_elements_box lessons_plans">
+		<h2 class="user_activity_header"><%= t("Last_lesson_plans") %></h2>
+		<hr />
+		<div class="clear"></div>
+		<div id="last_boards" class= "content">
+				<%= paginate @boards %>
+				<%= render :partial => "layouts/html/record_cards", :collection => @boards, :locals => {:path => "show_activity_path", :resource => false}%>
+		</div>
+	</div>
+	<%end%>
+	
+</div> <!-- CONTENT -->

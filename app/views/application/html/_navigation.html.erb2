@@ -1,0 +1,337 @@
+<div id="nav_bar">
+	<ul>
+		<% if current_user != nil && current_user.admin? %> 
+			<li class="<%= "active" if (page == "admin") %> admin_link">
+				<%= link_to t("Admin"), admin_index_path %>
+			</li>
+			
+			<li class="<%= "active" if page == "templates"%> templates_link">
+				<%= link_to t("templates"), templates_path %>
+			</li>
+		<% end	%>
+		
+		<li class="<%= "active" if (page == "resources") %> resources_link">
+			<%= link_to t("resources"), resources_path %>
+		</li>
+		<li class="<%= "active" if (page == "activities") %> activities_link">
+			<%= link_to t("activities"), activities_path %>
+		</li>
+		<li class="<%= "active" if (page == "lesson_plans") %> lesson_plans_link">
+			<%= link_to t("lesson_plans"), lesson_plans_path %>
+		</li>
+		<li class="<%= "active" if (page == "subject") %> subjects_link" style= "display: none">
+			<%= link_to t("subjects"), subjects_path %>
+		</li>
+		<li class="<%= "active" if (page == "experiences") %> experiences_link">
+			<%= link_to t("experiences"), experiences_path %>
+		</li>
+		<li class="<%= "active" if (page == "boards") %> boards_link">
+			<%= link_to t("boards"), boards_path %>
+		</li>
+	</ul>
+</div>
+
+<div id="section_header" class="<%= page %>_header" style="width: <%= "7%;" if ((page == "home")or(params[:action] == "filter")) %>">
+	
+	<% if params[:action]!="filter" %>
+		<div id="actions" class="a-left">
+			<% if page != "home" %>
+				<div class="action_icon_container show_hide_text">
+					<p class="hide invisible"><%= t("Hide_text")%></p>
+					<p class="show"><%= t("Show_text")%></p>
+				</div>
+			<% end %>
+			<% case page
+					#SI EL USUARIO ESTÁ EDITANDO SU PERFIL O EN EL HOME??
+				when "home" 
+				when "profile"%>
+					<div class="action_icon_container">
+						<%=link_to url_for(:back), :class => "action_icon" do %>
+							<%= image_tag("/images/icons/atras_30.png", size:"28x28") %>
+							<span class="invisible"><%= t("Return")%></span>
+						<% end %>
+					</div>
+					
+					<div class="action_icon_container">
+						<% if (@user.id == current_user.id)%>
+							<%=button_tag nil, {:style => 'background-color:transparent;border:none;', :id => "active_edition", :class => "action_icon", :type => "button"} do %>
+								<%= image_tag("/images/icons/edit-white.png") %>
+								<span class="invisible"><%= t("Edit") %></span>
+							<% end %>
+					</div>
+				
+					<div class="action_icon_container">
+							<%=button_tag nil, {:style => 'background-color:transparent;border:none;display:none;', :id => "disable_edition", :class => "action_icon invisible", :type => "button"} do %>
+								<%= image_tag("/images/icons/White/eye.svg", size:"28x28") %>
+								<span class="invisible"><%= t("Show") %></span>
+							<% end %>
+						<% end %>
+					</div>
+					
+				<% when "info_page" %>
+					<div class="action_icon_container">
+						<%=link_to  url_for(:back), :class => "action_icon" do %>
+							<%= image_tag("/images/icons/atras_30.png", size:"28x28") %>
+							<span class="invisible"><%= t("Return")%></span>
+						<% end %>
+					</div>
+					
+			<% else %>
+		
+					<%
+						#SI EL USUARIO ESTÁ EN LA VISTA GENERAL, ES DECIR, SI NO ESTÁ VIENDO NINGÚN ELEMENTO PARTICULAR.
+					%>
+							
+				<% if mode_view == 'general' %>
+					
+					<%
+						# Siempre que no estemos en el home la barra de acciones tendrá el botón volver, y volverá a la página anterior
+					%>
+					<div class="action_icon_container">
+						<%=link_to root_path, :class => "action_icon" do %>
+							<%= image_tag("/images/icons/atras_30.png", size:"28x28") %>
+							<span class="invisible"><%= t("Return")%></span>
+						<% end %>
+					</div>
+					<%
+						#SI EL USUARIO ESTÁ LOGUEADO, LE PERMITIMOS AGREGAR NUEVOS ELEMENTOS CON ESTE BOTÓN +
+					%>
+					
+					<% if user_signed_in? %>
+						<% if params[:controller] != "resources" && params[:controller] != "templates" %>
+							<div class="action_icon_container">
+								<%if params[:controller] == "activities" || params[:controller] == "lesson_plans" || params[:controller] == "experiences"%>
+									<%= image_tag("/images/icons/White/plus.svg",size:"28x28",:class=>"abre_popup action_icon", :value=>"activity_templates") if params[:controller] == "activities"%>
+									<%= image_tag("/images/icons/White/plus.svg",size:"28x28",:class=>"abre_popup action_icon", :value=>"lesson_plan_templates") if params[:controller] == "lesson_plans"%>
+									<%= image_tag("/images/icons/White/plus.svg",size:"28x28",:class=>"abre_popup action_icon", :value=>"lesson_plans", :"data-info" => "Experience;0") if params[:controller] == "experiences"%>
+									<%= content_tag :span, t("Add"), :class => "invisible" %>
+								<% else %>
+									<%= link_to eval("create_"+params[:controller].singularize+"_path"), :method => "post" do%>
+										<%= image_tag("/images/icons/White/plus.svg", size:"28x28",:class=>"action_icon")%>
+										<%= content_tag :span, t("Add"), :class => "invisible" %>
+									<% end %>
+								<% end %>
+								
+							</div>
+						<% else %>
+							<div class="action_icon_container">
+								<%= image_tag("/images/icons/White/plus.svg", size:"28x28", :class => "action_icon")%>
+								<span class="invisible"><%= t("Add")%></span>
+								<% if params[:controller] == "resources"%>
+									<ul class="dropdown resources" style="display:none;">
+										<li><%= link_to t("application"), "/"+params[:locale]+"/applications", :method => "post" %></li>
+										<li><%= link_to t("device"), "/"+params[:locale]+"/devices", :method => "post" %></li>
+										<li><%= link_to t("document"), "/"+params[:locale]+"/contents", :method => "post" %></li>
+										<li><%= link_to t("guest"), "/"+params[:locale]+"/collaborators", :method => "post" %></li>
+										<li><%= link_to t("trip"), "/"+params[:locale]+"/events", :method => "post" %></li>
+									</ul>
+								<% else %>
+									<ul class="dropdown templates" style="display:none;">
+										<li><%= link_to t("activity_template"), create_activity_template_path, :method => "post" %></li>
+										<li><%= link_to t("lesson_plan_template"), create_lesson_plan_template_path, :method => "post" %></li>
+									</ul>
+								<% end %>
+							</div>
+								
+						<% end %>
+					<% end %>
+	
+					<%
+						#Filtrado entre todos los elementos y los del usuario
+					%>			
+	<!--
+					
+					<% if user_signed_in? && params[:controller] != "templates" %>
+						<%= link_to t(params[:controller]), eval(params[:controller]+'_path'), :class => "index action_icon" %>
+						<%= link_to t("My_"+params[:controller]), eval(params[:controller]+'_path')+'?owner=true', :class => "index action_icon" %>
+					<% end %>
+					
+					<% if ((page == "resources") || (page == "applications") || (page == "collaborators") || (page == "contents") || (page == "devices") || (page == "events")) %>
+						<%= select_tag "Resources_select", options_for_select([[t("all_types"),resources_path],[t("documents"), contents_path],[t("devices"),devices_path],[t("applications"),applications_path],[t("guests"),collaborators_path],[t("trips"),events_path]],"/"+params[:locale]+"/"+params[:controller]), :class => "header_actions_selector action_icon" %>
+					<% end %>
+					
+					<%= text_field_tag :search, params[:search], placeholder: t('Enter_search_term'), :class => "search_button index action_icon" %>
+					<%= image_tag "/images/icons/Black/search.svg", :width => 15 ,:class=>"search_button index action_icon" %>
+						
+					<%
+						#SI NEL USUARIO NO ESTÁ EN LA VISTA GENERAL, ESTÁS EN SHOW
+					%>
+	-->				
+				<% else %>
+					<% if url_for(:back).split("/")[4] != params[:controller] %>
+						<div class="action_icon_container">
+							<%=link_to url_for(:back), :class => "action_icon" do %>
+								<%= image_tag("/images/icons/atras_30.png", size:"28x28") %>
+								<span class="invisible"><%= t("Return")%></span>
+							<% end %>
+						</div>
+					<% else %>
+						<div class="action_icon_container">
+							<%=link_to eval(params[:controller]+"_path"), :class => "action_icon" do %>
+								<%= image_tag("/images/icons/atras_30.png", size:"28x28") %>
+								<span class="invisible" class="invisible"><%= t("Return")%></span>
+							<% end %>
+						</div>
+					<% end %>
+					
+					<%
+						#Si el usuario está registrado
+					%>
+					
+			
+					<% if user_signed_in? %>
+					
+					<%
+						#Si el usuario es el propietario podrá editar y eliminar
+					%>
+					
+						<% if @element.creator_id == current_user.id %>
+							<div class="action_icon_container">
+								<%=button_tag nil, {:style => 'background-color:transparent;border:none;', :id => "active_edition", :class => mode_view == "edit" ? "invisible":"", :type => "button"} do %>
+									<%= image_tag("/images/icons/edit-white.png", :class => "action_icon") %>
+									<span class="invisible" class="invisible" style="font-size: 14px;"><%= t("Edit") %></span>
+								<% end %>
+							</div>
+							<div class="action_icon_container">
+								<%=button_tag nil, {:style => 'background-color:transparent;border:none;', :id => "disable_edition", :class => mode_view == "edit" ? "":"invisible", :type => "button"} do %>
+									<%= image_tag("/images/icons/White/eye.svg", size:"28x28", :class => "action_icon") %>
+									<span class="invisible" style="font-size: 14px;"><%= t("Show") %></span>
+								<% end %>
+							</div>
+							<div class="action_icon_container">
+								<%=link_to url_for({:action =>'destroy', :id => @element.id}), confirm: t('Are_you_sure'), :method => 'delete'  do %>
+									<%= image_tag("/images/icons/delete.png", :class => "action_icon") %>
+									<span class="invisible"><%= t("Delete") %></span>
+								<% end %>
+							</div>
+						<% end %>
+				
+						<%
+							#Siempre que el usuario sea un usuario registrado se podrá duplicar el elemento
+						%>
+						<div class="action_icon_container">
+							<%=link_to url_for({:action =>'duplicate', :id => @element.id}),:method => 'post'  do %>
+								<%= image_tag("/images/icons/copy_icon.png", :class => "action_icon") %>
+								<span class="invisible"><%= t("Clone") %></span>
+							<% end %>
+						</div>
+						<% if params[:controller] != "boards" %>
+							<div class="action_icon_container">
+								<%=button_tag nil, {:style => 'background-color:transparent;border:none;', :"data-info" =>@element.type+";"+@element.id.to_s , :class => "abre_popup", :value => "boards", :type => "button"} do %>
+									<%= image_tag("/images/icons/White/pushpin_28.svg", :class => "action_icon") %>
+									<span class="invisible" style="font-size: 14px;"><%= t("Pin_it") %></span>
+								<% end %>
+							</div>
+						<% end %>
+						
+						<% if params[:controller] == "experiences" %>
+							<div class="action_icon_container">
+							<%=button_tag nil, {:style => 'background-color:transparent;border:none;', :id =>"active_documentation" , :class => "document_mode action_icon", :type => "button"} do %>
+								<%= image_tag("/images/icons/White/tab.svg", :class => "action_icon") %>
+								<span class="invisible" style="font-size: 14px;"><%= t("Document_mode") %></span>
+							<% end %>
+							</div>
+							<div class="action_icon_container">
+							<%=button_tag nil, {:style => 'background-color:transparent;border:none;', :id => "disable_documentation", :class => "document_mode invisible", :type => "button"} do %>
+								<%= image_tag("/images/icons/White/tab.svg", :class => "action_icon") %>
+								<span class="invisible" style="font-size: 14px;"><%= t("Exit_document_mode") %></span>
+							<% end %>
+							</div>
+						<% end %>
+						<div class="action_icon_container">
+							<span class="invisible" style="display:none" id="cambiossinguardar"><%= t("Unsaved_Changes")%></span>
+							<span class="invisible" style="display:none" id="cambiosguardados"><%= t("Saved_Changes")%></span>
+						</div>
+					<% end %>				
+				<% end %>
+			<% end %>
+			
+			<!-- En todo caso, en la vista que sea, existirá un buscador/filtrado-->
+			<!-- Se renderiza correctamente teniendo en cuenta la page -->
+			<% if (params[:controller] != "templates") && (params[:controller] != "users")%>
+				<% if (mode_view!='filter') && (mode_view!='edit') && (mode_view!='show') && (params[:controller]!='info_pages')%>
+					<% if (page!="home")&&(mode_view != "filter") %>
+						<div class="action_icon_container">
+							<%=button_tag nil, {:style => 'background-color:transparent;border:none;', :id =>"button_filter" , :class => "show_filter_menu", :type => "button"} do %>
+								<%= image_tag("/images/icons/White/search.svg") %>
+								<span class="invisible"><%= t("Search") %></span>
+							<% end %>
+						</div>
+						<div class="filter_bar <%= page %>  <%= "invisible" if ((page != "home")&&(mode_view != "filter"))%>">
+							<%= render :partial => "application/html/filter", :locals => {:page => page, :mode_view =>mode_view} %>
+						</div>
+					<% else %>
+						<%= render :partial => "application/html/filter", :locals => {:page => page, :mode_view =>mode_view} %>
+					<% end %>
+				<% end %>			
+			<% end %>
+		</div>
+	<!--
+		<div id="paradata_actions" class="a-right">
+			<% if ( (page != "home") && (page != "profile") && (params[:controller] != "info_pages"))%>
+				<% if (mode_view != 'general')%>
+				
+					<%
+					#Cuando estamos en la vista show, la barra de acciones incluirá en la derecha la información relativa a paradata
+					%>
+					
+					<%=button_tag nil, {:style => 'background-color:transparent;border:none;',:id =>params[:controller]+"_"+@element.id.to_s , :class => "info action_icon", :type => "button"} do %>
+						<%= image_tag("/images/icons/White/info.svg") %>
+						<span class="invisible" style="font-size: 14px;">Info</span>
+					<% end %>
+					
+					<%=button_tag nil, {:style => 'background-color:transparent;border:none;',:id =>params[:controller]+"_"+@element.id.to_s , :class => "view_info action_icon", :type => "button"} do %>
+						<%= image_tag("/images/icons/White/eye.svg") %>
+						<% if @element.view_count != 0 %>
+							<span class="invisible" style="font-size: 14px;"><%= @element.view_count %></span>
+						<% else %>
+							<span class="invisible" style="font-size: 14px;">0</span>
+						<% end %>
+					<% end %>
+					
+				
+					<%=button_tag nil, {:style => 'background-color:transparent;border:none;',:id =>params[:controller]+"_"+@element.id.to_s , :class => "copy_info action_icon", :type => "button"} do %>
+						<%= image_tag("/images/icons/White/copy.svg") %>
+						<% if ((@element.copy_count != 0)&&(@element.copy_count != nil)) %>
+							<span class="invisible" style="font-size: 14px;"><%= @element.copy_count %></span>
+						<% else %>
+							<span class="invisible" style="font-size: 14px;">0</span>
+						<% end %>
+					<% end %>
+					
+					
+					<%=button_tag nil, {:style => 'background-color:transparent;border:none;',:id =>params[:controller]+"_"+@element.id.to_s , :class => "comments_info action_icon", :type => "button"} do %>
+						<%= image_tag("/images/icons/White/bubble.svg") %>
+						<% if @element.comments.count != 0 %>
+							<span class="invisible" style="font-size: 14px;"><%= @element.comments.count %></span>
+						<% else %>
+							<span class="invisible" style="font-size: 14px;">0</span>
+						<% end %>
+					<% end %>
+					
+					
+					<% if ((@element.type.downcase != "board") && (@element.type != "ActivityTemplate") && (@element.type != "LessonPlanTemplate") && (@element.type.downcase != "template")&& (@element.type != "TechnicalSetting")&& (@element.type != "EducationalSetting")) %>
+						<%=button_tag nil, {:style => 'background-color:transparent;border:none;', :id =>params[:controller]+"_"+@element.id.to_s ,:class => "boards_info action_icon boards_icon", :type => "button"} do %>	
+							<% if @element.boards.count != 0 %>
+								<span class="invisible" style="font-size: 14px;"><%= @element.boards.count %></span>
+							<% else %>
+								<span class="invisible" style="font-size: 14px;">0</span>
+							<% end %>
+						<% end %>
+					<% end %>
+					
+					<div class="action_icon" id= "paradata_information"></div>
+					
+				<% end %>
+			<% end %>
+		</div>		
+		-->	
+	<% else %>
+		<% if mode_view!='filter' %>
+			<%= render :partial => "application/html/filter", :locals => {:page => page, :mode_view =>mode_view} %>
+		<% end %>
+	<% end %>		
+</div>
+		
+	<!-- NAVIGATION AND ACTIONS -->
+

@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+<head>
+  	<title>Edu-AREA Beta</title>
+	<meta charset="UTF-8">
+
+	<link rel="stylesheet" type="text/css" href="/css/landing/foundation.css" />
+	<link rel="stylesheet" type="text/css" href="/css/landing/app_foundation.css" />
+	<link rel="stylesheet" type="text/css" href="/css/landing/landing.css" />
+	<link rel="stylesheet" type="text/css" href="/css/landing/navigation.css" />
+	<link href='http://fonts.googleapis.com/css?family=Roboto:300,700' rel='stylesheet' type='text/css'>
+	<link href='http://fonts.googleapis.com/css?family=Lato' rel='stylesheet' type='text/css'>
+    
+    <script type="text/javascript" src="/javascript/landing/jquery.min.js"></script>
+    <script src="/javascript/jquery-te-1.4.0.min.js"></script>
+ 	<script type="text/javascript" src="/javascript/landing/landing.js"></script>
+
+</head>
+<body>
+	<header id="home">
+		<div id="logo_dropdown" class="nav_bar_section_box">
+		<%= link_to "Edu-AREA" ,root_path , :class => "web_title_text"%>
+		<%= link_to image_tag("/images/index_cortado.png"), root_path , :class => "web_title_image"%>
+	</div>
+	
+			<div id="user_menu_dropdown" class="nav_bar_section_box">
+		<!--<div class="name_image_dropdown"><span>Menu usuario</span><%= image_tag("/images/icons/White/arrow-down2.svg", :class => "arrow_down_dropdown")%></div>-->
+		<div id="user_menu">
+			
+			
+			<div class="user_information">
+				<% case I18n.locale %>
+				<% when :en %>
+					<ul class="language_selector">
+						<li class="active"><%= image_tag("/images/languages/en.gif") %></li>
+						<li><%= link_to image_tag("/images/languages/gal.gif"),((params[:controller] == "home")||(params[:controller] == "info_pages")) ? "/?locale=gl" : "/gl/"+params[:controller].underscore.downcase, params.merge({:locale => :gl}) %></li>
+						<li><%= link_to image_tag("/images/languages/es.gif"),((params[:controller] == "home")||(params[:controller] == "info_pages")) ? "/?locale=es" : "/es/"+params[:controller].underscore.downcase, params.merge({:locale => :es}) %></li>
+						<li><%= link_to image_tag("/images/languages/pt.png"),((params[:controller] == "home")||(params[:controller] == "info_pages")) ? "/?locale=pt" : "/pt/"+params[:controller].underscore.downcase, params.merge({:locale => :pt}) %></li>
+					</ul>
+				<% when :es %>
+					<ul class="language_selector">
+						<li class="active"><%= image_tag("/images/languages/es.gif") %></li>
+						<li><%= link_to image_tag("/images/languages/en.gif"),((params[:controller] == "home")||(params[:controller] == "info_pages")) ? "/?locale=en" : "/en/"+params[:controller].underscore.downcase, params.merge({:locale => :en}) %></li>
+						<li><%= link_to image_tag("/images/languages/gal.gif"),((params[:controller] == "home")||(params[:controller] == "info_pages")) ? "/?locale=gl" : "/gl/"+params[:controller].underscore.downcase, params.merge({:locale => :gl}) %></li>
+						<li><%= link_to image_tag("/images/languages/pt.png"),((params[:controller] == "home")||(params[:controller] == "info_pages")) ? "/?locale=pt" : "/pt/"+params[:controller].underscore.downcase, params.merge({:locale => :pt}) %></li>
+					</ul>
+				<% when :gl%>
+					<ul class="language_selector">
+						<li class="active"><%= image_tag("/images/languages/gal.gif") %></li>
+						<li><%= link_to image_tag("/images/languages/en.gif"),((params[:controller] == "home")||(params[:controller] == "info_pages")) ? "/?locale=en" : "/en/"+params[:controller].underscore.downcase, params.merge({:locale => :en}) %></li>
+						<li><%= link_to image_tag("/images/languages/es.gif"),((params[:controller] == "home")||(params[:controller] == "info_pages")) ? "/?locale=es" : "/es/"+params[:controller].underscore.downcase, params.merge({:locale => :es}) %></li>
+						<li><%= link_to image_tag("/images/languages/pt.png"),((params[:controller] == "home")||(params[:controller] == "info_pages")) ? "/?locale=pt" : "/pt/"+params[:controller].underscore.downcase, params.merge({:locale => :pt}) %></li>
+					</ul>
+				<% when :pt%>
+				<ul class="language_selector">
+					<li class="active"><%= image_tag("/images/languages/pt.png") %></li>
+					<li><%= link_to image_tag("/images/languages/en.gif"),((params[:controller] == "home")||(params[:controller] == "info_pages")) ? "/?locale=en" : "/en/"+params[:controller].underscore.downcase, params.merge({:locale => :en}) %></li>
+					<li><%= link_to image_tag("/images/languages/gal.gif"),((params[:controller] == "home")||(params[:controller] == "info_pages")) ? "/?locale=gl" : "/gl/"+params[:controller].underscore.downcase, params.merge({:locale => :gl}) %></li>
+					<li><%= link_to image_tag("/images/languages/es.gif"),((params[:controller] == "home")||(params[:controller] == "info_pages")) ? "/?locale=es" : "/es/"+params[:controller].underscore.downcase, params.merge({:locale => :es}) %></li>
+				</ul>
+				<% end %>
+			
+			</div>
+		</div>
+	</div>
+</div>
+
+	</header>
+	
+<%= yield %>
+	
+</html>

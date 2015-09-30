@@ -1,0 +1,21 @@
+<%= render :partial => "application/html/navigation", :locals => {:page => "info_page"} %>
+
+<div id="content_container" class="content_index">
+	<div class= "information">
+		<p><%= t("Contact_P1") %> <a href="mailto:area.telgalicia@gmail.com">area.telgalicia@gmail.com</a></p>
+		</br></br>
+		
+		<p><%= t("Contact_P2") %></p>
+		<div id = "email_button">
+			<div class="form_contact_by_email">
+				<%= form_tag(:controller => params[:controller], :action => "contactByEmail", :method => "POST") do%>
+					<ul>
+						<%= text_field_tag :suggestions, params[:suggestions], placeholder: t('Write_here') %>
+					</ul>
+					<%= submit_tag(t("Contact_by_email_button"))%>
+				<% end %>	
+			</div>
+		</div>
+  	
+	</div>	
+</div> <!-- CONTENT -->

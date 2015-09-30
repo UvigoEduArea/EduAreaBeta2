@@ -1,0 +1,3 @@
+class ActivityTemplate < Template
+  
+end

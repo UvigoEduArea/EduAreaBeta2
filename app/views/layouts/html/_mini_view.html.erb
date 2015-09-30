@@ -1,0 +1,31 @@
+<% if mini_view.image_file_name != nil %>
+	<div style="background-image:url('<%= mini_view.image.url(:medium) %>')" class="mini_view_box element_contained">
+<% else %>
+	<div style="background-image:url('/images/defaults/no_image.jpg')" class="mini_view_box element_contained">
+<% end %>
+
+	<% if created %>
+		<%= image_tag "/images/icons/Black/close.svg",:width => 16, :class => "delete_element", :"data-info" => mini_view.type.downcase.pluralize+";"+mini_view.id.to_s %>
+	<% else %>
+		<%= image_tag "/images/icons/Black/close.svg",:width => 16, :class => "invisible delete_element", :"data-info" => mini_view.type.downcase.pluralize+";"+mini_view.id.to_s %>
+	<% end %>
+	<% if (mini_view.type == "Content") || (mini_view.type == "Activity") %>
+		<%= image_tag(mini_view.license.license_icon, size: "60x28", :class => "mini_view_license_icon", :"data-id" => mini_view.right_id) %>
+	<% end %>
+	<% unless mini_view.URL.blank? %>
+		<a target="_blank" href="<%= mini_view.URL %>" class="show_content_url"><img src='/images/icons/Black/newtab.svg'></img></a>
+	<% end %>
+	<% if mini_view.type == "Activity"%>
+		<div class="show_element_in_lp mini_view" value="<%=mini_view.type.downcase.pluralize%>" data-info="<%=mini_view.type%>;<%= mini_view.id.to_s%>" data-back= "false">
+			<p><%= mini_view.title %></p>
+		</div>
+	<% else %>
+		<div class="show_whole_view_popup mini_view" value="<%=mini_view.type.downcase.pluralize%>" data-info="<%=mini_view.type%>;<%= mini_view.id.to_s%>" data-back= "false">
+			<p><%= mini_view.title %></p>
+		</div>
+	<% end %>
+</div>
+
+<% if defined?(valid_template) && (valid_template == false) %>
+	<input type= "hidden" id="valid_template" data-info="<%= valid_template%>">
+<% end %>

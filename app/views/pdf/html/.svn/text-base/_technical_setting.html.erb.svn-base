@@ -1,0 +1,36 @@
+<div class="technical_setting_header">
+	<p><%=t("technical_setting")%></p>
+</div>
+<div class="technical_setting_body">
+	<% if setting.image.url != "none" %>
+		<%= wicked_pdf_image_tag(setting.image.url(:original), :class => "technical_setting_image")%>
+	<% else %>
+		<%= wicked_pdf_image_tag '/images/picture.jpg', :class => 'image_preview' %>
+	<% end %>
+	<p class="technical_setting_title"><%= setting.title %></p>
+	<%= label_tag t("Description")%>
+	<div class="technical_setting_description"><%= unless setting.description.blank? then setting.description.html_safe else t("no_description") end %></div>
+	<div class="technical_setting_vocabularies">
+		<div class="OS">
+			<%= label_tag t("Profile_OS")%>
+			<% setting.settings.where(:field_type => "OS").each do |vocabulary| %>
+			<% p "******************************************************************************"%>
+				<span class="OS_term"><%= vocabulary.vocabulary_term.term%>,</span>
+			<% end %>
+		</div>
+		<div class="LMS">
+			<%= label_tag t("Profile_LMS")%>
+		</div>
+		<div class="Internet">
+			<%= label_tag t("Profile_Internet")%>
+		</div>
+	</div>
+	<div class="technical_setting_resources">
+		<div class="applications">
+			<%= label_tag t("Profile_Devices")%>
+		</div>
+		<div class="devices">
+			<%= label_tag t("Profile_Applications")%>
+		</div>
+	</div>
+</div>

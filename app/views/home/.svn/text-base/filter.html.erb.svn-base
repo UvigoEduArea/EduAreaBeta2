@@ -1,0 +1,115 @@
+<%= render :partial => "application/html/navigation", :locals => {:actions => "filter", :page => "home", :mode_view => "filter"} %>
+
+<div id="content_container" class="content_index more_width">
+	<% curricular_setting = Hash.new %>
+	<% technical_setting = Hash.new %>
+	
+	<%= form_tag(:controller => params[:controller], :action => "filter", :type_form => "advanced_filter") do%>
+	
+		<h><%= t("Elements")%></h>
+			<ul><%= t("By_text_in_element")%>
+				<%= text_field_tag :search_text, params[:search_text], placeholder: t('Enter_search_term') %>
+			</ul>
+			
+			<ul><%= t("By_element_type")%>
+				<li><%= check_box_tag 'type[]', 'Application',(params[:type].present? ? params[:type] : []).include?('Application') %><%= label_tag t('applications') %></li>
+				<li><%= check_box_tag 'type[]', 'Device',(params[:type].present? ? params[:type] : []).include?('Device') %><%= label_tag t('devices') %></li>
+				<li><%= check_box_tag 'type[]', 'Content',(params[:type].present? ? params[:type] : []).include?('Content') %><%= label_tag t('documents') %></li>
+				<li><%= check_box_tag 'type[]', 'Collaborator',(params[:type].present? ? params[:type] : []).include?('Collaborator') %><%= label_tag t('collaborators') %></li>
+				<li><%= check_box_tag 'type[]', 'Event',(params[:type].present? ? params[:type] : []).include?('Event') %><%= label_tag t('events') %></li>
+				<li><%= check_box_tag 'type[]', 'Resource',(params[:type].present? ? params[:type] : []).include?('Resource') %><%= label_tag t('resources') %></li>
+				<li><%= check_box_tag 'type[]', 'Activity',(params[:type].present? ? params[:type] : []).include?('Activity') %><%= label_tag t('activities') %></li>
+				<li><%= check_box_tag 'type[]', 'LessonPlan',(params[:type].present? ? params[:type] : []).include?('LessonPlan') %><%= label_tag t('lesson_plans') %></li>
+				<li><%= check_box_tag 'type[]', 'Experience',(params[:type].present? ? params[:type] : []).include?('Experience') %><%= label_tag t('experiences') %></li>
+				<li><%= check_box_tag 'type[]', 'Board',(params[:type].present? ? params[:type] : []).include?('Board') %><%= label_tag t('boards') %></li>			
+			</ul>
+			
+			<ul><%= t('By language')%>			
+				<li><%= check_box_tag 'language_search[]', 'gl', (params[:language_search].present? ? params[:language_search] : []).include?('gl') %><%= label_tag t('Galician') %></li>
+				<li><%= check_box_tag 'language_search[]', 'es', (params[:language_search].present? ? params[:language_search] : []).include?('es') %><%= label_tag t('Spanish') %></li>
+				<li><%= check_box_tag 'language_search[]', 'en', (params[:language_search].present? ? params[:language_search] : []).include?('en') %><%= label_tag t('English') %></li>
+				<li><%= check_box_tag 'language_search[]', 'pt', (params[:language_search].present? ? params[:language_search] : []).include?('pt') %><%= label_tag t('Portuguese') %></li>
+			</ul>
+		</br>
+		
+		<h><%= t("users")%></h>
+			<% if user_signed_in? %>
+			<ul><%= t("Elements")%>			
+				<li><%= radio_button_tag 'type_user', 'All elements', ((params[:type_user].present? and params[:type_user].include?('All elements'))or(!params[:type_user].present?)) ? true:false%><%= label_tag t('All_elements') %></li>
+				<li><%= radio_button_tag 'type_user', 'My elements', (params[:type_user].present? and params[:type_user].include?('My elements')) ? true:false%><%= label_tag t('My_elements') %></li>
+				<li><%= radio_button_tag 'type_user', 'Shared with me', (params[:type_user].present? and params[:type_user].include?('Shared with me')) ? true:false%><%= label_tag t('shared_with_me') %></li>
+			</ul>
+			<% end %>
+			
+			<ul><%= t('By_user_name')%>
+				<%= text_field_tag :search_user, params[:search_user], placeholder: t('Enter_user') %>
+			</ul>
+		</br>
+		
+		
+		<h><%= t("Profile_educational")%></h>
+			<ul><%= t("By educational level")%>		
+				<li><%= check_box_tag 'curricular_setting[educational_level][]', 'Infantil', ((params[:curricular_setting].present? && params[:curricular_setting]["educational_level"].present?) ? params[:curricular_setting]["educational_level"] : []).include?('Infantil') %><%= label_tag t('preschool') %></li>
+				<li><%= check_box_tag 'curricular_setting[educational_level][]', 'Primaria', ((params[:curricular_setting].present? && params[:curricular_setting]["educational_level"].present?) ? params[:curricular_setting]["educational_level"] : []).include?('Primaria') %><%= label_tag t('primary') %></li>
+				<li><%= check_box_tag 'curricular_setting[educational_level][]', 'Secundaria', ((params[:curricular_setting].present? && params[:curricular_setting]["educational_level"].present?) ? params[:curricular_setting]["educational_level"] : []).include?('Secundaria') %><%= label_tag t('secondary') %></li>
+				<li><%= check_box_tag 'curricular_setting[educational_level][]', 'Bacharelato', ((params[:curricular_setting].present? && params[:curricular_setting]["educational_level"].present?) ? params[:curricular_setting]["educational_level"] : []).include?('Bacharelato') %><%= label_tag t('highschool') %></li>
+				<li><%= check_box_tag 'curricular_setting[educational_level][]', 'Universidade', ((params[:curricular_setting].present? && params[:curricular_setting]["educational_level"].present?) ? params[:curricular_setting]["educational_level"] : []).include?('Universidade') %><%= label_tag t('university') %></li>
+				<li><%= check_box_tag 'curricular_setting[educational_level][]', 'Outro', ((params[:curricular_setting].present? && params[:curricular_setting]["educational_level"].present?) ? params[:curricular_setting]["educational_level"] : []).include?('Outro') %><%= label_tag t('other') %></li>	
+			</ul>
+			
+			<ul><%= t("By_course")%>		
+				<li><%= check_box_tag 'curricular_setting[grade][]', 'Primeiro', ((params[:curricular_setting].present? && params[:curricular_setting]["grade"].present?) ? params[:curricular_setting]["grade"] : []).include?('Primeiro') %><%= label_tag t('first') %></li>
+				<li><%= check_box_tag 'curricular_setting[grade][]', 'Segundo', ((params[:curricular_setting].present? && params[:curricular_setting]["grade"].present?) ? params[:curricular_setting]["grade"] : []).include?('Segundo') %><%= label_tag t('second') %></li>
+				<li><%= check_box_tag 'curricular_setting[grade][]', 'Terceiro', ((params[:curricular_setting].present? && params[:curricular_setting]["grade"].present?) ? params[:curricular_setting]["grade"] : []).include?('Terceiro') %><%= label_tag t('third') %></li>
+				<li><%= check_box_tag 'curricular_setting[grade][]', 'Cuarto', ((params[:curricular_setting].present? && params[:curricular_setting]["grade"].present?) ? params[:curricular_setting]["grade"] : []).include?('Cuarto') %><%= label_tag t('fourth') %></li>
+				<li><%= check_box_tag 'curricular_setting[grade][]', 'Quinto', ((params[:curricular_setting].present? && params[:curricular_setting]["grade"].present?) ? params[:curricular_setting]["grade"] : []).include?('Quinto') %><%= label_tag t('fifth') %></li>
+				<li><%= check_box_tag 'curricular_setting[grade][]', 'Sexto', ((params[:curricular_setting].present? && params[:curricular_setting]["grade"].present?) ? params[:curricular_setting]["grade"] : []).include?('Sexto') %><%= label_tag t('sixth') %></li>
+			</ul>
+			
+			<ul><%= t("By_subject")%>		
+				<li><%= check_box_tag 'curricular_setting[knowledge_area][]', 'Matemáticas', ((params[:curricular_setting].present? && params[:curricular_setting]["knowledge_area"].present?) ? params[:curricular_setting]["knowledge_area"] : []).include?('Matemáticas') %><%= label_tag t('PC_matematicas') %></li>
+				<li><%= check_box_tag 'curricular_setting[knowledge_area][]', 'Ciencias da natureza', ((params[:curricular_setting].present? && params[:curricular_setting]["knowledge_area"].present?) ? params[:curricular_setting]["knowledge_area"] : []).include?('Ciencias da natureza') %><%= label_tag t('PC_naturaleza') %></li>
+				<li><%= check_box_tag 'curricular_setting[knowledge_area][]', 'Ciencias sociais', ((params[:curricular_setting].present? && params[:curricular_setting]["knowledge_area"].present?) ? params[:curricular_setting]["knowledge_area"] : []).include?('Ciencias sociais') %><%= label_tag t('PC_sociales') %></li>
+				<li><%= check_box_tag 'curricular_setting[knowledge_area][]', 'Lingua Castelá e literatura', ((params[:curricular_setting].present? && params[:curricular_setting]["knowledge_area"].present?) ? params[:curricular_setting]["knowledge_area"] : []).include?('Lingua Castelá e literatura') %><%= label_tag t('PC_castellano') %></li>
+				<li><%= check_box_tag 'curricular_setting[knowledge_area][]', 'Lingua Galega e literatura', ((params[:curricular_setting].present? && params[:curricular_setting]["knowledge_area"].present?) ? params[:curricular_setting]["knowledge_area"] : []).include?('Lingua Galega e literatura') %><%= label_tag t('PC_gallego') %></li>
+				<li><%= check_box_tag 'curricular_setting[knowledge_area][]', '1ª Lingua estranxeira', ((params[:curricular_setting].present? && params[:curricular_setting]["knowledge_area"].present?) ? params[:curricular_setting]["knowledge_area"] : []).include?('1ª Lingua estranxeira') %><%= label_tag t('PC_extranjera') %></li>
+				<li><%= check_box_tag 'curricular_setting[knowledge_area][]', 'Educación artística', ((params[:curricular_setting].present? && params[:curricular_setting]["knowledge_area"].present?) ? params[:curricular_setting]["knowledge_area"] : []).include?('Educación artística') %><%= label_tag t('PC_artistica') %></li>
+				<li><%= check_box_tag 'curricular_setting[knowledge_area][]', 'Educación física', ((params[:curricular_setting].present? && params[:curricular_setting]["knowledge_area"].present?) ? params[:curricular_setting]["knowledge_area"] : []).include?('Educación física') %><%= label_tag t('PC_fisica') %></li>
+				<li><%= check_box_tag 'curricular_setting[knowledge_area][]', 'Valores sociais e cívicos', ((params[:curricular_setting].present? && params[:curricular_setting]["knowledge_area"].present?) ? params[:curricular_setting]["knowledge_area"] : []).include?('Valores sociais e cívicos') %><%= label_tag t('PC_civicos') %></li>
+			</ul>
+		</br>
+		
+		<h><%= t("Profile_technical")%></h>
+			<ul><%= t("By_OS")%>		
+				<li><%= check_box_tag 'technical_setting[SO][]', 'Windows', ((params[:technical_setting].present? && params[:technical_setting]["SO"].present?) ? params[:technical_setting]["SO"] : []).include?('Windows') %><%= label_tag 'Windows' %></li>
+				<li><%= check_box_tag 'technical_setting[SO][]', 'Linux', ((params[:technical_setting].present? && params[:technical_setting]["SO"].present?) ? params[:technical_setting]["SO"] : []).include?('Linux') %><%= label_tag 'Linux' %></li>
+				<li><%= check_box_tag 'technical_setting[SO][]', 'Mac iOS', ((params[:technical_setting].present? && params[:technical_setting]["SO"].present?) ? params[:technical_setting]["SO"] : []).include?('Mac iOS') %><%= label_tag 'Mac iOS' %></li>
+				<li><%= check_box_tag 'technical_setting[SO][]', 'Outro', ((params[:technical_setting].present? && params[:technical_setting]["SO"].present?) ? params[:technical_setting]["SO"] : []).include?('Outro') %><%= label_tag t('other') %></li>
+			</ul>
+			
+			<ul><%= t("By_LMS")%>		
+				<li><%= check_box_tag 'technical_setting[LMS][]', 'Moodle', ((params[:technical_setting].present? && params[:technical_setting]["LMS"].present?) ? params[:technical_setting]["LMS"] : []).include?('Moodle') %><%= label_tag 'Moodle' %></li>
+				<li><%= check_box_tag 'technical_setting[LMS][]', 'Claroline', ((params[:technical_setting].present? && params[:technical_setting]["LMS"].present?) ? params[:technical_setting]["LMS"] : []).include?('Claroline') %><%= label_tag 'Claroline' %></li>
+				<li><%= check_box_tag 'technical_setting[LMS][]', 'Sakai', ((params[:technical_setting].present? && params[:technical_setting]["LMS"].present?) ? params[:technical_setting]["LMS"] : []).include?('Sakai') %><%= label_tag 'Sakai' %></li>
+				<li><%= check_box_tag 'technical_setting[LMS][]', 'dotLRN', ((params[:technical_setting].present? && params[:technical_setting]["LMS"].present?) ? params[:technical_setting]["LMS"] : []).include?('dotLRN') %><%= label_tag 'dotLRN' %></li>
+				<li><%= check_box_tag 'technical_setting[LMS][]', 'Outro', ((params[:technical_setting].present? && params[:technical_setting]["LMS"].present?) ? params[:technical_setting]["LMS"] : []).include?('Outro') %><%= label_tag t('other') %></li>
+			</ul>
+			
+			<ul><%= t("By_connection")%>		
+				<li><%= check_box_tag 'technical_setting[Internet][]', 'ADSL', ((params[:technical_setting].present? && params[:technical_setting]["Internet"].present?) ? params[:technical_setting]["Internet"] : []).include?('ADSL') %><%= label_tag 'ADSL' %></li>
+				<li><%= check_box_tag 'technical_setting[Internet][]', 'Wifi', ((params[:technical_setting].present? && params[:technical_setting]["Internet"].present?) ? params[:technical_setting]["Internet"] : []).include?('Wifi') %><%= label_tag 'Wifi' %></li>
+				<li><%= check_box_tag 'technical_setting[Internet][]', 'Outro', ((params[:technical_setting].present? && params[:technical_setting]["Internet"].present?) ? params[:technical_setting]["Internet"] : []).include?('Outro') %><%= label_tag t('other') %></li>
+			</ul>
+		</br>
+		
+		
+		<h><%= t("keywords")%></h>
+			<ul><%= t("By keyword")%>
+				<%= text_field_tag :search_keyword, params[:search_keyword], placeholder: t('Enter_keyword') %>
+			</ul>
+		</br>
+		
+		<%= submit_tag("Búsqueda avanzada")%>	
+	
+	<%end %>
+</div>	

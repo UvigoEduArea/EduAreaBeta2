@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
+  </head>
+  <body>
+    <h1><%= t("Mail_I") %></h1>
+    	
+	<p>
+		<% if @user != 0 %>
+			<%= t("Mail_II") %><b><%= @user.profile.first_name %> <%= @user.profile.last_name %></b><%= t("Mail_VI") %><br/>
+		<% else %>
+			<%= t("Mail_II") %><b><%= t("Unknown_user") %></b><%= t("Mail_VI") %><br/>
+		<% end %>
+	</p>
+	
+    <p><i><%= @suggestion %></i></p>
+   
+  </body>
+</html>

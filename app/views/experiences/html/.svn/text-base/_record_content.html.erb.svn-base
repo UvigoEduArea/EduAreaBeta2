@@ -1,0 +1,61 @@
+<div class="observation_container">
+	<div class="record_box record_box_<%= records.record_type.underscore %>" data-id="<%= records.id  %>">
+		<div class="header_block">
+			<label><%=t("Created_at")%> </label><%= time_tag(records.created_at, :class => "record_created_at") %>
+			<label><%=t("updated_at")%> </label><%= time_tag(records.updated_at, :class => "record_updated_at") %>
+			<%= image_tag(records.experience_element_record.user.profile.avatar.url(:thumb)) %>
+			<span><%= records.experience_element_record.user.profile.first_name + " " + records.experience_element_record.user.profile.last_name %></span>
+		</div>
+		<div class="clear"></div>
+		<div class="record_title_description left">
+				<%= text_field_tag("title", records.title, :method => "patch", 
+				:class =>  created ? "record_title record_input submission_edition" : "record_title record_input submission_edition_disabled", 
+				:disabled => created ? false : true, :id => nil, :placeholder => t("title"))%>
+				<%= text_area_tag("description", records.description, :method => "patch", 
+				:class => created ? "record_description record_input submission_edition" : "record_description record_input submission_edition_disabled", 
+				:disabled => created ? false : true, :id => nil, :placeholder => t("Description")) %>
+		</div>
+		
+		<div class="record_content left">
+				<% case(records.record_type)
+				when "Image"%>
+					<div id="edit_image" class="images_container abre_popup small-offset-2" data-info="Experience;0" value="experiences">
+						<%= image_tag(records.original_image.url(:medium), :class => "record_image", :value => "edit_image", :data_id => records.id)%>
+						<%= if records.blurred_image_content_type != nil
+						 		image_tag(records.blurred_image.url(:medium), :class => "record_image blurred_image", :value => "edit_image", :data_id => records.id)
+						 	end %>
+					</div>
+					<span class="image_selector record_invisible invisible selector"><%=t("change_image")%></span>			
+					
+					<%= file_field_tag("file_field", :class => created ? "image_selector_input record_input file_field" : "image_selector_input record_input file_field invisible", :disabled => created ? false : true, :accept => ".jpeg, .png, .svg")%>
+					
+				<% when "PositiveComment", "NegativeComment", "FreeText", "Idea" %>
+					<%= text_area_tag("record_content", records.text_content, :class => "record_input record_content_"+records.record_type.underscore, :disabled => created ? false : true, :id => nil, :method => "patch")%> 
+					
+				<% when "Snippet" %>
+					<%= text_field_tag("record_content_snippet_input", records.text_content, :id => nil, :class => "record_input record_content_snippet_input", :disabled => created ? false : true,  :placeholder => t("SnippetCode"))%>
+					<div class="snippet_view">
+						<%= raw records.text_content if records.text_content != nil %>
+					</div>
+					
+				<% when "Video" %>
+					<%= video_tag(records.video.url(), :controls => true, :width => "95%", :class => "record_video") %>
+					<span class="video_selector record_invisible invisible selector"><%=t("change_video")%></span>	
+					<% text_field_tag("video_description", records.text_content, :class => "record_video_description record_input", :disabled => created ? false : true, :id => nil, :placeholder => t("Description"))%>
+					<%= file_field_tag("file_field", :class => created ? "video_selector_input record_input file_field" : "video_selector_input record_input file_field invisible", :disabled => created ? false : true, :accept => ".mp4, .ogg, .webm")%>
+					
+				<% when "Document" %>
+					<% unless records.document.blank?%>
+						<%= link_to(records.document.url, :target => "_blank", :class => "record_document") do %>
+							<%= image_tag("/images/icons/Black/download.svg", :class => "record_document small-offset-2 columns") %>
+						<% end %>
+					<% else %>
+						<%= image_tag(records.document.url, :class => "record_image") %>
+					<% end %>
+					<span class="document_selector record_invisible invisible selector"><%=t("change_document")%></span>
+					<%= file_field_tag("file_field", :class => created ? "document_selector_input record_input file_field" : "document_selector_input record_input file_field invisible", :disabled => created ? false : true, :accept => ".pdf")%>
+			<% end %>
+	
+		</div>
+	</div>
+</div>

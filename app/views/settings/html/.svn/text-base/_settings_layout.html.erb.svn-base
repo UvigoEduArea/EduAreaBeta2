@@ -1,0 +1,47 @@
+<% if defined?(added) && added%>
+	<%= form_for(settings_layout, :html => {:method => "patch", :data_box => false}) do |f| %>
+		<div class="contents" data-id="<%= defined?(settings_layout) && !settings_layout.blank? ? settings_layout.id.to_s : parent.id.to_s%>" data-type="<%= setting+"_setting" %>">
+			<div id="setting_header">
+			  <div id="setting_actions_bar" class="a-left">
+			  	<%= image_tag("/images/icons/White/arrow-down.svg", :width => 21, :class => "setting_icon setting expand_setting "+setting+"_setting collapsed")%>
+			   	<!--%= image_tag("/images/icons/White/plus.svg", :width => 21, :class => "setting_icon setting new add_element", "data-type" => setting+"_setting")%-->
+			    <%= image_tag("/images/icons/White/search.svg", :width => 21, :class => "setting_icon setting abre_popup search_setting "+setting+"_setting", :value => setting+"_settings", :"data-info" => parent.type+";"+parent.id.to_s )%>
+			    <% if setting != "educational" %>
+			    	
+			    	<%= image_tag("/images/icons/White/download3.svg", :width => 21, :class => "setting_icon setting add_to_library "+setting+"_setting")%>
+			    <% end %>
+			  </div>
+			  <div id="setting_title" class="a-right">
+			    <span><%= t("Profile_"+setting)%></span>
+			  </div>
+			</div>
+			<div id="setting_body" class="">
+				<% if defined?(settings_layout) %>
+					<%= render :partial => "/settings/html/setting_contents", :object => settings_layout, :locals => {:setting => setting, :f => f, :created => created, :added => added} %>
+				<% end %>
+			</div>
+		</div>	
+	<% end %>
+<%else%>
+	<div class="contents small-12 columns" data-id="<%= defined?(settings_layout) && !settings_layout.blank? ? settings_layout.id.to_s : parent.id.to_s%>" data-type="<%= setting+"_setting" %>">
+		<div id="setting_header">
+		  <div id="setting_actions_bar" class="a-left">
+		  	<%= image_tag("/images/icons/White/arrow-down.svg", :width => 21, :class => "setting_icon setting expand_setting "+setting+"_setting collapsed")%>
+		   	<!--%= image_tag("/images/icons/White/plus.svg", :width => 21, :class => created ? "setting_icon setting new add_element" : "invisible setting_icon setting new add_element", "data-type" => setting+"_setting")%-->
+		   	
+		   	<% if setting != "educational" %>	
+		    	<%= image_tag("/images/icons/White/search.svg", :width => 21, :class => created ? "setting_icon setting abre_popup search_setting "+setting+"_setting" : "invisible setting_icon setting abre_popup search_setting "+setting+"_setting", :value => setting+"_settings", :"data-info" => parent.type+";"+parent.id.to_s)%>
+		    	<%= image_tag("/images/icons/White/download3.svg", :width => 21, :class => created ? "setting_icon setting add_to_library "+setting+"_setting" : "setting_icon setting add_to_library "+setting+"_setting invisible")%>
+		    <% end %>
+		  </div>
+		  <div id="setting_title" class="a-right">
+		    <span><%= t("Profile_"+setting)%></span>
+		  </div>
+		</div>
+		<div id="setting_body" class="small-12 columns">
+			<% if defined?(settings_layout) %>
+				<%= render :partial => "/settings/html/setting_contents", :object => settings_layout, :locals => {:setting => setting, :f => f, :created => created, :added => false} %>
+			<% end %>
+		</div>
+	</div>	
+<% end %>

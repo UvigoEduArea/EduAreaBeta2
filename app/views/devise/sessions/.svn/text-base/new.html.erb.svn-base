@@ -1,0 +1,22 @@
+<div id="loginbox" class="small-offset-3 small-6 columns text-center devise">
+	<h2><%= t('Sign_in') %></h2>	
+	<%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+	  <table id="registration">
+	  	<tr>
+	  		<th><%= t('Email') %></th>
+	  		<td><%= f.email_field :email, autofocus: true %></td>
+	  	</tr>
+	  	<tr>
+	  		<th><%= t('Password') %></th>
+			<td><%= f.password_field :password, autocomplete: "off" %></td>
+		</tr>
+	  </table>	
+	  <% if devise_mapping.rememberable? -%>
+	    <div class="row text-center"><%= f.check_box :remember_me %> <%= t('Remember_me') %></div>
+	  <% end -%>
+	
+	  <div class="row text-center"><%= f.submit t("Sign_in") %></div>
+	<% end %>
+	
+	<%= render "devise/shared/links" %>
+</div>

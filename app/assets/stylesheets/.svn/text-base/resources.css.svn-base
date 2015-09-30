@@ -1,0 +1,106 @@
+/*
+  Place all the styles related to the matching controller here.
+  They will automatically be included in application.css.
+*/
+
+
+/* CSS para el botón + en la vista de todos los recursos */
+
+ul.dropdown{
+	position: absolute;
+	list-style: none;
+	width: 240px;
+	text-align: center;
+	left: 100%;
+	top: 60px;
+	border-radius: 0px 20px 20px 0px;
+}
+
+ul.dropdown.resources, ul.dropdown.resources_where{
+	background: #37414B;
+	top: 52%;
+	color: white;
+	left: 72%;
+	/*background: -moz-linear-gradient(top, rgba(240,194,108,0.9) 0%, rgba(240,194,108,0.9) 8%, rgba(235,179,76,0.9) 38%, rgba(219,150,21,0.9) 100%);
+	background: -webkit-gradient(left top, left bottom, color-stop(0%, rgba(240,194,108,0.9)), color-stop(8%, rgba(240,194,108,0.9)), color-stop(38%, rgba(235,179,76,0.9)), color-stop(100%, rgba(219,150,21,0.9)));
+	background: -webkit-linear-gradient(top, rgba(240,194,108,0.9) 0%, rgba(240,194,108,0.9) 8%, rgba(235,179,76,0.9) 38%, rgba(219,150,21,0.9) 100%);
+	background: -o-linear-gradient(top, rgba(240,194,108,0.9) 0%, rgba(240,194,108,0.9) 8%, rgba(235,179,76,0.9) 38%, rgba(219,150,21,0.9) 100%);
+	background: -ms-linear-gradient(top, rgba(240,194,108,0.9) 0%, rgba(240,194,108,0.9) 8%, rgba(235,179,76,0.9) 38%, rgba(219,150,21,0.9) 100%);
+	background: linear-gradient(to bottom, rgba(240,194,108,0.9) 0%, rgba(240,194,108,0.9) 8%, rgba(235,179,76,0.9) 38%, rgba(219,150,21,0.9) 100%);
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f0c26c', endColorstr='#db9615', GradientType=0 );*/
+}
+
+ul.dropdown.resources_where{
+	top: 0%;
+}
+
+ul.dropdown li{
+	height: 25px;
+}
+
+ul.dropdown.resources_where li{
+	margin-top: 10px;
+}
+
+/*****************************************************************************
+****************CSS PARA LA SECCIÓN RECURSOS DE LOS FORM**********************
+*****************************************************************************/
+
+.content_show.resources{
+	padding: 1%;
+}
+
+.resources_title{
+	color: white;
+	font-size: 20px;
+	top: 25px;
+	margin-right: 10px;
+	position: relative;
+}
+
+
+.resources_mini_view{
+	padding: 1% 2%;
+}
+
+.resources_action_bar{
+	position: relative;
+}
+
+ul.dropdown.new_resources{
+	position: relative;
+	list-style: none;
+	width: 150px;
+	text-align: center;
+	left: 0%;
+	top: 23px;
+	border-radius: 0px 0px 10px 10px;
+	background: #1887E3;
+	z-index: 1;
+}
+
+ul.dropdown.new_resources li, ul.dropdown.resources_where li{
+	height: 25px;
+	cursor: pointer;
+	color: white;
+}
+
+.resource_container{
+	border: 1px solid black;
+	margin: 0% 5% 1% 5%;
+	background-color: white;
+}
+
+form.edit_resource{
+	padding: 0.1% 1% 1% 1%;
+	height: auto;
+}
+
+form.edit_resource .title{
+	margin-top: 1%;
+}
+
+ul.dropdown.resources_where{
+	/*top: 0%;*/
+}
+

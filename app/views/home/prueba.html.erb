@@ -1,0 +1,67 @@
+<style>
+	#sortdivs div{
+		border: 1px solid black;
+		width: 100px;
+		height: 100px;
+		text-align: center; 
+		position: relative;
+		left:45%;
+	}  
+	
+	#sortdivs div span{
+		position: absolute;
+		left: -150px;
+	}
+	.y{
+		background-color: red;
+	}
+  </style>
+  <script>
+  $(function() {
+    $(".x").sortable({
+    	placeholder: "sortable_placeholder",
+    	axis: "y",
+    	cursor: "move",
+    	revert: true,
+    	appendTo: "x",
+    	connectWith: ".x"
+    	update: function(event, ui){
+			console.log($(ui.item[0]).prev().attr("data-position"));
+			if($(ui.item[0]).prev().attr("data-position") == undefined){
+				console.log("soy el 1");
+			}
+    	},
+    	forcePlaceholderSize: true,
+    	});
+    
+  });
+  
+  
+  
+  $(document).on("click", ".first", function(){
+  	$("#sortdivs").sortable("enable");
+  	$("#sortdivs").sortable("refresh");
+  	//console.log("click");
+  	
+  	//console.log($("#sortdivs").sortable("toArray",{attribute: "class"})); 
+  });
+  
+  </script>
+</head>
+<body>
+
+<div class="x">
+	<div data-position="4" class="first"><span class="a">Click Aqui Para mover</span>1</div>
+	<div data-position="65"><span class="a">Click Aqui Para mover</span>2</div>
+	<div data-position="90"><span class="a">Click Aqui Para mover</span>3</div>
+	<div data-position="108"><span class="a">Click Aqui Para mover</span>4</div>
+</div>
+
+<ul class="x">
+	<li>Elemento 1</li>
+	<li>Elemento 2</li>
+	<li>Elemento 3</li>
+	<li>Elemento 4</li>
+	<li>Elemento 5</li>
+	<li>Elemento 6</li>
+</ul>

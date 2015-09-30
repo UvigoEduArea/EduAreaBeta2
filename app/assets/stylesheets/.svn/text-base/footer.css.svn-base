@@ -1,0 +1,96 @@
+.footer{
+	/*
+	float: left;
+	position: relative;*/
+	z-index: 1;
+	position: fixed;
+	background: #1F3A4D;
+	width: 100%;
+	line-height: 40px;
+	bottom: 0;
+	height: 38px;
+}
+
+.expand_footer, .contract_footer{
+	width: 20px;
+	position: absolute;
+	left: 50%;
+	cursor: pointer;
+	padding: 0 10px 10px 10px;
+}
+
+.footer.user{
+	margin-top: 818px;
+}
+
+.footer .sign_area{
+	color: rgb(232, 121, 16);
+	font-weight: bold;
+	float: right;
+	margin-right: 15px;
+	width: 120px;
+}
+
+.footer .about_area{
+	float: left;
+	margin: 0px 15px 0px 15px;
+	width: 191px;
+}
+
+.footer .use_guide{
+	float: left;
+	margin: 0px 15px 0px 50px;
+	width: 191px;
+}
+
+.footer .contact_area{
+	float: left;
+	margin: 0px 15px 0px 50px;
+	width: 191px;
+}
+
+.footer .about_licenses{
+	float: left;
+	margin: 0px 15px 0px 50px;
+	width: 191px;
+}
+
+.footer .about_paradata{
+	float: left;
+	margin: 0px 15px 0px 50px;
+	width: 191px;
+}
+
+.contact_area a, .use_guide a, .about_area a, .about_licenses a, .about_paradata a{
+	color: rgb(232, 121, 16);
+	font-weight: bold;
+}
+
+.contact_area li, .use_guide li, .about_area li, .about_licenses li, .about_paradata li{
+	color: rgb(232, 121, 16);
+}
+
+.about_area ul{
+	margin-left: 23px;
+	margin-top: -10px;
+}
+
+.about_area li{
+ 	margin-top: -15px;
+ }
+
+.about_area li a{
+	font-weight: normal;
+	font-size: 13px;
+	color: rgb(232, 121, 16);
+}
+
+.about_licenses li, .about_paradata li{
+	margin-top: -15px;
+}
+
+.about_licenses li a, .about_paradata li a{
+	font-weight: normal;
+	font-size: 13px;
+	color: rgb(232, 121, 16);
+}

@@ -1,0 +1,270 @@
+.course_state_color{
+	width: 15px;
+	height: 15px;
+	background-color: gray;
+	position: relative;
+	left: 0;
+	margin-top: 10px;
+}
+
+.course_state_color, .course_state_select{
+	display: inline-block;
+}
+
+.course_state_color.beingPrepared{
+	background-color: red !important;
+}
+
+.course_state_color.inProgress{
+	background-color: orange !important;
+}
+
+.course_state_color.finished{
+	background-color: green !important;
+}
+
+.record_title_description .jqte_record{
+	width: 95%;
+	margin: 5px 10px;
+	height: 75%;
+}
+
+.record_title_description .jqte_record .jqte_record_editor{
+	height: 90%;
+}
+
+.move_right{
+	overflow: hidden;
+}
+
+.select_record_type{
+	height: 70px;
+	width: 30%;
+	background-color: #4682B4;
+	border-radius: 10px;
+	padding: 0% 2% 0.5% 2%;
+	position: relative;
+	left: 32%;
+	margin-bottom: 3%;
+}
+
+.record_icon{
+	margin: 2% 2% 2% 2%;
+	width: 7.5%;
+	cursor: pointer;
+}
+
+.evidences, .annotations{
+	position: absolute;
+	color: white;
+}
+
+.evidences{
+	left: 7.5%;
+}
+
+.annotations{
+	left: 52%;
+}
+
+.record_box{
+	margin-bottom: 1%;
+	border: 1px solid black;
+	border-radius: 10px;
+	height: 330px;
+}
+
+.record_box label{
+	display: inline;
+}
+
+.header_block{
+	display: inline;
+	position: relative;
+	top: 5px;
+	left: 10px;
+}
+
+.record_title_description, .record_content{
+	position: relative;
+	height:82%;
+	border: solid 1px black;
+	margin: 10px 8px 4px 8px;
+	border-radius: 10px;
+	width: 45%;
+}
+
+.record_title_description{
+	height:82%;	
+}
+
+.record_content{
+	padding: 0 0.5%;
+}
+
+.record_title, .record_content_snippet_input, /*.record_image_description,*/ .record_description/*, .record_video_description*/{
+	border: none;
+	margin: 10px 10px 8px 10px;
+	width: 95%;
+	height: 30px;
+	font-size: 15px;
+	background-color: white;
+}
+
+
+textarea.record_description{
+	font-size: 12px;
+	height: 72%;
+}
+
+.record_content_snippet_input{
+	height: 15px;
+	font-size: 11px;
+}
+
+.snippet_view{
+	overflow: hidden;
+	height: 80%;
+	margin: 10px 10px;
+}
+
+/*.image_container{
+	margin: 1% auto;
+	text-align: center;
+	position: relative;
+}*/
+
+/*.record_image_description, .record_video_description{
+	position: absolute;
+	bottom: 0;
+	left: 0;
+}*/
+
+.image_selector, .video_selector, .document_selector{
+	position: absolute;
+	background-color: rgba(70,130,180,0.6);
+	cursor: pointer;
+	bottom: 0;
+	text-align: center;
+	width: 50%;
+	left: 25%;
+}
+
+.image_selector{
+	
+	/*bottom: -10%;*/
+		
+}
+
+.record_video{
+	max-width: 70%;
+	max-height: 90%;
+}
+
+.record_document{
+	width: 50%;
+}
+
+.jqte_record_editor{
+	height: 91%;
+}
+
+.record_content .jqte_record{
+	height: 90%;
+	margin: 15px;
+}
+/*lo que está comentado es pq antes las imagenes y video tenian un input debajo que se ha quitado*/
+.images_container{
+	position: relative;
+	height: 100%;
+	width: 100%;
+	padding: 0.5% 0%;
+}
+
+.record_image{
+	position: relative;
+	height: 95%;
+}
+
+.record_video, .record_document{
+	margin: 2% auto;
+	display: block;
+}
+
+.delete_record{
+	height: 24px;
+	margin-bottom: 3px;
+	cursor: pointer;
+}
+
+.video_selector{
+	/*left: 25%;
+	bottom: 17.7%;
+	/*bottom: 4.5%;
+	width: 50%;*/
+}
+
+.users_bar{
+	height: 100%;
+	width: 12%;
+	background-color: #1F3A4D;
+	color: white;
+	position: absolute;
+	overflow-y: scroll;
+	z-index: 1 !important;
+}
+
+.user_box{
+	display: block;
+	margin-top: 5px;
+	cursor: pointer;
+	background-color: #1F3A4D;
+}
+
+.user_box:hover{
+	background-color: #32C3D6;
+}
+
+.user_box.user_selected{
+	background-color: #32C3D6;
+}
+
+
+ul.dropdown.code_experience {
+	background-color: #1F3A4D;
+	color: white;
+	margin-left: 0px;
+	top: 26%;
+	border-radius: 0px;	
+	width: 468px;
+}
+
+ul.dropdown.code_experience input{
+	height: 125px;
+}
+
+ul.dropdown.code_experience img{
+	float: right;
+}
+
+#show_code_experience{
+	width: 50%;
+	height: 50%;
+	position:absolute;
+	left: 35%;
+	top: 35%;
+	background-color: #737D87;
+	border-radius: 30px;
+}
+
+#show_code_experience span{
+	color: white;
+	position: relative;
+	top: 24%;
+	left: 9%;
+}
+
+#show_code_experience img{
+	padding: 1%;
+	margin-left: 91%;
+}

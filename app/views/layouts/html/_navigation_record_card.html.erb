@@ -1,0 +1,81 @@
+<%
+=begin
+Iconos de acción de la parte de arriba de una record_Card, como por ejemplo el colgar, el seleccionar, el añadir, etc.
+=end
+%>
+
+<div class= "navigation_record_card">
+	<% if !(defined?(popup)).nil?  %>
+		<% if popup %>
+			<% if use_element %>
+				<%= image_tag "/images/icons/Blue/plus.svg", style: "cursor: pointer",:class=>"add_resource_element add_element action_icon_record_card", :"data-info" => (record_cards.type == "Experience") ? ("LessonPlan;"+record_cards.lesson_plan.id.to_s) : (record_cards.type+";"+record_cards.id.to_s) %>
+			<% else %>
+				<% if record_cards.type.downcase == "template" || record_cards.type == "ActivityTemplate" || record_cards.type == "LessonPlanTemplate" || record_cards.type == "LessonPlan"%>
+					<div class="action_icon_record_card">
+						<% if record_cards.type =="LessonPlan"%>
+							<%= image_tag "/images/icons/Blue/plus.svg", style: "cursor: pointer",:class=>params[:parent_id] == "0" ? "create_new_element" : "add_element", :"data-info"=> record_cards.type+";"+record_cards.id.to_s %> 
+						<% else %>
+							<%= image_tag "/images/icons/Blue/plus.svg", style: "cursor: pointer",:class=>params[:parent_id] == "0" ? "create_new_element" : "add_new_element", :"data-info"=> "template;"+record_cards.id.to_s %>
+						<% end %>
+					</div>
+				<% else %>
+					<% if record_cards.type == 'Board' %>
+						<div class="action_icon_record_card">
+							<%= image_tag "/images/icons/Blue/plus.svg", style: "cursor: pointer",:class=>"add_element_board add_element", :"data-info" => record_cards.type+";"+record_cards.id.to_s %>
+						</div>
+					<% else %>
+						<div class="action_icon_record_card">
+							<%= image_tag "/images/icons/Blue/plus.svg", style: "cursor: pointer", :class=>"add_element", :"data-info" => record_cards.type+";"+record_cards.id.to_s if params[:controller] != "lesson_plans" %> 
+							<% #AGREGAMOS UN, P.EJEM. RECURSO, DESDE UN POPUP A UN ELEMENTO, P.EJEM. ACTIVITY
+								%>
+								
+							<% if (record_cards.type == "TechnicalSetting" and record_cards.creator_id == current_user.id) %>
+									<%= image_tag "/images/icons/Blue/close.svg",:class=>"delete_technical_setting", :id=> record_cards.id.to_s, :width => 28, :style => "cursor: pointer;" %>
+							<% end %>
+						
+						</div>
+						
+					<% end %>
+				<% end %>
+			<% end %>
+		<% end %>
+	<% else %>
+		<% if (user_signed_in?) && (record_cards.type != 'Board') && (params[:controller] != "boards") %>
+			<div class="action_icon_record_card">
+				<%= image_tag "/images/icons/Blue/pushpin.svg",:class=>"abre_popup", :value => "boards",:"data-info"=> record_cards.type+";"+record_cards.id.to_s %>
+			</div>
+			<% if (user_signed_in?) && ((record_cards.type == 'Content')||(record_cards.type == 'Collaborator')||(record_cards.type == 'Application')||(record_cards.type == 'Device')||(record_cards.type == 'Event')) && (params[:controller] != "boards") %>
+				<div class= "action_icon_record_card">
+					<%= image_tag("/images/icons/Blue/upload.svg", size:"28x28", :id => "record_card_dropdown" )%>
+					<ul class="dropdown_record_card" style="display:none;">
+						<li class= "abre_popup add_resource_button" value= "activities" data-info="<%= record_cards.type+";"+record_cards.id.to_s %>" ><p><%= t("activities")%></p></li>
+						<li class= "abre_popup add_resource_button" value= "lesson_plans" data-info="<%= record_cards.type+";"+record_cards.id.to_s %>" ><p><%= t("lesson_plans")%></p></li>
+					</ul>
+				</div>
+			<% end %>
+			<% if (user_signed_in?) && (record_cards.type == 'Activity') %>
+				<div class= "action_icon_record_card">
+					<%= image_tag("/images/icons/Blue/upload.svg", size:"28x28", :class => "abre_popup add_activity_button", :value => "lesson_plans", :"data-info" => record_cards.type+";"+record_cards.id.to_s) %>
+				</div>
+			<% end %>
+		<% else %>
+			<%  if (user_signed_in?) && (record_cards.type != 'Board') && (params[:controller] == "boards") %>
+<%
+=begin%>
+				<% if (!record_cards.removed) && ((record_cards.private && record_cards.creator_id == current_user.id) || (!record_cards.private))%>
+					<div class = "pinit_from_board action_icon_record_card" >
+						<%= image_tag "/images/icons/Blue/pushpin.svg",:class=>"abre_popup", :value => "boards",:"data-info"=> record_cards.type+";"+record_cards.id.to_s, :width => 28 %>
+					</div>
+				<% end %>
+<%
+=end%>
+				<% if (board_creator == current_user.id) %>
+					<div class = "delete_from_board action_icon_record_card">
+						<%= image_tag "/images/icons/Blue/close.svg",:class=>"delete_element_board", :id=> record_cards.id.to_s, :width => 28, :style => "cursor: pointer;" %>
+					</div>
+				<% end %>
+			<% end %>
+		<% end %>
+	<% end %>
+	
+</div>

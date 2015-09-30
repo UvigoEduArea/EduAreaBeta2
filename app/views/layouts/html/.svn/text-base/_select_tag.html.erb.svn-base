@@ -1,0 +1,28 @@
+<% if defined?(free_text) %>
+	<div class="data_box_bfti">
+		<li class="itemize_li">
+			<%= image_tag "/images/icons/Black/close.svg", :width => 16, :class => "delete_data_box_item", :id => @object.id.to_s %>
+			<input class="box_item_value_updateable updateable focusable page_<%= @object.box.page_position %>" data_type="free_text" id="<%=@object.id.to_s%>" name="activity[data_boxes][content]" type="text" value="<%=@object.content_value %>", style="background-color: #eee"> 		
+		</li>
+	</div>
+	
+<% else %>
+	<div class="data_box_bi">
+		<li class="itemize_li">
+			<%= image_tag "/images/icons/Black/close.svg", :width => 16, :class => "delete_data_box_item", :id => @object.id.to_s %> 
+			<input class="box_item_value_no_updateable" id="activity_data_boxes_content" name="activity[data_boxes][content]" size="40" type="text" value="<%=@object.content_value %>" disabled="disabled">
+		</li>
+	</div>
+	
+	<select class="add_option_item" id="activity_data_boxes_content_value" name="activity[data_boxes][content_value]">
+		<option value>Select</option>
+		<% @vocabularies.each do |vocabulary_term| %>
+			<option value="<%= vocabulary_term.id %>"><%= vocabulary_term.term%></option>
+		<% end %>
+	</select>	
+<% end %>
+
+	
+
+
+

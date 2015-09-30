@@ -1,0 +1,81 @@
+<% if list_view.type != "Submission" %>
+	<div class="element_list_box small-12 columns" value="<%=list_view.type.downcase.pluralize%>" data-info="<%=list_view.type%>;<%= list_view.id.to_s%>" data-position="<%= list_view.position.to_s%>">
+		<div class= "icons_area select_element_to_move">
+			<%= image_tag("/images/icons/Botones/Negro/move.png", :class => (user_signed_in? and list_view.creator_id == current_user.id) ? "move_element" : "move_element invisible")%>
+			<% if user_signed_in? && list_view.creator_id == current_user.id %>
+				<%= check_box_tag( (list_view.type == "Application" or list_view.type == "Content" or list_view.type == "Device" or list_view.type == "Event" or list_view.type == "Collaborator") ? "delete_resource_checkbox" : "delete_"+list_view.type.downcase+"_checkbox",list_view.id.to_s) %>
+			<% end %>
+		</div>
+		
+		<% if list_view.image.url() != "none" %>
+			<div class="image <%= (list_view.type == "Activity") ? "show_element_in_lp" : "" %> <%= (list_view.type != "Activity") ? "show_content_element" : "" %>" value="<%= list_view.type.downcase.pluralize %>" data-info="<%= list_view.type %>;<%= list_view.id.to_s%>">
+				<%= image_tag(list_view.image.url(:crop)) %>
+			</div>
+		<% end %>
+		
+		<div class="element_list_content <%= (list_view.type == "Activity") ? "show_element_in_lp" : "" %> <%= (list_view.type != "Activity") ? "show_content_element" : "" %>" value="<%=list_view.type.downcase.pluralize%>" data-info="<%=list_view.type%>;<%= list_view.id.to_s%>" style="<%= (list_view.image.url() != "none") ? "" : "margin-left: 20px;" %>">
+
+			<% if (list_view.type == "Content") || (list_view.type == "Activity") %>
+				<input type= "hidden" class="element_list_license_icon" data-id="<%= list_view.right_id%>">
+				<% image_tag(list_view.license.license_icon, size: "60x28", :class => "element_list_license_icon", :"data-id" => list_view.right_id) %>
+			<% end %>
+			
+			<div class="element_list_information title description small-9 columns end">
+				<%unless list_view.title.blank? %>
+					<p class="title"><%= list_view.title%></p>
+				<% else %>
+					<p class="title"><%= t('title') %></p>
+				<% end %>
+				<% if defined?(experience) and experience and user_signed_in? and current_user.type == "Student" %>
+					<div class="description"><%= !list_view.description_student.blank? ? (list_view.description_student.html_safe) : ""%></div>
+				<% else %>
+					<div class="description"><%= !list_view.description.blank? ? (list_view.description.html_safe) : ""%></div>
+				<% end %>
+			</div>
+			
+			<div class="other_info">
+				<p><%= "Mod: " %><%= time_tag(list_view.updated_at, :class => "last_change") %></p>
+				<!--div class="private_element">
+					<%= image_tag("/images/icons/Botones/Negro/private.png", :class => "change_visibility", :"data-info" => list_view.type+";"+list_view.id.to_s, :width => "20px")%>
+				</div-->
+			</div>
+		</div>
+	</div>
+
+<% else %>
+	<div class="show_submission_in_lp element_list_box small-12 columns" value="<%=list_view.type.downcase.pluralize%>" data-info="<%=list_view.type%>;<%= list_view.id.to_s%>" data-position="<%= list_view.position.to_s%>">
+		<div class= "icons_area select_element_to_move">
+			<!--%= image_tag("/images/icons/Gray/close.svg", :class => created ? "delete_submission" : "delete_submission invisible", :width => "20%")%-->
+			<%= image_tag("/images/icons/Botones/Negro/move.png", :class => (user_signed_in? and list_view.creator_id == current_user.id) ? "move_element" : "move_element invisible")%>
+			<% if user_signed_in? && list_view.creator_id == current_user.id %>
+				<%= check_box_tag("delete_submission_checkbox",list_view.id.to_s) %>
+			<% end %>
+		</div>
+		
+		<% if list_view.image.url() != "none" %>
+			<div class="image show_content_element" value="<%= list_view.type.downcase.pluralize %>" data-info="<%= list_view.type %>;<%= list_view.id.to_s%>">
+				<%= image_tag(list_view.image.url(:crop)) %>
+			</div>
+		<% end %>
+		
+		<div class="element_list_content show_content_element" value="<%=list_view.type.downcase.pluralize%>" data-info="<%=list_view.type%>;<%= list_view.id.to_s%>" style="<%= (list_view.image.url() != "none") ? "" : "margin-left: 20px;" %>">
+			<div class="element_list_information title description small-9 columns end">
+				<%unless list_view.title.blank? %>
+					<p class="title"><%= list_view.title%></p>
+				<% else %>
+					<p class="title"><%= t('title') %></p>
+				<% end %>
+				<div class="description"><%= !list_view.description.blank? ? (list_view.description.html_safe) : ""%></div>
+			</div>
+			
+			<div class="other_info">
+				<p><%= "Mod: " %><%= time_tag(list_view.updated_at, :class => "last_change") %></p>
+				<!--div class="private_element">
+					<%= image_tag("/images/icons/Botones/Negro/private.png", :class => "change_visibility", :"data-info" => list_view.type+";"+list_view.id.to_s, :width => "20px")%>
+				</div-->
+			</div>
+		
+		</div>
+	</div>
+
+<% end %>

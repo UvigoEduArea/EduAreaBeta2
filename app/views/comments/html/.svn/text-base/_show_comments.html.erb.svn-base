@@ -1,0 +1,93 @@
+<% if (show == "false") %>
+	<div class= "comments" value="comments">
+		<div class= "actual_comments">
+			<% unless @comments.blank? %>		
+				<% @comments.order("created_at DESC").each do |comment| %>
+					<div class="comment">
+						<span class= "comment_image">	
+							<%= link_to user_path(comment.user), :class => "a-left" do%>
+								<%= image_tag(comment.user.profile.avatar.url(:thumb), :width => 22) %>
+								<span class="user_name"><%= comment.user.profile.first_name + " " + comment.user.profile.last_name %></span>
+							<% end %>
+						</span>			
+						<span class= "comment_text">		
+							<p><%= comment.description %></p>
+							<span class="comment_timestamp"><%= comment.created_at.strftime("%d %b. %Y") %> - <%= comment.created_at.strftime("%H:%M") %></span>
+						</span>
+					</div>
+				<% end %>
+			<% else %>
+				<p style="font-style:italic;color:#868688;font-size:13px;"><%= t("No_comments") %></p>
+			<% end %>
+		</div>
+		<div class="clear"></div>
+		<% if user_signed_in?%>
+			<div class="your_comment comment">
+				<span class= "comment_image">
+					<%= link_to user_path(current_user), :class => "a-left" do%>
+						<%= image_tag(current_user.profile.avatar.url(:thumb), :width => 22) %>
+						<span class="user_name"><%= current_user.profile.first_name + " " + current_user.profile.last_name %></span>
+					<% end %>
+				</span>			
+			
+				<span class= "comment_text">
+					<%= fields_for :comment do |comments_fields|%>
+						<%= comments_fields.text_area :description,:value => "", :class => "comment_input", :placeholder => t("Your_comment"), :width =>'100%', :height => 'auto', :size => '1x1' %>
+					<% end %>
+					<%= button_tag t('Comment_it'), {:id => "comment_it", :type => "button"}  %>
+				</span>
+			
+			</div>
+		<% end %>
+	</div>
+
+<% else %>
+	<ul class="dropdown_paradata <%= type %>">
+			
+			<% unless @comments.blank? %>		
+				<% @comments.order("created_at DESC").each do |comment| %>
+					<li>	
+						<%= link_to user_path(comment.user), :class => "a-left" do%>
+							<%= image_tag(comment.user.profile.avatar.url(:thumb), :width => 22) %>
+							<span class="user_name"><%= comment.user.profile.first_name + " " + comment.user.profile.last_name %></span>
+						<% end %>
+					</li>	
+					<li>
+						<p><%= comment.description %></p>
+					</li>
+					<li>
+						<span class="comment_timestamp"><%= comment.created_at.strftime("%d %b. %Y") %> - <%= comment.created_at.strftime("%H:%M") %></span>		
+					</li>
+				
+				<% end %>
+				
+			<% else %>
+				<li>
+					<p style="font-style:italic;font-size:13px;"><%= t("No_comments") %></p>
+				</li>
+			<% end %>
+			
+			<% if user_signed_in?%>
+				<li class= "li_bigger">
+					<div class="your_comment comment">
+						<span class= "comment_image">
+							<%= link_to user_path(current_user), :class => "a-left" do%>
+								<%= image_tag(current_user.profile.avatar.url(:thumb), :width => 22) %>
+								<span class="user_name"><%= current_user.profile.first_name + " " + current_user.profile.last_name %></span>
+							<% end %>
+						</span>			
+					
+						<span class= "comment_text">
+							<%= fields_for :comment do |comments_fields|%>
+								<%= comments_fields.text_area :description,:value => "", :class => "comment_input", :placeholder => t("Your_comment"), :width =>'100%', :height => 'auto', :size => '1x1' %>
+							<% end %>
+							<%= button_tag t('Comment_it'), {:id => "comment_it", :type => "button", :class => "comment_it_nav_bar"}  %>
+						</span>	
+					</div>
+				</li>
+				</br>
+			<% end %>
+			
+	</ul>
+
+<% end %>

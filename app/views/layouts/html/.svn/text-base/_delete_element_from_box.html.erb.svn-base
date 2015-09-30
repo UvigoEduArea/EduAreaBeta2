@@ -1,0 +1,9 @@
+<% unless @vocabularies.blank? %>
+	<select class="add_option_item" id="activity_data_boxes_content_value" name="activity[data_boxes][content_value]">
+		<option value>Select</option>
+		<% @vocabularies.each do |vocabulary_term| %>
+		<% p @vocabularies %>
+		<option value="<%= vocabulary_term.id %>"><%= vocabulary_term.term%></option>
+		<% end %>
+	</select>
+<% end %>

@@ -1,0 +1,197 @@
+<% if user_signed_in? %>
+	<% usuario = true %>
+<% else %>
+	<% usuario = false %>
+<% end %>
+	
+<% if (show == "false") %>
+	<div class= "comments" value="copies">
+		<div class= "actual_comments">
+			<% unless copies_elements.blank? %>
+				<% copies_elements.each do |element| %>
+					<% creator = Profile.where("user_id='"+element.creator_id.to_s+"'").first %> 
+					<% if (((usuario) && (((!element.private)&&(creator.private!='Nobody'))||((element.private) and (current_user.id == element.creator_id))) && (!element.removed)) || ((!usuario) && (creator.private == 'Everybody') && (!element.private) && (!element.removed))) %>			 		
+						<div class="comment">
+							<% if usuario %>
+								<%= link_to user_path(element.user), :class => "left" do%>
+									<%= image_tag(element.user.profile.avatar.url(:thumb), :width => 22) %>
+								<% end %>
+							<% else %>
+								<%= image_tag(element.user.profile.avatar.url(:thumb), :width => 22) %>
+							<% end %>
+							
+							<% if (((element.type.downcase != "lessonplan") && (element.type != "TechnicalSetting")&& (element.type != "EducationalSetting"))) %>
+								<%= link_to eval(element.type.downcase.to_s + "_path("+element.id.to_s+")"), :class => "left" do%>
+									<% if element.title != nil%>
+										<p><%= element.title %></p>
+									<% else %>
+										<p><%= t('element') %></p>
+									<% end %>
+								<% end %>
+							<% else %>
+								<% if (element.type.downcase == "lessonplan") %>
+				 					<% path = "show_lesson_plan_path"%>
+								<% end %>
+								<%= link_to eval(path + "(" +element.id.to_s+")"), :class => "left" do%>
+									<% if element.title != nil%>
+										<p><%= element.title %></p>
+									<% else %>
+										<p><%= t('element') %></p>
+									<% end %>
+								<% end %>
+							<% end %>									
+						</div>
+					<% end %>
+				<% end %>
+				<div class="clear"></div>
+			<% end %>
+			<div>
+				<p><%= t('Copied') %><%=(' ')%><%= (number_copies) %><%=(' ')%><%= t('Times') %></p>
+			</div>
+		</div>
+		
+		</br>
+		<div class= "actual_comments">
+			<% unless includes_elements.blank? %>
+				<% includes_elements.each do |element| %>
+					<% creator = Profile.where("user_id='"+element.creator_id.to_s+"'").first %> 
+					<% if (((usuario) && (((!element.private)&&(creator.private!='Nobody'))||((element.private) and (current_user.id == element.creator_id))) && (!element.removed)) || ((!usuario) && (creator.private == 'Everybody') && (!element.private) && (!element.removed))) %>			 		
+						<div class="comment">
+							<% if usuario %>
+								<%= link_to user_path(element.user), :class => "left" do%>
+									<%= image_tag(element.user.profile.avatar.url(:thumb), :width => 22) %>
+								<% end %>
+							<% else %>
+								<%= image_tag(element.user.profile.avatar.url(:thumb), :width => 22) %>
+							<% end %>
+							
+							<% if (((element.type.downcase != "lessonplan") && (element.type != "TechnicalSetting")&& (element.type != "EducationalSetting"))) %>
+								<%= link_to eval(element.type.downcase.to_s + "_path("+element.id.to_s+")"), :class => "left" do%>
+									<% if element.title != nil%>
+										<p><%= element.title %></p>
+									<% else %>
+										<p><%= t('element') %></p>
+									<% end %>
+								<% end %>
+							<% else %>
+								<% if (element.type.downcase == "lessonplan") %>
+				 					<% path = "show_lesson_plan_path"%>
+								<% end %>
+								<%= link_to eval(path + "(" +element.id.to_s+")"), :class => "left" do%>
+									<% if element.title != nil%>
+										<p><%= element.title %></p>
+									<% else %>
+										<p><%= t('element') %></p>
+									<% end %>
+								<% end %>
+							<% end %>												
+						</div>
+					<% end %>
+				<% end %>
+				<div class="clear"></div>
+			<% end %>
+		<div>
+			<p><%= t('Included') %><%=(' ')%><%= (number_includes) %><%=(' ')%><%= t('Times') %></p>
+		</div>
+		</div>
+		
+	</div>
+	</br>
+	
+<% else %>
+
+	<ul class="dropdown_paradata <%= type %>">
+			<% unless copies_elements.blank? %>
+				<% copies_elements.each do |element| %>
+					<% creator = Profile.where("user_id='"+element.creator_id.to_s+"'").first %>
+					<% if (((usuario) && (((!element.private)&&(creator.private!='Nobody'))||((element.private) and (current_user.id == element.creator_id))) && (!element.removed)) || ((!usuario) && (creator.private == 'Everybody') && (!element.private) && (!element.removed))) %>			 		
+						<li class="clearfix">
+							<% if usuario %>
+								<%= link_to user_path(element.user), :class => "left" do%>
+									<%= image_tag(element.user.profile.avatar.url(:thumb), :width => 22) %>
+								<% end %>
+							<% else %>
+								<%= image_tag(element.user.profile.avatar.url(:thumb), :width => 22) %>
+							<% end %>
+							
+							<% if (((element.type.downcase != "lessonplan") && (element.type != "TechnicalSetting")&& (element.type != "EducationalSetting"))) %>
+								<%= link_to eval(element.type.downcase.to_s + "_path("+element.id.to_s+")"), :class => "left" do%>
+									<% if element.title != nil%>
+										<p><%= element.title %></p>
+									<% else %>
+										<p><%= t('element') %></p>
+									<% end %>
+								<% end %>
+							<% else %>
+								<% if (element.type.downcase == "lessonplan") %>
+				 					<% path = "show_lesson_plan_path"%>
+								<% end %>
+								<%= link_to eval(path + "(" +element.id.to_s+")"), :class => "left" do%>
+									<% if element.title != nil%>
+										<p><%= element.title %></p>
+									<% else %>
+										<p><%= t('element') %></p>
+									<% end %>
+								<% end %>
+							<% end %>									
+						</li>
+					<% end %>
+				<% end %>
+			<% end %>
+		
+			<li class="clearfix">
+				<% if (number_copies == 1) %>
+					<p><%= t('Copied') %><%=(' ')%><%= (number_copies) %><%=(' ')%><%= t('Time') %></p>
+				<% else %>
+					<p><%= t('Copied') %><%=(' ')%><%= (number_copies) %><%=(' ')%><%= t('Times') %></p>
+				<% end %>
+			</li>
+			</br>
+		
+			<% unless includes_elements.blank? %>
+				<% includes_elements.each do |element| %>
+					<% creator = Profile.where("user_id='"+element.creator_id.to_s+"'").first %> 
+					<% if (((usuario) && (((!element.private)&&(creator.private!='Nobody'))||((element.private) and (current_user.id == element.creator_id))) && (!element.removed)) || ((!usuario) && (creator.private == 'Everybody') && (!element.private) && (!element.removed))) %>			 		
+						<li class="clearfix">
+							<% if usuario %>
+								<%= link_to user_path(element.user), :class => "left" do%>
+									<%= image_tag(element.user.profile.avatar.url(:thumb), :width => 22) %>
+								<% end %>
+							<% else %>
+								<%= image_tag(element.user.profile.avatar.url(:thumb), :width => 22) %>
+							<% end %>
+							
+							<% if (((element.type.downcase != "lessonplan") && (element.type != "TechnicalSetting")&& (element.type != "EducationalSetting"))) %>
+								<%= link_to eval(element.type.downcase.to_s + "_path("+element.id.to_s+")"), :class => "left" do%>
+									<% if element.title != nil%>
+										<p><%= element.title %></p>
+									<% else %>
+										<p><%= t('element') %></p>
+									<% end %>
+								<% end %>
+							<% else %>
+								<% if (element.type.downcase == "lessonplan") %>
+				 					<% path = "show_lesson_plan_path"%>
+								<% end %>
+								<%= link_to eval(path + "(" +element.id.to_s+")"), :class => "left" do%>
+									<% if element.title != nil%>
+										<p><%= element.title %></p>
+									<% else %>
+										<p><%= t('element') %></p>
+									<% end %>
+								<% end %>
+							<% end %>												
+						</li>
+					<% end %>
+				<% end %>
+			<% end %>
+		<li class="clearfix">
+			<% if (number_includes == 1) %>
+				<p><%= t('Included') %><%=(' ')%><%= (number_includes) %><%=(' ')%><%= t('Time') %></p>
+			<% else %>
+				<p><%= t('Included') %><%=(' ')%><%= (number_includes) %><%=(' ')%><%= t('Times') %></p>
+			<% end %>
+		</li>
+		</br>
+	</ul>
+<% end %>
